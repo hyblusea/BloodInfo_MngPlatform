@@ -110,9 +110,6 @@
     <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v12.2.Core.12.2.7.0.Fakes">
-      <HintPath>FakesAssemblies\DevExpress.Printing.v12.2.Core.12.2.7.0.Fakes.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -1044,7 +1041,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="BloodInfo_MngPlatform_TemporaryKey.pfx" />
-    <Fakes Include="Fakes\DevExpress.Printing.v12.2.Core.fakes" />
     <None Include="Models\Generated\Database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
@@ -1556,9 +1552,6 @@
       <Project>{16C99B1A-2081-4914-BE37-24AB48E6279C}</Project>
       <Name>UcPaging</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
