@@ -133,7 +133,7 @@ namespace BloodInfo_MngPlatform
                     lblName2.Caption = sPatientName;
                     lblName3.Caption = sPatientName;
 
-                    Reg_ID = (Int64)p.ID;
+                    Reg_ID = (Int64)p.ID; 
 
                     // 血液净化记录
                     lstBloodCleanup = db.Fetch<BLOODCLEANUP>(string.Format("where reg_id ={0} order by log_time desc", p.ID));
