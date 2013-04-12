@@ -347,7 +347,7 @@
             // HEPARIN_FIRSTTextEdit
             // 
             this.HEPARIN_FIRSTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPARIN_FIRST", true));
-            this.HEPARIN_FIRSTTextEdit.Location = new System.Drawing.Point(163, 124);
+            this.HEPARIN_FIRSTTextEdit.Location = new System.Drawing.Point(163, 60);
             this.HEPARIN_FIRSTTextEdit.MenuManager = this.barManager1;
             this.HEPARIN_FIRSTTextEdit.Name = "HEPARIN_FIRSTTextEdit";
             this.HEPARIN_FIRSTTextEdit.Size = new System.Drawing.Size(81, 20);
@@ -667,7 +667,7 @@
             // HEPARIN_FIRST_ADDTextEdit
             // 
             this.HEPARIN_FIRST_ADDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPARIN_FIRST_ADD", true));
-            this.HEPARIN_FIRST_ADDTextEdit.Location = new System.Drawing.Point(375, 124);
+            this.HEPARIN_FIRST_ADDTextEdit.Location = new System.Drawing.Point(375, 60);
             this.HEPARIN_FIRST_ADDTextEdit.MenuManager = this.barManager1;
             this.HEPARIN_FIRST_ADDTextEdit.Name = "HEPARIN_FIRST_ADDTextEdit";
             this.HEPARIN_FIRST_ADDTextEdit.Size = new System.Drawing.Size(71, 20);
@@ -677,7 +677,7 @@
             // LOW_MOLECULARTextEdit
             // 
             this.LOW_MOLECULARTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "LOW_MOLECULAR", true));
-            this.LOW_MOLECULARTextEdit.Location = new System.Drawing.Point(577, 124);
+            this.LOW_MOLECULARTextEdit.Location = new System.Drawing.Point(577, 60);
             this.LOW_MOLECULARTextEdit.MenuManager = this.barManager1;
             this.LOW_MOLECULARTextEdit.Name = "LOW_MOLECULARTextEdit";
             this.LOW_MOLECULARTextEdit.Size = new System.Drawing.Size(255, 20);
@@ -687,7 +687,7 @@
             // ANA_MACHINE_OTHTextEdit
             // 
             this.ANA_MACHINE_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_MACHINE_OTH", true));
-            this.ANA_MACHINE_OTHTextEdit.Location = new System.Drawing.Point(577, 160);
+            this.ANA_MACHINE_OTHTextEdit.Location = new System.Drawing.Point(577, 96);
             this.ANA_MACHINE_OTHTextEdit.MenuManager = this.barManager1;
             this.ANA_MACHINE_OTHTextEdit.Name = "ANA_MACHINE_OTHTextEdit";
             this.ANA_MACHINE_OTHTextEdit.Size = new System.Drawing.Size(267, 20);
@@ -697,7 +697,7 @@
             // DRY_WEIGHTTextEdit
             // 
             this.DRY_WEIGHTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DRY_WEIGHT", true));
-            this.DRY_WEIGHTTextEdit.Location = new System.Drawing.Point(151, 184);
+            this.DRY_WEIGHTTextEdit.Location = new System.Drawing.Point(151, 120);
             this.DRY_WEIGHTTextEdit.MenuManager = this.barManager1;
             this.DRY_WEIGHTTextEdit.Name = "DRY_WEIGHTTextEdit";
             this.DRY_WEIGHTTextEdit.Size = new System.Drawing.Size(295, 20);
@@ -707,17 +707,17 @@
             // BLOOD_PRESSURE1TextEdit
             // 
             this.BLOOD_PRESSURE1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE1", true));
-            this.BLOOD_PRESSURE1TextEdit.Location = new System.Drawing.Point(387, 308);
+            this.BLOOD_PRESSURE1TextEdit.Location = new System.Drawing.Point(392, 244);
             this.BLOOD_PRESSURE1TextEdit.MenuManager = this.barManager1;
             this.BLOOD_PRESSURE1TextEdit.Name = "BLOOD_PRESSURE1TextEdit";
-            this.BLOOD_PRESSURE1TextEdit.Size = new System.Drawing.Size(105, 20);
+            this.BLOOD_PRESSURE1TextEdit.Size = new System.Drawing.Size(100, 20);
             this.BLOOD_PRESSURE1TextEdit.StyleController = this.dataLayoutControl1;
             this.BLOOD_PRESSURE1TextEdit.TabIndex = 23;
             // 
             // BLOOD_PRESSURE2TextEdit
             // 
             this.BLOOD_PRESSURE2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE2", true));
-            this.BLOOD_PRESSURE2TextEdit.Location = new System.Drawing.Point(510, 308);
+            this.BLOOD_PRESSURE2TextEdit.Location = new System.Drawing.Point(510, 244);
             this.BLOOD_PRESSURE2TextEdit.MenuManager = this.barManager1;
             this.BLOOD_PRESSURE2TextEdit.Name = "BLOOD_PRESSURE2TextEdit";
             this.BLOOD_PRESSURE2TextEdit.Size = new System.Drawing.Size(92, 20);
@@ -727,7 +727,7 @@
             // BLOOD_PRESSURE3TextEdit
             // 
             this.BLOOD_PRESSURE3TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE3", true));
-            this.BLOOD_PRESSURE3TextEdit.Location = new System.Drawing.Point(632, 308);
+            this.BLOOD_PRESSURE3TextEdit.Location = new System.Drawing.Point(632, 244);
             this.BLOOD_PRESSURE3TextEdit.MenuManager = this.barManager1;
             this.BLOOD_PRESSURE3TextEdit.Name = "BLOOD_PRESSURE3TextEdit";
             this.BLOOD_PRESSURE3TextEdit.Size = new System.Drawing.Size(87, 20);
@@ -737,7 +737,7 @@
             // BLOOD_PRESSURE4TextEdit
             // 
             this.BLOOD_PRESSURE4TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE4", true));
-            this.BLOOD_PRESSURE4TextEdit.Location = new System.Drawing.Point(737, 308);
+            this.BLOOD_PRESSURE4TextEdit.Location = new System.Drawing.Point(737, 244);
             this.BLOOD_PRESSURE4TextEdit.MenuManager = this.barManager1;
             this.BLOOD_PRESSURE4TextEdit.Name = "BLOOD_PRESSURE4TextEdit";
             this.BLOOD_PRESSURE4TextEdit.Size = new System.Drawing.Size(95, 20);
@@ -747,17 +747,17 @@
             // CAPACITYTextEdit
             // 
             this.CAPACITYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY", true));
-            this.CAPACITYTextEdit.Location = new System.Drawing.Point(387, 376);
+            this.CAPACITYTextEdit.Location = new System.Drawing.Point(392, 312);
             this.CAPACITYTextEdit.MenuManager = this.barManager1;
             this.CAPACITYTextEdit.Name = "CAPACITYTextEdit";
-            this.CAPACITYTextEdit.Size = new System.Drawing.Size(105, 20);
+            this.CAPACITYTextEdit.Size = new System.Drawing.Size(100, 20);
             this.CAPACITYTextEdit.StyleController = this.dataLayoutControl1;
             this.CAPACITYTextEdit.TabIndex = 28;
             // 
             // CAPACITY_PROPORTIONTextEdit
             // 
             this.CAPACITY_PROPORTIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY_PROPORTION", true));
-            this.CAPACITY_PROPORTIONTextEdit.Location = new System.Drawing.Point(623, 376);
+            this.CAPACITY_PROPORTIONTextEdit.Location = new System.Drawing.Point(623, 312);
             this.CAPACITY_PROPORTIONTextEdit.MenuManager = this.barManager1;
             this.CAPACITY_PROPORTIONTextEdit.Name = "CAPACITY_PROPORTIONTextEdit";
             this.CAPACITY_PROPORTIONTextEdit.Size = new System.Drawing.Size(209, 20);
@@ -767,7 +767,7 @@
             // BLOOD_FLOWTextEdit
             // 
             this.BLOOD_FLOWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_FLOW", true));
-            this.BLOOD_FLOWTextEdit.Location = new System.Drawing.Point(392, 444);
+            this.BLOOD_FLOWTextEdit.Location = new System.Drawing.Point(392, 380);
             this.BLOOD_FLOWTextEdit.MenuManager = this.barManager1;
             this.BLOOD_FLOWTextEdit.Name = "BLOOD_FLOWTextEdit";
             this.BLOOD_FLOWTextEdit.Size = new System.Drawing.Size(440, 20);
@@ -777,7 +777,7 @@
             // URRTextEdit
             // 
             this.URRTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "URR", true));
-            this.URRTextEdit.Location = new System.Drawing.Point(151, 608);
+            this.URRTextEdit.Location = new System.Drawing.Point(151, 583);
             this.URRTextEdit.MenuManager = this.barManager1;
             this.URRTextEdit.Name = "URRTextEdit";
             this.URRTextEdit.Size = new System.Drawing.Size(161, 20);
@@ -787,7 +787,7 @@
             // KT_VTextEdit
             // 
             this.KT_VTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "KT_V", true));
-            this.KT_VTextEdit.Location = new System.Drawing.Point(443, 608);
+            this.KT_VTextEdit.Location = new System.Drawing.Point(443, 583);
             this.KT_VTextEdit.MenuManager = this.barManager1;
             this.KT_VTextEdit.Name = "KT_VTextEdit";
             this.KT_VTextEdit.Size = new System.Drawing.Size(401, 20);
@@ -797,7 +797,7 @@
             // CARDIOVASCULAR_SYSTEM_OTHTextEdit
             // 
             this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CARDIOVASCULAR_SYSTEM_OTH", true));
-            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Location = new System.Drawing.Point(443, 632);
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Location = new System.Drawing.Point(443, 607);
             this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.MenuManager = this.barManager1;
             this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Name = "CARDIOVASCULAR_SYSTEM_OTHTextEdit";
             this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Size = new System.Drawing.Size(401, 20);
@@ -807,7 +807,7 @@
             // ANTIHYPERTENSIVE_DRUGSTextEdit
             // 
             this.ANTIHYPERTENSIVE_DRUGSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANTIHYPERTENSIVE_DRUGS", true));
-            this.ANTIHYPERTENSIVE_DRUGSTextEdit.Location = new System.Drawing.Point(151, 656);
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.Location = new System.Drawing.Point(151, 631);
             this.ANTIHYPERTENSIVE_DRUGSTextEdit.MenuManager = this.barManager1;
             this.ANTIHYPERTENSIVE_DRUGSTextEdit.Name = "ANTIHYPERTENSIVE_DRUGSTextEdit";
             this.ANTIHYPERTENSIVE_DRUGSTextEdit.Size = new System.Drawing.Size(693, 20);
@@ -817,7 +817,7 @@
             // HBTextEdit
             // 
             this.HBTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HB", true));
-            this.HBTextEdit.Location = new System.Drawing.Point(443, 680);
+            this.HBTextEdit.Location = new System.Drawing.Point(443, 655);
             this.HBTextEdit.MenuManager = this.barManager1;
             this.HBTextEdit.Name = "HBTextEdit";
             this.HBTextEdit.Size = new System.Drawing.Size(401, 20);
@@ -827,7 +827,7 @@
             // EPO_TIMES_OTHTextEdit
             // 
             this.EPO_TIMES_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO_TIMES_OTH", true));
-            this.EPO_TIMES_OTHTextEdit.Location = new System.Drawing.Point(708, 704);
+            this.EPO_TIMES_OTHTextEdit.Location = new System.Drawing.Point(708, 679);
             this.EPO_TIMES_OTHTextEdit.MenuManager = this.barManager1;
             this.EPO_TIMES_OTHTextEdit.Name = "EPO_TIMES_OTHTextEdit";
             this.EPO_TIMES_OTHTextEdit.Size = new System.Drawing.Size(136, 20);
@@ -837,7 +837,7 @@
             // FERRITINTextEdit
             // 
             this.FERRITINTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "FERRITIN", true));
-            this.FERRITINTextEdit.Location = new System.Drawing.Point(443, 728);
+            this.FERRITINTextEdit.Location = new System.Drawing.Point(443, 703);
             this.FERRITINTextEdit.MenuManager = this.barManager1;
             this.FERRITINTextEdit.Name = "FERRITINTextEdit";
             this.FERRITINTextEdit.Size = new System.Drawing.Size(134, 20);
@@ -847,7 +847,7 @@
             // TRANSFERRIN_SATURATIONTextEdit
             // 
             this.TRANSFERRIN_SATURATIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "TRANSFERRIN_SATURATION", true));
-            this.TRANSFERRIN_SATURATIONTextEdit.Location = new System.Drawing.Point(708, 728);
+            this.TRANSFERRIN_SATURATIONTextEdit.Location = new System.Drawing.Point(708, 703);
             this.TRANSFERRIN_SATURATIONTextEdit.MenuManager = this.barManager1;
             this.TRANSFERRIN_SATURATIONTextEdit.Name = "TRANSFERRIN_SATURATIONTextEdit";
             this.TRANSFERRIN_SATURATIONTextEdit.Size = new System.Drawing.Size(136, 20);
@@ -857,7 +857,7 @@
             // CALCIUMTextEdit
             // 
             this.CALCIUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CALCIUM", true));
-            this.CALCIUMTextEdit.Location = new System.Drawing.Point(151, 752);
+            this.CALCIUMTextEdit.Location = new System.Drawing.Point(151, 727);
             this.CALCIUMTextEdit.MenuManager = this.barManager1;
             this.CALCIUMTextEdit.Name = "CALCIUMTextEdit";
             this.CALCIUMTextEdit.Size = new System.Drawing.Size(161, 20);
@@ -867,7 +867,7 @@
             // PTextEdit
             // 
             this.PTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "P", true));
-            this.PTextEdit.Location = new System.Drawing.Point(443, 752);
+            this.PTextEdit.Location = new System.Drawing.Point(443, 727);
             this.PTextEdit.MenuManager = this.barManager1;
             this.PTextEdit.Name = "PTextEdit";
             this.PTextEdit.Size = new System.Drawing.Size(134, 20);
@@ -877,7 +877,7 @@
             // PTHTextEdit
             // 
             this.PTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "PTH", true));
-            this.PTHTextEdit.Location = new System.Drawing.Point(708, 752);
+            this.PTHTextEdit.Location = new System.Drawing.Point(708, 727);
             this.PTHTextEdit.MenuManager = this.barManager1;
             this.PTHTextEdit.Name = "PTHTextEdit";
             this.PTHTextEdit.Size = new System.Drawing.Size(136, 20);
@@ -887,7 +887,7 @@
             // HEPATITIS_INDICATORSTextEdit
             // 
             this.HEPATITIS_INDICATORSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPATITIS_INDICATORS", true));
-            this.HEPATITIS_INDICATORSTextEdit.Location = new System.Drawing.Point(151, 776);
+            this.HEPATITIS_INDICATORSTextEdit.Location = new System.Drawing.Point(151, 751);
             this.HEPATITIS_INDICATORSTextEdit.MenuManager = this.barManager1;
             this.HEPATITIS_INDICATORSTextEdit.Name = "HEPATITIS_INDICATORSTextEdit";
             this.HEPATITIS_INDICATORSTextEdit.Size = new System.Drawing.Size(161, 20);
@@ -897,7 +897,7 @@
             // GPTTextEdit
             // 
             this.GPTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "GPT", true));
-            this.GPTTextEdit.Location = new System.Drawing.Point(443, 776);
+            this.GPTTextEdit.Location = new System.Drawing.Point(443, 751);
             this.GPTTextEdit.MenuManager = this.barManager1;
             this.GPTTextEdit.Name = "GPTTextEdit";
             this.GPTTextEdit.Size = new System.Drawing.Size(134, 20);
@@ -907,7 +907,7 @@
             // GOTTextEdit
             // 
             this.GOTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "GOT", true));
-            this.GOTTextEdit.Location = new System.Drawing.Point(708, 776);
+            this.GOTTextEdit.Location = new System.Drawing.Point(708, 751);
             this.GOTTextEdit.MenuManager = this.barManager1;
             this.GOTTextEdit.Name = "GOTTextEdit";
             this.GOTTextEdit.Size = new System.Drawing.Size(136, 20);
@@ -917,7 +917,7 @@
             // ANA_TYPETextEdit
             // 
             this.ANA_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_TYPE", true));
-            this.ANA_TYPETextEdit.Location = new System.Drawing.Point(151, 44);
+            this.ANA_TYPETextEdit.Location = new System.Drawing.Point(151, -20);
             this.ANA_TYPETextEdit.MenuManager = this.barManager1;
             this.ANA_TYPETextEdit.Name = "ANA_TYPETextEdit";
             this.ANA_TYPETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -934,7 +934,7 @@
             // HD_TIMESTextEdit
             // 
             this.HD_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HD_TIMES", true));
-            this.HD_TIMESTextEdit.Location = new System.Drawing.Point(373, 44);
+            this.HD_TIMESTextEdit.Location = new System.Drawing.Point(373, -20);
             this.HD_TIMESTextEdit.MenuManager = this.barManager1;
             this.HD_TIMESTextEdit.Name = "HD_TIMESTextEdit";
             this.HD_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -951,7 +951,7 @@
             // HDF_TIMESTextEdit
             // 
             this.HDF_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HDF_TIMES", true));
-            this.HDF_TIMESTextEdit.Location = new System.Drawing.Point(576, 44);
+            this.HDF_TIMESTextEdit.Location = new System.Drawing.Point(576, -20);
             this.HDF_TIMESTextEdit.MenuManager = this.barManager1;
             this.HDF_TIMESTextEdit.Name = "HDF_TIMESTextEdit";
             this.HDF_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -968,7 +968,7 @@
             // HDF_H_TIMESTextEdit
             // 
             this.HDF_H_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HDF_H_TIMES", true));
-            this.HDF_H_TIMESTextEdit.Location = new System.Drawing.Point(781, 44);
+            this.HDF_H_TIMESTextEdit.Location = new System.Drawing.Point(781, -20);
             this.HDF_H_TIMESTextEdit.MenuManager = this.barManager1;
             this.HDF_H_TIMESTextEdit.Name = "HDF_H_TIMESTextEdit";
             this.HDF_H_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -986,7 +986,7 @@
             // ARTERY_LEFT_RIGHTTextEdit
             // 
             this.ARTERY_LEFT_RIGHTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ARTERY_LEFT_RIGHT", true));
-            this.ARTERY_LEFT_RIGHTTextEdit.Location = new System.Drawing.Point(151, 68);
+            this.ARTERY_LEFT_RIGHTTextEdit.Location = new System.Drawing.Point(151, 4);
             this.ARTERY_LEFT_RIGHTTextEdit.MenuManager = this.barManager1;
             this.ARTERY_LEFT_RIGHTTextEdit.Name = "ARTERY_LEFT_RIGHTTextEdit";
             this.ARTERY_LEFT_RIGHTTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1002,7 +1002,7 @@
             // PATH_TYPETextEdit
             // 
             this.PATH_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "PATH_TYPE", true));
-            this.PATH_TYPETextEdit.Location = new System.Drawing.Point(576, 68);
+            this.PATH_TYPETextEdit.Location = new System.Drawing.Point(576, 4);
             this.PATH_TYPETextEdit.MenuManager = this.barManager1;
             this.PATH_TYPETextEdit.Name = "PATH_TYPETextEdit";
             this.PATH_TYPETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1018,7 +1018,7 @@
             // ANA_MACHINETextEdit
             // 
             this.ANA_MACHINETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_MACHINE", true));
-            this.ANA_MACHINETextEdit.Location = new System.Drawing.Point(151, 160);
+            this.ANA_MACHINETextEdit.Location = new System.Drawing.Point(151, 96);
             this.ANA_MACHINETextEdit.MenuManager = this.barManager1;
             this.ANA_MACHINETextEdit.Name = "ANA_MACHINETextEdit";
             this.ANA_MACHINETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1038,7 +1038,7 @@
             // DRY_WEIGHT_BEFTextEdit
             // 
             this.DRY_WEIGHT_BEFTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DRY_WEIGHT_BEF", true));
-            this.DRY_WEIGHT_BEFTextEdit.Location = new System.Drawing.Point(577, 184);
+            this.DRY_WEIGHT_BEFTextEdit.Location = new System.Drawing.Point(577, 120);
             this.DRY_WEIGHT_BEFTextEdit.MenuManager = this.barManager1;
             this.DRY_WEIGHT_BEFTextEdit.Name = "DRY_WEIGHT_BEFTextEdit";
             this.DRY_WEIGHT_BEFTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1055,7 +1055,7 @@
             // SYMPTOMTextEdit
             // 
             this.SYMPTOMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "SYMPTOM", true));
-            this.SYMPTOMTextEdit.Location = new System.Drawing.Point(151, 252);
+            this.SYMPTOMTextEdit.Location = new System.Drawing.Point(151, 188);
             this.SYMPTOMTextEdit.MenuManager = this.barManager1;
             this.SYMPTOMTextEdit.Name = "SYMPTOMTextEdit";
             this.SYMPTOMTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1072,7 +1072,7 @@
             // BLOOD_PRESSURE_CONTROLTextEdit
             // 
             this.BLOOD_PRESSURE_CONTROLTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE_CONTROL", true));
-            this.BLOOD_PRESSURE_CONTROLTextEdit.Location = new System.Drawing.Point(163, 308);
+            this.BLOOD_PRESSURE_CONTROLTextEdit.Location = new System.Drawing.Point(163, 244);
             this.BLOOD_PRESSURE_CONTROLTextEdit.MenuManager = this.barManager1;
             this.BLOOD_PRESSURE_CONTROLTextEdit.Name = "BLOOD_PRESSURE_CONTROLTextEdit";
             this.BLOOD_PRESSURE_CONTROLTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1082,14 +1082,14 @@
             "一般",
             "差"});
             this.BLOOD_PRESSURE_CONTROLTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.BLOOD_PRESSURE_CONTROLTextEdit.Size = new System.Drawing.Size(93, 20);
+            this.BLOOD_PRESSURE_CONTROLTextEdit.Size = new System.Drawing.Size(98, 20);
             this.BLOOD_PRESSURE_CONTROLTextEdit.StyleController = this.dataLayoutControl1;
             this.BLOOD_PRESSURE_CONTROLTextEdit.TabIndex = 22;
             // 
             // CAPACITY_CONTROLTextEdit
             // 
             this.CAPACITY_CONTROLTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY_CONTROL", true));
-            this.CAPACITY_CONTROLTextEdit.Location = new System.Drawing.Point(163, 376);
+            this.CAPACITY_CONTROLTextEdit.Location = new System.Drawing.Point(163, 312);
             this.CAPACITY_CONTROLTextEdit.MenuManager = this.barManager1;
             this.CAPACITY_CONTROLTextEdit.Name = "CAPACITY_CONTROLTextEdit";
             this.CAPACITY_CONTROLTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1099,14 +1099,14 @@
             "一般",
             "差"});
             this.CAPACITY_CONTROLTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.CAPACITY_CONTROLTextEdit.Size = new System.Drawing.Size(93, 20);
+            this.CAPACITY_CONTROLTextEdit.Size = new System.Drawing.Size(98, 20);
             this.CAPACITY_CONTROLTextEdit.StyleController = this.dataLayoutControl1;
             this.CAPACITY_CONTROLTextEdit.TabIndex = 27;
             // 
             // VASCULAR_ACCESS_STATTextEdit
             // 
             this.VASCULAR_ACCESS_STATTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "VASCULAR_ACCESS_STAT", true));
-            this.VASCULAR_ACCESS_STATTextEdit.Location = new System.Drawing.Point(163, 444);
+            this.VASCULAR_ACCESS_STATTextEdit.Location = new System.Drawing.Point(163, 380);
             this.VASCULAR_ACCESS_STATTextEdit.MenuManager = this.barManager1;
             this.VASCULAR_ACCESS_STATTextEdit.Name = "VASCULAR_ACCESS_STATTextEdit";
             this.VASCULAR_ACCESS_STATTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1123,7 +1123,7 @@
             // MEMO_SPECIAL_CONDITIONTextEdit
             // 
             this.MEMO_SPECIAL_CONDITIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO_SPECIAL_CONDITION", true));
-            this.MEMO_SPECIAL_CONDITIONTextEdit.Location = new System.Drawing.Point(151, 800);
+            this.MEMO_SPECIAL_CONDITIONTextEdit.Location = new System.Drawing.Point(151, 775);
             this.MEMO_SPECIAL_CONDITIONTextEdit.MenuManager = this.barManager1;
             this.MEMO_SPECIAL_CONDITIONTextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.MEMO_SPECIAL_CONDITIONTextEdit.Name = "MEMO_SPECIAL_CONDITIONTextEdit";
@@ -1134,7 +1134,7 @@
             // MEMO_FUTURETextEdit
             // 
             this.MEMO_FUTURETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO_FUTURE", true));
-            this.MEMO_FUTURETextEdit.Location = new System.Drawing.Point(151, 824);
+            this.MEMO_FUTURETextEdit.Location = new System.Drawing.Point(151, 799);
             this.MEMO_FUTURETextEdit.MenuManager = this.barManager1;
             this.MEMO_FUTURETextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.MEMO_FUTURETextEdit.Name = "MEMO_FUTURETextEdit";
@@ -1145,37 +1145,40 @@
             // MAJOR_DISCOMFORT_HANDLINGTextEdit
             // 
             this.MAJOR_DISCOMFORT_HANDLINGTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MAJOR_DISCOMFORT_HANDLING", true));
-            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Location = new System.Drawing.Point(151, 480);
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Location = new System.Drawing.Point(151, 416);
             this.MAJOR_DISCOMFORT_HANDLINGTextEdit.MenuManager = this.barManager1;
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Name = "MAJOR_DISCOMFORT_HANDLINGTextEdit";
-            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Size = new System.Drawing.Size(693, 16);
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Size = new System.Drawing.Size(693, 29);
             this.MAJOR_DISCOMFORT_HANDLINGTextEdit.StyleController = this.dataLayoutControl1;
             this.MAJOR_DISCOMFORT_HANDLINGTextEdit.TabIndex = 32;
             // 
             // MEMO1TextEdit
             // 
             this.MEMO1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO1", true));
-            this.MEMO1TextEdit.Location = new System.Drawing.Point(151, 500);
+            this.MEMO1TextEdit.Location = new System.Drawing.Point(151, 449);
             this.MEMO1TextEdit.MenuManager = this.barManager1;
+            this.MEMO1TextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.MEMO1TextEdit.Name = "MEMO1TextEdit";
-            this.MEMO1TextEdit.Size = new System.Drawing.Size(693, 16);
+            this.MEMO1TextEdit.Size = new System.Drawing.Size(693, 29);
             this.MEMO1TextEdit.StyleController = this.dataLayoutControl1;
             this.MEMO1TextEdit.TabIndex = 33;
             // 
             // MEMO2TextEdit
             // 
             this.MEMO2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO2", true));
-            this.MEMO2TextEdit.Location = new System.Drawing.Point(151, 520);
+            this.MEMO2TextEdit.Location = new System.Drawing.Point(151, 482);
             this.MEMO2TextEdit.MenuManager = this.barManager1;
+            this.MEMO2TextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.MEMO2TextEdit.Name = "MEMO2TextEdit";
-            this.MEMO2TextEdit.Size = new System.Drawing.Size(693, 16);
+            this.MEMO2TextEdit.Size = new System.Drawing.Size(693, 29);
             this.MEMO2TextEdit.StyleController = this.dataLayoutControl1;
             this.MEMO2TextEdit.TabIndex = 34;
             // 
             // DIALYSIS_GENERALTextEdit
             // 
             this.DIALYSIS_GENERALTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DIALYSIS_GENERAL", true));
-            this.DIALYSIS_GENERALTextEdit.Location = new System.Drawing.Point(151, 584);
+            this.DIALYSIS_GENERALTextEdit.Location = new System.Drawing.Point(151, 559);
             this.DIALYSIS_GENERALTextEdit.MenuManager = this.barManager1;
             this.DIALYSIS_GENERALTextEdit.Name = "DIALYSIS_GENERALTextEdit";
             this.DIALYSIS_GENERALTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1191,7 +1194,7 @@
             // CARDIOVASCULAR_SYSTEMTextEdit
             // 
             this.CARDIOVASCULAR_SYSTEMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CARDIOVASCULAR_SYSTEM", true));
-            this.CARDIOVASCULAR_SYSTEMTextEdit.Location = new System.Drawing.Point(151, 632);
+            this.CARDIOVASCULAR_SYSTEMTextEdit.Location = new System.Drawing.Point(151, 607);
             this.CARDIOVASCULAR_SYSTEMTextEdit.MenuManager = this.barManager1;
             this.CARDIOVASCULAR_SYSTEMTextEdit.Name = "CARDIOVASCULAR_SYSTEMTextEdit";
             this.CARDIOVASCULAR_SYSTEMTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1208,7 +1211,7 @@
             // BLOOD_SYSTEMTextEdit
             // 
             this.BLOOD_SYSTEMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_SYSTEM", true));
-            this.BLOOD_SYSTEMTextEdit.Location = new System.Drawing.Point(151, 680);
+            this.BLOOD_SYSTEMTextEdit.Location = new System.Drawing.Point(151, 655);
             this.BLOOD_SYSTEMTextEdit.MenuManager = this.barManager1;
             this.BLOOD_SYSTEMTextEdit.Name = "BLOOD_SYSTEMTextEdit";
             this.BLOOD_SYSTEMTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1225,7 +1228,7 @@
             // EPOTextEdit
             // 
             this.EPOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO", true));
-            this.EPOTextEdit.Location = new System.Drawing.Point(151, 704);
+            this.EPOTextEdit.Location = new System.Drawing.Point(151, 679);
             this.EPOTextEdit.MenuManager = this.barManager1;
             this.EPOTextEdit.Name = "EPOTextEdit";
             this.EPOTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1241,7 +1244,7 @@
             // EPO_TIMESTextEdit
             // 
             this.EPO_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO_TIMES", true));
-            this.EPO_TIMESTextEdit.Location = new System.Drawing.Point(443, 704);
+            this.EPO_TIMESTextEdit.Location = new System.Drawing.Point(443, 679);
             this.EPO_TIMESTextEdit.MenuManager = this.barManager1;
             this.EPO_TIMESTextEdit.Name = "EPO_TIMESTextEdit";
             this.EPO_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1257,7 +1260,7 @@
             // IRON_DEFICIENCYTextEdit
             // 
             this.IRON_DEFICIENCYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "IRON_DEFICIENCY", true));
-            this.IRON_DEFICIENCYTextEdit.Location = new System.Drawing.Point(151, 728);
+            this.IRON_DEFICIENCYTextEdit.Location = new System.Drawing.Point(151, 703);
             this.IRON_DEFICIENCYTextEdit.MenuManager = this.barManager1;
             this.IRON_DEFICIENCYTextEdit.Name = "IRON_DEFICIENCYTextEdit";
             this.IRON_DEFICIENCYTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1280,9 +1283,9 @@
             this.layoutControlGroup3,
             this.layoutControlGroup4,
             this.layoutControlGroup5});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, -64);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(868, 871);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(868, 910);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -1297,7 +1300,7 @@
             this.layoutControlGroup12});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(848, 848);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(848, 887);
             this.layoutControlGroup2.Text = "autoGeneratedGroup0";
             // 
             // layoutControlGroup6
@@ -1475,7 +1478,7 @@
             this.ItemForMEMO2});
             this.layoutControlGroup8.Location = new System.Drawing.Point(0, 208);
             this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(848, 332);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(848, 371);
             this.layoutControlGroup8.Text = "一般情况";
             // 
             // ItemForSYMPTOM
@@ -1508,7 +1511,7 @@
             this.ItemForBLOOD_PRESSURE_CONTROL.CustomizationFormText = "血压控制:";
             this.ItemForBLOOD_PRESSURE_CONTROL.Location = new System.Drawing.Point(0, 0);
             this.ItemForBLOOD_PRESSURE_CONTROL.Name = "ItemForBLOOD_PRESSURE_CONTROL";
-            this.ItemForBLOOD_PRESSURE_CONTROL.Size = new System.Drawing.Size(224, 24);
+            this.ItemForBLOOD_PRESSURE_CONTROL.Size = new System.Drawing.Size(229, 24);
             this.ItemForBLOOD_PRESSURE_CONTROL.Text = "血压控制:";
             this.ItemForBLOOD_PRESSURE_CONTROL.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1516,9 +1519,9 @@
             // 
             this.ItemForBLOOD_PRESSURE1.Control = this.BLOOD_PRESSURE1TextEdit;
             this.ItemForBLOOD_PRESSURE1.CustomizationFormText = "BLOOD_PRESSURE1";
-            this.ItemForBLOOD_PRESSURE1.Location = new System.Drawing.Point(224, 0);
+            this.ItemForBLOOD_PRESSURE1.Location = new System.Drawing.Point(229, 0);
             this.ItemForBLOOD_PRESSURE1.Name = "ItemForBLOOD_PRESSURE1";
-            this.ItemForBLOOD_PRESSURE1.Size = new System.Drawing.Size(236, 24);
+            this.ItemForBLOOD_PRESSURE1.Size = new System.Drawing.Size(231, 24);
             this.ItemForBLOOD_PRESSURE1.Text = "血压范围:";
             this.ItemForBLOOD_PRESSURE1.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1576,7 +1579,7 @@
             this.ItemForCAPACITY_CONTROL.CustomizationFormText = "容量控制:";
             this.ItemForCAPACITY_CONTROL.Location = new System.Drawing.Point(0, 0);
             this.ItemForCAPACITY_CONTROL.Name = "ItemForCAPACITY_CONTROL";
-            this.ItemForCAPACITY_CONTROL.Size = new System.Drawing.Size(224, 24);
+            this.ItemForCAPACITY_CONTROL.Size = new System.Drawing.Size(229, 24);
             this.ItemForCAPACITY_CONTROL.Text = "容量控制:";
             this.ItemForCAPACITY_CONTROL.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1584,9 +1587,9 @@
             // 
             this.ItemForCAPACITY.Control = this.CAPACITYTextEdit;
             this.ItemForCAPACITY.CustomizationFormText = "容量(kg):";
-            this.ItemForCAPACITY.Location = new System.Drawing.Point(224, 0);
+            this.ItemForCAPACITY.Location = new System.Drawing.Point(229, 0);
             this.ItemForCAPACITY.Name = "ItemForCAPACITY";
-            this.ItemForCAPACITY.Size = new System.Drawing.Size(236, 24);
+            this.ItemForCAPACITY.Size = new System.Drawing.Size(231, 24);
             this.ItemForCAPACITY.Text = "容量(kg):";
             this.ItemForCAPACITY.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1637,7 +1640,7 @@
             this.ItemForMAJOR_DISCOMFORT_HANDLING.CustomizationFormText = "主要不适、处理情况:";
             this.ItemForMAJOR_DISCOMFORT_HANDLING.Location = new System.Drawing.Point(0, 228);
             this.ItemForMAJOR_DISCOMFORT_HANDLING.Name = "ItemForMAJOR_DISCOMFORT_HANDLING";
-            this.ItemForMAJOR_DISCOMFORT_HANDLING.Size = new System.Drawing.Size(824, 20);
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Size = new System.Drawing.Size(824, 33);
             this.ItemForMAJOR_DISCOMFORT_HANDLING.Text = "主要不适、处理情况:";
             this.ItemForMAJOR_DISCOMFORT_HANDLING.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1645,9 +1648,9 @@
             // 
             this.ItemForMEMO1.Control = this.MEMO1TextEdit;
             this.ItemForMEMO1.CustomizationFormText = "是否住院、住院主要诊断、治疗处理、转归等:";
-            this.ItemForMEMO1.Location = new System.Drawing.Point(0, 248);
+            this.ItemForMEMO1.Location = new System.Drawing.Point(0, 261);
             this.ItemForMEMO1.Name = "ItemForMEMO1";
-            this.ItemForMEMO1.Size = new System.Drawing.Size(824, 20);
+            this.ItemForMEMO1.Size = new System.Drawing.Size(824, 33);
             this.ItemForMEMO1.Text = "是否住院等:";
             this.ItemForMEMO1.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1655,9 +1658,9 @@
             // 
             this.ItemForMEMO2.Control = this.MEMO2TextEdit;
             this.ItemForMEMO2.CustomizationFormText = "住院主要检查、化验:";
-            this.ItemForMEMO2.Location = new System.Drawing.Point(0, 268);
+            this.ItemForMEMO2.Location = new System.Drawing.Point(0, 294);
             this.ItemForMEMO2.Name = "ItemForMEMO2";
-            this.ItemForMEMO2.Size = new System.Drawing.Size(824, 20);
+            this.ItemForMEMO2.Size = new System.Drawing.Size(824, 33);
             this.ItemForMEMO2.Text = "住院主要检查、化验:";
             this.ItemForMEMO2.TextSize = new System.Drawing.Size(124, 14);
             // 
@@ -1687,7 +1690,7 @@
             this.ItemForGOT,
             this.ItemForMEMO_SPECIAL_CONDITION,
             this.ItemForMEMO_FUTURE});
-            this.layoutControlGroup12.Location = new System.Drawing.Point(0, 540);
+            this.layoutControlGroup12.Location = new System.Drawing.Point(0, 579);
             this.layoutControlGroup12.Name = "layoutControlGroup12";
             this.layoutControlGroup12.Size = new System.Drawing.Size(848, 308);
             this.layoutControlGroup12.Text = "透析治疗总评价";
@@ -1917,7 +1920,7 @@
             this.layoutControlGroup3.AllowDrawBackground = false;
             this.layoutControlGroup3.CustomizationFormText = "autoGeneratedGroup1";
             this.layoutControlGroup3.GroupBordersVisible = false;
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 848);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 887);
             this.layoutControlGroup3.Name = "autoGeneratedGroup1";
             this.layoutControlGroup3.Size = new System.Drawing.Size(848, 1);
             this.layoutControlGroup3.Text = "autoGeneratedGroup1";
@@ -1927,7 +1930,7 @@
             this.layoutControlGroup4.AllowDrawBackground = false;
             this.layoutControlGroup4.CustomizationFormText = "autoGeneratedGroup2";
             this.layoutControlGroup4.GroupBordersVisible = false;
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 849);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 888);
             this.layoutControlGroup4.Name = "autoGeneratedGroup2";
             this.layoutControlGroup4.Size = new System.Drawing.Size(848, 1);
             this.layoutControlGroup4.Text = "autoGeneratedGroup2";
@@ -1937,7 +1940,7 @@
             this.layoutControlGroup5.AllowDrawBackground = false;
             this.layoutControlGroup5.CustomizationFormText = "autoGeneratedGroup3";
             this.layoutControlGroup5.GroupBordersVisible = false;
-            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 850);
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 889);
             this.layoutControlGroup5.Name = "autoGeneratedGroup3";
             this.layoutControlGroup5.Size = new System.Drawing.Size(848, 1);
             this.layoutControlGroup5.Text = "autoGeneratedGroup3";
