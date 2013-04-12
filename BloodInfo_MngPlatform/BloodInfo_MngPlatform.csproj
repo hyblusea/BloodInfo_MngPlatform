@@ -755,6 +755,24 @@
     <Compile Include="FrmNewPatient_Course.Designer.cs">
       <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEdtPatient_Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtPatient_Course.Designer.cs">
+      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewPatient_Course_Sp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewPatient_Course_Sp.Designer.cs">
+      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtPatient_Course_Sp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtPatient_Course_Sp.Designer.cs">
+      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmAuthMng.resx">
       <DependentUpon>FrmAuthMng.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1037,6 +1055,15 @@
     <EmbeddedResource Include="FrmNewPatient_Course.resx">
       <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPatient_Course.resx">
+      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPatient_Course_Sp.resx">
+      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPatient_Course_Sp.resx">
+      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -1092,6 +1119,7 @@
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.OUTPATIENT_CATEGORY.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_BASEINFO.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE_SPECIAL.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_REGIST.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.REG_STATUS.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.RENAL_REPLACEMENT_THERAPY_HI.datasource" />

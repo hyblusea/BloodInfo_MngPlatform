@@ -100,23 +100,19 @@ namespace BloodInfo_MngPlatform
 
         private void ucPaing3_PageChanged(long curPage, int dspLen)
         {
-            Page<DOC_ADVICE_DRUG> page = null;
+            Page<PATIENT_COURSE_SPECIAL> page = null;
 
-            // 0:长期, 1:临时
-            //if (barCheckItem2.Checked)
-            //    page = db.Page<DOC_ADVICE_DRUG>(curPage, dspLen, "where ADVICE_TYPE = 1 and BASE_INFO_ID = @0 ORDER BY ID DESC", new object[] { ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID });
-            //else
-            //    page = db.Page<DOC_ADVICE_DRUG>(curPage, dspLen, "where IS_DEL <> 1 and ADVICE_TYPE = 1 AND BASE_INFO_ID = @0  ORDER BY ID DESC", new object[] { ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID });
-            //dOCADVICEDRUGBindingSource1.DataSource = page.Items;
-            //ucPaing3.totalPage = page.TotalPages;
-            //ucPaing3.curPage = curPage;
-            //ucPaing3.recordCnt = page.TotalItems;
+            page = db.Page<PATIENT_COURSE_SPECIAL>(curPage, dspLen, "where PT_ID = @0  ORDER BY ID DESC", new object[] { ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID });
+            pATIENTCOURSESPECIALBindingSource.DataSource = page.Items;
+            ucPaing3.totalPage = page.TotalPages;
+            ucPaing3.curPage = curPage;
+            ucPaing3.recordCnt = page.TotalItems;
         }
 
         private void ucPaing2_PageChanged(long curPage, int dspLen)
         {
             Page<PATIENT_COURSE> page = null;
-            page = db.Page<PATIENT_COURSE>(curPage, dspLen, "where ADVICE_TYPE = 0 and BASE_INFO_ID = @0 ORDER BY ID DESC", new object[] { ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID });
+            page = db.Page<PATIENT_COURSE>(curPage, dspLen, "where PT_ID = @0 ORDER BY ID DESC", new object[] { ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID });
             pATIENTCOURSEBindingSource.DataSource = page.Items;
             ucPaing2.totalPage = page.TotalPages;
             ucPaing2.curPage = curPage;
@@ -132,7 +128,7 @@ namespace BloodInfo_MngPlatform
         {
             if (pATIENTBASEINFOBindingSource.Current != null)
             {
-                FrmNewDav frm1 = new FrmNewDav((Int64)((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID, 0, 0);
+                FrmNewPatient_Course frm1 = new  FrmNewPatient_Course((Int64)((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID);
                 frm1.NewRegistEvt += frm1_NewRegistEvt;
                 frm1.ShowDialog();
             }
@@ -147,35 +143,29 @@ namespace BloodInfo_MngPlatform
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (dOCADVICEDRUGBindingSource.Current != null)
-            //{
-            //    if ((Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource.Current).IS_DEL != 0)
-            //    {
-            //        XtraMessageBox.Show("被禁用的医嘱不允许编辑.");
-            //        return;
-            //    }
-
-            //    FrmEdtDav frm1 = new FrmEdtDav((Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource.Current).ID);
-            //    frm1.NewRegistEvt += frm1_NewRegistEvt;
-            //    frm1.ShowDialog();
-            //}
-            //else
-            //    XtraMessageBox.Show("请选择需要编辑的记录.");
+            if (pATIENTCOURSEBindingSource.Current != null)
+            {
+                FrmEdtPatient_Course frm1 = new FrmEdtPatient_Course((Int64)((PATIENT_COURSE)pATIENTCOURSEBindingSource.Current).ID);
+                frm1.NewRegistEvt += frm1_NewRegistEvt;
+                frm1.ShowDialog();
+            }
+            else
+                XtraMessageBox.Show("请选择需要编辑的记录.");
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (dOCADVICEDRUGBindingSource.Current == null)
-            //{
-            //    XtraMessageBox.Show("请选择需要禁用的记录.", "错误提示", MessageBoxButtons.OK);
-            //    return;
-            //}
-            //if (XtraMessageBox.Show("确实要禁用该医嘱信息吗?", "操作确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    Int64 id = (Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource.Current).ID;
-            //    db.Execute("update DOC_ADVICE_DRUGS set IS_DEL = 1, del_time = @0, del_oper = @1 where ID = @2", new object[] { DateTime.Now, ClsFrmMng.WorkerID, id });
-            //    refresh();
-            //}
+            if (pATIENTCOURSEBindingSource.Current == null)
+            {
+                XtraMessageBox.Show("请选择需要删除的记录.", "错误提示", MessageBoxButtons.OK);
+                return;
+            }
+            if (XtraMessageBox.Show("确实要删除该信息吗?", "操作确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                decimal id =((PATIENT_COURSE)pATIENTCOURSEBindingSource.Current).ID;
+                db.Execute("delete PATIENT_COURSE where ID = @0", new object[] { id });
+                refresh();
+            }
         }
 
         private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -187,7 +177,7 @@ namespace BloodInfo_MngPlatform
         {
             if (pATIENTBASEINFOBindingSource.Current != null)
             {
-                FrmNewDav frm2 = new FrmNewDav((Int64)((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID, 0, 1);
+                FrmNewPatient_Course_Sp frm2 = new  FrmNewPatient_Course_Sp((Int64)((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID);
                 frm2.NewRegistEvt += frm2_NewRegistEvt;
                 frm2.ShowDialog();
             }
@@ -202,35 +192,29 @@ namespace BloodInfo_MngPlatform
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (dOCADVICEDRUGBindingSource1.Current == null)
-            //{
-            //    XtraMessageBox.Show("请选择需要禁用的记录.", "错误提示", MessageBoxButtons.OK);
-            //    return;
-            //}
-            //if (XtraMessageBox.Show("确实要禁用该医嘱信息吗?", "操作确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            //{
-            //    Int64 id = (Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource1.Current).ID;
-            //    db.Execute("update DOC_ADVICE_DRUGS set IS_DEL = 1, del_time = @0, del_oper = @1 where ID = @2", new object[] { DateTime.Now, ClsFrmMng.WorkerID, id });
-            //    refresh1();
-            //}
+            if (pATIENTCOURSESPECIALBindingSource.Current == null)
+            {
+                XtraMessageBox.Show("请选择需要删除的记录.", "错误提示", MessageBoxButtons.OK);
+                return;
+            }
+            if (XtraMessageBox.Show("确实要删除该信息吗?", "操作确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Int64 id = (Int64)((PATIENT_COURSE_SPECIAL)pATIENTCOURSESPECIALBindingSource.Current).ID;
+                db.Execute("DELETE PATIENT_COURSE_SPECIAL where ID = @0", new object[] { id });
+                refresh1();
+            }
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //if (dOCADVICEDRUGBindingSource1.Current != null)
-            //{
-            //    if ((Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource1.Current).IS_DEL != 0)
-            //    {
-            //        XtraMessageBox.Show("被禁用的医嘱不允许编辑.");
-            //        return;
-            //    }
-
-            //    FrmEdtDav frm2 = new FrmEdtDav((Int64)((DOC_ADVICE_DRUG)dOCADVICEDRUGBindingSource1.Current).ID);
-            //    frm2.NewRegistEvt += frm2_NewRegistEvt;
-            //    frm2.ShowDialog();
-            //}
-            //else
-            //    XtraMessageBox.Show("请选择需要编辑的记录.");
+            if (pATIENTCOURSESPECIALBindingSource.Current != null)
+            {
+                FrmEdtPatient_Course_Sp frm2 = new FrmEdtPatient_Course_Sp((Int64)((PATIENT_COURSE_SPECIAL)pATIENTCOURSESPECIALBindingSource.Current).ID);
+                frm2.NewRegistEvt += frm2_NewRegistEvt;
+                frm2.ShowDialog();
+            }
+            else
+                XtraMessageBox.Show("请选择需要编辑的记录.");
         }
 
         private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

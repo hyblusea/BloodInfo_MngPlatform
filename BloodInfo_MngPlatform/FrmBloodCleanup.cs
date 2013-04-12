@@ -61,7 +61,7 @@ namespace BloodInfo_MngPlatform
             repositoryItemGridLookUpEdit4.DisplayMember = "DSP_MEMBER";
             repositoryItemGridLookUpEdit4.ValueMember = "VALUE_MEMBER";
 
-            vALUECODEBindingSource.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", new object[] { 18 });        
+            //vALUECODEBindingSource.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", new object[] { 18 });        
 
             repositoryItemLookUpEdit7.DataSource = ClsFrmMng.lstHaveOrNull;
             repositoryItemLookUpEdit7.DisplayMember = "MEMO";
@@ -359,7 +359,7 @@ namespace BloodInfo_MngPlatform
             {
                 XtraMessageBox.Show("未找到该患者的挂号登记信息.", "错误提示");
             }
-            
+
         }
 
         

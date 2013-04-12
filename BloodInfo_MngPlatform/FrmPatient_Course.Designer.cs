@@ -76,6 +76,7 @@
             this.colHDF_TIMES = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colARTERY_LEFT_RIGHT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colPATH_TYPE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemLookUpEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colHEPARIN_FIRST = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colHEPARIN_FIRST_ADD = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colLOW_MOLECULAR = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -156,44 +157,18 @@
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.dgvSpecial = new DevExpress.XtraGrid.GridControl();
-            this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemLookUpEdit10 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn10 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand10 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn14 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn15 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand11 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn16 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand12 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn17 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand13 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn18 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemLookUpEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemLookUpEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemLookUpEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.dgvSp = new DevExpress.XtraGrid.GridControl();
+            this.pATIENTCOURSESPECIALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colID1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLOG_TIME1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOPERATOR1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPT_ID1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ucPaing3 = new UcPaging.UcPaing();
             this.barDockControl7 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl8 = new DevExpress.XtraBars.BarDockControl();
@@ -235,19 +210,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSpecial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSESPECIALBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
             this.SuspendLayout();
@@ -845,7 +817,8 @@
             this.repositoryItemLookUpEdit7,
             this.repositoryItemLookUpEdit8,
             this.repositoryItemLookUpEdit9,
-            this.repositoryItemImageComboBox2});
+            this.repositoryItemImageComboBox2,
+            this.repositoryItemLookUpEdit14});
             this.dgvNormal.Size = new System.Drawing.Size(1217, 183);
             this.dgvNormal.TabIndex = 11;
             this.dgvNormal.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -923,7 +896,6 @@
             this.bandedGridView2.GridControl = this.dgvNormal;
             this.bandedGridView2.Name = "bandedGridView2";
             this.bandedGridView2.OptionsView.ColumnAutoWidth = false;
-            this.bandedGridView2.OptionsView.ShowColumnHeaders = false;
             this.bandedGridView2.OptionsView.ShowGroupPanel = false;
             // 
             // gridBand15
@@ -950,6 +922,7 @@
             this.colANA_TYPE.Caption = "透析处方";
             this.colANA_TYPE.FieldName = "ANA_TYPE";
             this.colANA_TYPE.Name = "colANA_TYPE";
+            this.colANA_TYPE.OptionsColumn.AllowEdit = false;
             this.colANA_TYPE.Visible = true;
             this.colANA_TYPE.Width = 73;
             // 
@@ -958,6 +931,7 @@
             this.colHD_TIMES.Caption = "HD(次/W)";
             this.colHD_TIMES.FieldName = "HD_TIMES";
             this.colHD_TIMES.Name = "colHD_TIMES";
+            this.colHD_TIMES.OptionsColumn.AllowEdit = false;
             this.colHD_TIMES.Visible = true;
             // 
             // colHDF_H_TIMES
@@ -965,6 +939,7 @@
             this.colHDF_H_TIMES.Caption = "HDF(h/次)";
             this.colHDF_H_TIMES.FieldName = "HDF_H_TIMES";
             this.colHDF_H_TIMES.Name = "colHDF_H_TIMES";
+            this.colHDF_H_TIMES.OptionsColumn.AllowEdit = false;
             this.colHDF_H_TIMES.Visible = true;
             this.colHDF_H_TIMES.Width = 81;
             // 
@@ -973,6 +948,7 @@
             this.colHDF_TIMES.Caption = "HDF(次/W)";
             this.colHDF_TIMES.FieldName = "HDF_TIMES";
             this.colHDF_TIMES.Name = "colHDF_TIMES";
+            this.colHDF_TIMES.OptionsColumn.AllowEdit = false;
             this.colHDF_TIMES.Visible = true;
             this.colHDF_TIMES.Width = 87;
             // 
@@ -981,22 +957,36 @@
             this.colARTERY_LEFT_RIGHT.Caption = "血管通路位置";
             this.colARTERY_LEFT_RIGHT.FieldName = "ARTERY_LEFT_RIGHT";
             this.colARTERY_LEFT_RIGHT.Name = "colARTERY_LEFT_RIGHT";
+            this.colARTERY_LEFT_RIGHT.OptionsColumn.AllowEdit = false;
             this.colARTERY_LEFT_RIGHT.Visible = true;
             this.colARTERY_LEFT_RIGHT.Width = 101;
             // 
             // colPATH_TYPE
             // 
             this.colPATH_TYPE.Caption = "通路类型";
+            this.colPATH_TYPE.ColumnEdit = this.repositoryItemLookUpEdit14;
             this.colPATH_TYPE.FieldName = "PATH_TYPE";
             this.colPATH_TYPE.Name = "colPATH_TYPE";
+            this.colPATH_TYPE.OptionsColumn.AllowEdit = false;
             this.colPATH_TYPE.Visible = true;
             this.colPATH_TYPE.Width = 60;
+            // 
+            // repositoryItemLookUpEdit14
+            // 
+            this.repositoryItemLookUpEdit14.AutoHeight = false;
+            this.repositoryItemLookUpEdit14.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit14.DataSource = this.vALUECODEBindingSource;
+            this.repositoryItemLookUpEdit14.DisplayMember = "DSP_MEMBER";
+            this.repositoryItemLookUpEdit14.Name = "repositoryItemLookUpEdit14";
+            this.repositoryItemLookUpEdit14.ValueMember = "VALUE_MEMBER";
             // 
             // colHEPARIN_FIRST
             // 
             this.colHEPARIN_FIRST.Caption = "肝素首量(mg)";
             this.colHEPARIN_FIRST.FieldName = "HEPARIN_FIRST";
             this.colHEPARIN_FIRST.Name = "colHEPARIN_FIRST";
+            this.colHEPARIN_FIRST.OptionsColumn.AllowEdit = false;
             this.colHEPARIN_FIRST.Visible = true;
             this.colHEPARIN_FIRST.Width = 86;
             // 
@@ -1005,6 +995,7 @@
             this.colHEPARIN_FIRST_ADD.Caption = "肝素首量追加量(mg)";
             this.colHEPARIN_FIRST_ADD.FieldName = "HEPARIN_FIRST_ADD";
             this.colHEPARIN_FIRST_ADD.Name = "colHEPARIN_FIRST_ADD";
+            this.colHEPARIN_FIRST_ADD.OptionsColumn.AllowEdit = false;
             this.colHEPARIN_FIRST_ADD.Visible = true;
             this.colHEPARIN_FIRST_ADD.Width = 99;
             // 
@@ -1013,13 +1004,16 @@
             this.colLOW_MOLECULAR.Caption = "低分子肝素(IU)";
             this.colLOW_MOLECULAR.FieldName = "LOW_MOLECULAR";
             this.colLOW_MOLECULAR.Name = "colLOW_MOLECULAR";
+            this.colLOW_MOLECULAR.OptionsColumn.AllowEdit = false;
             this.colLOW_MOLECULAR.Visible = true;
             // 
             // colANA_MACHINE
             // 
             this.colANA_MACHINE.Caption = "透析器型号";
+            this.colANA_MACHINE.ColumnEdit = this.repositoryItemLookUpEdit14;
             this.colANA_MACHINE.FieldName = "ANA_MACHINE";
             this.colANA_MACHINE.Name = "colANA_MACHINE";
+            this.colANA_MACHINE.OptionsColumn.AllowEdit = false;
             this.colANA_MACHINE.Visible = true;
             // 
             // colANA_MACHINE_OTH
@@ -1027,6 +1021,7 @@
             this.colANA_MACHINE_OTH.Caption = "其他透析器";
             this.colANA_MACHINE_OTH.FieldName = "ANA_MACHINE_OTH";
             this.colANA_MACHINE_OTH.Name = "colANA_MACHINE_OTH";
+            this.colANA_MACHINE_OTH.OptionsColumn.AllowEdit = false;
             this.colANA_MACHINE_OTH.Visible = true;
             // 
             // colDRY_WEIGHT
@@ -1034,6 +1029,7 @@
             this.colDRY_WEIGHT.Caption = "干体重(kg)";
             this.colDRY_WEIGHT.FieldName = "DRY_WEIGHT";
             this.colDRY_WEIGHT.Name = "colDRY_WEIGHT";
+            this.colDRY_WEIGHT.OptionsColumn.AllowEdit = false;
             this.colDRY_WEIGHT.Visible = true;
             // 
             // colDRY_WEIGHT_BEF
@@ -1041,6 +1037,7 @@
             this.colDRY_WEIGHT_BEF.Caption = "干体重较前";
             this.colDRY_WEIGHT_BEF.FieldName = "DRY_WEIGHT_BEF";
             this.colDRY_WEIGHT_BEF.Name = "colDRY_WEIGHT_BEF";
+            this.colDRY_WEIGHT_BEF.OptionsColumn.AllowEdit = false;
             this.colDRY_WEIGHT_BEF.Visible = true;
             // 
             // gridBand14
@@ -1069,6 +1066,7 @@
             this.colSYMPTOM.Caption = "症状";
             this.colSYMPTOM.FieldName = "SYMPTOM";
             this.colSYMPTOM.Name = "colSYMPTOM";
+            this.colSYMPTOM.OptionsColumn.AllowEdit = false;
             this.colSYMPTOM.Visible = true;
             this.colSYMPTOM.Width = 79;
             // 
@@ -1084,6 +1082,7 @@
             this.colBLOOD_PRESSURE_CONTROL.Caption = "血压控制";
             this.colBLOOD_PRESSURE_CONTROL.FieldName = "BLOOD_PRESSURE_CONTROL";
             this.colBLOOD_PRESSURE_CONTROL.Name = "colBLOOD_PRESSURE_CONTROL";
+            this.colBLOOD_PRESSURE_CONTROL.OptionsColumn.AllowEdit = false;
             this.colBLOOD_PRESSURE_CONTROL.Visible = true;
             this.colBLOOD_PRESSURE_CONTROL.Width = 79;
             // 
@@ -1097,15 +1096,19 @@
             // 
             // colBLOOD_PRESSURE1
             // 
+            this.colBLOOD_PRESSURE1.Caption = "低";
             this.colBLOOD_PRESSURE1.FieldName = "BLOOD_PRESSURE1";
             this.colBLOOD_PRESSURE1.Name = "colBLOOD_PRESSURE1";
+            this.colBLOOD_PRESSURE1.OptionsColumn.AllowEdit = false;
             this.colBLOOD_PRESSURE1.Visible = true;
             this.colBLOOD_PRESSURE1.Width = 70;
             // 
             // colBLOOD_PRESSURE2
             // 
+            this.colBLOOD_PRESSURE2.Caption = "高";
             this.colBLOOD_PRESSURE2.FieldName = "BLOOD_PRESSURE2";
             this.colBLOOD_PRESSURE2.Name = "colBLOOD_PRESSURE2";
+            this.colBLOOD_PRESSURE2.OptionsColumn.AllowEdit = false;
             this.colBLOOD_PRESSURE2.Visible = true;
             this.colBLOOD_PRESSURE2.Width = 73;
             // 
@@ -1119,15 +1122,19 @@
             // 
             // colBLOOD_PRESSURE3
             // 
+            this.colBLOOD_PRESSURE3.Caption = "低";
             this.colBLOOD_PRESSURE3.FieldName = "BLOOD_PRESSURE3";
             this.colBLOOD_PRESSURE3.Name = "colBLOOD_PRESSURE3";
+            this.colBLOOD_PRESSURE3.OptionsColumn.AllowEdit = false;
             this.colBLOOD_PRESSURE3.Visible = true;
             this.colBLOOD_PRESSURE3.Width = 59;
             // 
             // colBLOOD_PRESSURE4
             // 
+            this.colBLOOD_PRESSURE4.Caption = "高";
             this.colBLOOD_PRESSURE4.FieldName = "BLOOD_PRESSURE4";
             this.colBLOOD_PRESSURE4.Name = "colBLOOD_PRESSURE4";
+            this.colBLOOD_PRESSURE4.OptionsColumn.AllowEdit = false;
             this.colBLOOD_PRESSURE4.Visible = true;
             this.colBLOOD_PRESSURE4.Width = 59;
             // 
@@ -1145,6 +1152,7 @@
             this.colCAPACITY_CONTROL.Caption = "容量控制";
             this.colCAPACITY_CONTROL.FieldName = "CAPACITY_CONTROL";
             this.colCAPACITY_CONTROL.Name = "colCAPACITY_CONTROL";
+            this.colCAPACITY_CONTROL.OptionsColumn.AllowEdit = false;
             this.colCAPACITY_CONTROL.Visible = true;
             this.colCAPACITY_CONTROL.Width = 65;
             // 
@@ -1153,6 +1161,7 @@
             this.colCAPACITY.Caption = "容量(kg)";
             this.colCAPACITY.FieldName = "CAPACITY";
             this.colCAPACITY.Name = "colCAPACITY";
+            this.colCAPACITY.OptionsColumn.AllowEdit = false;
             this.colCAPACITY.Visible = true;
             this.colCAPACITY.Width = 58;
             // 
@@ -1161,6 +1170,7 @@
             this.colCAPACITY_PROPORTION.Caption = "约占干体重(%)";
             this.colCAPACITY_PROPORTION.FieldName = "CAPACITY_PROPORTION";
             this.colCAPACITY_PROPORTION.Name = "colCAPACITY_PROPORTION";
+            this.colCAPACITY_PROPORTION.OptionsColumn.AllowEdit = false;
             this.colCAPACITY_PROPORTION.Visible = true;
             this.colCAPACITY_PROPORTION.Width = 88;
             // 
@@ -1177,6 +1187,7 @@
             this.colVASCULAR_ACCESS_STAT.Caption = "血管通路功能";
             this.colVASCULAR_ACCESS_STAT.FieldName = "VASCULAR_ACCESS_STAT";
             this.colVASCULAR_ACCESS_STAT.Name = "colVASCULAR_ACCESS_STAT";
+            this.colVASCULAR_ACCESS_STAT.OptionsColumn.AllowEdit = false;
             this.colVASCULAR_ACCESS_STAT.Visible = true;
             this.colVASCULAR_ACCESS_STAT.Width = 79;
             // 
@@ -1185,6 +1196,7 @@
             this.colBLOOD_FLOW.Caption = "血流量(ml/min)";
             this.colBLOOD_FLOW.FieldName = "BLOOD_FLOW";
             this.colBLOOD_FLOW.Name = "colBLOOD_FLOW";
+            this.colBLOOD_FLOW.OptionsColumn.AllowEdit = false;
             this.colBLOOD_FLOW.Visible = true;
             this.colBLOOD_FLOW.Width = 80;
             // 
@@ -1202,22 +1214,25 @@
             this.colMAJOR_DISCOMFORT_HANDLING.Caption = "主要不适、处理情况";
             this.colMAJOR_DISCOMFORT_HANDLING.FieldName = "MAJOR_DISCOMFORT_HANDLING";
             this.colMAJOR_DISCOMFORT_HANDLING.Name = "colMAJOR_DISCOMFORT_HANDLING";
+            this.colMAJOR_DISCOMFORT_HANDLING.OptionsColumn.AllowEdit = false;
             this.colMAJOR_DISCOMFORT_HANDLING.Visible = true;
             this.colMAJOR_DISCOMFORT_HANDLING.Width = 180;
             // 
             // colMEMO1
             // 
-            this.colMEMO1.Caption = "是否住院、住院主要诊断、治疗处理、转归等";
+            this.colMEMO1.Caption = "手术操作记录";
             this.colMEMO1.FieldName = "MEMO1";
             this.colMEMO1.Name = "colMEMO1";
+            this.colMEMO1.OptionsColumn.AllowEdit = false;
             this.colMEMO1.Visible = true;
             this.colMEMO1.Width = 295;
             // 
             // colMEMO2
             // 
-            this.colMEMO2.Caption = "住院主要检查、化验";
+            this.colMEMO2.Caption = "住院病情记录";
             this.colMEMO2.FieldName = "MEMO2";
             this.colMEMO2.Name = "colMEMO2";
+            this.colMEMO2.OptionsColumn.AllowEdit = false;
             this.colMEMO2.Visible = true;
             this.colMEMO2.Width = 101;
             // 
@@ -1250,6 +1265,7 @@
             this.colDIALYSIS_GENERAL.Caption = "透析一般情况";
             this.colDIALYSIS_GENERAL.FieldName = "DIALYSIS_GENERAL";
             this.colDIALYSIS_GENERAL.Name = "colDIALYSIS_GENERAL";
+            this.colDIALYSIS_GENERAL.OptionsColumn.AllowEdit = false;
             this.colDIALYSIS_GENERAL.Visible = true;
             this.colDIALYSIS_GENERAL.Width = 90;
             // 
@@ -1266,6 +1282,7 @@
             this.colURR.Caption = "URR(%)";
             this.colURR.FieldName = "URR";
             this.colURR.Name = "colURR";
+            this.colURR.OptionsColumn.AllowEdit = false;
             this.colURR.Visible = true;
             // 
             // colKT_V
@@ -1273,6 +1290,7 @@
             this.colKT_V.Caption = "KT/V";
             this.colKT_V.FieldName = "KT_V";
             this.colKT_V.Name = "colKT_V";
+            this.colKT_V.OptionsColumn.AllowEdit = false;
             this.colKT_V.Visible = true;
             // 
             // gridBand27
@@ -1288,6 +1306,7 @@
             this.colCARDIOVASCULAR_SYSTEM.Caption = "心脑血管系统";
             this.colCARDIOVASCULAR_SYSTEM.FieldName = "CARDIOVASCULAR_SYSTEM";
             this.colCARDIOVASCULAR_SYSTEM.Name = "colCARDIOVASCULAR_SYSTEM";
+            this.colCARDIOVASCULAR_SYSTEM.OptionsColumn.AllowEdit = false;
             this.colCARDIOVASCULAR_SYSTEM.Visible = true;
             // 
             // colCARDIOVASCULAR_SYSTEM_OTH
@@ -1295,6 +1314,7 @@
             this.colCARDIOVASCULAR_SYSTEM_OTH.Caption = "心脑血管系统相关事件";
             this.colCARDIOVASCULAR_SYSTEM_OTH.FieldName = "CARDIOVASCULAR_SYSTEM_OTH";
             this.colCARDIOVASCULAR_SYSTEM_OTH.Name = "colCARDIOVASCULAR_SYSTEM_OTH";
+            this.colCARDIOVASCULAR_SYSTEM_OTH.OptionsColumn.AllowEdit = false;
             this.colCARDIOVASCULAR_SYSTEM_OTH.Visible = true;
             // 
             // gridBand28
@@ -1309,6 +1329,7 @@
             this.colANTIHYPERTENSIVE_DRUGS.Caption = "降压药物";
             this.colANTIHYPERTENSIVE_DRUGS.FieldName = "ANTIHYPERTENSIVE_DRUGS";
             this.colANTIHYPERTENSIVE_DRUGS.Name = "colANTIHYPERTENSIVE_DRUGS";
+            this.colANTIHYPERTENSIVE_DRUGS.OptionsColumn.AllowEdit = false;
             this.colANTIHYPERTENSIVE_DRUGS.Visible = true;
             // 
             // gridBand29
@@ -1324,6 +1345,7 @@
             this.colBLOOD_SYSTEM.Caption = "血液系统";
             this.colBLOOD_SYSTEM.FieldName = "BLOOD_SYSTEM";
             this.colBLOOD_SYSTEM.Name = "colBLOOD_SYSTEM";
+            this.colBLOOD_SYSTEM.OptionsColumn.AllowEdit = false;
             this.colBLOOD_SYSTEM.Visible = true;
             // 
             // colHB
@@ -1331,6 +1353,7 @@
             this.colHB.Caption = "Hb(g/L)";
             this.colHB.FieldName = "HB";
             this.colHB.Name = "colHB";
+            this.colHB.OptionsColumn.AllowEdit = false;
             this.colHB.Visible = true;
             // 
             // gridBand24
@@ -1347,6 +1370,7 @@
             this.colEPO.Caption = "EPO 剂量(u)";
             this.colEPO.FieldName = "EPO";
             this.colEPO.Name = "colEPO";
+            this.colEPO.OptionsColumn.AllowEdit = false;
             this.colEPO.Visible = true;
             // 
             // colEPO_TIMES
@@ -1354,6 +1378,7 @@
             this.colEPO_TIMES.Caption = "EPO(次/周)";
             this.colEPO_TIMES.FieldName = "EPO_TIMES";
             this.colEPO_TIMES.Name = "colEPO_TIMES";
+            this.colEPO_TIMES.OptionsColumn.AllowEdit = false;
             this.colEPO_TIMES.Visible = true;
             // 
             // colEPO_TIMES_OTH
@@ -1361,6 +1386,7 @@
             this.colEPO_TIMES_OTH.Caption = "其他EPO";
             this.colEPO_TIMES_OTH.FieldName = "EPO_TIMES_OTH";
             this.colEPO_TIMES_OTH.Name = "colEPO_TIMES_OTH";
+            this.colEPO_TIMES_OTH.OptionsColumn.AllowEdit = false;
             this.colEPO_TIMES_OTH.Visible = true;
             // 
             // gridBand30
@@ -1377,6 +1403,7 @@
             this.colIRON_DEFICIENCY.Caption = "缺铁";
             this.colIRON_DEFICIENCY.FieldName = "IRON_DEFICIENCY";
             this.colIRON_DEFICIENCY.Name = "colIRON_DEFICIENCY";
+            this.colIRON_DEFICIENCY.OptionsColumn.AllowEdit = false;
             this.colIRON_DEFICIENCY.Visible = true;
             // 
             // colFERRITIN
@@ -1384,6 +1411,7 @@
             this.colFERRITIN.Caption = "铁蛋白";
             this.colFERRITIN.FieldName = "FERRITIN";
             this.colFERRITIN.Name = "colFERRITIN";
+            this.colFERRITIN.OptionsColumn.AllowEdit = false;
             this.colFERRITIN.Visible = true;
             // 
             // colTRANSFERRIN_SATURATION
@@ -1391,6 +1419,7 @@
             this.colTRANSFERRIN_SATURATION.Caption = "转铁蛋白饱和度(%)";
             this.colTRANSFERRIN_SATURATION.FieldName = "TRANSFERRIN_SATURATION";
             this.colTRANSFERRIN_SATURATION.Name = "colTRANSFERRIN_SATURATION";
+            this.colTRANSFERRIN_SATURATION.OptionsColumn.AllowEdit = false;
             this.colTRANSFERRIN_SATURATION.Visible = true;
             // 
             // gridBand31
@@ -1407,6 +1436,7 @@
             this.colCALCIUM.Caption = "钙(mmol/L)";
             this.colCALCIUM.FieldName = "CALCIUM";
             this.colCALCIUM.Name = "colCALCIUM";
+            this.colCALCIUM.OptionsColumn.AllowEdit = false;
             this.colCALCIUM.Visible = true;
             // 
             // colP
@@ -1414,6 +1444,7 @@
             this.colP.Caption = "磷(mmol/L)";
             this.colP.FieldName = "P";
             this.colP.Name = "colP";
+            this.colP.OptionsColumn.AllowEdit = false;
             this.colP.Visible = true;
             // 
             // colPTH
@@ -1421,6 +1452,7 @@
             this.colPTH.Caption = "PTH(ng/L)";
             this.colPTH.FieldName = "PTH";
             this.colPTH.Name = "colPTH";
+            this.colPTH.OptionsColumn.AllowEdit = false;
             this.colPTH.Visible = true;
             // 
             // gridBand32
@@ -1437,6 +1469,7 @@
             this.colHEPATITIS_INDICATORS.Caption = "肝炎指标";
             this.colHEPATITIS_INDICATORS.FieldName = "HEPATITIS_INDICATORS";
             this.colHEPATITIS_INDICATORS.Name = "colHEPATITIS_INDICATORS";
+            this.colHEPATITIS_INDICATORS.OptionsColumn.AllowEdit = false;
             this.colHEPATITIS_INDICATORS.Visible = true;
             // 
             // colGPT
@@ -1444,6 +1477,7 @@
             this.colGPT.Caption = "GPT(u)";
             this.colGPT.FieldName = "GPT";
             this.colGPT.Name = "colGPT";
+            this.colGPT.OptionsColumn.AllowEdit = false;
             this.colGPT.Visible = true;
             // 
             // colGOT
@@ -1451,6 +1485,7 @@
             this.colGOT.Caption = "GOT(u)";
             this.colGOT.FieldName = "GOT";
             this.colGOT.Name = "colGOT";
+            this.colGOT.OptionsColumn.AllowEdit = false;
             this.colGOT.Visible = true;
             // 
             // gridBand33
@@ -1466,6 +1501,7 @@
             this.colMEMO_SPECIAL_CONDITION.Caption = "特殊病情、检查及处理";
             this.colMEMO_SPECIAL_CONDITION.FieldName = "MEMO_SPECIAL_CONDITION";
             this.colMEMO_SPECIAL_CONDITION.Name = "colMEMO_SPECIAL_CONDITION";
+            this.colMEMO_SPECIAL_CONDITION.OptionsColumn.AllowEdit = false;
             this.colMEMO_SPECIAL_CONDITION.Visible = true;
             this.colMEMO_SPECIAL_CONDITION.Width = 167;
             // 
@@ -1474,6 +1510,7 @@
             this.colMEMO_FUTURE.Caption = "今后透析诊疗计划";
             this.colMEMO_FUTURE.FieldName = "MEMO_FUTURE";
             this.colMEMO_FUTURE.Name = "colMEMO_FUTURE";
+            this.colMEMO_FUTURE.OptionsColumn.AllowEdit = false;
             this.colMEMO_FUTURE.Visible = true;
             this.colMEMO_FUTURE.Width = 126;
             // 
@@ -1490,6 +1527,7 @@
             this.colLOG_TIME.Caption = "记录时间";
             this.colLOG_TIME.FieldName = "LOG_TIME";
             this.colLOG_TIME.Name = "colLOG_TIME";
+            this.colLOG_TIME.OptionsColumn.AllowEdit = false;
             this.colLOG_TIME.Visible = true;
             // 
             // colOPERATOR
@@ -1497,24 +1535,28 @@
             this.colOPERATOR.Caption = "记录人";
             this.colOPERATOR.FieldName = "OPERATOR";
             this.colOPERATOR.Name = "colOPERATOR";
+            this.colOPERATOR.OptionsColumn.AllowEdit = false;
             this.colOPERATOR.Visible = true;
             // 
             // colID
             // 
             this.colID.FieldName = "ID";
             this.colID.Name = "colID";
+            this.colID.OptionsColumn.AllowEdit = false;
             this.colID.Visible = true;
             // 
             // colPT_ID
             // 
             this.colPT_ID.FieldName = "PT_ID";
             this.colPT_ID.Name = "colPT_ID";
+            this.colPT_ID.OptionsColumn.AllowEdit = false;
             this.colPT_ID.Visible = true;
             // 
             // colBACK1
             // 
             this.colBACK1.FieldName = "BACK1";
             this.colBACK1.Name = "colBACK1";
+            this.colBACK1.OptionsColumn.AllowEdit = false;
             this.colBACK1.Visible = true;
             // 
             // repositoryItemLookUpEdit1
@@ -1619,372 +1661,137 @@
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.dgvSpecial);
+            this.xtraTabPage2.Controls.Add(this.dgvSp);
             this.xtraTabPage2.Controls.Add(this.ucPaing3);
             this.xtraTabPage2.Controls.Add(this.barDockControl7);
             this.xtraTabPage2.Controls.Add(this.barDockControl8);
             this.xtraTabPage2.Controls.Add(this.barDockControl6);
             this.xtraTabPage2.Controls.Add(this.barDockControl5);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1042, 170);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1217, 236);
             this.xtraTabPage2.Text = "特殊病程记录";
             // 
-            // dgvSpecial
-            // 
-            this.dgvSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSpecial.Location = new System.Drawing.Point(0, 31);
-            this.dgvSpecial.MainView = this.bandedGridView1;
-            this.dgvSpecial.MenuManager = this.barManager1;
-            this.dgvSpecial.Name = "dgvSpecial";
-            this.dgvSpecial.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit10,
-            this.repositoryItemLookUpEdit11,
-            this.repositoryItemLookUpEdit12,
-            this.repositoryItemLookUpEdit13,
-            this.repositoryItemImageComboBox1});
-            this.dgvSpecial.Size = new System.Drawing.Size(1042, 117);
-            this.dgvSpecial.TabIndex = 17;
-            this.dgvSpecial.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.bandedGridView1});
-            // 
-            // bandedGridView1
-            // 
-            this.bandedGridView1.Appearance.BandPanel.Options.UseTextOptions = true;
-            this.bandedGridView1.Appearance.BandPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1,
-            this.gridBand2,
-            this.gridBand3,
-            this.gridBand4,
-            this.gridBand11,
-            this.gridBand12,
-            this.gridBand13});
-            this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
-            this.bandedGridColumn1,
-            this.bandedGridColumn2,
-            this.bandedGridColumn7,
-            this.bandedGridColumn3,
-            this.bandedGridColumn13,
-            this.bandedGridColumn9,
-            this.bandedGridColumn10,
-            this.bandedGridColumn11,
-            this.bandedGridColumn12,
-            this.bandedGridColumn16,
-            this.bandedGridColumn4,
-            this.bandedGridColumn5,
-            this.bandedGridColumn17,
-            this.bandedGridColumn18,
-            this.bandedGridColumn6,
-            this.bandedGridColumn8,
-            this.bandedGridColumn15,
-            this.bandedGridColumn14});
-            this.bandedGridView1.GridControl = this.dgvSpecial;
-            this.bandedGridView1.Name = "bandedGridView1";
-            this.bandedGridView1.OptionsView.ShowColumnHeaders = false;
-            this.bandedGridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "记录时间";
-            this.gridBand1.Columns.Add(this.bandedGridColumn1);
-            this.gridBand1.Columns.Add(this.bandedGridColumn2);
-            this.gridBand1.Columns.Add(this.bandedGridColumn3);
-            this.gridBand1.Columns.Add(this.bandedGridColumn4);
-            this.gridBand1.Columns.Add(this.bandedGridColumn5);
-            this.gridBand1.Columns.Add(this.bandedGridColumn6);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.Width = 75;
-            // 
-            // bandedGridColumn1
-            // 
-            this.bandedGridColumn1.FieldName = "ID";
-            this.bandedGridColumn1.Name = "bandedGridColumn1";
-            this.bandedGridColumn1.OptionsColumn.AllowEdit = false;
-            // 
-            // bandedGridColumn2
-            // 
-            this.bandedGridColumn2.FieldName = "REG_ID";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
-            // 
-            // bandedGridColumn3
-            // 
-            this.bandedGridColumn3.Caption = "记录时间";
-            this.bandedGridColumn3.FieldName = "LOG_TIME";
-            this.bandedGridColumn3.Name = "bandedGridColumn3";
-            this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn3.Visible = true;
-            // 
-            // bandedGridColumn4
-            // 
-            this.bandedGridColumn4.FieldName = "BASE_INFO_ID";
-            this.bandedGridColumn4.Name = "bandedGridColumn4";
-            this.bandedGridColumn4.OptionsColumn.AllowEdit = false;
-            // 
-            // bandedGridColumn5
-            // 
-            this.bandedGridColumn5.FieldName = "IS_DEL";
-            this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.OptionsColumn.AllowEdit = false;
-            // 
-            // bandedGridColumn6
-            // 
-            this.bandedGridColumn6.FieldName = "DEF_ADV_ID";
-            this.bandedGridColumn6.Name = "bandedGridColumn6";
-            this.bandedGridColumn6.OptionsColumn.AllowEdit = false;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "记录人";
-            this.gridBand2.Columns.Add(this.bandedGridColumn7);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.Width = 75;
-            // 
-            // bandedGridColumn7
-            // 
-            this.bandedGridColumn7.FieldName = "OPERATOR";
-            this.bandedGridColumn7.Name = "bandedGridColumn7";
-            this.bandedGridColumn7.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn7.Visible = true;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "是否可用";
-            this.gridBand3.Columns.Add(this.bandedGridColumn8);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 42;
-            // 
-            // bandedGridColumn8
-            // 
-            this.bandedGridColumn8.Caption = "可用";
-            this.bandedGridColumn8.ColumnEdit = this.repositoryItemImageComboBox1;
-            this.bandedGridColumn8.FieldName = "IS_DEL";
-            this.bandedGridColumn8.Name = "bandedGridColumn8";
-            this.bandedGridColumn8.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn8.Visible = true;
-            this.bandedGridColumn8.Width = 42;
-            // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", new decimal(new int[] {
-                            0,
-                            0,
-                            0,
-                            0}), 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", new decimal(new int[] {
-                            1,
-                            0,
-                            0,
-                            0}), 1)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "医嘱";
-            this.gridBand4.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand5,
-            this.gridBand6,
-            this.gridBand7,
-            this.gridBand8,
-            this.gridBand9,
-            this.gridBand10});
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 535;
-            // 
-            // gridBand5
-            // 
-            this.gridBand5.Caption = "药品名称";
-            this.gridBand5.Columns.Add(this.bandedGridColumn9);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.Width = 87;
-            // 
-            // bandedGridColumn9
-            // 
-            this.bandedGridColumn9.ColumnEdit = this.repositoryItemLookUpEdit10;
-            this.bandedGridColumn9.FieldName = "M_NAME";
-            this.bandedGridColumn9.Name = "bandedGridColumn9";
-            this.bandedGridColumn9.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn9.Visible = true;
-            this.bandedGridColumn9.Width = 87;
-            // 
-            // repositoryItemLookUpEdit10
-            // 
-            this.repositoryItemLookUpEdit10.AutoHeight = false;
-            this.repositoryItemLookUpEdit10.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit10.DataSource = this.vALUECODEBindingSource;
-            this.repositoryItemLookUpEdit10.DisplayMember = "DSP_MEMBER";
-            this.repositoryItemLookUpEdit10.Name = "repositoryItemLookUpEdit10";
-            this.repositoryItemLookUpEdit10.ValueMember = "VALUE_MEMBER";
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "用量";
-            this.gridBand6.Columns.Add(this.bandedGridColumn10);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.Width = 87;
-            // 
-            // bandedGridColumn10
-            // 
-            this.bandedGridColumn10.FieldName = "M_AMOUNT";
-            this.bandedGridColumn10.Name = "bandedGridColumn10";
-            this.bandedGridColumn10.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn10.Visible = true;
-            this.bandedGridColumn10.Width = 87;
-            // 
-            // gridBand7
-            // 
-            this.gridBand7.Caption = "单位";
-            this.gridBand7.Columns.Add(this.bandedGridColumn11);
-            this.gridBand7.Name = "gridBand7";
-            this.gridBand7.Width = 87;
-            // 
-            // bandedGridColumn11
-            // 
-            this.bandedGridColumn11.ColumnEdit = this.repositoryItemLookUpEdit10;
-            this.bandedGridColumn11.FieldName = "M_UNIT";
-            this.bandedGridColumn11.Name = "bandedGridColumn11";
-            this.bandedGridColumn11.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn11.Visible = true;
-            this.bandedGridColumn11.Width = 87;
-            // 
-            // gridBand8
-            // 
-            this.gridBand8.Caption = "用法";
-            this.gridBand8.Columns.Add(this.bandedGridColumn12);
-            this.gridBand8.Name = "gridBand8";
-            this.gridBand8.Width = 87;
-            // 
-            // bandedGridColumn12
-            // 
-            this.bandedGridColumn12.ColumnEdit = this.repositoryItemLookUpEdit10;
-            this.bandedGridColumn12.FieldName = "M_ACTION";
-            this.bandedGridColumn12.Name = "bandedGridColumn12";
-            this.bandedGridColumn12.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn12.Visible = true;
-            this.bandedGridColumn12.Width = 87;
-            // 
-            // gridBand9
-            // 
-            this.gridBand9.Caption = "医嘱类别";
-            this.gridBand9.Columns.Add(this.bandedGridColumn13);
-            this.gridBand9.Name = "gridBand9";
-            this.gridBand9.Width = 62;
-            // 
-            // bandedGridColumn13
-            // 
-            this.bandedGridColumn13.ColumnEdit = this.repositoryItemLookUpEdit10;
-            this.bandedGridColumn13.FieldName = "ADVICE_TYPE";
-            this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn13.Visible = true;
-            this.bandedGridColumn13.Width = 62;
-            // 
-            // gridBand10
-            // 
-            this.gridBand10.Caption = "使用频率(x次/每y天)";
-            this.gridBand10.Columns.Add(this.bandedGridColumn14);
-            this.gridBand10.Columns.Add(this.bandedGridColumn15);
-            this.gridBand10.Name = "gridBand10";
-            this.gridBand10.Width = 125;
-            // 
-            // bandedGridColumn14
-            // 
-            this.bandedGridColumn14.FieldName = "RATEOFTIME";
-            this.bandedGridColumn14.Name = "bandedGridColumn14";
-            this.bandedGridColumn14.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn14.Visible = true;
-            this.bandedGridColumn14.Width = 60;
-            // 
-            // bandedGridColumn15
-            // 
-            this.bandedGridColumn15.FieldName = "RATEOFDAY";
-            this.bandedGridColumn15.Name = "bandedGridColumn15";
-            this.bandedGridColumn15.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn15.Visible = true;
-            this.bandedGridColumn15.Width = 65;
-            // 
-            // gridBand11
-            // 
-            this.gridBand11.Caption = "备注";
-            this.gridBand11.Columns.Add(this.bandedGridColumn16);
-            this.gridBand11.Name = "gridBand11";
-            this.gridBand11.Width = 102;
-            // 
-            // bandedGridColumn16
-            // 
-            this.bandedGridColumn16.FieldName = "MEMO";
-            this.bandedGridColumn16.Name = "bandedGridColumn16";
-            this.bandedGridColumn16.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn16.Visible = true;
-            this.bandedGridColumn16.Width = 102;
-            // 
-            // gridBand12
-            // 
-            this.gridBand12.Caption = "禁用时间";
-            this.gridBand12.Columns.Add(this.bandedGridColumn17);
-            this.gridBand12.Name = "gridBand12";
-            this.gridBand12.Width = 91;
-            // 
-            // bandedGridColumn17
-            // 
-            this.bandedGridColumn17.FieldName = "DEL_TIME";
-            this.bandedGridColumn17.Name = "bandedGridColumn17";
-            this.bandedGridColumn17.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn17.Visible = true;
-            this.bandedGridColumn17.Width = 91;
-            // 
-            // gridBand13
-            // 
-            this.gridBand13.Caption = "禁用人";
-            this.gridBand13.Columns.Add(this.bandedGridColumn18);
-            this.gridBand13.Name = "gridBand13";
-            this.gridBand13.Width = 75;
-            // 
-            // bandedGridColumn18
-            // 
-            this.bandedGridColumn18.FieldName = "DEL_OPER";
-            this.bandedGridColumn18.Name = "bandedGridColumn18";
-            this.bandedGridColumn18.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn18.Visible = true;
-            // 
-            // repositoryItemLookUpEdit11
-            // 
-            this.repositoryItemLookUpEdit11.AutoHeight = false;
-            this.repositoryItemLookUpEdit11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit11.Name = "repositoryItemLookUpEdit11";
-            // 
-            // repositoryItemLookUpEdit12
-            // 
-            this.repositoryItemLookUpEdit12.AutoHeight = false;
-            this.repositoryItemLookUpEdit12.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit12.Name = "repositoryItemLookUpEdit12";
-            // 
-            // repositoryItemLookUpEdit13
-            // 
-            this.repositoryItemLookUpEdit13.AutoHeight = false;
-            this.repositoryItemLookUpEdit13.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit13.DisplayMember = "TypeMEMO";
-            this.repositoryItemLookUpEdit13.Name = "repositoryItemLookUpEdit13";
-            this.repositoryItemLookUpEdit13.ValueMember = "TypeID";
+            // dgvSp
+            // 
+            this.dgvSp.DataSource = this.pATIENTCOURSESPECIALBindingSource;
+            this.dgvSp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSp.Location = new System.Drawing.Point(0, 31);
+            this.dgvSp.MainView = this.gridView2;
+            this.dgvSp.MenuManager = this.barManager1;
+            this.dgvSp.Name = "dgvSp";
+            this.dgvSp.Size = new System.Drawing.Size(1217, 183);
+            this.dgvSp.TabIndex = 22;
+            this.dgvSp.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // pATIENTCOURSESPECIALBindingSource
+            // 
+            this.pATIENTCOURSESPECIALBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.PATIENT_COURSE_SPECIAL);
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colID1,
+            this.colLOG_TIME1,
+            this.colOPERATOR1,
+            this.colPT_ID1,
+            this.colMEMO11,
+            this.colMEMO21,
+            this.colMEMO3,
+            this.colMEMO4,
+            this.colMEMO5});
+            this.gridView2.GridControl = this.dgvSp;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // colID1
+            // 
+            this.colID1.FieldName = "ID";
+            this.colID1.Name = "colID1";
+            this.colID1.OptionsColumn.AllowEdit = false;
+            // 
+            // colLOG_TIME1
+            // 
+            this.colLOG_TIME1.Caption = "记录时间";
+            this.colLOG_TIME1.FieldName = "LOG_TIME";
+            this.colLOG_TIME1.Name = "colLOG_TIME1";
+            this.colLOG_TIME1.OptionsColumn.AllowEdit = false;
+            this.colLOG_TIME1.Visible = true;
+            this.colLOG_TIME1.VisibleIndex = 4;
+            this.colLOG_TIME1.Width = 93;
+            // 
+            // colOPERATOR1
+            // 
+            this.colOPERATOR1.Caption = "记录人";
+            this.colOPERATOR1.FieldName = "OPERATOR";
+            this.colOPERATOR1.Name = "colOPERATOR1";
+            this.colOPERATOR1.OptionsColumn.AllowEdit = false;
+            this.colOPERATOR1.Visible = true;
+            this.colOPERATOR1.VisibleIndex = 5;
+            this.colOPERATOR1.Width = 88;
+            // 
+            // colPT_ID1
+            // 
+            this.colPT_ID1.FieldName = "PT_ID";
+            this.colPT_ID1.Name = "colPT_ID1";
+            this.colPT_ID1.OptionsColumn.AllowEdit = false;
+            this.colPT_ID1.Width = 171;
+            // 
+            // colMEMO11
+            // 
+            this.colMEMO11.Caption = "手术操作记录";
+            this.colMEMO11.FieldName = "MEMO1";
+            this.colMEMO11.Name = "colMEMO11";
+            this.colMEMO11.OptionsColumn.AllowEdit = false;
+            this.colMEMO11.Visible = true;
+            this.colMEMO11.VisibleIndex = 0;
+            this.colMEMO11.Width = 199;
+            // 
+            // colMEMO21
+            // 
+            this.colMEMO21.Caption = "住院病情记录";
+            this.colMEMO21.FieldName = "MEMO2";
+            this.colMEMO21.Name = "colMEMO21";
+            this.colMEMO21.OptionsColumn.AllowEdit = false;
+            this.colMEMO21.Visible = true;
+            this.colMEMO21.VisibleIndex = 1;
+            this.colMEMO21.Width = 317;
+            // 
+            // colMEMO3
+            // 
+            this.colMEMO3.Caption = "特殊病情记录";
+            this.colMEMO3.FieldName = "MEMO3";
+            this.colMEMO3.Name = "colMEMO3";
+            this.colMEMO3.OptionsColumn.AllowEdit = false;
+            this.colMEMO3.Visible = true;
+            this.colMEMO3.VisibleIndex = 2;
+            this.colMEMO3.Width = 277;
+            // 
+            // colMEMO4
+            // 
+            this.colMEMO4.Caption = "抢救记录";
+            this.colMEMO4.FieldName = "MEMO4";
+            this.colMEMO4.Name = "colMEMO4";
+            this.colMEMO4.OptionsColumn.AllowEdit = false;
+            this.colMEMO4.Visible = true;
+            this.colMEMO4.VisibleIndex = 3;
+            this.colMEMO4.Width = 225;
+            // 
+            // colMEMO5
+            // 
+            this.colMEMO5.FieldName = "MEMO5";
+            this.colMEMO5.Name = "colMEMO5";
+            this.colMEMO5.OptionsColumn.AllowEdit = false;
             // 
             // ucPaing3
             // 
             this.ucPaing3.curPage = ((long)(0));
             this.ucPaing3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ucPaing3.dspLenght = 20;
-            this.ucPaing3.Location = new System.Drawing.Point(0, 148);
+            this.ucPaing3.Location = new System.Drawing.Point(0, 214);
             this.ucPaing3.Name = "ucPaing3";
             this.ucPaing3.recordCnt = ((long)(0));
-            this.ucPaing3.Size = new System.Drawing.Size(1042, 22);
+            this.ucPaing3.Size = new System.Drawing.Size(1217, 22);
             this.ucPaing3.TabIndex = 2;
             this.ucPaing3.totalPage = ((long)(0));
             this.ucPaing3.PageChanged += new UcPaging.UcPaing.PageChangedHandler(this.ucPaing3_PageChanged);
@@ -1994,28 +1801,28 @@
             this.barDockControl7.CausesValidation = false;
             this.barDockControl7.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl7.Location = new System.Drawing.Point(0, 31);
-            this.barDockControl7.Size = new System.Drawing.Size(0, 139);
+            this.barDockControl7.Size = new System.Drawing.Size(0, 205);
             // 
             // barDockControl8
             // 
             this.barDockControl8.CausesValidation = false;
             this.barDockControl8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl8.Location = new System.Drawing.Point(1042, 31);
-            this.barDockControl8.Size = new System.Drawing.Size(0, 139);
+            this.barDockControl8.Location = new System.Drawing.Point(1217, 31);
+            this.barDockControl8.Size = new System.Drawing.Size(0, 205);
             // 
             // barDockControl6
             // 
             this.barDockControl6.CausesValidation = false;
             this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl6.Location = new System.Drawing.Point(0, 170);
-            this.barDockControl6.Size = new System.Drawing.Size(1042, 0);
+            this.barDockControl6.Location = new System.Drawing.Point(0, 236);
+            this.barDockControl6.Size = new System.Drawing.Size(1217, 0);
             // 
             // barDockControl5
             // 
             this.barDockControl5.CausesValidation = false;
             this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl5.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl5.Size = new System.Drawing.Size(1042, 31);
+            this.barDockControl5.Size = new System.Drawing.Size(1217, 31);
             // 
             // barManager2
             // 
@@ -2164,19 +1971,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSpecial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSESPECIALBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).EndInit();
             this.ResumeLayout(false);
@@ -2251,44 +2055,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit7;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit8;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit9;
-        private DevExpress.XtraGrid.GridControl dgvSpecial;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn8;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn9;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit10;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn10;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn11;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn12;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn13;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand10;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn14;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn15;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand11;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn16;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand12;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn17;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand13;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn18;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit11;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit12;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit13;
         private System.Windows.Forms.BindingSource pATIENTCOURSEBindingSource;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand15;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colANA_TYPE;
@@ -2365,5 +2131,18 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colID;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPT_ID;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colBACK1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit14;
+        private DevExpress.XtraGrid.GridControl dgvSp;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private System.Windows.Forms.BindingSource pATIENTCOURSESPECIALBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colID1;
+        private DevExpress.XtraGrid.Columns.GridColumn colLOG_TIME1;
+        private DevExpress.XtraGrid.Columns.GridColumn colOPERATOR1;
+        private DevExpress.XtraGrid.Columns.GridColumn colPT_ID1;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO11;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO21;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO3;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO4;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO5;
     }
 }

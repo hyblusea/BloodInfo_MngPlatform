@@ -54,8 +54,6 @@
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.vALUECODEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.vALUECODEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -77,8 +75,6 @@
             this.colMACH_TYP = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colMACH_POS = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colMACH = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand7 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colLIQUID_CALCIUM = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -112,6 +108,27 @@
             this.colCHECKED = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand21 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colBEFORE_ANA_MEMO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand25 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colMACH = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand26 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colPIPELINE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand28 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colFISTULA_NEEDLE = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand31 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colFISTULA_NEEDLE_NUM = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand29 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colFISTULA_CARE_PACKAGES = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand30 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colFISTULA_CARE_PACKAGES_NUM = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand32 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colAPPLICATOR = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand33 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colAPPLICATOR_NUM = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand36 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colHEPARIN_CAP = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand34 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.colHEPARIN_CAP_NUM = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand22 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand23 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -279,8 +296,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -758,14 +773,6 @@
             this.repositoryItemTextEdit2.AutoHeight = false;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             // 
-            // vALUECODEBindingSource2
-            // 
-            this.vALUECODEBindingSource2.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // vALUECODEBindingSource1
-            // 
-            this.vALUECODEBindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -842,6 +849,7 @@
             this.advBandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand35,
             this.gridBand21,
+            this.gridBand25,
             this.gridBand22,
             this.gridBand1,
             this.gridBand27});
@@ -886,7 +894,16 @@
             this.colANA_END_TIME,
             this.colANA_END_WEIGHT,
             this.colANA_STAR_TIME,
-            this.colONMACH});
+            this.colONMACH,
+            this.colPIPELINE,
+            this.colFISTULA_CARE_PACKAGES,
+            this.colFISTULA_CARE_PACKAGES_NUM,
+            this.colAPPLICATOR,
+            this.colAPPLICATOR_NUM,
+            this.colFISTULA_NEEDLE,
+            this.colFISTULA_NEEDLE_NUM,
+            this.colHEPARIN_CAP,
+            this.colHEPARIN_CAP_NUM});
             this.advBandedGridView1.GridControl = this.gridControl1;
             this.advBandedGridView1.Name = "advBandedGridView1";
             this.advBandedGridView1.OptionsView.ShowColumnHeaders = false;
@@ -901,7 +918,6 @@
             this.gridBand14,
             this.gridBand4,
             this.gridBand5,
-            this.gridBand6,
             this.gridBand7,
             this.gridBand8,
             this.gridBand16,
@@ -916,7 +932,7 @@
             this.gridBand18,
             this.gridBand19});
             this.gridBand35.Name = "gridBand35";
-            this.gridBand35.Width = 1446;
+            this.gridBand35.Width = 1377;
             // 
             // gridBand2
             // 
@@ -931,6 +947,7 @@
             this.colDIAG.FieldName = "DIAG";
             this.colDIAG.Name = "colDIAG";
             this.colDIAG.OptionsColumn.AllowEdit = false;
+            this.colDIAG.OptionsColumn.AllowFocus = false;
             this.colDIAG.Visible = true;
             this.colDIAG.Width = 39;
             // 
@@ -942,6 +959,7 @@
             this.repositoryItemLookUpEdit12.DataSource = this.vALUECODEBindingSource3;
             this.repositoryItemLookUpEdit12.DisplayMember = "DSP_MEMBER";
             this.repositoryItemLookUpEdit12.Name = "repositoryItemLookUpEdit12";
+            this.repositoryItemLookUpEdit12.NullText = "";
             this.repositoryItemLookUpEdit12.ValueMember = "VALUE_MEMBER";
             // 
             // vALUECODEBindingSource3
@@ -960,6 +978,7 @@
             this.colWEIGHT.FieldName = "WEIGHT";
             this.colWEIGHT.Name = "colWEIGHT";
             this.colWEIGHT.OptionsColumn.AllowEdit = false;
+            this.colWEIGHT.OptionsColumn.AllowFocus = false;
             this.colWEIGHT.Visible = true;
             this.colWEIGHT.Width = 71;
             // 
@@ -976,6 +995,7 @@
             this.colANA_WEIGHT.FieldName = "ANA_WEIGHT";
             this.colANA_WEIGHT.Name = "colANA_WEIGHT";
             this.colANA_WEIGHT.OptionsColumn.AllowEdit = false;
+            this.colANA_WEIGHT.OptionsColumn.AllowFocus = false;
             this.colANA_WEIGHT.Visible = true;
             this.colANA_WEIGHT.Width = 80;
             // 
@@ -984,6 +1004,7 @@
             this.colANA_END_WEIGHT.FieldName = "ANA_END_WEIGHT";
             this.colANA_END_WEIGHT.Name = "colANA_END_WEIGHT";
             this.colANA_END_WEIGHT.OptionsColumn.AllowEdit = false;
+            this.colANA_END_WEIGHT.OptionsColumn.AllowFocus = false;
             this.colANA_END_WEIGHT.Visible = true;
             this.colANA_END_WEIGHT.Width = 56;
             // 
@@ -1000,6 +1021,7 @@
             this.colMACH_TYP.FieldName = "MACH_TYP";
             this.colMACH_TYP.Name = "colMACH_TYP";
             this.colMACH_TYP.OptionsColumn.AllowEdit = false;
+            this.colMACH_TYP.OptionsColumn.AllowFocus = false;
             this.colMACH_TYP.Visible = true;
             this.colMACH_TYP.Width = 90;
             // 
@@ -1015,24 +1037,9 @@
             this.colMACH_POS.FieldName = "MACH_POS";
             this.colMACH_POS.Name = "colMACH_POS";
             this.colMACH_POS.OptionsColumn.AllowEdit = false;
+            this.colMACH_POS.OptionsColumn.AllowFocus = false;
             this.colMACH_POS.Visible = true;
             this.colMACH_POS.Width = 102;
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "透析器";
-            this.gridBand6.Columns.Add(this.colMACH);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.Width = 69;
-            // 
-            // colMACH
-            // 
-            this.colMACH.ColumnEdit = this.repositoryItemLookUpEdit12;
-            this.colMACH.FieldName = "MACH";
-            this.colMACH.Name = "colMACH";
-            this.colMACH.OptionsColumn.AllowEdit = false;
-            this.colMACH.Visible = true;
-            this.colMACH.Width = 69;
             // 
             // gridBand7
             // 
@@ -1046,6 +1053,7 @@
             this.colLIQUID_CALCIUM.FieldName = "LIQUID_CALCIUM";
             this.colLIQUID_CALCIUM.Name = "colLIQUID_CALCIUM";
             this.colLIQUID_CALCIUM.OptionsColumn.AllowEdit = false;
+            this.colLIQUID_CALCIUM.OptionsColumn.AllowFocus = false;
             this.colLIQUID_CALCIUM.Visible = true;
             this.colLIQUID_CALCIUM.Width = 68;
             // 
@@ -1061,6 +1069,7 @@
             this.colFIX_CAPACITY.FieldName = "FIX_CAPACITY";
             this.colFIX_CAPACITY.Name = "colFIX_CAPACITY";
             this.colFIX_CAPACITY.OptionsColumn.AllowEdit = false;
+            this.colFIX_CAPACITY.OptionsColumn.AllowFocus = false;
             this.colFIX_CAPACITY.Visible = true;
             this.colFIX_CAPACITY.Width = 74;
             // 
@@ -1077,6 +1086,7 @@
             this.bandedGridColumn1.FieldName = "ANA_DATE";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn1.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn1.Visible = true;
             this.bandedGridColumn1.Width = 35;
             // 
@@ -1096,6 +1106,7 @@
             this.colANA_STAR_TIME.FieldName = "ANA_STAR_TIME";
             this.colANA_STAR_TIME.Name = "colANA_STAR_TIME";
             this.colANA_STAR_TIME.OptionsColumn.AllowEdit = false;
+            this.colANA_STAR_TIME.OptionsColumn.AllowFocus = false;
             this.colANA_STAR_TIME.Visible = true;
             this.colANA_STAR_TIME.Width = 69;
             // 
@@ -1104,6 +1115,7 @@
             this.colANA_START_END_TIME.FieldName = "ANA_START_END_TIME";
             this.colANA_START_END_TIME.Name = "colANA_START_END_TIME";
             this.colANA_START_END_TIME.OptionsColumn.AllowEdit = false;
+            this.colANA_START_END_TIME.OptionsColumn.AllowFocus = false;
             this.colANA_START_END_TIME.Width = 152;
             // 
             // colANA_END_TIME
@@ -1113,6 +1125,7 @@
             this.colANA_END_TIME.FieldName = "ANA_END_TIME";
             this.colANA_END_TIME.Name = "colANA_END_TIME";
             this.colANA_END_TIME.OptionsColumn.AllowEdit = false;
+            this.colANA_END_TIME.OptionsColumn.AllowFocus = false;
             this.colANA_END_TIME.Visible = true;
             this.colANA_END_TIME.Width = 69;
             // 
@@ -1128,6 +1141,7 @@
             this.colANA_TIME.FieldName = "ANA_TIME";
             this.colANA_TIME.Name = "colANA_TIME";
             this.colANA_TIME.OptionsColumn.AllowEdit = false;
+            this.colANA_TIME.OptionsColumn.AllowFocus = false;
             this.colANA_TIME.Visible = true;
             this.colANA_TIME.Width = 72;
             // 
@@ -1143,6 +1157,7 @@
             this.colLIVER_FRIST.FieldName = "LIVER_FRIST";
             this.colLIVER_FRIST.Name = "colLIVER_FRIST";
             this.colLIVER_FRIST.OptionsColumn.AllowEdit = false;
+            this.colLIVER_FRIST.OptionsColumn.AllowFocus = false;
             this.colLIVER_FRIST.Visible = true;
             this.colLIVER_FRIST.Width = 46;
             // 
@@ -1158,6 +1173,7 @@
             this.colADD_WEIGHT.FieldName = "ADD_WEIGHT";
             this.colADD_WEIGHT.Name = "colADD_WEIGHT";
             this.colADD_WEIGHT.OptionsColumn.AllowEdit = false;
+            this.colADD_WEIGHT.OptionsColumn.AllowFocus = false;
             this.colADD_WEIGHT.Visible = true;
             this.colADD_WEIGHT.Width = 42;
             // 
@@ -1173,6 +1189,7 @@
             this.colLOW_LIVER.FieldName = "LOW_LIVER";
             this.colLOW_LIVER.Name = "colLOW_LIVER";
             this.colLOW_LIVER.OptionsColumn.AllowEdit = false;
+            this.colLOW_LIVER.OptionsColumn.AllowFocus = false;
             this.colLOW_LIVER.Visible = true;
             this.colLOW_LIVER.Width = 40;
             // 
@@ -1188,6 +1205,7 @@
             this.colSWITCH_TYPE.FieldName = "SWITCH_TYPE";
             this.colSWITCH_TYPE.Name = "colSWITCH_TYPE";
             this.colSWITCH_TYPE.OptionsColumn.AllowEdit = false;
+            this.colSWITCH_TYPE.OptionsColumn.AllowFocus = false;
             this.colSWITCH_TYPE.Visible = true;
             this.colSWITCH_TYPE.Width = 69;
             // 
@@ -1203,6 +1221,7 @@
             this.colSWITCH_WEIGHT.FieldName = "SWITCH_WEIGHT";
             this.colSWITCH_WEIGHT.Name = "colSWITCH_WEIGHT";
             this.colSWITCH_WEIGHT.OptionsColumn.AllowEdit = false;
+            this.colSWITCH_WEIGHT.OptionsColumn.AllowFocus = false;
             this.colSWITCH_WEIGHT.Visible = true;
             this.colSWITCH_WEIGHT.Width = 55;
             // 
@@ -1219,6 +1238,7 @@
             this.colIMPALER.FieldName = "IMPALER";
             this.colIMPALER.Name = "colIMPALER";
             this.colIMPALER.OptionsColumn.AllowEdit = false;
+            this.colIMPALER.OptionsColumn.AllowFocus = false;
             this.colIMPALER.Visible = true;
             this.colIMPALER.Width = 64;
             // 
@@ -1248,6 +1268,7 @@
             this.colBYPASS_METHOD.FieldName = "BYPASS_METHOD";
             this.colBYPASS_METHOD.Name = "colBYPASS_METHOD";
             this.colBYPASS_METHOD.OptionsColumn.AllowEdit = false;
+            this.colBYPASS_METHOD.OptionsColumn.AllowFocus = false;
             this.colBYPASS_METHOD.Visible = true;
             // 
             // gridBand19
@@ -1264,6 +1285,7 @@
             this.colONMACH.FieldName = "ONMACH";
             this.colONMACH.Name = "colONMACH";
             this.colONMACH.OptionsColumn.AllowEdit = false;
+            this.colONMACH.OptionsColumn.AllowFocus = false;
             this.colONMACH.Visible = true;
             this.colONMACH.Width = 84;
             // 
@@ -1273,6 +1295,7 @@
             this.colCHECKED.FieldName = "CHECKED";
             this.colCHECKED.Name = "colCHECKED";
             this.colCHECKED.OptionsColumn.AllowEdit = false;
+            this.colCHECKED.OptionsColumn.AllowFocus = false;
             this.colCHECKED.Visible = true;
             this.colCHECKED.Width = 77;
             // 
@@ -1288,8 +1311,187 @@
             this.colBEFORE_ANA_MEMO.FieldName = "BEFORE_ANA_MEMO";
             this.colBEFORE_ANA_MEMO.Name = "colBEFORE_ANA_MEMO";
             this.colBEFORE_ANA_MEMO.OptionsColumn.AllowEdit = false;
+            this.colBEFORE_ANA_MEMO.OptionsColumn.AllowFocus = false;
             this.colBEFORE_ANA_MEMO.Visible = true;
             this.colBEFORE_ANA_MEMO.Width = 146;
+            // 
+            // gridBand25
+            // 
+            this.gridBand25.Caption = "耗材使用";
+            this.gridBand25.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand6,
+            this.gridBand26,
+            this.gridBand28,
+            this.gridBand31,
+            this.gridBand29,
+            this.gridBand30,
+            this.gridBand32,
+            this.gridBand33,
+            this.gridBand36,
+            this.gridBand34});
+            this.gridBand25.Name = "gridBand25";
+            this.gridBand25.Width = 825;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.Caption = "透析器";
+            this.gridBand6.Columns.Add(this.colMACH);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.Width = 132;
+            // 
+            // colMACH
+            // 
+            this.colMACH.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colMACH.FieldName = "MACH";
+            this.colMACH.Name = "colMACH";
+            this.colMACH.OptionsColumn.AllowEdit = false;
+            this.colMACH.OptionsColumn.AllowFocus = false;
+            this.colMACH.Visible = true;
+            this.colMACH.Width = 132;
+            // 
+            // gridBand26
+            // 
+            this.gridBand26.Caption = "管路";
+            this.gridBand26.Columns.Add(this.colPIPELINE);
+            this.gridBand26.Name = "gridBand26";
+            this.gridBand26.Width = 75;
+            // 
+            // colPIPELINE
+            // 
+            this.colPIPELINE.Caption = "通路";
+            this.colPIPELINE.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colPIPELINE.FieldName = "PIPELINE";
+            this.colPIPELINE.Name = "colPIPELINE";
+            this.colPIPELINE.OptionsColumn.AllowFocus = false;
+            this.colPIPELINE.Visible = true;
+            // 
+            // gridBand28
+            // 
+            this.gridBand28.Caption = "内瘘针型号";
+            this.gridBand28.Columns.Add(this.colFISTULA_NEEDLE);
+            this.gridBand28.Name = "gridBand28";
+            this.gridBand28.Width = 96;
+            // 
+            // colFISTULA_NEEDLE
+            // 
+            this.colFISTULA_NEEDLE.Caption = "内瘘穿刺针";
+            this.colFISTULA_NEEDLE.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colFISTULA_NEEDLE.FieldName = "FISTULA_NEEDLE";
+            this.colFISTULA_NEEDLE.Name = "colFISTULA_NEEDLE";
+            this.colFISTULA_NEEDLE.OptionsColumn.AllowFocus = false;
+            this.colFISTULA_NEEDLE.Visible = true;
+            this.colFISTULA_NEEDLE.Width = 96;
+            // 
+            // gridBand31
+            // 
+            this.gridBand31.Caption = "内瘘针数量";
+            this.gridBand31.Columns.Add(this.colFISTULA_NEEDLE_NUM);
+            this.gridBand31.Name = "gridBand31";
+            this.gridBand31.Width = 72;
+            // 
+            // colFISTULA_NEEDLE_NUM
+            // 
+            this.colFISTULA_NEEDLE_NUM.Caption = "内瘘针数量";
+            this.colFISTULA_NEEDLE_NUM.FieldName = "FISTULA_NEEDLE_NUM";
+            this.colFISTULA_NEEDLE_NUM.Name = "colFISTULA_NEEDLE_NUM";
+            this.colFISTULA_NEEDLE_NUM.OptionsColumn.AllowFocus = false;
+            this.colFISTULA_NEEDLE_NUM.Visible = true;
+            this.colFISTULA_NEEDLE_NUM.Width = 72;
+            // 
+            // gridBand29
+            // 
+            this.gridBand29.Caption = "内瘘护理包";
+            this.gridBand29.Columns.Add(this.colFISTULA_CARE_PACKAGES);
+            this.gridBand29.Name = "gridBand29";
+            this.gridBand29.Width = 85;
+            // 
+            // colFISTULA_CARE_PACKAGES
+            // 
+            this.colFISTULA_CARE_PACKAGES.Caption = "护理包";
+            this.colFISTULA_CARE_PACKAGES.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colFISTULA_CARE_PACKAGES.FieldName = "FISTULA_CARE_PACKAGES";
+            this.colFISTULA_CARE_PACKAGES.Name = "colFISTULA_CARE_PACKAGES";
+            this.colFISTULA_CARE_PACKAGES.OptionsColumn.AllowFocus = false;
+            this.colFISTULA_CARE_PACKAGES.Visible = true;
+            this.colFISTULA_CARE_PACKAGES.Width = 85;
+            // 
+            // gridBand30
+            // 
+            this.gridBand30.Caption = "护理包数量";
+            this.gridBand30.Columns.Add(this.colFISTULA_CARE_PACKAGES_NUM);
+            this.gridBand30.Name = "gridBand30";
+            this.gridBand30.Width = 65;
+            // 
+            // colFISTULA_CARE_PACKAGES_NUM
+            // 
+            this.colFISTULA_CARE_PACKAGES_NUM.Caption = "护理包数量";
+            this.colFISTULA_CARE_PACKAGES_NUM.FieldName = "FISTULA_CARE_PACKAGES_NUM";
+            this.colFISTULA_CARE_PACKAGES_NUM.Name = "colFISTULA_CARE_PACKAGES_NUM";
+            this.colFISTULA_CARE_PACKAGES_NUM.OptionsColumn.AllowFocus = false;
+            this.colFISTULA_CARE_PACKAGES_NUM.Visible = true;
+            this.colFISTULA_CARE_PACKAGES_NUM.Width = 65;
+            // 
+            // gridBand32
+            // 
+            this.gridBand32.Caption = "敷贴";
+            this.gridBand32.Columns.Add(this.colAPPLICATOR);
+            this.gridBand32.Name = "gridBand32";
+            this.gridBand32.Width = 75;
+            // 
+            // colAPPLICATOR
+            // 
+            this.colAPPLICATOR.Caption = "敷贴";
+            this.colAPPLICATOR.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colAPPLICATOR.FieldName = "APPLICATOR";
+            this.colAPPLICATOR.Name = "colAPPLICATOR";
+            this.colAPPLICATOR.OptionsColumn.AllowFocus = false;
+            this.colAPPLICATOR.Visible = true;
+            // 
+            // gridBand33
+            // 
+            this.gridBand33.Caption = "敷贴数量";
+            this.gridBand33.Columns.Add(this.colAPPLICATOR_NUM);
+            this.gridBand33.Name = "gridBand33";
+            this.gridBand33.Width = 75;
+            // 
+            // colAPPLICATOR_NUM
+            // 
+            this.colAPPLICATOR_NUM.Caption = "敷贴数量";
+            this.colAPPLICATOR_NUM.FieldName = "APPLICATOR_NUM";
+            this.colAPPLICATOR_NUM.Name = "colAPPLICATOR_NUM";
+            this.colAPPLICATOR_NUM.OptionsColumn.AllowFocus = false;
+            this.colAPPLICATOR_NUM.Visible = true;
+            // 
+            // gridBand36
+            // 
+            this.gridBand36.Caption = "肝素帽";
+            this.gridBand36.Columns.Add(this.colHEPARIN_CAP);
+            this.gridBand36.Name = "gridBand36";
+            this.gridBand36.Width = 75;
+            // 
+            // colHEPARIN_CAP
+            // 
+            this.colHEPARIN_CAP.Caption = "肝素帽";
+            this.colHEPARIN_CAP.ColumnEdit = this.repositoryItemLookUpEdit12;
+            this.colHEPARIN_CAP.FieldName = "HEPARIN_CAP";
+            this.colHEPARIN_CAP.Name = "colHEPARIN_CAP";
+            this.colHEPARIN_CAP.OptionsColumn.AllowFocus = false;
+            this.colHEPARIN_CAP.Visible = true;
+            // 
+            // gridBand34
+            // 
+            this.gridBand34.Caption = "肝素帽数量";
+            this.gridBand34.Columns.Add(this.colHEPARIN_CAP_NUM);
+            this.gridBand34.Name = "gridBand34";
+            this.gridBand34.Width = 75;
+            // 
+            // colHEPARIN_CAP_NUM
+            // 
+            this.colHEPARIN_CAP_NUM.Caption = "肝素帽数量";
+            this.colHEPARIN_CAP_NUM.FieldName = "HEPARIN_CAP_NUM";
+            this.colHEPARIN_CAP_NUM.Name = "colHEPARIN_CAP_NUM";
+            this.colHEPARIN_CAP_NUM.OptionsColumn.AllowFocus = false;
+            this.colHEPARIN_CAP_NUM.Visible = true;
             // 
             // gridBand22
             // 
@@ -1298,14 +1500,14 @@
             this.gridBand23,
             this.gridBand24});
             this.gridBand22.Name = "gridBand22";
-            this.gridBand22.Width = 156;
+            this.gridBand22.Width = 378;
             // 
             // gridBand23
             // 
             this.gridBand23.Caption = "拟用药";
             this.gridBand23.Columns.Add(this.bandedGridColumn2);
             this.gridBand23.Name = "gridBand23";
-            this.gridBand23.Width = 86;
+            this.gridBand23.Width = 230;
             // 
             // bandedGridColumn2
             // 
@@ -1314,8 +1516,9 @@
             this.bandedGridColumn2.FieldName = "EPO";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn2.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 86;
+            this.bandedGridColumn2.Width = 230;
             // 
             // repositoryItemCheckedComboBoxEdit1
             // 
@@ -1332,6 +1535,7 @@
             this.gridBand24.Caption = "其他";
             this.gridBand24.Columns.Add(this.bandedGridColumn9);
             this.gridBand24.Name = "gridBand24";
+            this.gridBand24.Width = 148;
             // 
             // bandedGridColumn9
             // 
@@ -1339,8 +1543,9 @@
             this.bandedGridColumn9.FieldName = "OTHER";
             this.bandedGridColumn9.Name = "bandedGridColumn9";
             this.bandedGridColumn9.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn9.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn9.Visible = true;
-            this.bandedGridColumn9.Width = 70;
+            this.bandedGridColumn9.Width = 148;
             // 
             // gridBand1
             // 
@@ -1354,6 +1559,7 @@
             this.colOPERATOR.FieldName = "OPERATOR";
             this.colOPERATOR.Name = "colOPERATOR";
             this.colOPERATOR.OptionsColumn.AllowEdit = false;
+            this.colOPERATOR.OptionsColumn.AllowFocus = false;
             this.colOPERATOR.Visible = true;
             this.colOPERATOR.Width = 54;
             // 
@@ -1369,14 +1575,17 @@
             this.colLOG_TIME.FieldName = "LOG_TIME";
             this.colLOG_TIME.Name = "colLOG_TIME";
             this.colLOG_TIME.OptionsColumn.AllowEdit = false;
+            this.colLOG_TIME.OptionsColumn.AllowFocus = false;
             this.colLOG_TIME.Visible = true;
             this.colLOG_TIME.Width = 64;
             // 
             // colID
             // 
+            this.colID.ColumnEdit = this.repositoryItemLookUpEdit13;
             this.colID.FieldName = "ID";
             this.colID.Name = "colID";
             this.colID.OptionsColumn.AllowEdit = false;
+            this.colID.OptionsColumn.AllowFocus = false;
             this.colID.Visible = true;
             // 
             // colREG_ID
@@ -1384,6 +1593,7 @@
             this.colREG_ID.FieldName = "REG_ID";
             this.colREG_ID.Name = "colREG_ID";
             this.colREG_ID.OptionsColumn.AllowEdit = false;
+            this.colREG_ID.OptionsColumn.AllowFocus = false;
             this.colREG_ID.Visible = true;
             // 
             // colCASE_HIS_ID
@@ -1391,6 +1601,7 @@
             this.colCASE_HIS_ID.FieldName = "CASE_HIS_ID";
             this.colCASE_HIS_ID.Name = "colCASE_HIS_ID";
             this.colCASE_HIS_ID.OptionsColumn.AllowEdit = false;
+            this.colCASE_HIS_ID.OptionsColumn.AllowFocus = false;
             this.colCASE_HIS_ID.Visible = true;
             // 
             // colCLEANUP_TYPE
@@ -1398,6 +1609,7 @@
             this.colCLEANUP_TYPE.FieldName = "CLEANUP_TYPE";
             this.colCLEANUP_TYPE.Name = "colCLEANUP_TYPE";
             this.colCLEANUP_TYPE.OptionsColumn.AllowEdit = false;
+            this.colCLEANUP_TYPE.OptionsColumn.AllowFocus = false;
             this.colCLEANUP_TYPE.Visible = true;
             this.colCLEANUP_TYPE.Width = 20;
             // 
@@ -1406,6 +1618,7 @@
             this.colPERIOD_TIME.FieldName = "PERIOD_TIME";
             this.colPERIOD_TIME.Name = "colPERIOD_TIME";
             this.colPERIOD_TIME.OptionsColumn.AllowEdit = false;
+            this.colPERIOD_TIME.OptionsColumn.AllowFocus = false;
             this.colPERIOD_TIME.Visible = true;
             this.colPERIOD_TIME.Width = 20;
             // 
@@ -1414,6 +1627,7 @@
             this.colBLOOD_PASS.FieldName = "BLOOD_PASS";
             this.colBLOOD_PASS.Name = "colBLOOD_PASS";
             this.colBLOOD_PASS.OptionsColumn.AllowEdit = false;
+            this.colBLOOD_PASS.OptionsColumn.AllowFocus = false;
             this.colBLOOD_PASS.Visible = true;
             this.colBLOOD_PASS.Width = 20;
             // 
@@ -1422,6 +1636,7 @@
             this.colFLUCTUATION.FieldName = "FLUCTUATION";
             this.colFLUCTUATION.Name = "colFLUCTUATION";
             this.colFLUCTUATION.OptionsColumn.AllowEdit = false;
+            this.colFLUCTUATION.OptionsColumn.AllowFocus = false;
             this.colFLUCTUATION.Visible = true;
             this.colFLUCTUATION.Width = 20;
             // 
@@ -1430,6 +1645,7 @@
             this.colDEHYDRATION.FieldName = "DEHYDRATION";
             this.colDEHYDRATION.Name = "colDEHYDRATION";
             this.colDEHYDRATION.OptionsColumn.AllowEdit = false;
+            this.colDEHYDRATION.OptionsColumn.AllowFocus = false;
             this.colDEHYDRATION.Visible = true;
             this.colDEHYDRATION.Width = 20;
             // 
@@ -1438,6 +1654,7 @@
             this.colSYMPTOM.FieldName = "SYMPTOM";
             this.colSYMPTOM.Name = "colSYMPTOM";
             this.colSYMPTOM.OptionsColumn.AllowEdit = false;
+            this.colSYMPTOM.OptionsColumn.AllowFocus = false;
             this.colSYMPTOM.Visible = true;
             this.colSYMPTOM.Width = 20;
             // 
@@ -1446,6 +1663,7 @@
             this.colMEMO.FieldName = "MEMO";
             this.colMEMO.Name = "colMEMO";
             this.colMEMO.OptionsColumn.AllowEdit = false;
+            this.colMEMO.OptionsColumn.AllowFocus = false;
             this.colMEMO.Visible = true;
             // 
             // bandedGridColumn3
@@ -1454,6 +1672,7 @@
             this.bandedGridColumn3.FieldName = "LEFT_CARD";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn3.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn3.Visible = true;
             // 
             // bandedGridColumn4
@@ -1462,6 +1681,7 @@
             this.bandedGridColumn4.FieldName = "IRON";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn4.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn4.Visible = true;
             // 
             // bandedGridColumn5
@@ -1470,6 +1690,7 @@
             this.bandedGridColumn5.FieldName = "OTHER";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn5.OptionsColumn.AllowFocus = false;
             this.bandedGridColumn5.Visible = true;
             // 
             // repositoryItemGridLookUpEdit4
@@ -2681,8 +2902,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -2920,8 +3139,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit11;
         private System.Windows.Forms.BindingSource pATIENTBASEINFOBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colCHCKINTM;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource1;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource2;
         private System.Windows.Forms.BindingSource aTHFORMBUTTONBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
@@ -2948,13 +3165,24 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colONMACH;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit13;
         private System.Windows.Forms.BindingSource aCCOUNTBindingSource;
+        private System.Windows.Forms.BindingSource bdsValueCode;
+        private System.Windows.Forms.BindingSource bdsValueCode_Area;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPIPELINE;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFISTULA_CARE_PACKAGES;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFISTULA_CARE_PACKAGES_NUM;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAPPLICATOR;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAPPLICATOR_NUM;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFISTULA_NEEDLE;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFISTULA_NEEDLE_NUM;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colHEPARIN_CAP;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colHEPARIN_CAP_NUM;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand35;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand14;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand7;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand16;
@@ -2969,13 +3197,21 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand18;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand19;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand21;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand25;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand26;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand28;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand31;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand29;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand30;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand32;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand33;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand36;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand34;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand22;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand23;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand24;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand27;
-        private System.Windows.Forms.BindingSource bdsValueCode;
-        private System.Windows.Forms.BindingSource bdsValueCode_Area;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
     }
 }

@@ -14,7 +14,7 @@ using BloodInfo_MngPlatform.Models;
 
 namespace BloodInfo_MngPlatform
 {
-    public partial class FrmNewPatient_Course : DevExpress.XtraEditors.XtraForm
+    public partial class FrmNewPatient_Course_Sp : DevExpress.XtraEditors.XtraForm
     {
         public delegate void NewRegistEventHandler();
         public event NewRegistEventHandler NewRegistEvt;
@@ -22,17 +22,16 @@ namespace BloodInfo_MngPlatform
         Database db;
         Int64 _baseID;
 
-        PATIENT_COURSE v = new PATIENT_COURSE();
+        PATIENT_COURSE_SPECIAL v = new PATIENT_COURSE_SPECIAL();
 
-        public FrmNewPatient_Course(Int64 base_id)
+        public FrmNewPatient_Course_Sp(Int64 base_id)
         {
             InitializeComponent();
             db = new Database("XE");
 
-            vALUECODEBindingSource.DataSource = db.Fetch<VALUE_CODE>("where groupName = @0", 193);                  // 通路类型
-            vALUECODEBindingSource1.DataSource = db.Fetch<VALUE_CODE>("where groupName = @0", 44);                  // 透析器型号
+            //vALUECODEBindingSource.DataSource = db.Fetch<VALUE_CODE>("where groupName = @0", 137);
 
-            pATIENTCOURSEBindingSource.DataSource = v;
+            pATIENTCOURSESPECIALBindingSource.DataSource = v;
 
             //ConditionValidationRule ruleNoEmpty = new ConditionValidationRule();
             //ruleNoEmpty.ConditionOperator = ConditionOperator.IsNotBlank;
@@ -44,8 +43,8 @@ namespace BloodInfo_MngPlatform
 
         private void SaveData()
         {
-            pATIENTCOURSEBindingSource.EndEdit();
-            pATIENTCOURSEBindingSource.CurrencyManager.EndCurrentEdit();
+            pATIENTCOURSESPECIALBindingSource.EndEdit();
+            pATIENTCOURSESPECIALBindingSource.CurrencyManager.EndCurrentEdit();
 
             v.PT_ID = _baseID;
             v.LOG_TIME = DateTime.Now;
@@ -55,8 +54,8 @@ namespace BloodInfo_MngPlatform
             if (NewRegistEvt != null)
                 NewRegistEvt();
 
-            v = new PATIENT_COURSE();
-            pATIENTCOURSEBindingSource.DataSource = v;
+            v = new PATIENT_COURSE_SPECIAL();
+            pATIENTCOURSESPECIALBindingSource.DataSource = v;
         }
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
