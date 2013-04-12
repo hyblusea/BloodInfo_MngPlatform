@@ -88,6 +88,9 @@ namespace BloodInfo_MngPlatform
 
         public void SetSelectedValues(string sValues)
         {
+            if (string.IsNullOrEmpty(sValues))
+                return;
+
             string[] s = sValues.Split(',');
             List<SelectedDrug> lst = new List<SelectedDrug>();
             for (int i = 0; i < s.Length; i++)
