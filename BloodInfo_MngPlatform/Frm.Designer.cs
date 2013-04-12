@@ -32,7 +32,6 @@
             DevExpress.XtraCharts.XYDiagram3D xyDiagram3D1 = new DevExpress.XtraCharts.XYDiagram3D();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Line3DSeriesLabel line3DSeriesLabel1 = new DevExpress.XtraCharts.Line3DSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions1 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.SeriesPoint seriesPoint1 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1997, 1, 1, 0, 0, 0, 0), new object[] {
             ((object)(263D))});
             DevExpress.XtraCharts.SeriesPoint seriesPoint2 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1999, 11, 1, 0, 0, 0, 0), new object[] {
@@ -48,7 +47,6 @@
             DevExpress.XtraCharts.Spline3DSeriesView spline3DSeriesView1 = new DevExpress.XtraCharts.Spline3DSeriesView();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Line3DSeriesLabel line3DSeriesLabel2 = new DevExpress.XtraCharts.Line3DSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions2 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.SeriesPoint seriesPoint7 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1997, 11, 1, 0, 0, 0, 0), new object[] {
             ((object)(226D))});
             DevExpress.XtraCharts.SeriesPoint seriesPoint8 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1999, 11, 1, 0, 0, 0, 0), new object[] {
@@ -64,7 +62,6 @@
             DevExpress.XtraCharts.Spline3DSeriesView spline3DSeriesView2 = new DevExpress.XtraCharts.Spline3DSeriesView();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Line3DSeriesLabel line3DSeriesLabel3 = new DevExpress.XtraCharts.Line3DSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions3 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.SeriesPoint seriesPoint13 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1997, 11, 1, 0, 0, 0, 0), new object[] {
             ((object)(10D))});
             DevExpress.XtraCharts.SeriesPoint seriesPoint14 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1999, 11, 1, 0, 0, 0, 0), new object[] {
@@ -80,7 +77,6 @@
             DevExpress.XtraCharts.Spline3DSeriesView spline3DSeriesView3 = new DevExpress.XtraCharts.Spline3DSeriesView();
             DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Line3DSeriesLabel line3DSeriesLabel4 = new DevExpress.XtraCharts.Line3DSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions4 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.SeriesPoint seriesPoint19 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1997, 11, 1, 0, 0, 0, 0), new object[] {
             ((object)(1D))});
             DevExpress.XtraCharts.SeriesPoint seriesPoint20 = new DevExpress.XtraCharts.SeriesPoint(new System.DateTime(1999, 11, 1, 0, 0, 0, 0), new object[] {
@@ -95,7 +91,6 @@
             ((object)(406D))});
             DevExpress.XtraCharts.Spline3DSeriesView spline3DSeriesView4 = new DevExpress.XtraCharts.Spline3DSeriesView();
             DevExpress.XtraCharts.Line3DSeriesLabel line3DSeriesLabel5 = new DevExpress.XtraCharts.Line3DSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions5 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.Spline3DSeriesView spline3DSeriesView5 = new DevExpress.XtraCharts.Spline3DSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
@@ -279,16 +274,12 @@
             // chartControl
             // 
             this.chartControl.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.chartControl.CrosshairOptions.ArgumentLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
-            this.chartControl.CrosshairOptions.ValueLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
             xyDiagram3D1.AxisX.DateTimeGridAlignment = DevExpress.XtraCharts.DateTimeMeasurementUnit.Year;
             xyDiagram3D1.AxisX.DateTimeMeasureUnit = DevExpress.XtraCharts.DateTimeMeasurementUnit.Year;
             xyDiagram3D1.AxisX.DateTimeOptions.Format = DevExpress.XtraCharts.DateTimeFormat.Custom;
             xyDiagram3D1.AxisX.DateTimeOptions.FormatString = "yyyy";
-            xyDiagram3D1.AxisX.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram3D1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram3D1.AxisX.Range.SideMarginsEnabled = true;
-            xyDiagram3D1.AxisY.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram3D1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram3D1.AxisY.Range.SideMarginsEnabled = true;
             xyDiagram3D1.RotationMatrixSerializable = "0.766044443118978;-0.219846310392954;0.604022773555054;0;0;0.939692620785908;0.34" +
@@ -305,9 +296,6 @@
             this.chartControl.Name = "chartControl";
             series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             line3DSeriesLabel1.LineVisible = true;
-            pointOptions1.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            line3DSeriesLabel1.PointOptions = pointOptions1;
             series1.Label = line3DSeriesLabel1;
             series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.False;
             series1.Name = "SMP";
@@ -322,9 +310,6 @@
             series1.View = spline3DSeriesView1;
             series2.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             line3DSeriesLabel2.LineVisible = true;
-            pointOptions2.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            pointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            line3DSeriesLabel2.PointOptions = pointOptions2;
             series2.Label = line3DSeriesLabel2;
             series2.LabelsVisibility = DevExpress.Utils.DefaultBoolean.False;
             series2.Name = "MMP";
@@ -339,9 +324,6 @@
             series2.View = spline3DSeriesView2;
             series3.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             line3DSeriesLabel3.LineVisible = true;
-            pointOptions3.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            pointOptions3.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            line3DSeriesLabel3.PointOptions = pointOptions3;
             series3.Label = line3DSeriesLabel3;
             series3.LabelsVisibility = DevExpress.Utils.DefaultBoolean.False;
             series3.Name = "Constellations";
@@ -356,9 +338,6 @@
             series3.View = spline3DSeriesView3;
             series4.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.DateTime;
             line3DSeriesLabel4.LineVisible = true;
-            pointOptions4.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            pointOptions4.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            line3DSeriesLabel4.PointOptions = pointOptions4;
             series4.Label = line3DSeriesLabel4;
             series4.LabelsVisibility = DevExpress.Utils.DefaultBoolean.False;
             series4.Name = "Cluster";
@@ -377,9 +356,6 @@
         series3,
         series4};
             line3DSeriesLabel5.LineVisible = true;
-            pointOptions5.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            pointOptions5.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
-            line3DSeriesLabel5.PointOptions = pointOptions5;
             this.chartControl.SeriesTemplate.Label = line3DSeriesLabel5;
             this.chartControl.SeriesTemplate.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl.SeriesTemplate.View = spline3DSeriesView5;
@@ -450,7 +426,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.createRotatedBarBaseItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.createAreaBaseItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.createOtherSeriesTypesBaseItem1)});
-            this.chartTypeBar1.Offset = 86;
+            this.chartTypeBar1.Offset = 109;
             // 
             // createBarBaseItem1
             // 
