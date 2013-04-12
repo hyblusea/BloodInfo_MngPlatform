@@ -141,7 +141,7 @@ namespace BloodInfo_MngPlatform
 
         private void FrmBloodCleanup_Drugs_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ClsFrmMng.frmBC_D = null;
+            //ClsFrmMng.frmBC_D = null;
         }
 
         // 新建药品
