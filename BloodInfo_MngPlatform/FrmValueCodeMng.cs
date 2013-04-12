@@ -96,9 +96,34 @@ namespace BloodInfo_MngPlatform
             if (XtraMessageBox.Show("删除分组数据有可能会导致程序无法正常运行.确实要删除该分组吗?", "操作确认", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
             {
                 var vg = ((VALUE_GROUP)vALUEGROUPBindingSource.Current);
-                vg.Delete();
+                DelAllNodes(vg.ID);
+                //vg.Delete();
                 vALUEGROUPBindingSource.DataSource = db.Fetch<VALUE_GROUP>("order by ID desc");       
             } 
+        }
+
+        private void DelAllNodes(decimal fatherId)
+        {
+            var v = db.Fetch<VALUE_GROUP>("where FATHERID = @0", fatherId);
+            if (v != null && v.Count() > 0)
+            {
+                for (int i = 0; i < v.Count(); i++)
+                {
+                    // 删除该分组
+                    db.Delete(v[i]);
+
+                    // 删除该分组下的所有值集
+                    db.Execute("delete VALUE_CODE where GROUPNAME = @0", v[i].ID);
+
+                    // 遍历该分组的子类分组
+                    DelAllNodes(v[i].ID);
+                }
+            }
+            else
+            {
+                db.Delete("VALUE_GROUP", "ID", null, fatherId);
+                db.Execute("delete VALUE_CODE where GROUPNAME = @0", fatherId);
+            }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
