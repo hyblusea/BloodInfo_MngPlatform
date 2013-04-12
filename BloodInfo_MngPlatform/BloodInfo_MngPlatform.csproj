@@ -1093,6 +1093,7 @@
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_BASEINFO.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_REGIST.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.REG_STATUS.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.RENAL_REPLACEMENT_THERAPY_HI.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.UREMIC_SYMPTOMS_HI.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VALUE_CODE.datasource" />

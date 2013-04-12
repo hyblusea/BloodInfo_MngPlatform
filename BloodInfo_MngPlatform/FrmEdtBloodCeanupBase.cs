@@ -47,6 +47,29 @@ namespace BloodInfo_MngPlatform
             vALUECODEBindingSource2.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 102);
             vALUECODEBindingSource3.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 161);
             aCCOUNTBindingSource.DataSource = db.Fetch<ACCOUNT>("");
+
+            bindingSource1.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 193);              // 通路类型
+            bindingSource2.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 47);               // 管路
+            bindingSource3.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 43);               // 穿刺针
+            bindingSource4.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 171);              // 敷贴
+            bindingSource5.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 166);              // 护理包
+            bindingSource6.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 169);              // 肝素帽
+
+            // 血管通路类型
+            if (bloodCleanup.FISTULA_TYPE == 519 || bloodCleanup.FISTULA_TYPE == 520)
+            {
+                ItemForAPPLICATOR.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForAPPLICATOR_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForHEPARIN_CAP.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForHEPARIN_CAP_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            }
+            else if (bloodCleanup.FISTULA_TYPE == 704 || bloodCleanup.FISTULA_TYPE == 705)
+            {
+                ItemForFISTULA_NEEDLE.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_NEEDLE_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_CARE_PACKAGES.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_CARE_PACKAGES_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            }
         }
         private void barSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -74,19 +97,6 @@ namespace BloodInfo_MngPlatform
         private void barExit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
-        }
-
-        private void ANA_TIMETextEdit_Enter(object sender, EventArgs e)
-        {
-            try
-            {
-                double h = ((DateTime)ANA_END_TIMEDateEdit.EditValue - (DateTime)ANA_STAR_TIMEDateEdit.EditValue).TotalHours;
-                ANA_TIMETextEdit.EditValue = Math.Round(h, 2);
-                ((BLOODCLEANUP)bLOODCLEANUPBindingSource.Current).ANA_TIME = (decimal)Math.Round(h, 2); 
-            }
-            catch (Exception)
-            {
-            }
         }
 
         private void ANA_WEIGHTTextEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -164,6 +174,19 @@ namespace BloodInfo_MngPlatform
         private void EPOTextEdit_DoubleClick(object sender, EventArgs e)
         {
             EPOTextEdit_ButtonClick(null, new DevExpress.XtraEditors.Controls.ButtonPressedEventArgs(new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)));
+        }
+
+        private void ANA_TIMETextEdit_Enter(object sender, EventArgs e)
+        {
+            try
+            {
+                double h = ((DateTime)ANA_END_TIMEDateEdit.EditValue - (DateTime)ANA_STAR_TIMEDateEdit.EditValue).TotalHours;
+                ANA_TIMETextEdit.EditValue = Math.Round(h, 2);
+                ((BLOODCLEANUP)bLOODCLEANUPBindingSource.Current).ANA_TIME = (decimal)Math.Round(h, 2);
+            }
+            catch (Exception)
+            {
+            }     
         }
     }
 }

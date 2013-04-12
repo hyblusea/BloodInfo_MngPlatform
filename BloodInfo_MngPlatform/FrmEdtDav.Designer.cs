@@ -583,7 +583,7 @@
             this.ItemForRATEOFDAY.Location = new System.Drawing.Point(173, 96);
             this.ItemForRATEOFDAY.Name = "ItemForRATEOFDAY";
             this.ItemForRATEOFDAY.Size = new System.Drawing.Size(174, 24);
-            this.ItemForRATEOFDAY.Text = "每隔:";
+            this.ItemForRATEOFDAY.Text = "每:";
             this.ItemForRATEOFDAY.TextSize = new System.Drawing.Size(40, 14);
             // 
             // layoutControlItem1

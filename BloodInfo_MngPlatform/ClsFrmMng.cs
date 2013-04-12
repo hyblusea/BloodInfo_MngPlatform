@@ -47,7 +47,7 @@ namespace BloodInfo_MngPlatform
         public static FrmDiagnosis frmDiagnosis;
         public static FrmMachineTypeMng frmMachineType;
         public static FrmDocAdvice_Drugs frmDocAdvice;
-        public static FrmBloodCleanup_Drugs frmBC_D;
+        //public static FrmBloodCleanup_Drugs frmBC_D;
         public static FrmPatient_Course frmCourse;
 
         public static FrmRptPatientInfo frmRptPatientInfo;

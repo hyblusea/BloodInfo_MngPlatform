@@ -23,7 +23,7 @@ namespace BloodInfo_MngPlatform
         Int64 _regID;
         BLOODCLEANUP blookCaeanup = new  BLOODCLEANUP();
 
-        public FrmNewBloodCleanBase(Int64 base_id, Int64 reg_id, Int64 machineCheckID)
+        public FrmNewBloodCleanBase(Int64 base_id, Int64 reg_id, Int64 machineCheckID, decimal pt_path_type)
         {
             InitializeComponent();
 
@@ -48,11 +48,50 @@ namespace BloodInfo_MngPlatform
             if (info != null && info.MODEL != null)
                 blookCaeanup.MACH_TYP = info.MODEL.ToString();
 
+            // 血管通路类型
+            blookCaeanup.FISTULA_TYPE = pt_path_type;
+            if (pt_path_type == 519 || pt_path_type == 520)
+            {
+                ItemForAPPLICATOR.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForAPPLICATOR_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForHEPARIN_CAP.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForHEPARIN_CAP_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+
+                // 获取该患者最近一次, 当通路类型与目前匹配时使用的耗材型号与数据
+                BLOODCLEANUP bc1 = db.SingleOrDefault<BLOODCLEANUP>("where FISTULA_TYPE = @0 and BASE_INFO_ID = @1 AND  rownum = 1 order by ID DESC", new object[] { pt_path_type, base_id });
+                if (bc1 != null)
+                {
+                    blookCaeanup.FISTULA_NEEDLE = bc1.FISTULA_NEEDLE;
+                    blookCaeanup.FISTULA_NEEDLE_NUM = bc1.FISTULA_NEEDLE_NUM;
+                    blookCaeanup.FISTULA_CARE_PACKAGES = bc1.FISTULA_CARE_PACKAGES;
+                    blookCaeanup.FISTULA_CARE_PACKAGES_NUM = bc1.FISTULA_CARE_PACKAGES_NUM; 
+                }
+            }
+            else if (pt_path_type == 704 || pt_path_type == 705)
+            {
+                ItemForFISTULA_NEEDLE.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_NEEDLE_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_CARE_PACKAGES.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+                ItemForFISTULA_CARE_PACKAGES_NUM.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+
+                // 获取该患者最近一次, 当通路类型与目前匹配时使用的耗材型号与数据
+                BLOODCLEANUP bc1 = db.SingleOrDefault<BLOODCLEANUP>("where FISTULA_TYPE = @0 and BASE_INFO_ID = @1 AND  rownum = 1 order by ID DESC", new object[] { pt_path_type, base_id });
+                if (bc1 != null)
+                {
+                    blookCaeanup.APPLICATOR = bc1.APPLICATOR;
+                    blookCaeanup.APPLICATOR_NUM = bc1.APPLICATOR_NUM;
+                    blookCaeanup.HEPARIN_CAP = bc1.HEPARIN_CAP;
+                    blookCaeanup.HEPARIN_CAP_NUM = bc1.HEPARIN_CAP_NUM;  
+                }
+            }
+
             // 查询该患者上一次血液净信息
             BLOODCLEANUP bc = db.SingleOrDefault<BLOODCLEANUP>("where BASE_INFO_ID = @0 AND  rownum = 1 order by ID DESC", base_id);
             if (bc != null)
             {
                 blookCaeanup.WEIGHT = bc.WEIGHT;
+                blookCaeanup.MACH = bc.MACH;                        // 透析器
+                blookCaeanup.PIPELINE = bc.PIPELINE;                // 管路
             }
 
             // 查询该患者医嘱(长期及临时医嘱)中的药品
@@ -88,6 +127,12 @@ namespace BloodInfo_MngPlatform
             vALUECODEBindingSource3.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 161);
             aCCOUNTBindingSource.DataSource = db.Fetch<ACCOUNT>("");
 
+            bindingSource1.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 193);              // 通路类型
+            bindingSource2.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 47);               // 管路
+            bindingSource3.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 43);               // 穿刺针
+            bindingSource4.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 171);              // 敷贴
+            bindingSource5.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 166);              // 护理包
+            bindingSource6.DataSource = db.Fetch<VALUE_CODE>("where GROUPNAME = @0", 169);              // 肝素帽
         }
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
