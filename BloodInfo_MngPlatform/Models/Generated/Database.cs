@@ -12545,8 +12545,8 @@ namespace BloodInfo_MngPlatform.Models
 
 		[Column]
 		[Comments("Í¸Îö´¦·½")] 
-		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
-		public decimal? ANA_TYPE 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string ANA_TYPE 
 		{ 
 			get
 			{
@@ -12558,7 +12558,7 @@ namespace BloodInfo_MngPlatform.Models
 				MarkColumnModified("ANA_TYPE");
 			}
 		}
-		decimal? _ANA_TYPE;
+		string _ANA_TYPE;
 
 		[Column]
 		[Comments("HD(´Î/W)")] 
