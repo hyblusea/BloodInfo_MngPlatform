@@ -34,7 +34,7 @@
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>70</ApplicationRevision>
+    <ApplicationRevision>73</ApplicationRevision>
     <ApplicationVersion>0.0.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -370,6 +370,14 @@
     <Compile Include="FrmEdtPatientBaseInfo.Designer.cs">
       <DependentUpon>FrmEdtPatientBaseInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEdtPatient_Course.cs" />
+    <Compile Include="FrmEdtPatient_Course.Designer.cs">
+      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtPatient_Course_Sp.cs" />
+    <Compile Include="FrmEdtPatient_Course_Sp.Designer.cs">
+      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEdtSln.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -501,6 +509,10 @@
     </Compile>
     <Compile Include="FrmNewPatientBaseInfo.Designer.cs">
       <DependentUpon>FrmNewPatientBaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewPatient_Course_Sp.cs" />
+    <Compile Include="FrmNewPatient_Course_Sp.Designer.cs">
+      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNewRegist.cs">
       <SubType>Form</SubType>
@@ -755,24 +767,6 @@
     <Compile Include="FrmNewPatient_Course.Designer.cs">
       <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEdtPatient_Course.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmEdtPatient_Course.Designer.cs">
-      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmNewPatient_Course_Sp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmNewPatient_Course_Sp.Designer.cs">
-      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmEdtPatient_Course_Sp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmEdtPatient_Course_Sp.Designer.cs">
-      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FrmAuthMng.resx">
       <DependentUpon>FrmAuthMng.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -853,6 +847,12 @@
     <EmbeddedResource Include="FrmEdtPatientBaseInfo.resx">
       <DependentUpon>FrmEdtPatientBaseInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPatient_Course.resx">
+      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPatient_Course_Sp.resx">
+      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEdtSln.resx">
       <DependentUpon>FrmEdtSln.cs</DependentUpon>
     </EmbeddedResource>
@@ -918,6 +918,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNewPatientBaseInfo.resx">
       <DependentUpon>FrmNewPatientBaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPatient_Course_Sp.resx">
+      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNewRegist.resx">
       <DependentUpon>FrmNewRegist.cs</DependentUpon>
@@ -1055,15 +1058,6 @@
     <EmbeddedResource Include="FrmNewPatient_Course.resx">
       <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEdtPatient_Course.resx">
-      <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmNewPatient_Course_Sp.resx">
-      <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmEdtPatient_Course_Sp.resx">
-      <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -1119,7 +1113,6 @@
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.OUTPATIENT_CATEGORY.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_BASEINFO.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE.datasource" />
-    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE_SPECIAL.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_REGIST.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.REG_STATUS.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.RENAL_REPLACEMENT_THERAPY_HI.datasource" />
