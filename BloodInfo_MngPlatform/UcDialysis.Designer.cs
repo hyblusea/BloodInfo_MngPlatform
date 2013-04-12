@@ -120,15 +120,16 @@
             // 
             // searchLookUpEdit1
             // 
-            this.searchLookUpEdit1.Location = new System.Drawing.Point(185, 103);
+            this.searchLookUpEdit1.Location = new System.Drawing.Point(182, 103);
             this.searchLookUpEdit1.Name = "searchLookUpEdit1";
             this.searchLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.searchLookUpEdit1.Properties.DataSource = this.pATIENTBASEINFOBindingSource;
             this.searchLookUpEdit1.Properties.DisplayMember = "NAME";
+            this.searchLookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.searchLookUpEdit1.Properties.ValueMember = "ID";
             this.searchLookUpEdit1.Properties.View = this.searchLookUpEdit1View;
-            this.searchLookUpEdit1.Size = new System.Drawing.Size(15, 20);
+            this.searchLookUpEdit1.Size = new System.Drawing.Size(18, 20);
             this.searchLookUpEdit1.TabIndex = 6;
             // 
             // pATIENTBASEINFOBindingSource
