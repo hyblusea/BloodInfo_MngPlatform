@@ -1,0 +1,1571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D64B518E-8612-4F77-AE76-5E9D8EB3A46C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BloodInfo_MngPlatform</RootNamespace>
+    <AssemblyName>BloodInfo_MngPlatform</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>http://192.168.1.240/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>血液透析信息管理平台</ProductName>
+    <PublisherName>血液净化中心</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.html</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <TrustUrlParameters>true</TrustUrlParameters>
+    <ApplicationRevision>23</ApplicationRevision>
+    <ApplicationVersion>0.0.5.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CFAFBF8AE60F7B63F274062CA335C246D93213F9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BloodInfo_MngPlatform_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>20121215125418202_easyicon_cn_48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Win.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v12.2.Core.12.2.7.0.Fakes">
+      <HintPath>FakesAssemblies\DevExpress.Printing.v12.2.Core.12.2.7.0.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v12.2.Wizard, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v12.2.Extensions, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v12.2.UI, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v12.2.Extensions, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v12.2.UI, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v12.2.Extensions, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v12.2.Reporting, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v12.2.Reporting.Extensions, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v12.2.Core, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraVerticalGrid.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraWizard.v12.2, Version=12.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClsClientFormState.cs" />
+    <Compile Include="CommentsForDX\CommentsForDXDataLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommentsForDX\CommentsForDXGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FrmAuthMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAuthMng.Designer.cs">
+      <DependentUpon>FrmAuthMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClsFrmMng.cs" />
+    <Compile Include="FrmBackReason.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBackReason.Designer.cs">
+      <DependentUpon>FrmBackReason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBloodCleanup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBloodCleanup.Designer.cs">
+      <DependentUpon>FrmBloodCleanup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCaseHisLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCaseHisLog.Designer.cs">
+      <DependentUpon>FrmCaseHisLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumIn.Designer.cs">
+      <DependentUpon>FrmConsumIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumnOut_New.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumnOut_New.Designer.cs">
+      <DependentUpon>FrmConsumnOut_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumOut.Designer.cs">
+      <DependentUpon>FrmConsumOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumOut_Comfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumOut_Comfirm.Designer.cs">
+      <DependentUpon>FrmConsumOut_Comfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumWH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumWH.Designer.cs">
+      <DependentUpon>FrmConsumWH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDefaultDocAdvice_Cfg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDefaultDocAdvice_Cfg.Designer.cs">
+      <DependentUpon>FrmDefaultDocAdvice_Cfg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDiagnosis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDiagnosis.Designer.cs">
+      <DependentUpon>FrmDiagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDocAdvice_Drugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDocAdvice_Drugs.Designer.cs">
+      <DependentUpon>FrmDocAdvice_Drugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtAdd.Designer.cs">
+      <DependentUpon>FrmEdtAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtBloodCeanupBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtBloodCeanupBase.Designer.cs">
+      <DependentUpon>FrmEdtBloodCeanupBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtBloodCleanupProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtBloodCleanupProcess.Designer.cs">
+      <DependentUpon>FrmEdtBloodCleanupProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtBloodCleanup_Summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtBloodCleanup_Summary.Designer.cs">
+      <DependentUpon>FrmEdtBloodCleanup_Summary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtBody.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtBody.Designer.cs">
+      <DependentUpon>FrmEdtBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtCaseHis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtCaseHis.Designer.cs">
+      <DependentUpon>FrmEdtCaseHis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDav.Designer.cs">
+      <DependentUpon>FrmEdtDav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Primary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Primary.Designer.cs">
+      <DependentUpon>FrmEdtDiagosis_Primary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDose.Designer.cs">
+      <DependentUpon>FrmEdtDose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDrugsAllergy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDrugsAllergy.Designer.cs">
+      <DependentUpon>FrmEdtDrugsAllergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtInduce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtInduce.Designer.cs">
+      <DependentUpon>FrmEdtInduce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtPath.Designer.cs">
+      <DependentUpon>FrmEdtPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtPatientBaseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtPatientBaseInfo.Designer.cs">
+      <DependentUpon>FrmEdtPatientBaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtSln.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtSln.Designer.cs">
+      <DependentUpon>FrmEdtSln.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtUremic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtUremic.Designer.cs">
+      <DependentUpon>FrmEdtUremic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEvaluate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEvaluate.Designer.cs">
+      <DependentUpon>FrmEvaluate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayoutCfg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayoutCfg.Designer.cs">
+      <DependentUpon>FrmLayoutCfg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMachineScheduled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMachineScheduled.Designer.cs">
+      <DependentUpon>FrmMachineScheduled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMachineSchedule_Copy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMachineSchedule_Copy.Designer.cs">
+      <DependentUpon>FrmMachineSchedule_Copy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMachineTypeMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMachineTypeMng.Designer.cs">
+      <DependentUpon>FrmMachineTypeMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewAdd.Designer.cs">
+      <DependentUpon>FrmNewAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewBloodCleanBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewBloodCleanBase.Designer.cs">
+      <DependentUpon>FrmNewBloodCleanBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewBloodCleanupProcess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewBloodCleanupProcess.Designer.cs">
+      <DependentUpon>FrmNewBloodCleanupProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewBodyCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewBodyCheck.Designer.cs">
+      <DependentUpon>FrmNewBodyCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewCaseHis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewCaseHis.Designer.cs">
+      <DependentUpon>FrmNewCaseHis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewConsum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewConsum.Designer.cs">
+      <DependentUpon>FrmNewConsum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDav.Designer.cs">
+      <DependentUpon>FrmNewDav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Pathological.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Pathological.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Pathological.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Primary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Primary.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Primary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDose.Designer.cs">
+      <DependentUpon>FrmNewDose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDrugsAllergy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDrugsAllergy.Designer.cs">
+      <DependentUpon>FrmNewDrugsAllergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewInduce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewInduce.Designer.cs">
+      <DependentUpon>FrmNewInduce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewPath.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewPath.Designer.cs">
+      <DependentUpon>FrmNewPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewPatientBaseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewPatientBaseInfo.Designer.cs">
+      <DependentUpon>FrmNewPatientBaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewRegist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewRegist.Designer.cs">
+      <DependentUpon>FrmNewRegist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewSln.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewSln.Designer.cs">
+      <DependentUpon>FrmNewSln.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewUremic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewUremic.Designer.cs">
+      <DependentUpon>FrmNewUremic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientBaseInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatientBaseInfo.Designer.cs">
+      <DependentUpon>FrmPatientBaseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientRigist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatientRigist.Designer.cs">
+      <DependentUpon>FrmPatientRigist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRptPatientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRptPatientInfo.Designer.cs">
+      <DependentUpon>FrmRptPatientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserLogin.Designer.cs">
+      <DependentUpon>FrmUserLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmValueCodeMng.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmValueCodeMng.Designer.cs">
+      <DependentUpon>FrmValueCodeMng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Generated\Database.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Generated\Database_ex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MyTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rptPatientRegist.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rptPatientRegist.Designer.cs">
+      <DependentUpon>rptPatientRegist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rpt_bloodCleanup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Rpt_bloodCleanup.Designer.cs">
+      <DependentUpon>Rpt_bloodCleanup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcDialysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcDialysis.Designer.cs">
+      <DependentUpon>UcDialysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_FrmAes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_FrmAes.Designer.cs">
+      <DependentUpon>_FrmAes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_FrmCommTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_FrmCommTest.Designer.cs">
+      <DependentUpon>_FrmCommTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_FrmDrugSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_FrmDrugSelect.Designer.cs">
+      <DependentUpon>_FrmDrugSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_FrmModifyPwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_FrmModifyPwd.Designer.cs">
+      <DependentUpon>_FrmModifyPwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConsumWH_Request.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConsumWH_Request.Designer.cs">
+      <DependentUpon>FrmConsumWH_Request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Complication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Complication.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Complication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Complication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Complication.Designer.cs">
+      <DependentUpon>FrmEdtDiagonsis_Complication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Infe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Infe.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Infe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Infe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Infe.Designer.cs">
+      <DependentUpon>FrmEdtDiagonsis_Infe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Tumor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Tumor.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Tumor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Tumor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Tumor.Designer.cs">
+      <DependentUpon>FrmEdtDiagonsis_Tumor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Allergy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Allergy.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Allergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Allergy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Allergy.Designer.cs">
+      <DependentUpon>FrmEdtDiagosis_Allergy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewMachineType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewMachineType.Designer.cs">
+      <DependentUpon>FrmNewMachineType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtMachineType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtMachineType.Designer.cs">
+      <DependentUpon>FrmEdtMachineType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewMachineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewMachineInfo.Designer.cs">
+      <DependentUpon>FrmNewMachineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtMachineInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtMachineInfo.Designer.cs">
+      <DependentUpon>FrmEdtMachineInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewLayout.Designer.cs">
+      <DependentUpon>FrmNewLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBloodCleanup_Drugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBloodCleanup_Drugs.Designer.cs">
+      <DependentUpon>FrmBloodCleanup_Drugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewBC_Drugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewBC_Drugs.Designer.cs">
+      <DependentUpon>FrmNewBC_Drugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtBC_Drugs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtBC_Drugs.Designer.cs">
+      <DependentUpon>FrmEdtBC_Drugs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewBC_Consumable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewBC_Consumable.Designer.cs">
+      <DependentUpon>FrmNewBC_Consumable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Pathological.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagonsis_Pathological.Designer.cs">
+      <DependentUpon>FrmEdtDiagonsis_Pathological.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Outcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewDiagonsis_Outcome.Designer.cs">
+      <DependentUpon>FrmNewDiagonsis_Outcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Outcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtDiagosis_Outcome.Designer.cs">
+      <DependentUpon>FrmEdtDiagosis_Outcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatient_Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatient_Course.Designer.cs">
+      <DependentUpon>FrmPatient_Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNewPatient_Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewPatient_Course.Designer.cs">
+      <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmAuthMng.resx">
+      <DependentUpon>FrmAuthMng.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBackReason.resx">
+      <DependentUpon>FrmBackReason.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBloodCleanup.resx">
+      <DependentUpon>FrmBloodCleanup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCaseHisLog.resx">
+      <DependentUpon>FrmCaseHisLog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumIn.resx">
+      <DependentUpon>FrmConsumIn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumnOut_New.resx">
+      <DependentUpon>FrmConsumnOut_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumOut.resx">
+      <DependentUpon>FrmConsumOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumOut_Comfirm.resx">
+      <DependentUpon>FrmConsumOut_Comfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumWH.resx">
+      <DependentUpon>FrmConsumWH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDefaultDocAdvice_Cfg.resx">
+      <DependentUpon>FrmDefaultDocAdvice_Cfg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDiagnosis.resx">
+      <DependentUpon>FrmDiagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDocAdvice_Drugs.resx">
+      <DependentUpon>FrmDocAdvice_Drugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtAdd.resx">
+      <DependentUpon>FrmEdtAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtBloodCeanupBase.resx">
+      <DependentUpon>FrmEdtBloodCeanupBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtBloodCleanupProcess.resx">
+      <DependentUpon>FrmEdtBloodCleanupProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtBloodCleanup_Summary.resx">
+      <DependentUpon>FrmEdtBloodCleanup_Summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtBody.resx">
+      <DependentUpon>FrmEdtBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtCaseHis.resx">
+      <DependentUpon>FrmEdtCaseHis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDav.resx">
+      <DependentUpon>FrmEdtDav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagosis_Primary.resx">
+      <DependentUpon>FrmEdtDiagosis_Primary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDose.resx">
+      <DependentUpon>FrmEdtDose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDrugsAllergy.resx">
+      <DependentUpon>FrmEdtDrugsAllergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtInduce.resx">
+      <DependentUpon>FrmEdtInduce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPath.resx">
+      <DependentUpon>FrmEdtPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtPatientBaseInfo.resx">
+      <DependentUpon>FrmEdtPatientBaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtSln.resx">
+      <DependentUpon>FrmEdtSln.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtUremic.resx">
+      <DependentUpon>FrmEdtUremic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEvaluate.resx">
+      <DependentUpon>FrmEvaluate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayoutCfg.resx">
+      <DependentUpon>FrmLayoutCfg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMachineScheduled.resx">
+      <DependentUpon>FrmMachineScheduled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMachineSchedule_Copy.resx">
+      <DependentUpon>FrmMachineSchedule_Copy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMachineTypeMng.resx">
+      <DependentUpon>FrmMachineTypeMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewAdd.resx">
+      <DependentUpon>FrmNewAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewBloodCleanBase.resx">
+      <DependentUpon>FrmNewBloodCleanBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewBloodCleanupProcess.resx">
+      <DependentUpon>FrmNewBloodCleanupProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewBodyCheck.resx">
+      <DependentUpon>FrmNewBodyCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewCaseHis.resx">
+      <DependentUpon>FrmNewCaseHis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewConsum.resx">
+      <DependentUpon>FrmNewConsum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDav.resx">
+      <DependentUpon>FrmNewDav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Pathological.resx">
+      <DependentUpon>FrmNewDiagonsis_Pathological.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Primary.resx">
+      <DependentUpon>FrmNewDiagonsis_Primary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDose.resx">
+      <DependentUpon>FrmNewDose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDrugsAllergy.resx">
+      <DependentUpon>FrmNewDrugsAllergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewInduce.resx">
+      <DependentUpon>FrmNewInduce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPath.resx">
+      <DependentUpon>FrmNewPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPatientBaseInfo.resx">
+      <DependentUpon>FrmNewPatientBaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewRegist.resx">
+      <DependentUpon>FrmNewRegist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewSln.resx">
+      <DependentUpon>FrmNewSln.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewUremic.resx">
+      <DependentUpon>FrmNewUremic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatientBaseInfo.resx">
+      <DependentUpon>FrmPatientBaseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatientRigist.resx">
+      <DependentUpon>FrmPatientRigist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRptPatientInfo.resx">
+      <DependentUpon>FrmRptPatientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserLogin.resx">
+      <DependentUpon>FrmUserLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmValueCodeMng.resx">
+      <DependentUpon>FrmValueCodeMng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="rptPatientRegist.resx">
+      <DependentUpon>rptPatientRegist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rpt_bloodCleanup.resx">
+      <DependentUpon>Rpt_bloodCleanup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcDialysis.resx">
+      <DependentUpon>UcDialysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_FrmAes.resx">
+      <DependentUpon>_FrmAes.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_FrmCommTest.resx">
+      <DependentUpon>_FrmCommTest.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_FrmDrugSelect.resx">
+      <DependentUpon>_FrmDrugSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_FrmModifyPwd.resx">
+      <DependentUpon>_FrmModifyPwd.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsumWH_Request.resx">
+      <DependentUpon>FrmConsumWH_Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Complication.resx">
+      <DependentUpon>FrmNewDiagonsis_Complication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagonsis_Complication.resx">
+      <DependentUpon>FrmEdtDiagonsis_Complication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Infe.resx">
+      <DependentUpon>FrmNewDiagonsis_Infe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagonsis_Infe.resx">
+      <DependentUpon>FrmEdtDiagonsis_Infe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Tumor.resx">
+      <DependentUpon>FrmNewDiagonsis_Tumor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagonsis_Tumor.resx">
+      <DependentUpon>FrmEdtDiagonsis_Tumor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Allergy.resx">
+      <DependentUpon>FrmNewDiagonsis_Allergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagosis_Allergy.resx">
+      <DependentUpon>FrmEdtDiagosis_Allergy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewMachineType.resx">
+      <DependentUpon>FrmNewMachineType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtMachineType.resx">
+      <DependentUpon>FrmEdtMachineType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewMachineInfo.resx">
+      <DependentUpon>FrmNewMachineInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtMachineInfo.resx">
+      <DependentUpon>FrmEdtMachineInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewLayout.resx">
+      <DependentUpon>FrmNewLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBloodCleanup_Drugs.resx">
+      <DependentUpon>FrmBloodCleanup_Drugs.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewBC_Drugs.resx">
+      <DependentUpon>FrmNewBC_Drugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtBC_Drugs.resx">
+      <DependentUpon>FrmEdtBC_Drugs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewBC_Consumable.resx">
+      <DependentUpon>FrmNewBC_Consumable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagonsis_Pathological.resx">
+      <DependentUpon>FrmEdtDiagonsis_Pathological.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewDiagonsis_Outcome.resx">
+      <DependentUpon>FrmNewDiagonsis_Outcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtDiagosis_Outcome.resx">
+      <DependentUpon>FrmEdtDiagosis_Outcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatient_Course.resx">
+      <DependentUpon>FrmPatient_Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewPatient_Course.resx">
+      <DependentUpon>FrmNewPatient_Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BloodInfo_MngPlatform_TemporaryKey.pfx" />
+    <Fakes Include="Fakes\DevExpress.Printing.v12.2.Core.fakes" />
+    <None Include="Models\Generated\Database.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Database.cs</LastGenOutput>
+    </None>
+    <None Include="Models\Generated\PetaPoco.Core.ttinclude" />
+    <None Include="Models\Generated\PetaPoco.Generator.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.AAA.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ACCOUNT.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ADDTION_CHECK_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ATH_CONTROL_ENABLE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ATH_FORMBUTTON.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ATH_ROLE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.BLOODCLEANUP.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.BLOODCLEANUP_PROCESS.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.BODY_CHECK_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.BODY_CHECK_HISTORY1.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CASE_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_LOG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_LOG1.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_REQUEST.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_REQUEST_LST.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_REQUEST_LST1.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_REQUEST_LST_USELOG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.CONSUMABLES_WAREHOUSE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_ALLERGY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_COMPLICATION.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_INFECTIOUS_DISEASE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_OUTCOME.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_PATHOLOGICAL.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_PRIMARY_DISEASE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DIAGNOSIS_TUMOR.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DOCTOR_HEMODIALYSIS_LOG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DOCTOR_LOG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DOC_ADVICE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DOC_ADVICE_DRUG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DOSE_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.DRUG_ALLERGY_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.EVALUATE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.INDUCEMENT_HISTORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.MACHINE_INFO.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.MACHINE_LAYOUT.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.MACHINE_SCHEDULE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.MACHINE_TYPE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.NURSE_LOG.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.OUTPATIENT_CATEGORY.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_BASEINFO.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_COURSE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.PATIENT_REGIST.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.RENAL_REPLACEMENT_THERAPY_HI.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.UREMIC_SYMPTOMS_HI.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VALUE_CODE.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VALUE_GROUP.datasource" />
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VASCULARPATH_HISTORY.datasource" />
+    <None Include="Properties\DataSources\DocAdvType.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6011336_150431005106_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6011336_150431005106_21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\37.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\39.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\45.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\46.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\47.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\49.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\53.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\54.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\55.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\56.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\57.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\59.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\62.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\63.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\65.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\66.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\67.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\68.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\69.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\73.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\74.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\76.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\77.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\78.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\79.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\81.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\82.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\83.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\84.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\86.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\87.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\88.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\89.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\91.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\92.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\93.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\94.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\95.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\97.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\98.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\103.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\104.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\105.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\106.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\107.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\108.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="DevExpress.CodeParser.v12.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="DevExpress.ExpressApp.Xpo.v12.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="20121215125418202_easyicon_cn_48.ico" />
+    <Content Include="oci.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ociw32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Oracle.DataAccess.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="orannzsbb11.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="oraocci11.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="oraociei11.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OraOps11w.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\20130319022303686_easyicon_net_256.png" />
+    <None Include="Resources\20130307021059678_easyicon_cn_16.png" />
+    <None Include="Resources\20130307021031884_easyicon_cn_16.png" />
+    <None Include="Resources\20130307020756735_easyicon_cn_16.png" />
+    <None Include="Resources\20130307020633664_easyicon_cn_32.png" />
+    <None Include="Resources\_first%281%29.png" />
+    <None Include="Resources\20130106042741210_easyicon_cn_32.png" />
+    <None Include="Resources\20130106042719523_easyicon_cn_32.png" />
+    <None Include="Resources\20130106042650326_easyicon_cn_32.png" />
+    <None Include="Resources\20130106042232913_easyicon_cn_32.png" />
+    <None Include="Resources\20130106042057441_easyicon_cn_16.png" />
+    <None Include="Resources\20130106041827785_easyicon_cn_32.ico" />
+    <None Include="Resources\20121227033839938_easyicon_cn_16.png" />
+    <None Include="Resources\arrow.png" />
+    <None Include="Resources\20130106040739108_easyicon_cn_16.ico" />
+    <None Include="Resources\20121115100033437_easyicon_cn_22.png" />
+    <None Include="Resources\20121115095040383_easyicon_cn_16.png" />
+    <None Include="Resources\19.png" />
+    <None Include="Resources\201.png" />
+    <None Include="Resources\191.png" />
+    <None Include="Resources\20121115094937807_easyicon_cn_20.png" />
+    <None Include="Resources\20121115085119237_easyicon_cn_16.png" />
+    <None Include="Resources\20121115085012658_easyicon_cn_16.png" />
+    <None Include="Resources\20121115023857361_easyicon_cn_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AuthrzForDevDx\AuthrzForDevDX.csproj">
+      <Project>{4b85c325-c729-4361-ba4d-c8942c154c5d}</Project>
+      <Name>AuthrzForDevDX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetaPoco\PetaPoco.csproj">
+      <Project>{33699753-151d-4100-8f12-9ae1aeb5c5bd}</Project>
+      <Name>PetaPoco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SerialPortComm\SerialPortComm.csproj">
+      <Project>{6046a988-566a-4817-8d9f-af3e1902bd48}</Project>
+      <Name>SerialPortComm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocketAsyncServer\SocketAsyncServer.csproj">
+      <Project>{5ffe844e-4674-4a69-9f18-2122c5c27bc8}</Project>
+      <Name>SocketAsyncServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UcPaging\UcPaging.csproj">
+      <Project>{16C99B1A-2081-4914-BE37-24AB48E6279C}</Project>
+      <Name>UcPaging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
