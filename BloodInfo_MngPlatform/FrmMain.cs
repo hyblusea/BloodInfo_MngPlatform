@@ -580,17 +580,17 @@ namespace BloodInfo_MngPlatform
 
         private void barButtonItem10_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (ClsFrmMng.frmBC_D == null)
-            {
-                splashScreenManager1.ShowWaitForm();
-                ClsFrmMng.frmBC_D = new FrmBloodCleanup_Drugs();
-                ClsFrmMng.frmBC_D.MdiParent = this;
-                ClsFrmMng.frmBC_D.Show();
-                xtraTabbedMdiManager1.Pages[ClsFrmMng.frmBC_D].ImageIndex = 112;
-                splashScreenManager1.CloseWaitForm();
-            }
-            else
-                ClsFrmMng.frmBC_D.Activate();
+            //if (ClsFrmMng.frmBC_D == null)
+            //{
+            //    splashScreenManager1.ShowWaitForm();
+            //    ClsFrmMng.frmBC_D = new FrmBloodCleanup_Drugs();
+            //    ClsFrmMng.frmBC_D.MdiParent = this;
+            //    ClsFrmMng.frmBC_D.Show();
+            //    xtraTabbedMdiManager1.Pages[ClsFrmMng.frmBC_D].ImageIndex = 112;
+            //    splashScreenManager1.CloseWaitForm();
+            //}
+            //else
+            //    ClsFrmMng.frmBC_D.Activate();
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
