@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewDiagonsis_Allergy));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewPatient_Course));
             this.vALUECODEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.commentsForDXDataLayout1 = new UcCommentsForDX.CommentsForDXDataLayout(this.components);
-            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.dIAGNOSISALLERGYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
@@ -45,114 +42,233 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.sharedImageCollection1 = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.DIALYSIS_MEMBRANE_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.DISINFECTANTS_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ANTIBIOTICTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.IRON_SUCROSETextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.IRON_DEXTRANTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.HEPARIN_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.ALLERGIC_REACTIONSTextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.vALUECODEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.DIALYSIS_MEMBRANETextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.vALUECODEBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.DISINFECTANTSTextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.vALUECODEBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.DRUG_ALLERGYTextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.vALUEGROUPBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.INTRAVENOUS_IRONTextEdit = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.vALUECODEBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.DRUG_ALLERGY_OTHTextEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.HEPARINTextEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.vALUECODEBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
-            this.ALLERGIC_REACTIONS_OTHTextEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup11 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForALLERGIC_REACTIONS = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForDIALYSIS_MEMBRANE = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForDIALYSIS_MEMBRANE_OTH = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForDISINFECTANTS = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForDISINFECTANTS_OTH = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForALLERGIC_REACTIONS_OTH = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForDRUG_ALLERGY = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForDRUG_ALLERGY_OTH = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForIRON_SUCROSE = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForIRON_DEXTRAN = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForINTRAVENOUS_IRON = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup9 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForANTIBIOTIC = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup10 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForHEPARIN = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForHEPARIN_OTH = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.vALUECODEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.pATIENTCOURSEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.LOG_TIMEDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.ItemForLOG_TIME = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_TYPE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForHD_TIMES = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForHDF_TIMES = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForHDF_H_TIMES = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForARTERY_LEFT_RIGHT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.PATH_TYPETextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForPATH_TYPE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.HEPARIN_FIRSTTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForHEPARIN_FIRST = new DevExpress.XtraLayout.LayoutControlItem();
+            this.HEPARIN_FIRST_ADDTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForHEPARIN_FIRST_ADD = new DevExpress.XtraLayout.LayoutControlItem();
+            this.LOW_MOLECULARTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForLOW_MOLECULAR = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ANA_MACHINETextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForANA_MACHINE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ANA_MACHINE_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForANA_MACHINE_OTH = new DevExpress.XtraLayout.LayoutControlItem();
+            this.DRY_WEIGHTTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForDRY_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.DRY_WEIGHT_BEFTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForDRY_WEIGHT_BEF = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.SYMPTOMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForSYMPTOM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_PRESSURE_CONTROLTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_PRESSURE_CONTROL = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_PRESSURE1TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_PRESSURE1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_PRESSURE2TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_PRESSURE2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_PRESSURE3TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_PRESSURE3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_PRESSURE4TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_PRESSURE4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CAPACITY_CONTROLTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCAPACITY_CONTROL = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CAPACITYTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCAPACITY = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CAPACITY_PROPORTIONTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCAPACITY_PROPORTION = new DevExpress.XtraLayout.LayoutControlItem();
+            this.VASCULAR_ACCESS_STATTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForVASCULAR_ACCESS_STAT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_FLOWTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_FLOW = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForMAJOR_DISCOMFORT_HANDLING = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MEMO1TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForMEMO1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MEMO2TextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForMEMO2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.DIALYSIS_GENERALTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForDIALYSIS_GENERAL = new DevExpress.XtraLayout.LayoutControlItem();
+            this.URRTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForURR = new DevExpress.XtraLayout.LayoutControlItem();
+            this.KT_VTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForKT_V = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.CARDIOVASCULAR_SYSTEMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCARDIOVASCULAR_SYSTEM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForANTIHYPERTENSIVE_DRUGS = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BLOOD_SYSTEMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForBLOOD_SYSTEM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.HBTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForHB = new DevExpress.XtraLayout.LayoutControlItem();
+            this.EPOTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForEPO = new DevExpress.XtraLayout.LayoutControlItem();
+            this.EPO_TIMESTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForEPO_TIMES = new DevExpress.XtraLayout.LayoutControlItem();
+            this.EPO_TIMES_OTHTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForEPO_TIMES_OTH = new DevExpress.XtraLayout.LayoutControlItem();
+            this.IRON_DEFICIENCYTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForIRON_DEFICIENCY = new DevExpress.XtraLayout.LayoutControlItem();
+            this.FERRITINTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForFERRITIN = new DevExpress.XtraLayout.LayoutControlItem();
+            this.TRANSFERRIN_SATURATIONTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForTRANSFERRIN_SATURATION = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CALCIUMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForCALCIUM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.PTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForP = new DevExpress.XtraLayout.LayoutControlItem();
+            this.PTHTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForPTH = new DevExpress.XtraLayout.LayoutControlItem();
+            this.HEPATITIS_INDICATORSTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForHEPATITIS_INDICATORS = new DevExpress.XtraLayout.LayoutControlItem();
+            this.GPTTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForGPT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.GOTTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForGOT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.MEMO_SPECIAL_CONDITIONTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForMEMO_SPECIAL_CONDITION = new DevExpress.XtraLayout.LayoutControlItem();
+            this.MEMO_FUTURETextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ItemForMEMO_FUTURE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BACK1DateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.ItemForBACK1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ANA_TYPETextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.HD_TIMESTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.HDF_TIMESTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.HDF_H_TIMESTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.ARTERY_LEFT_RIGHTTextEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
-            this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dIAGNOSISALLERGYBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_MEMBRANE_OTHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DISINFECTANTS_OTHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ANTIBIOTICTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IRON_SUCROSETextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IRON_DEXTRANTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_OTHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ALLERGIC_REACTIONSTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_MEMBRANETextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DISINFECTANTSTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DRUG_ALLERGYTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUEGROUPBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.INTRAVENOUS_IRONTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DRUG_ALLERGY_OTHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HEPARINTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ALLERGIC_REACTIONS_OTHTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForALLERGIC_REACTIONS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_MEMBRANE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_MEMBRANE_OTH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDISINFECTANTS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDISINFECTANTS_OTH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForALLERGIC_REACTIONS_OTH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRUG_ALLERGY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRUG_ALLERGY_OTH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_SUCROSE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_DEXTRAN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForINTRAVENOUS_IRON)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANTIBIOTIC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_OTH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSEBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOG_TIMEDateEdit.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOG_TIMEDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLOG_TIME)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TYPE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHD_TIMES)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHDF_TIMES)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHDF_H_TIMES)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForARTERY_LEFT_RIGHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PATH_TYPETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPATH_TYPE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_FIRSTTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_FIRST)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_FIRST_ADDTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_FIRST_ADD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOW_MOLECULARTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLOW_MOLECULAR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_MACHINETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_MACHINE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_MACHINE_OTHTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_MACHINE_OTH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRY_WEIGHTTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRY_WEIGHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRY_WEIGHT_BEFTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRY_WEIGHT_BEF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SYMPTOMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSYMPTOM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE_CONTROLTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE_CONTROL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE1TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE2TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE3TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE4TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITY_CONTROLTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY_CONTROL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITYTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITY_PROPORTIONTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY_PROPORTION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VASCULAR_ACCESS_STATTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForVASCULAR_ACCESS_STAT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_FLOWTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_FLOW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMAJOR_DISCOMFORT_HANDLING)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO1TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO2TextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_GENERALTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_GENERAL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.URRTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForURR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KT_VTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForKT_V)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CARDIOVASCULAR_SYSTEMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCARDIOVASCULAR_SYSTEM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCARDIOVASCULAR_SYSTEM_OTH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANTIHYPERTENSIVE_DRUGSTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANTIHYPERTENSIVE_DRUGS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_SYSTEMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_SYSTEM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HBTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPOTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPO_TIMESTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO_TIMES)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPO_TIMES_OTHTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO_TIMES_OTH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IRON_DEFICIENCYTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_DEFICIENCY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FERRITINTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFERRITIN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRANSFERRIN_SATURATIONTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForTRANSFERRIN_SATURATION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CALCIUMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCALCIUM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTHTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPTH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPATITIS_INDICATORSTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPATITIS_INDICATORS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GPTTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForGPT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GOTTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForGOT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO_SPECIAL_CONDITIONTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO_SPECIAL_CONDITION)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO_FUTURETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO_FUTURE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACK1DateEdit.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACK1DateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBACK1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_TYPETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HD_TIMESTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HDF_TIMESTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HDF_H_TIMESTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ARTERY_LEFT_RIGHTTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // vALUECODEBindingSource
@@ -162,46 +278,6 @@
             // commentsForDXDataLayout1
             // 
             this.commentsForDXDataLayout1.DataLayouts = this.dataLayoutControl1;
-            // 
-            // dataLayoutControl1
-            // 
-            this.dataLayoutControl1.Controls.Add(this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DIALYSIS_MEMBRANE_OTHTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DISINFECTANTS_OTHTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ANTIBIOTICTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.IRON_SUCROSETextEdit);
-            this.dataLayoutControl1.Controls.Add(this.IRON_DEXTRANTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.HEPARIN_OTHTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ALLERGIC_REACTIONSTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DIALYSIS_MEMBRANETextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DISINFECTANTSTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DRUG_ALLERGYTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.INTRAVENOUS_IRONTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DRUG_ALLERGY_OTHTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.HEPARINTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.ALLERGIC_REACTIONS_OTHTextEdit);
-            this.dataLayoutControl1.DataSource = this.dIAGNOSISALLERGYBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(28, 37);
-            this.dataLayoutControl1.Name = "dataLayoutControl1";
-            this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(848, 543);
-            this.dataLayoutControl1.TabIndex = 15;
-            this.dataLayoutControl1.Text = "dataLayoutControl1";
-            // 
-            // DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit
-            // 
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DIALYSIS_EQUIPMENT_ALLERGIES_O", true));
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.Location = new System.Drawing.Point(139, 14);
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.MenuManager = this.barManager1;
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.Name = "DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit";
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.Size = new System.Drawing.Size(656, 20);
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.StyleController = this.dataLayoutControl1;
-            this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.TabIndex = 11;
-            // 
-            // dIAGNOSISALLERGYBindingSource
-            // 
-            this.dIAGNOSISALLERGYBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.DIAGNOSIS_ALLERGY);
             // 
             // barManager1
             // 
@@ -261,28 +337,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(945, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(982, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 576);
-            this.barDockControlBottom.Size = new System.Drawing.Size(945, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 357);
+            this.barDockControlBottom.Size = new System.Drawing.Size(982, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 545);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 326);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(945, 31);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 545);
+            this.barDockControlRight.Location = new System.Drawing.Point(982, 31);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 326);
             // 
             // sharedImageCollection1
             // 
@@ -509,222 +585,66 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(108, "Add.png");
             this.sharedImageCollection1.ParentControl = this;
             // 
-            // DIALYSIS_MEMBRANE_OTHTextEdit
+            // dataLayoutControl1
             // 
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DIALYSIS_MEMBRANE_OTH", true));
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.Location = new System.Drawing.Point(520, 70);
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.MenuManager = this.barManager1;
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.Name = "DIALYSIS_MEMBRANE_OTHTextEdit";
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.Size = new System.Drawing.Size(263, 20);
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.StyleController = this.dataLayoutControl1;
-            this.DIALYSIS_MEMBRANE_OTHTextEdit.TabIndex = 13;
-            // 
-            // DISINFECTANTS_OTHTextEdit
-            // 
-            this.DISINFECTANTS_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DISINFECTANTS_OTH", true));
-            this.DISINFECTANTS_OTHTextEdit.Location = new System.Drawing.Point(520, 138);
-            this.DISINFECTANTS_OTHTextEdit.MenuManager = this.barManager1;
-            this.DISINFECTANTS_OTHTextEdit.Name = "DISINFECTANTS_OTHTextEdit";
-            this.DISINFECTANTS_OTHTextEdit.Size = new System.Drawing.Size(263, 20);
-            this.DISINFECTANTS_OTHTextEdit.StyleController = this.dataLayoutControl1;
-            this.DISINFECTANTS_OTHTextEdit.TabIndex = 16;
-            // 
-            // ANTIBIOTICTextEdit
-            // 
-            this.ANTIBIOTICTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "ANTIBIOTIC", true));
-            this.ANTIBIOTICTextEdit.Location = new System.Drawing.Point(151, 274);
-            this.ANTIBIOTICTextEdit.MenuManager = this.barManager1;
-            this.ANTIBIOTICTextEdit.Name = "ANTIBIOTICTextEdit";
-            this.ANTIBIOTICTextEdit.Size = new System.Drawing.Size(632, 20);
-            this.ANTIBIOTICTextEdit.StyleController = this.dataLayoutControl1;
-            this.ANTIBIOTICTextEdit.TabIndex = 18;
-            // 
-            // IRON_SUCROSETextEdit
-            // 
-            this.IRON_SUCROSETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "IRON_SUCROSE", true));
-            this.IRON_SUCROSETextEdit.Location = new System.Drawing.Point(151, 434);
-            this.IRON_SUCROSETextEdit.MenuManager = this.barManager1;
-            this.IRON_SUCROSETextEdit.Name = "IRON_SUCROSETextEdit";
-            this.IRON_SUCROSETextEdit.Size = new System.Drawing.Size(262, 20);
-            this.IRON_SUCROSETextEdit.StyleController = this.dataLayoutControl1;
-            this.IRON_SUCROSETextEdit.TabIndex = 20;
-            // 
-            // IRON_DEXTRANTextEdit
-            // 
-            this.IRON_DEXTRANTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "IRON_DEXTRAN", true));
-            this.IRON_DEXTRANTextEdit.Location = new System.Drawing.Point(520, 434);
-            this.IRON_DEXTRANTextEdit.MenuManager = this.barManager1;
-            this.IRON_DEXTRANTextEdit.Name = "IRON_DEXTRANTextEdit";
-            this.IRON_DEXTRANTextEdit.Size = new System.Drawing.Size(263, 20);
-            this.IRON_DEXTRANTextEdit.StyleController = this.dataLayoutControl1;
-            this.IRON_DEXTRANTextEdit.TabIndex = 21;
-            // 
-            // HEPARIN_OTHTextEdit
-            // 
-            this.HEPARIN_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "HEPARIN_OTH", true));
-            this.HEPARIN_OTHTextEdit.Location = new System.Drawing.Point(520, 342);
-            this.HEPARIN_OTHTextEdit.MenuManager = this.barManager1;
-            this.HEPARIN_OTHTextEdit.Name = "HEPARIN_OTHTextEdit";
-            this.HEPARIN_OTHTextEdit.Size = new System.Drawing.Size(263, 20);
-            this.HEPARIN_OTHTextEdit.StyleController = this.dataLayoutControl1;
-            this.HEPARIN_OTHTextEdit.TabIndex = 23;
-            // 
-            // ALLERGIC_REACTIONSTextEdit
-            // 
-            this.ALLERGIC_REACTIONSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "ALLERGIC_REACTIONS", true));
-            this.ALLERGIC_REACTIONSTextEdit.Location = new System.Drawing.Point(127, -66);
-            this.ALLERGIC_REACTIONSTextEdit.MenuManager = this.barManager1;
-            this.ALLERGIC_REACTIONSTextEdit.Name = "ALLERGIC_REACTIONSTextEdit";
-            this.ALLERGIC_REACTIONSTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ALLERGIC_REACTIONSTextEdit.Properties.DataSource = this.vALUECODEBindingSource;
-            this.ALLERGIC_REACTIONSTextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.ALLERGIC_REACTIONSTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.ALLERGIC_REACTIONSTextEdit.Size = new System.Drawing.Size(680, 20);
-            this.ALLERGIC_REACTIONSTextEdit.StyleController = this.dataLayoutControl1;
-            this.ALLERGIC_REACTIONSTextEdit.TabIndex = 8;
-            this.ALLERGIC_REACTIONSTextEdit.EditValueChanged += new System.EventHandler(this.ALLERGIC_REACTIONSTextEdit_EditValueChanged);
-            // 
-            // DIALYSIS_EQUIPMENT_ALLERGIESTextEdit
-            // 
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DIALYSIS_EQUIPMENT_ALLERGIES", true));
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Location = new System.Drawing.Point(139, -10);
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.MenuManager = this.barManager1;
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Name = "DIALYSIS_EQUIPMENT_ALLERGIESTextEdit";
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties.DataSource = this.vALUECODEBindingSource1;
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Size = new System.Drawing.Size(656, 20);
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.StyleController = this.dataLayoutControl1;
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.TabIndex = 10;
-            this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.EditValueChanged += new System.EventHandler(this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit_EditValueChanged);
-            // 
-            // vALUECODEBindingSource1
-            // 
-            this.vALUECODEBindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // DIALYSIS_MEMBRANETextEdit
-            // 
-            this.DIALYSIS_MEMBRANETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DIALYSIS_MEMBRANE", true));
-            this.DIALYSIS_MEMBRANETextEdit.Location = new System.Drawing.Point(151, 70);
-            this.DIALYSIS_MEMBRANETextEdit.MenuManager = this.barManager1;
-            this.DIALYSIS_MEMBRANETextEdit.Name = "DIALYSIS_MEMBRANETextEdit";
-            this.DIALYSIS_MEMBRANETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DIALYSIS_MEMBRANETextEdit.Properties.DataSource = this.vALUECODEBindingSource3;
-            this.DIALYSIS_MEMBRANETextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.DIALYSIS_MEMBRANETextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.DIALYSIS_MEMBRANETextEdit.Size = new System.Drawing.Size(262, 20);
-            this.DIALYSIS_MEMBRANETextEdit.StyleController = this.dataLayoutControl1;
-            this.DIALYSIS_MEMBRANETextEdit.TabIndex = 12;
-            // 
-            // vALUECODEBindingSource3
-            // 
-            this.vALUECODEBindingSource3.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // DISINFECTANTSTextEdit
-            // 
-            this.DISINFECTANTSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DISINFECTANTS", true));
-            this.DISINFECTANTSTextEdit.Location = new System.Drawing.Point(151, 138);
-            this.DISINFECTANTSTextEdit.MenuManager = this.barManager1;
-            this.DISINFECTANTSTextEdit.Name = "DISINFECTANTSTextEdit";
-            this.DISINFECTANTSTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DISINFECTANTSTextEdit.Properties.DataSource = this.vALUECODEBindingSource4;
-            this.DISINFECTANTSTextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.DISINFECTANTSTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.DISINFECTANTSTextEdit.Size = new System.Drawing.Size(262, 20);
-            this.DISINFECTANTSTextEdit.StyleController = this.dataLayoutControl1;
-            this.DISINFECTANTSTextEdit.TabIndex = 15;
-            // 
-            // vALUECODEBindingSource4
-            // 
-            this.vALUECODEBindingSource4.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // DRUG_ALLERGYTextEdit
-            // 
-            this.DRUG_ALLERGYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DRUG_ALLERGY", true));
-            this.DRUG_ALLERGYTextEdit.Location = new System.Drawing.Point(139, 218);
-            this.DRUG_ALLERGYTextEdit.MenuManager = this.barManager1;
-            this.DRUG_ALLERGYTextEdit.Name = "DRUG_ALLERGYTextEdit";
-            this.DRUG_ALLERGYTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DRUG_ALLERGYTextEdit.Properties.DataSource = this.vALUEGROUPBindingSource;
-            this.DRUG_ALLERGYTextEdit.Properties.DisplayMember = "GROUPNAME";
-            this.DRUG_ALLERGYTextEdit.Properties.ValueMember = "ID";
-            this.DRUG_ALLERGYTextEdit.Size = new System.Drawing.Size(656, 20);
-            this.DRUG_ALLERGYTextEdit.StyleController = this.dataLayoutControl1;
-            this.DRUG_ALLERGYTextEdit.TabIndex = 17;
-            this.DRUG_ALLERGYTextEdit.EditValueChanged += new System.EventHandler(this.DRUG_ALLERGYTextEdit_EditValueChanged);
-            // 
-            // vALUEGROUPBindingSource
-            // 
-            this.vALUEGROUPBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_GROUP);
-            // 
-            // INTRAVENOUS_IRONTextEdit
-            // 
-            this.INTRAVENOUS_IRONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "INTRAVENOUS_IRON", true));
-            this.INTRAVENOUS_IRONTextEdit.Location = new System.Drawing.Point(151, 410);
-            this.INTRAVENOUS_IRONTextEdit.MenuManager = this.barManager1;
-            this.INTRAVENOUS_IRONTextEdit.Name = "INTRAVENOUS_IRONTextEdit";
-            this.INTRAVENOUS_IRONTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.INTRAVENOUS_IRONTextEdit.Properties.DataSource = this.vALUECODEBindingSource6;
-            this.INTRAVENOUS_IRONTextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.INTRAVENOUS_IRONTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.INTRAVENOUS_IRONTextEdit.Size = new System.Drawing.Size(632, 20);
-            this.INTRAVENOUS_IRONTextEdit.StyleController = this.dataLayoutControl1;
-            this.INTRAVENOUS_IRONTextEdit.TabIndex = 19;
-            this.INTRAVENOUS_IRONTextEdit.EditValueChanged += new System.EventHandler(this.INTRAVENOUS_IRONTextEdit_EditValueChanged);
-            // 
-            // vALUECODEBindingSource6
-            // 
-            this.vALUECODEBindingSource6.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // DRUG_ALLERGY_OTHTextEdit
-            // 
-            this.DRUG_ALLERGY_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "DRUG_ALLERGY_OTH", true));
-            this.DRUG_ALLERGY_OTHTextEdit.Location = new System.Drawing.Point(139, 470);
-            this.DRUG_ALLERGY_OTHTextEdit.MenuManager = this.barManager1;
-            this.DRUG_ALLERGY_OTHTextEdit.MinimumSize = new System.Drawing.Size(0, 20);
-            this.DRUG_ALLERGY_OTHTextEdit.Name = "DRUG_ALLERGY_OTHTextEdit";
-            this.DRUG_ALLERGY_OTHTextEdit.Size = new System.Drawing.Size(656, 20);
-            this.DRUG_ALLERGY_OTHTextEdit.StyleController = this.dataLayoutControl1;
-            this.DRUG_ALLERGY_OTHTextEdit.TabIndex = 24;
-            // 
-            // HEPARINTextEdit
-            // 
-            this.HEPARINTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "HEPARIN", true));
-            this.HEPARINTextEdit.Location = new System.Drawing.Point(151, 342);
-            this.HEPARINTextEdit.MenuManager = this.barManager1;
-            this.HEPARINTextEdit.Name = "HEPARINTextEdit";
-            this.HEPARINTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            this.HEPARINTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.HEPARINTextEdit.Properties.DataSource = this.vALUECODEBindingSource7;
-            this.HEPARINTextEdit.Properties.DisplayMember = "DSP_MEMBER";
-            this.HEPARINTextEdit.Properties.NullText = "";
-            this.HEPARINTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.HEPARINTextEdit.Size = new System.Drawing.Size(262, 20);
-            this.HEPARINTextEdit.StyleController = this.dataLayoutControl1;
-            this.HEPARINTextEdit.TabIndex = 22;
-            // 
-            // vALUECODEBindingSource7
-            // 
-            this.vALUECODEBindingSource7.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
-            // 
-            // ALLERGIC_REACTIONS_OTHTextEdit
-            // 
-            this.ALLERGIC_REACTIONS_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.dIAGNOSISALLERGYBindingSource, "ALLERGIC_REACTIONS_OTH", true));
-            this.ALLERGIC_REACTIONS_OTHTextEdit.Location = new System.Drawing.Point(127, 502);
-            this.ALLERGIC_REACTIONS_OTHTextEdit.MenuManager = this.barManager1;
-            this.ALLERGIC_REACTIONS_OTHTextEdit.MinimumSize = new System.Drawing.Size(0, 20);
-            this.ALLERGIC_REACTIONS_OTHTextEdit.Name = "ALLERGIC_REACTIONS_OTHTextEdit";
-            this.ALLERGIC_REACTIONS_OTHTextEdit.Size = new System.Drawing.Size(680, 20);
-            this.ALLERGIC_REACTIONS_OTHTextEdit.StyleController = this.dataLayoutControl1;
-            this.ALLERGIC_REACTIONS_OTHTextEdit.TabIndex = 9;
+            this.dataLayoutControl1.Controls.Add(this.LOG_TIMEDateEdit);
+            this.dataLayoutControl1.Controls.Add(this.PATH_TYPETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HEPARIN_FIRSTTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HEPARIN_FIRST_ADDTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.LOW_MOLECULARTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ANA_MACHINETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ANA_MACHINE_OTHTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DRY_WEIGHTTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DRY_WEIGHT_BEFTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.SYMPTOMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_PRESSURE_CONTROLTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_PRESSURE1TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_PRESSURE2TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_PRESSURE3TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_PRESSURE4TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CAPACITY_CONTROLTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CAPACITYTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CAPACITY_PROPORTIONTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.VASCULAR_ACCESS_STATTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_FLOWTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.MAJOR_DISCOMFORT_HANDLINGTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.MEMO1TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.MEMO2TextEdit);
+            this.dataLayoutControl1.Controls.Add(this.DIALYSIS_GENERALTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.URRTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.KT_VTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CARDIOVASCULAR_SYSTEMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CARDIOVASCULAR_SYSTEM_OTHTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ANTIHYPERTENSIVE_DRUGSTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BLOOD_SYSTEMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HBTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.EPOTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.EPO_TIMESTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.EPO_TIMES_OTHTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.IRON_DEFICIENCYTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FERRITINTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.TRANSFERRIN_SATURATIONTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.CALCIUMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.PTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.PTHTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HEPATITIS_INDICATORSTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.GPTTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.GOTTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.MEMO_SPECIAL_CONDITIONTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.MEMO_FUTURETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.BACK1DateEdit);
+            this.dataLayoutControl1.Controls.Add(this.ANA_TYPETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HD_TIMESTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HDF_TIMESTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HDF_H_TIMESTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.ARTERY_LEFT_RIGHTTextEdit);
+            this.dataLayoutControl1.DataSource = this.pATIENTCOURSEBindingSource;
+            this.dataLayoutControl1.Location = new System.Drawing.Point(40, 56);
+            this.dataLayoutControl1.Name = "dataLayoutControl1";
+            this.dataLayoutControl1.Root = this.layoutControlGroup1;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(745, 274);
+            this.dataLayoutControl1.TabIndex = 15;
+            this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // layoutControlGroup1
             // 
@@ -733,12 +653,18 @@
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2,
-            this.layoutControlGroup3});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, -110);
+            this.layoutControlGroup3,
+            this.layoutControlGroup4,
+            this.layoutControlGroup5});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(831, 653);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(728, 1244);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
+            // 
+            // pATIENTCOURSEBindingSource
+            // 
+            this.pATIENTCOURSEBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.PATIENT_COURSE);
             // 
             // layoutControlGroup2
             // 
@@ -746,354 +672,1290 @@
             this.layoutControlGroup2.CustomizationFormText = "autoGeneratedGroup0";
             this.layoutControlGroup2.GroupBordersVisible = false;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup11});
+            this.ItemForLOG_TIME,
+            this.ItemForANA_TYPE,
+            this.ItemForHD_TIMES,
+            this.ItemForHDF_TIMES,
+            this.ItemForHDF_H_TIMES,
+            this.ItemForARTERY_LEFT_RIGHT,
+            this.ItemForPATH_TYPE,
+            this.ItemForHEPARIN_FIRST,
+            this.ItemForHEPARIN_FIRST_ADD,
+            this.ItemForLOW_MOLECULAR,
+            this.ItemForANA_MACHINE,
+            this.ItemForANA_MACHINE_OTH,
+            this.ItemForDRY_WEIGHT});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(811, 632);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(708, 312);
             this.layoutControlGroup2.Text = "autoGeneratedGroup0";
             // 
-            // layoutControlGroup11
+            // LOG_TIMEDateEdit
             // 
-            this.layoutControlGroup11.CustomizationFormText = "过敏诊断";
-            this.layoutControlGroup11.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForALLERGIC_REACTIONS,
-            this.layoutControlGroup4,
-            this.ItemForALLERGIC_REACTIONS_OTH,
-            this.layoutControlGroup7});
-            this.layoutControlGroup11.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup11.Name = "layoutControlGroup11";
-            this.layoutControlGroup11.Size = new System.Drawing.Size(811, 632);
-            this.layoutControlGroup11.Text = "过敏诊断";
+            this.LOG_TIMEDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "LOG_TIME", true));
+            this.LOG_TIMEDateEdit.EditValue = null;
+            this.LOG_TIMEDateEdit.Location = new System.Drawing.Point(260, 12);
+            this.LOG_TIMEDateEdit.MenuManager = this.barManager1;
+            this.LOG_TIMEDateEdit.Name = "LOG_TIMEDateEdit";
+            this.LOG_TIMEDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.LOG_TIMEDateEdit.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.LOG_TIMEDateEdit.Size = new System.Drawing.Size(456, 20);
+            this.LOG_TIMEDateEdit.StyleController = this.dataLayoutControl1;
+            this.LOG_TIMEDateEdit.TabIndex = 5;
             // 
-            // ItemForALLERGIC_REACTIONS
+            // ItemForLOG_TIME
             // 
-            this.ItemForALLERGIC_REACTIONS.Control = this.ALLERGIC_REACTIONSTextEdit;
-            this.ItemForALLERGIC_REACTIONS.CustomizationFormText = "过敏反应:";
-            this.ItemForALLERGIC_REACTIONS.Location = new System.Drawing.Point(0, 0);
-            this.ItemForALLERGIC_REACTIONS.Name = "ItemForALLERGIC_REACTIONS";
-            this.ItemForALLERGIC_REACTIONS.Size = new System.Drawing.Size(787, 24);
-            this.ItemForALLERGIC_REACTIONS.Text = "过敏反应:";
-            this.ItemForALLERGIC_REACTIONS.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForLOG_TIME.Control = this.LOG_TIMEDateEdit;
+            this.ItemForLOG_TIME.CustomizationFormText = "记录时间:";
+            this.ItemForLOG_TIME.Location = new System.Drawing.Point(0, 0);
+            this.ItemForLOG_TIME.Name = "ItemForLOG_TIME";
+            this.ItemForLOG_TIME.Size = new System.Drawing.Size(708, 24);
+            this.ItemForLOG_TIME.Text = "记录时间:";
+            this.ItemForLOG_TIME.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // layoutControlGroup4
+            // ItemForANA_TYPE
             // 
-            this.layoutControlGroup4.CustomizationFormText = "透析器材过敏";
-            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES,
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O,
-            this.layoutControlGroup5,
-            this.layoutControlGroup6});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(787, 228);
-            this.layoutControlGroup4.Text = "透析器材过敏";
+            this.ItemForANA_TYPE.Control = this.ANA_TYPETextEdit;
+            this.ItemForANA_TYPE.CustomizationFormText = "透析处方:";
+            this.ItemForANA_TYPE.Location = new System.Drawing.Point(0, 24);
+            this.ItemForANA_TYPE.Name = "ItemForANA_TYPE";
+            this.ItemForANA_TYPE.Size = new System.Drawing.Size(708, 24);
+            this.ItemForANA_TYPE.Text = "透析处方:";
+            this.ItemForANA_TYPE.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDIALYSIS_EQUIPMENT_ALLERGIES
+            // ItemForHD_TIMES
             // 
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.Control = this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit;
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.CustomizationFormText = "透析器材过敏:";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.Location = new System.Drawing.Point(0, 0);
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.Name = "ItemForDIALYSIS_EQUIPMENT_ALLERGIES";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.Size = new System.Drawing.Size(763, 24);
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.Text = "透析器材过敏:";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForHD_TIMES.Control = this.HD_TIMESTextEdit;
+            this.ItemForHD_TIMES.CustomizationFormText = "HD(次/W):";
+            this.ItemForHD_TIMES.Location = new System.Drawing.Point(0, 48);
+            this.ItemForHD_TIMES.Name = "ItemForHD_TIMES";
+            this.ItemForHD_TIMES.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHD_TIMES.Text = "HD(次/W):";
+            this.ItemForHD_TIMES.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O
+            // ItemForHDF_TIMES
             // 
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.Control = this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit;
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.CustomizationFormText = "其他透析器材过敏:";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.Location = new System.Drawing.Point(0, 24);
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.Name = "ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.Size = new System.Drawing.Size(763, 24);
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.Text = "其他透析器材过敏:";
-            this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForHDF_TIMES.Control = this.HDF_TIMESTextEdit;
+            this.ItemForHDF_TIMES.CustomizationFormText = "HDF(次/W):";
+            this.ItemForHDF_TIMES.Location = new System.Drawing.Point(0, 72);
+            this.ItemForHDF_TIMES.Name = "ItemForHDF_TIMES";
+            this.ItemForHDF_TIMES.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHDF_TIMES.Text = "HDF(次/W):";
+            this.ItemForHDF_TIMES.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // layoutControlGroup5
+            // ItemForHDF_H_TIMES
             // 
-            this.layoutControlGroup5.CustomizationFormText = "透析膜过敏";
-            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForDIALYSIS_MEMBRANE,
-            this.ItemForDIALYSIS_MEMBRANE_OTH});
-            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(763, 68);
-            this.layoutControlGroup5.Text = "透析膜过敏";
+            this.ItemForHDF_H_TIMES.Control = this.HDF_H_TIMESTextEdit;
+            this.ItemForHDF_H_TIMES.CustomizationFormText = "HDF(h/次):";
+            this.ItemForHDF_H_TIMES.Location = new System.Drawing.Point(0, 96);
+            this.ItemForHDF_H_TIMES.Name = "ItemForHDF_H_TIMES";
+            this.ItemForHDF_H_TIMES.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHDF_H_TIMES.Text = "HDF(h/次):";
+            this.ItemForHDF_H_TIMES.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDIALYSIS_MEMBRANE
+            // ItemForARTERY_LEFT_RIGHT
             // 
-            this.ItemForDIALYSIS_MEMBRANE.Control = this.DIALYSIS_MEMBRANETextEdit;
-            this.ItemForDIALYSIS_MEMBRANE.CustomizationFormText = "透析膜:";
-            this.ItemForDIALYSIS_MEMBRANE.Location = new System.Drawing.Point(0, 0);
-            this.ItemForDIALYSIS_MEMBRANE.Name = "ItemForDIALYSIS_MEMBRANE";
-            this.ItemForDIALYSIS_MEMBRANE.Size = new System.Drawing.Size(369, 24);
-            this.ItemForDIALYSIS_MEMBRANE.Text = "透析膜:";
-            this.ItemForDIALYSIS_MEMBRANE.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForARTERY_LEFT_RIGHT.Control = this.ARTERY_LEFT_RIGHTTextEdit;
+            this.ItemForARTERY_LEFT_RIGHT.CustomizationFormText = "血管通路位置:";
+            this.ItemForARTERY_LEFT_RIGHT.Location = new System.Drawing.Point(0, 120);
+            this.ItemForARTERY_LEFT_RIGHT.Name = "ItemForARTERY_LEFT_RIGHT";
+            this.ItemForARTERY_LEFT_RIGHT.Size = new System.Drawing.Size(708, 24);
+            this.ItemForARTERY_LEFT_RIGHT.Text = "血管通路位置:";
+            this.ItemForARTERY_LEFT_RIGHT.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDIALYSIS_MEMBRANE_OTH
+            // PATH_TYPETextEdit
             // 
-            this.ItemForDIALYSIS_MEMBRANE_OTH.Control = this.DIALYSIS_MEMBRANE_OTHTextEdit;
-            this.ItemForDIALYSIS_MEMBRANE_OTH.CustomizationFormText = "其他透析膜:";
-            this.ItemForDIALYSIS_MEMBRANE_OTH.Location = new System.Drawing.Point(369, 0);
-            this.ItemForDIALYSIS_MEMBRANE_OTH.Name = "ItemForDIALYSIS_MEMBRANE_OTH";
-            this.ItemForDIALYSIS_MEMBRANE_OTH.Size = new System.Drawing.Size(370, 24);
-            this.ItemForDIALYSIS_MEMBRANE_OTH.Text = "其他透析膜:";
-            this.ItemForDIALYSIS_MEMBRANE_OTH.TextSize = new System.Drawing.Size(100, 14);
+            this.PATH_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "PATH_TYPE", true));
+            this.PATH_TYPETextEdit.Location = new System.Drawing.Point(260, 156);
+            this.PATH_TYPETextEdit.MenuManager = this.barManager1;
+            this.PATH_TYPETextEdit.Name = "PATH_TYPETextEdit";
+            this.PATH_TYPETextEdit.Size = new System.Drawing.Size(456, 20);
+            this.PATH_TYPETextEdit.StyleController = this.dataLayoutControl1;
+            this.PATH_TYPETextEdit.TabIndex = 13;
             // 
-            // layoutControlGroup6
+            // ItemForPATH_TYPE
             // 
-            this.layoutControlGroup6.CustomizationFormText = "消毒剂过敏";
-            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForDISINFECTANTS,
-            this.ItemForDISINFECTANTS_OTH});
-            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 116);
-            this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(763, 68);
-            this.layoutControlGroup6.Text = "消毒剂过敏";
+            this.ItemForPATH_TYPE.Control = this.PATH_TYPETextEdit;
+            this.ItemForPATH_TYPE.CustomizationFormText = "通路类型:";
+            this.ItemForPATH_TYPE.Location = new System.Drawing.Point(0, 144);
+            this.ItemForPATH_TYPE.Name = "ItemForPATH_TYPE";
+            this.ItemForPATH_TYPE.Size = new System.Drawing.Size(708, 24);
+            this.ItemForPATH_TYPE.Text = "通路类型:";
+            this.ItemForPATH_TYPE.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDISINFECTANTS
+            // HEPARIN_FIRSTTextEdit
             // 
-            this.ItemForDISINFECTANTS.Control = this.DISINFECTANTSTextEdit;
-            this.ItemForDISINFECTANTS.CustomizationFormText = "消毒剂:";
-            this.ItemForDISINFECTANTS.Location = new System.Drawing.Point(0, 0);
-            this.ItemForDISINFECTANTS.Name = "ItemForDISINFECTANTS";
-            this.ItemForDISINFECTANTS.Size = new System.Drawing.Size(369, 24);
-            this.ItemForDISINFECTANTS.Text = "消毒剂:";
-            this.ItemForDISINFECTANTS.TextSize = new System.Drawing.Size(100, 14);
+            this.HEPARIN_FIRSTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPARIN_FIRST", true));
+            this.HEPARIN_FIRSTTextEdit.Location = new System.Drawing.Point(260, 180);
+            this.HEPARIN_FIRSTTextEdit.MenuManager = this.barManager1;
+            this.HEPARIN_FIRSTTextEdit.Name = "HEPARIN_FIRSTTextEdit";
+            this.HEPARIN_FIRSTTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HEPARIN_FIRSTTextEdit.StyleController = this.dataLayoutControl1;
+            this.HEPARIN_FIRSTTextEdit.TabIndex = 14;
             // 
-            // ItemForDISINFECTANTS_OTH
+            // ItemForHEPARIN_FIRST
             // 
-            this.ItemForDISINFECTANTS_OTH.Control = this.DISINFECTANTS_OTHTextEdit;
-            this.ItemForDISINFECTANTS_OTH.CustomizationFormText = "其他消毒剂:";
-            this.ItemForDISINFECTANTS_OTH.Location = new System.Drawing.Point(369, 0);
-            this.ItemForDISINFECTANTS_OTH.Name = "ItemForDISINFECTANTS_OTH";
-            this.ItemForDISINFECTANTS_OTH.Size = new System.Drawing.Size(370, 24);
-            this.ItemForDISINFECTANTS_OTH.Text = "其他消毒剂:";
-            this.ItemForDISINFECTANTS_OTH.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForHEPARIN_FIRST.Control = this.HEPARIN_FIRSTTextEdit;
+            this.ItemForHEPARIN_FIRST.CustomizationFormText = "肝素首量(mg):";
+            this.ItemForHEPARIN_FIRST.Location = new System.Drawing.Point(0, 168);
+            this.ItemForHEPARIN_FIRST.Name = "ItemForHEPARIN_FIRST";
+            this.ItemForHEPARIN_FIRST.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHEPARIN_FIRST.Text = "肝素首量(mg):";
+            this.ItemForHEPARIN_FIRST.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForALLERGIC_REACTIONS_OTH
+            // HEPARIN_FIRST_ADDTextEdit
             // 
-            this.ItemForALLERGIC_REACTIONS_OTH.Control = this.ALLERGIC_REACTIONS_OTHTextEdit;
-            this.ItemForALLERGIC_REACTIONS_OTH.CustomizationFormText = "其他过敏反应:";
-            this.ItemForALLERGIC_REACTIONS_OTH.Location = new System.Drawing.Point(0, 568);
-            this.ItemForALLERGIC_REACTIONS_OTH.Name = "ItemForALLERGIC_REACTIONS_OTH";
-            this.ItemForALLERGIC_REACTIONS_OTH.Size = new System.Drawing.Size(787, 20);
-            this.ItemForALLERGIC_REACTIONS_OTH.Text = "其他过敏反应:";
-            this.ItemForALLERGIC_REACTIONS_OTH.TextSize = new System.Drawing.Size(100, 14);
+            this.HEPARIN_FIRST_ADDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPARIN_FIRST_ADD", true));
+            this.HEPARIN_FIRST_ADDTextEdit.Location = new System.Drawing.Point(260, 204);
+            this.HEPARIN_FIRST_ADDTextEdit.MenuManager = this.barManager1;
+            this.HEPARIN_FIRST_ADDTextEdit.Name = "HEPARIN_FIRST_ADDTextEdit";
+            this.HEPARIN_FIRST_ADDTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HEPARIN_FIRST_ADDTextEdit.StyleController = this.dataLayoutControl1;
+            this.HEPARIN_FIRST_ADDTextEdit.TabIndex = 15;
             // 
-            // layoutControlGroup7
+            // ItemForHEPARIN_FIRST_ADD
             // 
-            this.layoutControlGroup7.CustomizationFormText = "药物过敏";
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForDRUG_ALLERGY,
-            this.ItemForDRUG_ALLERGY_OTH,
-            this.layoutControlGroup8,
-            this.layoutControlGroup9,
-            this.layoutControlGroup10});
-            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 252);
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(787, 316);
-            this.layoutControlGroup7.Text = "药物过敏";
+            this.ItemForHEPARIN_FIRST_ADD.Control = this.HEPARIN_FIRST_ADDTextEdit;
+            this.ItemForHEPARIN_FIRST_ADD.CustomizationFormText = "肝素首量追加量(mg):";
+            this.ItemForHEPARIN_FIRST_ADD.Location = new System.Drawing.Point(0, 192);
+            this.ItemForHEPARIN_FIRST_ADD.Name = "ItemForHEPARIN_FIRST_ADD";
+            this.ItemForHEPARIN_FIRST_ADD.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHEPARIN_FIRST_ADD.Text = "肝素首量追加量(mg):";
+            this.ItemForHEPARIN_FIRST_ADD.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForDRUG_ALLERGY
+            // LOW_MOLECULARTextEdit
             // 
-            this.ItemForDRUG_ALLERGY.Control = this.DRUG_ALLERGYTextEdit;
-            this.ItemForDRUG_ALLERGY.CustomizationFormText = "药物过敏:";
-            this.ItemForDRUG_ALLERGY.Location = new System.Drawing.Point(0, 0);
-            this.ItemForDRUG_ALLERGY.Name = "ItemForDRUG_ALLERGY";
-            this.ItemForDRUG_ALLERGY.Size = new System.Drawing.Size(763, 24);
-            this.ItemForDRUG_ALLERGY.Text = "药物过敏:";
-            this.ItemForDRUG_ALLERGY.TextSize = new System.Drawing.Size(100, 14);
+            this.LOW_MOLECULARTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "LOW_MOLECULAR", true));
+            this.LOW_MOLECULARTextEdit.Location = new System.Drawing.Point(260, 228);
+            this.LOW_MOLECULARTextEdit.MenuManager = this.barManager1;
+            this.LOW_MOLECULARTextEdit.Name = "LOW_MOLECULARTextEdit";
+            this.LOW_MOLECULARTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.LOW_MOLECULARTextEdit.StyleController = this.dataLayoutControl1;
+            this.LOW_MOLECULARTextEdit.TabIndex = 16;
             // 
-            // ItemForDRUG_ALLERGY_OTH
+            // ItemForLOW_MOLECULAR
             // 
-            this.ItemForDRUG_ALLERGY_OTH.Control = this.DRUG_ALLERGY_OTHTextEdit;
-            this.ItemForDRUG_ALLERGY_OTH.CustomizationFormText = "其他药物过敏:";
-            this.ItemForDRUG_ALLERGY_OTH.Location = new System.Drawing.Point(0, 252);
-            this.ItemForDRUG_ALLERGY_OTH.Name = "ItemForDRUG_ALLERGY_OTH";
-            this.ItemForDRUG_ALLERGY_OTH.Size = new System.Drawing.Size(763, 20);
-            this.ItemForDRUG_ALLERGY_OTH.Text = "其他药物过敏:";
-            this.ItemForDRUG_ALLERGY_OTH.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForLOW_MOLECULAR.Control = this.LOW_MOLECULARTextEdit;
+            this.ItemForLOW_MOLECULAR.CustomizationFormText = "低分子肝素(IU):";
+            this.ItemForLOW_MOLECULAR.Location = new System.Drawing.Point(0, 216);
+            this.ItemForLOW_MOLECULAR.Name = "ItemForLOW_MOLECULAR";
+            this.ItemForLOW_MOLECULAR.Size = new System.Drawing.Size(708, 24);
+            this.ItemForLOW_MOLECULAR.Text = "低分子肝素(IU):";
+            this.ItemForLOW_MOLECULAR.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // layoutControlGroup8
+            // ANA_MACHINETextEdit
             // 
-            this.layoutControlGroup8.CustomizationFormText = "静脉铁剂";
-            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForIRON_SUCROSE,
-            this.ItemForIRON_DEXTRAN,
-            this.ItemForINTRAVENOUS_IRON});
-            this.layoutControlGroup8.Location = new System.Drawing.Point(0, 160);
-            this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(763, 92);
-            this.layoutControlGroup8.Text = "静脉铁剂";
+            this.ANA_MACHINETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_MACHINE", true));
+            this.ANA_MACHINETextEdit.Location = new System.Drawing.Point(260, 252);
+            this.ANA_MACHINETextEdit.MenuManager = this.barManager1;
+            this.ANA_MACHINETextEdit.Name = "ANA_MACHINETextEdit";
+            this.ANA_MACHINETextEdit.Size = new System.Drawing.Size(456, 20);
+            this.ANA_MACHINETextEdit.StyleController = this.dataLayoutControl1;
+            this.ANA_MACHINETextEdit.TabIndex = 17;
             // 
-            // ItemForIRON_SUCROSE
+            // ItemForANA_MACHINE
             // 
-            this.ItemForIRON_SUCROSE.Control = this.IRON_SUCROSETextEdit;
-            this.ItemForIRON_SUCROSE.CustomizationFormText = "蔗糖铁:";
-            this.ItemForIRON_SUCROSE.Location = new System.Drawing.Point(0, 24);
-            this.ItemForIRON_SUCROSE.Name = "ItemForIRON_SUCROSE";
-            this.ItemForIRON_SUCROSE.Size = new System.Drawing.Size(369, 24);
-            this.ItemForIRON_SUCROSE.Text = "蔗糖铁:";
-            this.ItemForIRON_SUCROSE.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForANA_MACHINE.Control = this.ANA_MACHINETextEdit;
+            this.ItemForANA_MACHINE.CustomizationFormText = "透析器型号:";
+            this.ItemForANA_MACHINE.Location = new System.Drawing.Point(0, 240);
+            this.ItemForANA_MACHINE.Name = "ItemForANA_MACHINE";
+            this.ItemForANA_MACHINE.Size = new System.Drawing.Size(708, 24);
+            this.ItemForANA_MACHINE.Text = "透析器型号:";
+            this.ItemForANA_MACHINE.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // ItemForIRON_DEXTRAN
+            // ANA_MACHINE_OTHTextEdit
             // 
-            this.ItemForIRON_DEXTRAN.Control = this.IRON_DEXTRANTextEdit;
-            this.ItemForIRON_DEXTRAN.CustomizationFormText = "右旋糖苷铁:";
-            this.ItemForIRON_DEXTRAN.Location = new System.Drawing.Point(369, 24);
-            this.ItemForIRON_DEXTRAN.Name = "ItemForIRON_DEXTRAN";
-            this.ItemForIRON_DEXTRAN.Size = new System.Drawing.Size(370, 24);
-            this.ItemForIRON_DEXTRAN.Text = "右旋糖苷铁:";
-            this.ItemForIRON_DEXTRAN.TextSize = new System.Drawing.Size(100, 14);
+            this.ANA_MACHINE_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_MACHINE_OTH", true));
+            this.ANA_MACHINE_OTHTextEdit.Location = new System.Drawing.Point(260, 276);
+            this.ANA_MACHINE_OTHTextEdit.MenuManager = this.barManager1;
+            this.ANA_MACHINE_OTHTextEdit.Name = "ANA_MACHINE_OTHTextEdit";
+            this.ANA_MACHINE_OTHTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.ANA_MACHINE_OTHTextEdit.StyleController = this.dataLayoutControl1;
+            this.ANA_MACHINE_OTHTextEdit.TabIndex = 18;
             // 
-            // ItemForINTRAVENOUS_IRON
+            // ItemForANA_MACHINE_OTH
             // 
-            this.ItemForINTRAVENOUS_IRON.Control = this.INTRAVENOUS_IRONTextEdit;
-            this.ItemForINTRAVENOUS_IRON.CustomizationFormText = "静脉铁剂:";
-            this.ItemForINTRAVENOUS_IRON.Location = new System.Drawing.Point(0, 0);
-            this.ItemForINTRAVENOUS_IRON.Name = "ItemForINTRAVENOUS_IRON";
-            this.ItemForINTRAVENOUS_IRON.Size = new System.Drawing.Size(739, 24);
-            this.ItemForINTRAVENOUS_IRON.Text = "静脉铁剂:";
-            this.ItemForINTRAVENOUS_IRON.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForANA_MACHINE_OTH.Control = this.ANA_MACHINE_OTHTextEdit;
+            this.ItemForANA_MACHINE_OTH.CustomizationFormText = "其他透析器:";
+            this.ItemForANA_MACHINE_OTH.Location = new System.Drawing.Point(0, 264);
+            this.ItemForANA_MACHINE_OTH.Name = "ItemForANA_MACHINE_OTH";
+            this.ItemForANA_MACHINE_OTH.Size = new System.Drawing.Size(708, 24);
+            this.ItemForANA_MACHINE_OTH.Text = "其他透析器:";
+            this.ItemForANA_MACHINE_OTH.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // layoutControlGroup9
+            // DRY_WEIGHTTextEdit
             // 
-            this.layoutControlGroup9.CustomizationFormText = "抗生素";
-            this.layoutControlGroup9.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForANTIBIOTIC});
-            this.layoutControlGroup9.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlGroup9.Name = "layoutControlGroup9";
-            this.layoutControlGroup9.Size = new System.Drawing.Size(763, 68);
-            this.layoutControlGroup9.Text = "抗生素";
+            this.DRY_WEIGHTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DRY_WEIGHT", true));
+            this.DRY_WEIGHTTextEdit.Location = new System.Drawing.Point(260, 300);
+            this.DRY_WEIGHTTextEdit.MenuManager = this.barManager1;
+            this.DRY_WEIGHTTextEdit.Name = "DRY_WEIGHTTextEdit";
+            this.DRY_WEIGHTTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.DRY_WEIGHTTextEdit.StyleController = this.dataLayoutControl1;
+            this.DRY_WEIGHTTextEdit.TabIndex = 19;
             // 
-            // ItemForANTIBIOTIC
+            // ItemForDRY_WEIGHT
             // 
-            this.ItemForANTIBIOTIC.Control = this.ANTIBIOTICTextEdit;
-            this.ItemForANTIBIOTIC.CustomizationFormText = "抗生素:";
-            this.ItemForANTIBIOTIC.Location = new System.Drawing.Point(0, 0);
-            this.ItemForANTIBIOTIC.Name = "ItemForANTIBIOTIC";
-            this.ItemForANTIBIOTIC.Size = new System.Drawing.Size(739, 24);
-            this.ItemForANTIBIOTIC.Text = "抗生素:";
-            this.ItemForANTIBIOTIC.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForDRY_WEIGHT.Control = this.DRY_WEIGHTTextEdit;
+            this.ItemForDRY_WEIGHT.CustomizationFormText = "干体重(kg):";
+            this.ItemForDRY_WEIGHT.Location = new System.Drawing.Point(0, 288);
+            this.ItemForDRY_WEIGHT.Name = "ItemForDRY_WEIGHT";
+            this.ItemForDRY_WEIGHT.Size = new System.Drawing.Size(708, 24);
+            this.ItemForDRY_WEIGHT.Text = "干体重(kg):";
+            this.ItemForDRY_WEIGHT.TextSize = new System.Drawing.Size(244, 14);
             // 
-            // layoutControlGroup10
+            // DRY_WEIGHT_BEFTextEdit
             // 
-            this.layoutControlGroup10.CustomizationFormText = "肝素";
-            this.layoutControlGroup10.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForHEPARIN,
-            this.ItemForHEPARIN_OTH});
-            this.layoutControlGroup10.Location = new System.Drawing.Point(0, 92);
-            this.layoutControlGroup10.Name = "layoutControlGroup10";
-            this.layoutControlGroup10.Size = new System.Drawing.Size(763, 68);
-            this.layoutControlGroup10.Text = "肝素";
+            this.DRY_WEIGHT_BEFTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DRY_WEIGHT_BEF", true));
+            this.DRY_WEIGHT_BEFTextEdit.Location = new System.Drawing.Point(260, 324);
+            this.DRY_WEIGHT_BEFTextEdit.MenuManager = this.barManager1;
+            this.DRY_WEIGHT_BEFTextEdit.Name = "DRY_WEIGHT_BEFTextEdit";
+            this.DRY_WEIGHT_BEFTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.DRY_WEIGHT_BEFTextEdit.StyleController = this.dataLayoutControl1;
+            this.DRY_WEIGHT_BEFTextEdit.TabIndex = 20;
             // 
-            // ItemForHEPARIN
+            // ItemForDRY_WEIGHT_BEF
             // 
-            this.ItemForHEPARIN.Control = this.HEPARINTextEdit;
-            this.ItemForHEPARIN.CustomizationFormText = "肝素:";
-            this.ItemForHEPARIN.Location = new System.Drawing.Point(0, 0);
-            this.ItemForHEPARIN.Name = "ItemForHEPARIN";
-            this.ItemForHEPARIN.Size = new System.Drawing.Size(369, 24);
-            this.ItemForHEPARIN.Text = "肝素:";
-            this.ItemForHEPARIN.TextSize = new System.Drawing.Size(100, 14);
-            // 
-            // ItemForHEPARIN_OTH
-            // 
-            this.ItemForHEPARIN_OTH.Control = this.HEPARIN_OTHTextEdit;
-            this.ItemForHEPARIN_OTH.CustomizationFormText = "其他肝素:";
-            this.ItemForHEPARIN_OTH.Location = new System.Drawing.Point(369, 0);
-            this.ItemForHEPARIN_OTH.Name = "ItemForHEPARIN_OTH";
-            this.ItemForHEPARIN_OTH.Size = new System.Drawing.Size(370, 24);
-            this.ItemForHEPARIN_OTH.Text = "其他肝素:";
-            this.ItemForHEPARIN_OTH.TextSize = new System.Drawing.Size(100, 14);
+            this.ItemForDRY_WEIGHT_BEF.Control = this.DRY_WEIGHT_BEFTextEdit;
+            this.ItemForDRY_WEIGHT_BEF.CustomizationFormText = "干体重较前:";
+            this.ItemForDRY_WEIGHT_BEF.Location = new System.Drawing.Point(0, 0);
+            this.ItemForDRY_WEIGHT_BEF.Name = "ItemForDRY_WEIGHT_BEF";
+            this.ItemForDRY_WEIGHT_BEF.Size = new System.Drawing.Size(708, 24);
+            this.ItemForDRY_WEIGHT_BEF.Text = "干体重较前:";
+            this.ItemForDRY_WEIGHT_BEF.TextSize = new System.Drawing.Size(244, 14);
             // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.AllowDrawBackground = false;
             this.layoutControlGroup3.CustomizationFormText = "autoGeneratedGroup1";
             this.layoutControlGroup3.GroupBordersVisible = false;
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 632);
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForDRY_WEIGHT_BEF,
+            this.ItemForSYMPTOM,
+            this.ItemForBLOOD_PRESSURE_CONTROL,
+            this.ItemForBLOOD_PRESSURE1,
+            this.ItemForBLOOD_PRESSURE2,
+            this.ItemForBLOOD_PRESSURE3,
+            this.ItemForBLOOD_PRESSURE4,
+            this.ItemForCAPACITY_CONTROL,
+            this.ItemForCAPACITY,
+            this.ItemForCAPACITY_PROPORTION,
+            this.ItemForVASCULAR_ACCESS_STAT,
+            this.ItemForBLOOD_FLOW,
+            this.ItemForMAJOR_DISCOMFORT_HANDLING,
+            this.ItemForMEMO1,
+            this.ItemForMEMO2,
+            this.ItemForDIALYSIS_GENERAL,
+            this.ItemForURR});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 312);
             this.layoutControlGroup3.Name = "autoGeneratedGroup1";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(811, 1);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(708, 408);
             this.layoutControlGroup3.Text = "autoGeneratedGroup1";
             // 
-            // vALUECODEBindingSource2
+            // SYMPTOMTextEdit
             // 
-            this.vALUECODEBindingSource2.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            this.SYMPTOMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "SYMPTOM", true));
+            this.SYMPTOMTextEdit.Location = new System.Drawing.Point(260, 348);
+            this.SYMPTOMTextEdit.MenuManager = this.barManager1;
+            this.SYMPTOMTextEdit.Name = "SYMPTOMTextEdit";
+            this.SYMPTOMTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.SYMPTOMTextEdit.StyleController = this.dataLayoutControl1;
+            this.SYMPTOMTextEdit.TabIndex = 21;
             // 
-            // FrmNewDiagonsis_Allergy
+            // ItemForSYMPTOM
+            // 
+            this.ItemForSYMPTOM.Control = this.SYMPTOMTextEdit;
+            this.ItemForSYMPTOM.CustomizationFormText = "症状:";
+            this.ItemForSYMPTOM.Location = new System.Drawing.Point(0, 24);
+            this.ItemForSYMPTOM.Name = "ItemForSYMPTOM";
+            this.ItemForSYMPTOM.Size = new System.Drawing.Size(708, 24);
+            this.ItemForSYMPTOM.Text = "症状:";
+            this.ItemForSYMPTOM.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_PRESSURE_CONTROLTextEdit
+            // 
+            this.BLOOD_PRESSURE_CONTROLTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE_CONTROL", true));
+            this.BLOOD_PRESSURE_CONTROLTextEdit.Location = new System.Drawing.Point(260, 372);
+            this.BLOOD_PRESSURE_CONTROLTextEdit.MenuManager = this.barManager1;
+            this.BLOOD_PRESSURE_CONTROLTextEdit.Name = "BLOOD_PRESSURE_CONTROLTextEdit";
+            this.BLOOD_PRESSURE_CONTROLTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_PRESSURE_CONTROLTextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_PRESSURE_CONTROLTextEdit.TabIndex = 22;
+            // 
+            // ItemForBLOOD_PRESSURE_CONTROL
+            // 
+            this.ItemForBLOOD_PRESSURE_CONTROL.Control = this.BLOOD_PRESSURE_CONTROLTextEdit;
+            this.ItemForBLOOD_PRESSURE_CONTROL.CustomizationFormText = "血压控制:";
+            this.ItemForBLOOD_PRESSURE_CONTROL.Location = new System.Drawing.Point(0, 48);
+            this.ItemForBLOOD_PRESSURE_CONTROL.Name = "ItemForBLOOD_PRESSURE_CONTROL";
+            this.ItemForBLOOD_PRESSURE_CONTROL.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_PRESSURE_CONTROL.Text = "血压控制:";
+            this.ItemForBLOOD_PRESSURE_CONTROL.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_PRESSURE1TextEdit
+            // 
+            this.BLOOD_PRESSURE1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE1", true));
+            this.BLOOD_PRESSURE1TextEdit.Location = new System.Drawing.Point(260, 396);
+            this.BLOOD_PRESSURE1TextEdit.MenuManager = this.barManager1;
+            this.BLOOD_PRESSURE1TextEdit.Name = "BLOOD_PRESSURE1TextEdit";
+            this.BLOOD_PRESSURE1TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_PRESSURE1TextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_PRESSURE1TextEdit.TabIndex = 23;
+            // 
+            // ItemForBLOOD_PRESSURE1
+            // 
+            this.ItemForBLOOD_PRESSURE1.Control = this.BLOOD_PRESSURE1TextEdit;
+            this.ItemForBLOOD_PRESSURE1.CustomizationFormText = "BLOOD_PRESSURE1";
+            this.ItemForBLOOD_PRESSURE1.Location = new System.Drawing.Point(0, 72);
+            this.ItemForBLOOD_PRESSURE1.Name = "ItemForBLOOD_PRESSURE1";
+            this.ItemForBLOOD_PRESSURE1.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_PRESSURE1.Text = "BLOOD_PRESSURE1";
+            this.ItemForBLOOD_PRESSURE1.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_PRESSURE2TextEdit
+            // 
+            this.BLOOD_PRESSURE2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE2", true));
+            this.BLOOD_PRESSURE2TextEdit.Location = new System.Drawing.Point(260, 420);
+            this.BLOOD_PRESSURE2TextEdit.MenuManager = this.barManager1;
+            this.BLOOD_PRESSURE2TextEdit.Name = "BLOOD_PRESSURE2TextEdit";
+            this.BLOOD_PRESSURE2TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_PRESSURE2TextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_PRESSURE2TextEdit.TabIndex = 24;
+            // 
+            // ItemForBLOOD_PRESSURE2
+            // 
+            this.ItemForBLOOD_PRESSURE2.Control = this.BLOOD_PRESSURE2TextEdit;
+            this.ItemForBLOOD_PRESSURE2.CustomizationFormText = "BLOOD_PRESSURE2";
+            this.ItemForBLOOD_PRESSURE2.Location = new System.Drawing.Point(0, 96);
+            this.ItemForBLOOD_PRESSURE2.Name = "ItemForBLOOD_PRESSURE2";
+            this.ItemForBLOOD_PRESSURE2.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_PRESSURE2.Text = "BLOOD_PRESSURE2";
+            this.ItemForBLOOD_PRESSURE2.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_PRESSURE3TextEdit
+            // 
+            this.BLOOD_PRESSURE3TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE3", true));
+            this.BLOOD_PRESSURE3TextEdit.Location = new System.Drawing.Point(260, 444);
+            this.BLOOD_PRESSURE3TextEdit.MenuManager = this.barManager1;
+            this.BLOOD_PRESSURE3TextEdit.Name = "BLOOD_PRESSURE3TextEdit";
+            this.BLOOD_PRESSURE3TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_PRESSURE3TextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_PRESSURE3TextEdit.TabIndex = 25;
+            // 
+            // ItemForBLOOD_PRESSURE3
+            // 
+            this.ItemForBLOOD_PRESSURE3.Control = this.BLOOD_PRESSURE3TextEdit;
+            this.ItemForBLOOD_PRESSURE3.CustomizationFormText = "BLOOD_PRESSURE3";
+            this.ItemForBLOOD_PRESSURE3.Location = new System.Drawing.Point(0, 120);
+            this.ItemForBLOOD_PRESSURE3.Name = "ItemForBLOOD_PRESSURE3";
+            this.ItemForBLOOD_PRESSURE3.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_PRESSURE3.Text = "BLOOD_PRESSURE3";
+            this.ItemForBLOOD_PRESSURE3.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_PRESSURE4TextEdit
+            // 
+            this.BLOOD_PRESSURE4TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_PRESSURE4", true));
+            this.BLOOD_PRESSURE4TextEdit.Location = new System.Drawing.Point(260, 468);
+            this.BLOOD_PRESSURE4TextEdit.MenuManager = this.barManager1;
+            this.BLOOD_PRESSURE4TextEdit.Name = "BLOOD_PRESSURE4TextEdit";
+            this.BLOOD_PRESSURE4TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_PRESSURE4TextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_PRESSURE4TextEdit.TabIndex = 26;
+            // 
+            // ItemForBLOOD_PRESSURE4
+            // 
+            this.ItemForBLOOD_PRESSURE4.Control = this.BLOOD_PRESSURE4TextEdit;
+            this.ItemForBLOOD_PRESSURE4.CustomizationFormText = "BLOOD_PRESSURE4";
+            this.ItemForBLOOD_PRESSURE4.Location = new System.Drawing.Point(0, 144);
+            this.ItemForBLOOD_PRESSURE4.Name = "ItemForBLOOD_PRESSURE4";
+            this.ItemForBLOOD_PRESSURE4.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_PRESSURE4.Text = "BLOOD_PRESSURE4";
+            this.ItemForBLOOD_PRESSURE4.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // CAPACITY_CONTROLTextEdit
+            // 
+            this.CAPACITY_CONTROLTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY_CONTROL", true));
+            this.CAPACITY_CONTROLTextEdit.Location = new System.Drawing.Point(260, 492);
+            this.CAPACITY_CONTROLTextEdit.MenuManager = this.barManager1;
+            this.CAPACITY_CONTROLTextEdit.Name = "CAPACITY_CONTROLTextEdit";
+            this.CAPACITY_CONTROLTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CAPACITY_CONTROLTextEdit.StyleController = this.dataLayoutControl1;
+            this.CAPACITY_CONTROLTextEdit.TabIndex = 27;
+            // 
+            // ItemForCAPACITY_CONTROL
+            // 
+            this.ItemForCAPACITY_CONTROL.Control = this.CAPACITY_CONTROLTextEdit;
+            this.ItemForCAPACITY_CONTROL.CustomizationFormText = "容量控制:";
+            this.ItemForCAPACITY_CONTROL.Location = new System.Drawing.Point(0, 168);
+            this.ItemForCAPACITY_CONTROL.Name = "ItemForCAPACITY_CONTROL";
+            this.ItemForCAPACITY_CONTROL.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCAPACITY_CONTROL.Text = "容量控制:";
+            this.ItemForCAPACITY_CONTROL.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // CAPACITYTextEdit
+            // 
+            this.CAPACITYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY", true));
+            this.CAPACITYTextEdit.Location = new System.Drawing.Point(260, 516);
+            this.CAPACITYTextEdit.MenuManager = this.barManager1;
+            this.CAPACITYTextEdit.Name = "CAPACITYTextEdit";
+            this.CAPACITYTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CAPACITYTextEdit.StyleController = this.dataLayoutControl1;
+            this.CAPACITYTextEdit.TabIndex = 28;
+            // 
+            // ItemForCAPACITY
+            // 
+            this.ItemForCAPACITY.Control = this.CAPACITYTextEdit;
+            this.ItemForCAPACITY.CustomizationFormText = "容量(kg):";
+            this.ItemForCAPACITY.Location = new System.Drawing.Point(0, 192);
+            this.ItemForCAPACITY.Name = "ItemForCAPACITY";
+            this.ItemForCAPACITY.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCAPACITY.Text = "容量(kg):";
+            this.ItemForCAPACITY.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // CAPACITY_PROPORTIONTextEdit
+            // 
+            this.CAPACITY_PROPORTIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CAPACITY_PROPORTION", true));
+            this.CAPACITY_PROPORTIONTextEdit.Location = new System.Drawing.Point(260, 540);
+            this.CAPACITY_PROPORTIONTextEdit.MenuManager = this.barManager1;
+            this.CAPACITY_PROPORTIONTextEdit.Name = "CAPACITY_PROPORTIONTextEdit";
+            this.CAPACITY_PROPORTIONTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CAPACITY_PROPORTIONTextEdit.StyleController = this.dataLayoutControl1;
+            this.CAPACITY_PROPORTIONTextEdit.TabIndex = 29;
+            // 
+            // ItemForCAPACITY_PROPORTION
+            // 
+            this.ItemForCAPACITY_PROPORTION.Control = this.CAPACITY_PROPORTIONTextEdit;
+            this.ItemForCAPACITY_PROPORTION.CustomizationFormText = "约占干体重(%):";
+            this.ItemForCAPACITY_PROPORTION.Location = new System.Drawing.Point(0, 216);
+            this.ItemForCAPACITY_PROPORTION.Name = "ItemForCAPACITY_PROPORTION";
+            this.ItemForCAPACITY_PROPORTION.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCAPACITY_PROPORTION.Text = "约占干体重(%):";
+            this.ItemForCAPACITY_PROPORTION.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // VASCULAR_ACCESS_STATTextEdit
+            // 
+            this.VASCULAR_ACCESS_STATTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "VASCULAR_ACCESS_STAT", true));
+            this.VASCULAR_ACCESS_STATTextEdit.Location = new System.Drawing.Point(260, 564);
+            this.VASCULAR_ACCESS_STATTextEdit.MenuManager = this.barManager1;
+            this.VASCULAR_ACCESS_STATTextEdit.Name = "VASCULAR_ACCESS_STATTextEdit";
+            this.VASCULAR_ACCESS_STATTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.VASCULAR_ACCESS_STATTextEdit.StyleController = this.dataLayoutControl1;
+            this.VASCULAR_ACCESS_STATTextEdit.TabIndex = 30;
+            // 
+            // ItemForVASCULAR_ACCESS_STAT
+            // 
+            this.ItemForVASCULAR_ACCESS_STAT.Control = this.VASCULAR_ACCESS_STATTextEdit;
+            this.ItemForVASCULAR_ACCESS_STAT.CustomizationFormText = "血管通路功能:";
+            this.ItemForVASCULAR_ACCESS_STAT.Location = new System.Drawing.Point(0, 240);
+            this.ItemForVASCULAR_ACCESS_STAT.Name = "ItemForVASCULAR_ACCESS_STAT";
+            this.ItemForVASCULAR_ACCESS_STAT.Size = new System.Drawing.Size(708, 24);
+            this.ItemForVASCULAR_ACCESS_STAT.Text = "血管通路功能:";
+            this.ItemForVASCULAR_ACCESS_STAT.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_FLOWTextEdit
+            // 
+            this.BLOOD_FLOWTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_FLOW", true));
+            this.BLOOD_FLOWTextEdit.Location = new System.Drawing.Point(260, 588);
+            this.BLOOD_FLOWTextEdit.MenuManager = this.barManager1;
+            this.BLOOD_FLOWTextEdit.Name = "BLOOD_FLOWTextEdit";
+            this.BLOOD_FLOWTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_FLOWTextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_FLOWTextEdit.TabIndex = 31;
+            // 
+            // ItemForBLOOD_FLOW
+            // 
+            this.ItemForBLOOD_FLOW.Control = this.BLOOD_FLOWTextEdit;
+            this.ItemForBLOOD_FLOW.CustomizationFormText = "血流量(ml/min):";
+            this.ItemForBLOOD_FLOW.Location = new System.Drawing.Point(0, 264);
+            this.ItemForBLOOD_FLOW.Name = "ItemForBLOOD_FLOW";
+            this.ItemForBLOOD_FLOW.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_FLOW.Text = "血流量(ml/min):";
+            this.ItemForBLOOD_FLOW.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // MAJOR_DISCOMFORT_HANDLINGTextEdit
+            // 
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MAJOR_DISCOMFORT_HANDLING", true));
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Location = new System.Drawing.Point(260, 612);
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.MenuManager = this.barManager1;
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Name = "MAJOR_DISCOMFORT_HANDLINGTextEdit";
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.StyleController = this.dataLayoutControl1;
+            this.MAJOR_DISCOMFORT_HANDLINGTextEdit.TabIndex = 32;
+            // 
+            // ItemForMAJOR_DISCOMFORT_HANDLING
+            // 
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Control = this.MAJOR_DISCOMFORT_HANDLINGTextEdit;
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.CustomizationFormText = "主要不适、处理情况:";
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Location = new System.Drawing.Point(0, 288);
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Name = "ItemForMAJOR_DISCOMFORT_HANDLING";
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Size = new System.Drawing.Size(708, 24);
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.Text = "主要不适、处理情况:";
+            this.ItemForMAJOR_DISCOMFORT_HANDLING.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // MEMO1TextEdit
+            // 
+            this.MEMO1TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO1", true));
+            this.MEMO1TextEdit.Location = new System.Drawing.Point(260, 636);
+            this.MEMO1TextEdit.MenuManager = this.barManager1;
+            this.MEMO1TextEdit.Name = "MEMO1TextEdit";
+            this.MEMO1TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.MEMO1TextEdit.StyleController = this.dataLayoutControl1;
+            this.MEMO1TextEdit.TabIndex = 33;
+            // 
+            // ItemForMEMO1
+            // 
+            this.ItemForMEMO1.Control = this.MEMO1TextEdit;
+            this.ItemForMEMO1.CustomizationFormText = "是否住院、住院主要诊断、治疗处理、转归等:";
+            this.ItemForMEMO1.Location = new System.Drawing.Point(0, 312);
+            this.ItemForMEMO1.Name = "ItemForMEMO1";
+            this.ItemForMEMO1.Size = new System.Drawing.Size(708, 24);
+            this.ItemForMEMO1.Text = "是否住院、住院主要诊断、治疗处理、转归等:";
+            this.ItemForMEMO1.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // MEMO2TextEdit
+            // 
+            this.MEMO2TextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO2", true));
+            this.MEMO2TextEdit.Location = new System.Drawing.Point(260, 660);
+            this.MEMO2TextEdit.MenuManager = this.barManager1;
+            this.MEMO2TextEdit.Name = "MEMO2TextEdit";
+            this.MEMO2TextEdit.Size = new System.Drawing.Size(456, 20);
+            this.MEMO2TextEdit.StyleController = this.dataLayoutControl1;
+            this.MEMO2TextEdit.TabIndex = 34;
+            // 
+            // ItemForMEMO2
+            // 
+            this.ItemForMEMO2.Control = this.MEMO2TextEdit;
+            this.ItemForMEMO2.CustomizationFormText = "住院主要检查、化验:";
+            this.ItemForMEMO2.Location = new System.Drawing.Point(0, 336);
+            this.ItemForMEMO2.Name = "ItemForMEMO2";
+            this.ItemForMEMO2.Size = new System.Drawing.Size(708, 24);
+            this.ItemForMEMO2.Text = "住院主要检查、化验:";
+            this.ItemForMEMO2.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // DIALYSIS_GENERALTextEdit
+            // 
+            this.DIALYSIS_GENERALTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "DIALYSIS_GENERAL", true));
+            this.DIALYSIS_GENERALTextEdit.Location = new System.Drawing.Point(260, 684);
+            this.DIALYSIS_GENERALTextEdit.MenuManager = this.barManager1;
+            this.DIALYSIS_GENERALTextEdit.Name = "DIALYSIS_GENERALTextEdit";
+            this.DIALYSIS_GENERALTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.DIALYSIS_GENERALTextEdit.StyleController = this.dataLayoutControl1;
+            this.DIALYSIS_GENERALTextEdit.TabIndex = 35;
+            // 
+            // ItemForDIALYSIS_GENERAL
+            // 
+            this.ItemForDIALYSIS_GENERAL.Control = this.DIALYSIS_GENERALTextEdit;
+            this.ItemForDIALYSIS_GENERAL.CustomizationFormText = "透析一般情况:";
+            this.ItemForDIALYSIS_GENERAL.Location = new System.Drawing.Point(0, 360);
+            this.ItemForDIALYSIS_GENERAL.Name = "ItemForDIALYSIS_GENERAL";
+            this.ItemForDIALYSIS_GENERAL.Size = new System.Drawing.Size(708, 24);
+            this.ItemForDIALYSIS_GENERAL.Text = "透析一般情况:";
+            this.ItemForDIALYSIS_GENERAL.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // URRTextEdit
+            // 
+            this.URRTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "URR", true));
+            this.URRTextEdit.Location = new System.Drawing.Point(260, 708);
+            this.URRTextEdit.MenuManager = this.barManager1;
+            this.URRTextEdit.Name = "URRTextEdit";
+            this.URRTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.URRTextEdit.StyleController = this.dataLayoutControl1;
+            this.URRTextEdit.TabIndex = 36;
+            // 
+            // ItemForURR
+            // 
+            this.ItemForURR.Control = this.URRTextEdit;
+            this.ItemForURR.CustomizationFormText = "URR(%):";
+            this.ItemForURR.Location = new System.Drawing.Point(0, 384);
+            this.ItemForURR.Name = "ItemForURR";
+            this.ItemForURR.Size = new System.Drawing.Size(708, 24);
+            this.ItemForURR.Text = "URR(%):";
+            this.ItemForURR.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // KT_VTextEdit
+            // 
+            this.KT_VTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "KT_V", true));
+            this.KT_VTextEdit.Location = new System.Drawing.Point(260, 732);
+            this.KT_VTextEdit.MenuManager = this.barManager1;
+            this.KT_VTextEdit.Name = "KT_VTextEdit";
+            this.KT_VTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.KT_VTextEdit.StyleController = this.dataLayoutControl1;
+            this.KT_VTextEdit.TabIndex = 37;
+            // 
+            // ItemForKT_V
+            // 
+            this.ItemForKT_V.Control = this.KT_VTextEdit;
+            this.ItemForKT_V.CustomizationFormText = "KT_V";
+            this.ItemForKT_V.Location = new System.Drawing.Point(0, 0);
+            this.ItemForKT_V.Name = "ItemForKT_V";
+            this.ItemForKT_V.Size = new System.Drawing.Size(708, 24);
+            this.ItemForKT_V.Text = "KT_V";
+            this.ItemForKT_V.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // layoutControlGroup4
+            // 
+            this.layoutControlGroup4.AllowDrawBackground = false;
+            this.layoutControlGroup4.CustomizationFormText = "autoGeneratedGroup2";
+            this.layoutControlGroup4.GroupBordersVisible = false;
+            this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForKT_V,
+            this.ItemForCARDIOVASCULAR_SYSTEM,
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH,
+            this.ItemForANTIHYPERTENSIVE_DRUGS,
+            this.ItemForBLOOD_SYSTEM,
+            this.ItemForHB,
+            this.ItemForEPO,
+            this.ItemForEPO_TIMES,
+            this.ItemForEPO_TIMES_OTH,
+            this.ItemForIRON_DEFICIENCY,
+            this.ItemForFERRITIN,
+            this.ItemForTRANSFERRIN_SATURATION,
+            this.ItemForCALCIUM,
+            this.ItemForP,
+            this.ItemForPTH,
+            this.ItemForHEPATITIS_INDICATORS,
+            this.ItemForGPT});
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 720);
+            this.layoutControlGroup4.Name = "autoGeneratedGroup2";
+            this.layoutControlGroup4.Size = new System.Drawing.Size(708, 408);
+            this.layoutControlGroup4.Text = "autoGeneratedGroup2";
+            // 
+            // CARDIOVASCULAR_SYSTEMTextEdit
+            // 
+            this.CARDIOVASCULAR_SYSTEMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CARDIOVASCULAR_SYSTEM", true));
+            this.CARDIOVASCULAR_SYSTEMTextEdit.Location = new System.Drawing.Point(260, 756);
+            this.CARDIOVASCULAR_SYSTEMTextEdit.MenuManager = this.barManager1;
+            this.CARDIOVASCULAR_SYSTEMTextEdit.Name = "CARDIOVASCULAR_SYSTEMTextEdit";
+            this.CARDIOVASCULAR_SYSTEMTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CARDIOVASCULAR_SYSTEMTextEdit.StyleController = this.dataLayoutControl1;
+            this.CARDIOVASCULAR_SYSTEMTextEdit.TabIndex = 38;
+            // 
+            // ItemForCARDIOVASCULAR_SYSTEM
+            // 
+            this.ItemForCARDIOVASCULAR_SYSTEM.Control = this.CARDIOVASCULAR_SYSTEMTextEdit;
+            this.ItemForCARDIOVASCULAR_SYSTEM.CustomizationFormText = "心脑血管系统:";
+            this.ItemForCARDIOVASCULAR_SYSTEM.Location = new System.Drawing.Point(0, 24);
+            this.ItemForCARDIOVASCULAR_SYSTEM.Name = "ItemForCARDIOVASCULAR_SYSTEM";
+            this.ItemForCARDIOVASCULAR_SYSTEM.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCARDIOVASCULAR_SYSTEM.Text = "心脑血管系统:";
+            this.ItemForCARDIOVASCULAR_SYSTEM.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // CARDIOVASCULAR_SYSTEM_OTHTextEdit
+            // 
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CARDIOVASCULAR_SYSTEM_OTH", true));
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Location = new System.Drawing.Point(260, 780);
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.MenuManager = this.barManager1;
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Name = "CARDIOVASCULAR_SYSTEM_OTHTextEdit";
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.StyleController = this.dataLayoutControl1;
+            this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.TabIndex = 39;
+            // 
+            // ItemForCARDIOVASCULAR_SYSTEM_OTH
+            // 
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.Control = this.CARDIOVASCULAR_SYSTEM_OTHTextEdit;
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.CustomizationFormText = "心脑血管系统相关事件:";
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.Location = new System.Drawing.Point(0, 48);
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.Name = "ItemForCARDIOVASCULAR_SYSTEM_OTH";
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.Text = "心脑血管系统相关事件:";
+            this.ItemForCARDIOVASCULAR_SYSTEM_OTH.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // ANTIHYPERTENSIVE_DRUGSTextEdit
+            // 
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANTIHYPERTENSIVE_DRUGS", true));
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.Location = new System.Drawing.Point(260, 804);
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.MenuManager = this.barManager1;
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.Name = "ANTIHYPERTENSIVE_DRUGSTextEdit";
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.StyleController = this.dataLayoutControl1;
+            this.ANTIHYPERTENSIVE_DRUGSTextEdit.TabIndex = 40;
+            // 
+            // ItemForANTIHYPERTENSIVE_DRUGS
+            // 
+            this.ItemForANTIHYPERTENSIVE_DRUGS.Control = this.ANTIHYPERTENSIVE_DRUGSTextEdit;
+            this.ItemForANTIHYPERTENSIVE_DRUGS.CustomizationFormText = "降压药物:";
+            this.ItemForANTIHYPERTENSIVE_DRUGS.Location = new System.Drawing.Point(0, 72);
+            this.ItemForANTIHYPERTENSIVE_DRUGS.Name = "ItemForANTIHYPERTENSIVE_DRUGS";
+            this.ItemForANTIHYPERTENSIVE_DRUGS.Size = new System.Drawing.Size(708, 24);
+            this.ItemForANTIHYPERTENSIVE_DRUGS.Text = "降压药物:";
+            this.ItemForANTIHYPERTENSIVE_DRUGS.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BLOOD_SYSTEMTextEdit
+            // 
+            this.BLOOD_SYSTEMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BLOOD_SYSTEM", true));
+            this.BLOOD_SYSTEMTextEdit.Location = new System.Drawing.Point(260, 828);
+            this.BLOOD_SYSTEMTextEdit.MenuManager = this.barManager1;
+            this.BLOOD_SYSTEMTextEdit.Name = "BLOOD_SYSTEMTextEdit";
+            this.BLOOD_SYSTEMTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.BLOOD_SYSTEMTextEdit.StyleController = this.dataLayoutControl1;
+            this.BLOOD_SYSTEMTextEdit.TabIndex = 41;
+            // 
+            // ItemForBLOOD_SYSTEM
+            // 
+            this.ItemForBLOOD_SYSTEM.Control = this.BLOOD_SYSTEMTextEdit;
+            this.ItemForBLOOD_SYSTEM.CustomizationFormText = "血液系统:";
+            this.ItemForBLOOD_SYSTEM.Location = new System.Drawing.Point(0, 96);
+            this.ItemForBLOOD_SYSTEM.Name = "ItemForBLOOD_SYSTEM";
+            this.ItemForBLOOD_SYSTEM.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBLOOD_SYSTEM.Text = "血液系统:";
+            this.ItemForBLOOD_SYSTEM.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // HBTextEdit
+            // 
+            this.HBTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HB", true));
+            this.HBTextEdit.Location = new System.Drawing.Point(260, 852);
+            this.HBTextEdit.MenuManager = this.barManager1;
+            this.HBTextEdit.Name = "HBTextEdit";
+            this.HBTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HBTextEdit.StyleController = this.dataLayoutControl1;
+            this.HBTextEdit.TabIndex = 42;
+            // 
+            // ItemForHB
+            // 
+            this.ItemForHB.Control = this.HBTextEdit;
+            this.ItemForHB.CustomizationFormText = "Hb(g/L):";
+            this.ItemForHB.Location = new System.Drawing.Point(0, 120);
+            this.ItemForHB.Name = "ItemForHB";
+            this.ItemForHB.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHB.Text = "Hb(g/L):";
+            this.ItemForHB.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // EPOTextEdit
+            // 
+            this.EPOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO", true));
+            this.EPOTextEdit.Location = new System.Drawing.Point(260, 876);
+            this.EPOTextEdit.MenuManager = this.barManager1;
+            this.EPOTextEdit.Name = "EPOTextEdit";
+            this.EPOTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.EPOTextEdit.StyleController = this.dataLayoutControl1;
+            this.EPOTextEdit.TabIndex = 43;
+            // 
+            // ItemForEPO
+            // 
+            this.ItemForEPO.Control = this.EPOTextEdit;
+            this.ItemForEPO.CustomizationFormText = "EPO 剂量(u):";
+            this.ItemForEPO.Location = new System.Drawing.Point(0, 144);
+            this.ItemForEPO.Name = "ItemForEPO";
+            this.ItemForEPO.Size = new System.Drawing.Size(708, 24);
+            this.ItemForEPO.Text = "EPO 剂量(u):";
+            this.ItemForEPO.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // EPO_TIMESTextEdit
+            // 
+            this.EPO_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO_TIMES", true));
+            this.EPO_TIMESTextEdit.Location = new System.Drawing.Point(260, 900);
+            this.EPO_TIMESTextEdit.MenuManager = this.barManager1;
+            this.EPO_TIMESTextEdit.Name = "EPO_TIMESTextEdit";
+            this.EPO_TIMESTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.EPO_TIMESTextEdit.StyleController = this.dataLayoutControl1;
+            this.EPO_TIMESTextEdit.TabIndex = 44;
+            // 
+            // ItemForEPO_TIMES
+            // 
+            this.ItemForEPO_TIMES.Control = this.EPO_TIMESTextEdit;
+            this.ItemForEPO_TIMES.CustomizationFormText = "EPO(次/周):";
+            this.ItemForEPO_TIMES.Location = new System.Drawing.Point(0, 168);
+            this.ItemForEPO_TIMES.Name = "ItemForEPO_TIMES";
+            this.ItemForEPO_TIMES.Size = new System.Drawing.Size(708, 24);
+            this.ItemForEPO_TIMES.Text = "EPO(次/周):";
+            this.ItemForEPO_TIMES.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // EPO_TIMES_OTHTextEdit
+            // 
+            this.EPO_TIMES_OTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "EPO_TIMES_OTH", true));
+            this.EPO_TIMES_OTHTextEdit.Location = new System.Drawing.Point(260, 924);
+            this.EPO_TIMES_OTHTextEdit.MenuManager = this.barManager1;
+            this.EPO_TIMES_OTHTextEdit.Name = "EPO_TIMES_OTHTextEdit";
+            this.EPO_TIMES_OTHTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.EPO_TIMES_OTHTextEdit.StyleController = this.dataLayoutControl1;
+            this.EPO_TIMES_OTHTextEdit.TabIndex = 45;
+            // 
+            // ItemForEPO_TIMES_OTH
+            // 
+            this.ItemForEPO_TIMES_OTH.Control = this.EPO_TIMES_OTHTextEdit;
+            this.ItemForEPO_TIMES_OTH.CustomizationFormText = "其他EPO:";
+            this.ItemForEPO_TIMES_OTH.Location = new System.Drawing.Point(0, 192);
+            this.ItemForEPO_TIMES_OTH.Name = "ItemForEPO_TIMES_OTH";
+            this.ItemForEPO_TIMES_OTH.Size = new System.Drawing.Size(708, 24);
+            this.ItemForEPO_TIMES_OTH.Text = "其他EPO:";
+            this.ItemForEPO_TIMES_OTH.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // IRON_DEFICIENCYTextEdit
+            // 
+            this.IRON_DEFICIENCYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "IRON_DEFICIENCY", true));
+            this.IRON_DEFICIENCYTextEdit.Location = new System.Drawing.Point(260, 948);
+            this.IRON_DEFICIENCYTextEdit.MenuManager = this.barManager1;
+            this.IRON_DEFICIENCYTextEdit.Name = "IRON_DEFICIENCYTextEdit";
+            this.IRON_DEFICIENCYTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.IRON_DEFICIENCYTextEdit.StyleController = this.dataLayoutControl1;
+            this.IRON_DEFICIENCYTextEdit.TabIndex = 46;
+            // 
+            // ItemForIRON_DEFICIENCY
+            // 
+            this.ItemForIRON_DEFICIENCY.Control = this.IRON_DEFICIENCYTextEdit;
+            this.ItemForIRON_DEFICIENCY.CustomizationFormText = "缺铁:";
+            this.ItemForIRON_DEFICIENCY.Location = new System.Drawing.Point(0, 216);
+            this.ItemForIRON_DEFICIENCY.Name = "ItemForIRON_DEFICIENCY";
+            this.ItemForIRON_DEFICIENCY.Size = new System.Drawing.Size(708, 24);
+            this.ItemForIRON_DEFICIENCY.Text = "缺铁:";
+            this.ItemForIRON_DEFICIENCY.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // FERRITINTextEdit
+            // 
+            this.FERRITINTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "FERRITIN", true));
+            this.FERRITINTextEdit.Location = new System.Drawing.Point(260, 972);
+            this.FERRITINTextEdit.MenuManager = this.barManager1;
+            this.FERRITINTextEdit.Name = "FERRITINTextEdit";
+            this.FERRITINTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.FERRITINTextEdit.StyleController = this.dataLayoutControl1;
+            this.FERRITINTextEdit.TabIndex = 47;
+            // 
+            // ItemForFERRITIN
+            // 
+            this.ItemForFERRITIN.Control = this.FERRITINTextEdit;
+            this.ItemForFERRITIN.CustomizationFormText = "铁蛋白:";
+            this.ItemForFERRITIN.Location = new System.Drawing.Point(0, 240);
+            this.ItemForFERRITIN.Name = "ItemForFERRITIN";
+            this.ItemForFERRITIN.Size = new System.Drawing.Size(708, 24);
+            this.ItemForFERRITIN.Text = "铁蛋白:";
+            this.ItemForFERRITIN.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // TRANSFERRIN_SATURATIONTextEdit
+            // 
+            this.TRANSFERRIN_SATURATIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "TRANSFERRIN_SATURATION", true));
+            this.TRANSFERRIN_SATURATIONTextEdit.Location = new System.Drawing.Point(260, 996);
+            this.TRANSFERRIN_SATURATIONTextEdit.MenuManager = this.barManager1;
+            this.TRANSFERRIN_SATURATIONTextEdit.Name = "TRANSFERRIN_SATURATIONTextEdit";
+            this.TRANSFERRIN_SATURATIONTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.TRANSFERRIN_SATURATIONTextEdit.StyleController = this.dataLayoutControl1;
+            this.TRANSFERRIN_SATURATIONTextEdit.TabIndex = 48;
+            // 
+            // ItemForTRANSFERRIN_SATURATION
+            // 
+            this.ItemForTRANSFERRIN_SATURATION.Control = this.TRANSFERRIN_SATURATIONTextEdit;
+            this.ItemForTRANSFERRIN_SATURATION.CustomizationFormText = "转铁蛋白饱和度(%):";
+            this.ItemForTRANSFERRIN_SATURATION.Location = new System.Drawing.Point(0, 264);
+            this.ItemForTRANSFERRIN_SATURATION.Name = "ItemForTRANSFERRIN_SATURATION";
+            this.ItemForTRANSFERRIN_SATURATION.Size = new System.Drawing.Size(708, 24);
+            this.ItemForTRANSFERRIN_SATURATION.Text = "转铁蛋白饱和度(%):";
+            this.ItemForTRANSFERRIN_SATURATION.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // CALCIUMTextEdit
+            // 
+            this.CALCIUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "CALCIUM", true));
+            this.CALCIUMTextEdit.Location = new System.Drawing.Point(260, 1020);
+            this.CALCIUMTextEdit.MenuManager = this.barManager1;
+            this.CALCIUMTextEdit.Name = "CALCIUMTextEdit";
+            this.CALCIUMTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.CALCIUMTextEdit.StyleController = this.dataLayoutControl1;
+            this.CALCIUMTextEdit.TabIndex = 49;
+            // 
+            // ItemForCALCIUM
+            // 
+            this.ItemForCALCIUM.Control = this.CALCIUMTextEdit;
+            this.ItemForCALCIUM.CustomizationFormText = "钙(mmol/L):";
+            this.ItemForCALCIUM.Location = new System.Drawing.Point(0, 288);
+            this.ItemForCALCIUM.Name = "ItemForCALCIUM";
+            this.ItemForCALCIUM.Size = new System.Drawing.Size(708, 24);
+            this.ItemForCALCIUM.Text = "钙(mmol/L):";
+            this.ItemForCALCIUM.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // PTextEdit
+            // 
+            this.PTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "P", true));
+            this.PTextEdit.Location = new System.Drawing.Point(260, 1044);
+            this.PTextEdit.MenuManager = this.barManager1;
+            this.PTextEdit.Name = "PTextEdit";
+            this.PTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.PTextEdit.StyleController = this.dataLayoutControl1;
+            this.PTextEdit.TabIndex = 50;
+            // 
+            // ItemForP
+            // 
+            this.ItemForP.Control = this.PTextEdit;
+            this.ItemForP.CustomizationFormText = "磷(mmol/L):";
+            this.ItemForP.Location = new System.Drawing.Point(0, 312);
+            this.ItemForP.Name = "ItemForP";
+            this.ItemForP.Size = new System.Drawing.Size(708, 24);
+            this.ItemForP.Text = "磷(mmol/L):";
+            this.ItemForP.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // PTHTextEdit
+            // 
+            this.PTHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "PTH", true));
+            this.PTHTextEdit.Location = new System.Drawing.Point(260, 1068);
+            this.PTHTextEdit.MenuManager = this.barManager1;
+            this.PTHTextEdit.Name = "PTHTextEdit";
+            this.PTHTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.PTHTextEdit.StyleController = this.dataLayoutControl1;
+            this.PTHTextEdit.TabIndex = 51;
+            // 
+            // ItemForPTH
+            // 
+            this.ItemForPTH.Control = this.PTHTextEdit;
+            this.ItemForPTH.CustomizationFormText = "PTH(ng/L):";
+            this.ItemForPTH.Location = new System.Drawing.Point(0, 336);
+            this.ItemForPTH.Name = "ItemForPTH";
+            this.ItemForPTH.Size = new System.Drawing.Size(708, 24);
+            this.ItemForPTH.Text = "PTH(ng/L):";
+            this.ItemForPTH.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // HEPATITIS_INDICATORSTextEdit
+            // 
+            this.HEPATITIS_INDICATORSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HEPATITIS_INDICATORS", true));
+            this.HEPATITIS_INDICATORSTextEdit.Location = new System.Drawing.Point(260, 1092);
+            this.HEPATITIS_INDICATORSTextEdit.MenuManager = this.barManager1;
+            this.HEPATITIS_INDICATORSTextEdit.Name = "HEPATITIS_INDICATORSTextEdit";
+            this.HEPATITIS_INDICATORSTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HEPATITIS_INDICATORSTextEdit.StyleController = this.dataLayoutControl1;
+            this.HEPATITIS_INDICATORSTextEdit.TabIndex = 52;
+            // 
+            // ItemForHEPATITIS_INDICATORS
+            // 
+            this.ItemForHEPATITIS_INDICATORS.Control = this.HEPATITIS_INDICATORSTextEdit;
+            this.ItemForHEPATITIS_INDICATORS.CustomizationFormText = "肝炎指标:";
+            this.ItemForHEPATITIS_INDICATORS.Location = new System.Drawing.Point(0, 360);
+            this.ItemForHEPATITIS_INDICATORS.Name = "ItemForHEPATITIS_INDICATORS";
+            this.ItemForHEPATITIS_INDICATORS.Size = new System.Drawing.Size(708, 24);
+            this.ItemForHEPATITIS_INDICATORS.Text = "肝炎指标:";
+            this.ItemForHEPATITIS_INDICATORS.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // GPTTextEdit
+            // 
+            this.GPTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "GPT", true));
+            this.GPTTextEdit.Location = new System.Drawing.Point(260, 1116);
+            this.GPTTextEdit.MenuManager = this.barManager1;
+            this.GPTTextEdit.Name = "GPTTextEdit";
+            this.GPTTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.GPTTextEdit.StyleController = this.dataLayoutControl1;
+            this.GPTTextEdit.TabIndex = 53;
+            // 
+            // ItemForGPT
+            // 
+            this.ItemForGPT.Control = this.GPTTextEdit;
+            this.ItemForGPT.CustomizationFormText = "GPT(u):";
+            this.ItemForGPT.Location = new System.Drawing.Point(0, 384);
+            this.ItemForGPT.Name = "ItemForGPT";
+            this.ItemForGPT.Size = new System.Drawing.Size(708, 24);
+            this.ItemForGPT.Text = "GPT(u):";
+            this.ItemForGPT.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // GOTTextEdit
+            // 
+            this.GOTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "GOT", true));
+            this.GOTTextEdit.Location = new System.Drawing.Point(260, 1140);
+            this.GOTTextEdit.MenuManager = this.barManager1;
+            this.GOTTextEdit.Name = "GOTTextEdit";
+            this.GOTTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.GOTTextEdit.StyleController = this.dataLayoutControl1;
+            this.GOTTextEdit.TabIndex = 54;
+            // 
+            // ItemForGOT
+            // 
+            this.ItemForGOT.Control = this.GOTTextEdit;
+            this.ItemForGOT.CustomizationFormText = "GOT(u):";
+            this.ItemForGOT.Location = new System.Drawing.Point(0, 0);
+            this.ItemForGOT.Name = "ItemForGOT";
+            this.ItemForGOT.Size = new System.Drawing.Size(708, 24);
+            this.ItemForGOT.Text = "GOT(u):";
+            this.ItemForGOT.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.AllowDrawBackground = false;
+            this.layoutControlGroup5.CustomizationFormText = "autoGeneratedGroup3";
+            this.layoutControlGroup5.GroupBordersVisible = false;
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForGOT,
+            this.ItemForMEMO_SPECIAL_CONDITION,
+            this.ItemForMEMO_FUTURE,
+            this.ItemForBACK1});
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 1128);
+            this.layoutControlGroup5.Name = "autoGeneratedGroup3";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(708, 96);
+            this.layoutControlGroup5.Text = "autoGeneratedGroup3";
+            // 
+            // MEMO_SPECIAL_CONDITIONTextEdit
+            // 
+            this.MEMO_SPECIAL_CONDITIONTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO_SPECIAL_CONDITION", true));
+            this.MEMO_SPECIAL_CONDITIONTextEdit.Location = new System.Drawing.Point(260, 1164);
+            this.MEMO_SPECIAL_CONDITIONTextEdit.MenuManager = this.barManager1;
+            this.MEMO_SPECIAL_CONDITIONTextEdit.Name = "MEMO_SPECIAL_CONDITIONTextEdit";
+            this.MEMO_SPECIAL_CONDITIONTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.MEMO_SPECIAL_CONDITIONTextEdit.StyleController = this.dataLayoutControl1;
+            this.MEMO_SPECIAL_CONDITIONTextEdit.TabIndex = 55;
+            // 
+            // ItemForMEMO_SPECIAL_CONDITION
+            // 
+            this.ItemForMEMO_SPECIAL_CONDITION.Control = this.MEMO_SPECIAL_CONDITIONTextEdit;
+            this.ItemForMEMO_SPECIAL_CONDITION.CustomizationFormText = "特殊病情、检查及处理:";
+            this.ItemForMEMO_SPECIAL_CONDITION.Location = new System.Drawing.Point(0, 24);
+            this.ItemForMEMO_SPECIAL_CONDITION.Name = "ItemForMEMO_SPECIAL_CONDITION";
+            this.ItemForMEMO_SPECIAL_CONDITION.Size = new System.Drawing.Size(708, 24);
+            this.ItemForMEMO_SPECIAL_CONDITION.Text = "特殊病情、检查及处理:";
+            this.ItemForMEMO_SPECIAL_CONDITION.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // MEMO_FUTURETextEdit
+            // 
+            this.MEMO_FUTURETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "MEMO_FUTURE", true));
+            this.MEMO_FUTURETextEdit.Location = new System.Drawing.Point(260, 1188);
+            this.MEMO_FUTURETextEdit.MenuManager = this.barManager1;
+            this.MEMO_FUTURETextEdit.Name = "MEMO_FUTURETextEdit";
+            this.MEMO_FUTURETextEdit.Size = new System.Drawing.Size(456, 20);
+            this.MEMO_FUTURETextEdit.StyleController = this.dataLayoutControl1;
+            this.MEMO_FUTURETextEdit.TabIndex = 56;
+            // 
+            // ItemForMEMO_FUTURE
+            // 
+            this.ItemForMEMO_FUTURE.Control = this.MEMO_FUTURETextEdit;
+            this.ItemForMEMO_FUTURE.CustomizationFormText = "今后透析诊疗计划:";
+            this.ItemForMEMO_FUTURE.Location = new System.Drawing.Point(0, 48);
+            this.ItemForMEMO_FUTURE.Name = "ItemForMEMO_FUTURE";
+            this.ItemForMEMO_FUTURE.Size = new System.Drawing.Size(708, 24);
+            this.ItemForMEMO_FUTURE.Text = "今后透析诊疗计划:";
+            this.ItemForMEMO_FUTURE.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // BACK1DateEdit
+            // 
+            this.BACK1DateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "BACK1", true));
+            this.BACK1DateEdit.EditValue = null;
+            this.BACK1DateEdit.Location = new System.Drawing.Point(260, 1212);
+            this.BACK1DateEdit.MenuManager = this.barManager1;
+            this.BACK1DateEdit.Name = "BACK1DateEdit";
+            this.BACK1DateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.BACK1DateEdit.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.BACK1DateEdit.Size = new System.Drawing.Size(456, 20);
+            this.BACK1DateEdit.StyleController = this.dataLayoutControl1;
+            this.BACK1DateEdit.TabIndex = 57;
+            // 
+            // ItemForBACK1
+            // 
+            this.ItemForBACK1.Control = this.BACK1DateEdit;
+            this.ItemForBACK1.CustomizationFormText = "BACK1";
+            this.ItemForBACK1.Location = new System.Drawing.Point(0, 72);
+            this.ItemForBACK1.Name = "ItemForBACK1";
+            this.ItemForBACK1.Size = new System.Drawing.Size(708, 24);
+            this.ItemForBACK1.Text = "BACK1";
+            this.ItemForBACK1.TextSize = new System.Drawing.Size(244, 14);
+            // 
+            // ANA_TYPETextEdit
+            // 
+            this.ANA_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ANA_TYPE", true));
+            this.ANA_TYPETextEdit.Location = new System.Drawing.Point(260, 36);
+            this.ANA_TYPETextEdit.MenuManager = this.barManager1;
+            this.ANA_TYPETextEdit.Name = "ANA_TYPETextEdit";
+            this.ANA_TYPETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ANA_TYPETextEdit.Properties.Items.AddRange(new object[] {
+            "HF",
+            "LH"});
+            this.ANA_TYPETextEdit.Properties.PopupSizeable = true;
+            this.ANA_TYPETextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.ANA_TYPETextEdit.Size = new System.Drawing.Size(456, 20);
+            this.ANA_TYPETextEdit.StyleController = this.dataLayoutControl1;
+            this.ANA_TYPETextEdit.TabIndex = 8;
+            // 
+            // HD_TIMESTextEdit
+            // 
+            this.HD_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HD_TIMES", true));
+            this.HD_TIMESTextEdit.Location = new System.Drawing.Point(260, 60);
+            this.HD_TIMESTextEdit.MenuManager = this.barManager1;
+            this.HD_TIMESTextEdit.Name = "HD_TIMESTextEdit";
+            this.HD_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HD_TIMESTextEdit.Properties.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.HD_TIMESTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.HD_TIMESTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HD_TIMESTextEdit.StyleController = this.dataLayoutControl1;
+            this.HD_TIMESTextEdit.TabIndex = 9;
+            // 
+            // HDF_TIMESTextEdit
+            // 
+            this.HDF_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HDF_TIMES", true));
+            this.HDF_TIMESTextEdit.Location = new System.Drawing.Point(260, 84);
+            this.HDF_TIMESTextEdit.MenuManager = this.barManager1;
+            this.HDF_TIMESTextEdit.Name = "HDF_TIMESTextEdit";
+            this.HDF_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HDF_TIMESTextEdit.Properties.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.HDF_TIMESTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.HDF_TIMESTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HDF_TIMESTextEdit.StyleController = this.dataLayoutControl1;
+            this.HDF_TIMESTextEdit.TabIndex = 10;
+            // 
+            // HDF_H_TIMESTextEdit
+            // 
+            this.HDF_H_TIMESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "HDF_H_TIMES", true));
+            this.HDF_H_TIMESTextEdit.Location = new System.Drawing.Point(260, 108);
+            this.HDF_H_TIMESTextEdit.MenuManager = this.barManager1;
+            this.HDF_H_TIMESTextEdit.Name = "HDF_H_TIMESTextEdit";
+            this.HDF_H_TIMESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HDF_H_TIMESTextEdit.Properties.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "4.5"});
+            this.HDF_H_TIMESTextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.HDF_H_TIMESTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.HDF_H_TIMESTextEdit.StyleController = this.dataLayoutControl1;
+            this.HDF_H_TIMESTextEdit.TabIndex = 11;
+            // 
+            // ARTERY_LEFT_RIGHTTextEdit
+            // 
+            this.ARTERY_LEFT_RIGHTTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSEBindingSource, "ARTERY_LEFT_RIGHT", true));
+            this.ARTERY_LEFT_RIGHTTextEdit.Location = new System.Drawing.Point(260, 132);
+            this.ARTERY_LEFT_RIGHTTextEdit.MenuManager = this.barManager1;
+            this.ARTERY_LEFT_RIGHTTextEdit.Name = "ARTERY_LEFT_RIGHTTextEdit";
+            this.ARTERY_LEFT_RIGHTTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ARTERY_LEFT_RIGHTTextEdit.Properties.Items.AddRange(new object[] {
+            "左",
+            "右"});
+            this.ARTERY_LEFT_RIGHTTextEdit.Size = new System.Drawing.Size(456, 20);
+            this.ARTERY_LEFT_RIGHTTextEdit.StyleController = this.dataLayoutControl1;
+            this.ARTERY_LEFT_RIGHTTextEdit.TabIndex = 12;
+            // 
+            // FrmNewPatient_Course
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 576);
+            this.ClientSize = new System.Drawing.Size(982, 357);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmNewDiagonsis_Allergy";
+            this.Name = "FrmNewPatient_Course";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "新增传染病诊断";
-            this.Load += new System.EventHandler(this.FrmNewDiagonsis_Infe_Load);
+            this.Text = "新增患者病程信息";
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
-            this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dIAGNOSISALLERGYBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_MEMBRANE_OTHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DISINFECTANTS_OTHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ANTIBIOTICTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IRON_SUCROSETextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IRON_DEXTRANTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_OTHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ALLERGIC_REACTIONSTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_EQUIPMENT_ALLERGIESTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_MEMBRANETextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DISINFECTANTSTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DRUG_ALLERGYTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUEGROUPBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.INTRAVENOUS_IRONTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DRUG_ALLERGY_OTHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HEPARINTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ALLERGIC_REACTIONS_OTHTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForALLERGIC_REACTIONS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_MEMBRANE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_MEMBRANE_OTH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDISINFECTANTS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDISINFECTANTS_OTH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForALLERGIC_REACTIONS_OTH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRUG_ALLERGY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRUG_ALLERGY_OTH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_SUCROSE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_DEXTRAN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForINTRAVENOUS_IRON)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANTIBIOTIC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_OTH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTCOURSEBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOG_TIMEDateEdit.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOG_TIMEDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLOG_TIME)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TYPE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHD_TIMES)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHDF_TIMES)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHDF_H_TIMES)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForARTERY_LEFT_RIGHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PATH_TYPETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPATH_TYPE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_FIRSTTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_FIRST)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_FIRST_ADDTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_FIRST_ADD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LOW_MOLECULARTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForLOW_MOLECULAR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_MACHINETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_MACHINE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_MACHINE_OTHTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_MACHINE_OTH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRY_WEIGHTTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRY_WEIGHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DRY_WEIGHT_BEFTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDRY_WEIGHT_BEF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SYMPTOMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForSYMPTOM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE_CONTROLTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE_CONTROL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE1TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE2TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE3TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_PRESSURE4TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_PRESSURE4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITY_CONTROLTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY_CONTROL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITYTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CAPACITY_PROPORTIONTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCAPACITY_PROPORTION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VASCULAR_ACCESS_STATTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForVASCULAR_ACCESS_STAT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_FLOWTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_FLOW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MAJOR_DISCOMFORT_HANDLINGTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMAJOR_DISCOMFORT_HANDLING)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO1TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO2TextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DIALYSIS_GENERALTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForDIALYSIS_GENERAL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.URRTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForURR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KT_VTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForKT_V)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CARDIOVASCULAR_SYSTEMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCARDIOVASCULAR_SYSTEM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CARDIOVASCULAR_SYSTEM_OTHTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCARDIOVASCULAR_SYSTEM_OTH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANTIHYPERTENSIVE_DRUGSTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANTIHYPERTENSIVE_DRUGS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BLOOD_SYSTEMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBLOOD_SYSTEM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HBTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPOTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPO_TIMESTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO_TIMES)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EPO_TIMES_OTHTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO_TIMES_OTH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IRON_DEFICIENCYTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForIRON_DEFICIENCY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FERRITINTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFERRITIN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TRANSFERRIN_SATURATIONTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForTRANSFERRIN_SATURATION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CALCIUMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForCALCIUM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PTHTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPTH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPATITIS_INDICATORSTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPATITIS_INDICATORS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GPTTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForGPT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GOTTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForGOT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO_SPECIAL_CONDITIONTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO_SPECIAL_CONDITION)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MEMO_FUTURETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO_FUTURE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACK1DateEdit.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACK1DateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBACK1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_TYPETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HD_TIMESTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HDF_TIMESTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HDF_H_TIMESTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ARTERY_LEFT_RIGHTTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1114,56 +1976,113 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private System.Windows.Forms.BindingSource vALUECODEBindingSource;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private System.Windows.Forms.BindingSource dIAGNOSISALLERGYBindingSource;
-        private DevExpress.XtraEditors.TextEdit DIALYSIS_EQUIPMENT_ALLERGIES_OTextEdit;
-        private DevExpress.XtraEditors.TextEdit DIALYSIS_MEMBRANE_OTHTextEdit;
-        private DevExpress.XtraEditors.TextEdit DISINFECTANTS_OTHTextEdit;
-        private DevExpress.XtraEditors.TextEdit ANTIBIOTICTextEdit;
-        private DevExpress.XtraEditors.TextEdit IRON_SUCROSETextEdit;
-        private DevExpress.XtraEditors.TextEdit IRON_DEXTRANTextEdit;
-        private DevExpress.XtraEditors.TextEdit HEPARIN_OTHTextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit ALLERGIC_REACTIONSTextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit DIALYSIS_EQUIPMENT_ALLERGIESTextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit DIALYSIS_MEMBRANETextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit DISINFECTANTSTextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit DRUG_ALLERGYTextEdit;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit INTRAVENOUS_IRONTextEdit;
-        private DevExpress.XtraEditors.MemoEdit DRUG_ALLERGY_OTHTextEdit;
-        private DevExpress.XtraEditors.LookUpEdit HEPARINTextEdit;
+        private DevExpress.XtraEditors.DateEdit LOG_TIMEDateEdit;
+        private System.Windows.Forms.BindingSource pATIENTCOURSEBindingSource;
+        private DevExpress.XtraEditors.TextEdit PATH_TYPETextEdit;
+        private DevExpress.XtraEditors.TextEdit HEPARIN_FIRSTTextEdit;
+        private DevExpress.XtraEditors.TextEdit HEPARIN_FIRST_ADDTextEdit;
+        private DevExpress.XtraEditors.TextEdit LOW_MOLECULARTextEdit;
+        private DevExpress.XtraEditors.TextEdit ANA_MACHINETextEdit;
+        private DevExpress.XtraEditors.TextEdit ANA_MACHINE_OTHTextEdit;
+        private DevExpress.XtraEditors.TextEdit DRY_WEIGHTTextEdit;
+        private DevExpress.XtraEditors.TextEdit DRY_WEIGHT_BEFTextEdit;
+        private DevExpress.XtraEditors.TextEdit SYMPTOMTextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_PRESSURE_CONTROLTextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_PRESSURE1TextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_PRESSURE2TextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_PRESSURE3TextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_PRESSURE4TextEdit;
+        private DevExpress.XtraEditors.TextEdit CAPACITY_CONTROLTextEdit;
+        private DevExpress.XtraEditors.TextEdit CAPACITYTextEdit;
+        private DevExpress.XtraEditors.TextEdit CAPACITY_PROPORTIONTextEdit;
+        private DevExpress.XtraEditors.TextEdit VASCULAR_ACCESS_STATTextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_FLOWTextEdit;
+        private DevExpress.XtraEditors.TextEdit MAJOR_DISCOMFORT_HANDLINGTextEdit;
+        private DevExpress.XtraEditors.TextEdit MEMO1TextEdit;
+        private DevExpress.XtraEditors.TextEdit MEMO2TextEdit;
+        private DevExpress.XtraEditors.TextEdit DIALYSIS_GENERALTextEdit;
+        private DevExpress.XtraEditors.TextEdit URRTextEdit;
+        private DevExpress.XtraEditors.TextEdit KT_VTextEdit;
+        private DevExpress.XtraEditors.TextEdit CARDIOVASCULAR_SYSTEMTextEdit;
+        private DevExpress.XtraEditors.TextEdit CARDIOVASCULAR_SYSTEM_OTHTextEdit;
+        private DevExpress.XtraEditors.TextEdit ANTIHYPERTENSIVE_DRUGSTextEdit;
+        private DevExpress.XtraEditors.TextEdit BLOOD_SYSTEMTextEdit;
+        private DevExpress.XtraEditors.TextEdit HBTextEdit;
+        private DevExpress.XtraEditors.TextEdit EPOTextEdit;
+        private DevExpress.XtraEditors.TextEdit EPO_TIMESTextEdit;
+        private DevExpress.XtraEditors.TextEdit EPO_TIMES_OTHTextEdit;
+        private DevExpress.XtraEditors.TextEdit IRON_DEFICIENCYTextEdit;
+        private DevExpress.XtraEditors.TextEdit FERRITINTextEdit;
+        private DevExpress.XtraEditors.TextEdit TRANSFERRIN_SATURATIONTextEdit;
+        private DevExpress.XtraEditors.TextEdit CALCIUMTextEdit;
+        private DevExpress.XtraEditors.TextEdit PTextEdit;
+        private DevExpress.XtraEditors.TextEdit PTHTextEdit;
+        private DevExpress.XtraEditors.TextEdit HEPATITIS_INDICATORSTextEdit;
+        private DevExpress.XtraEditors.TextEdit GPTTextEdit;
+        private DevExpress.XtraEditors.TextEdit GOTTextEdit;
+        private DevExpress.XtraEditors.TextEdit MEMO_SPECIAL_CONDITIONTextEdit;
+        private DevExpress.XtraEditors.TextEdit MEMO_FUTURETextEdit;
+        private DevExpress.XtraEditors.DateEdit BACK1DateEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit ANA_TYPETextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit HD_TIMESTextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit HDF_TIMESTextEdit;
+        private DevExpress.XtraEditors.ComboBoxEdit HDF_H_TIMESTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForALLERGIC_REACTIONS;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForALLERGIC_REACTIONS_OTH;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDRUG_ALLERGY;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANTIBIOTIC;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDIALYSIS_EQUIPMENT_ALLERGIES;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDIALYSIS_EQUIPMENT_ALLERGIES_O;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDIALYSIS_MEMBRANE;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDIALYSIS_MEMBRANE_OTH;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDISINFECTANTS;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDISINFECTANTS_OTH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLOG_TIME;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_TYPE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHD_TIMES;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHDF_TIMES;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHDF_H_TIMES;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForARTERY_LEFT_RIGHT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForPATH_TYPE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN_FIRST;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN_FIRST_ADD;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForLOW_MOLECULAR;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_MACHINE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_MACHINE_OTH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDRY_WEIGHT;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDRUG_ALLERGY_OTH;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN_OTH;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup7;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource1;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource3;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource2;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource4;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource6;
-        private System.Windows.Forms.BindingSource vALUECODEBindingSource7;
-        private System.Windows.Forms.BindingSource vALUEGROUPBindingSource;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForINTRAVENOUS_IRON;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup8;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForIRON_SUCROSE;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForIRON_DEXTRAN;
-        private DevExpress.XtraEditors.MemoEdit ALLERGIC_REACTIONS_OTHTextEdit;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup9;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup10;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup11;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDRY_WEIGHT_BEF;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForSYMPTOM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_PRESSURE_CONTROL;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_PRESSURE1;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_PRESSURE2;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_PRESSURE3;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_PRESSURE4;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCAPACITY_CONTROL;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCAPACITY;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCAPACITY_PROPORTION;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForVASCULAR_ACCESS_STAT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_FLOW;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMAJOR_DISCOMFORT_HANDLING;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO1;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO2;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForDIALYSIS_GENERAL;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForURR;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForKT_V;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCARDIOVASCULAR_SYSTEM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCARDIOVASCULAR_SYSTEM_OTH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANTIHYPERTENSIVE_DRUGS;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBLOOD_SYSTEM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHB;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForEPO;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForEPO_TIMES;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForEPO_TIMES_OTH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForIRON_DEFICIENCY;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFERRITIN;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForTRANSFERRIN_SATURATION;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCALCIUM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForP;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForPTH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPATITIS_INDICATORS;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForGPT;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForGOT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO_SPECIAL_CONDITION;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO_FUTURE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBACK1;
+        private DevExpress.XtraEditors.ComboBoxEdit ARTERY_LEFT_RIGHTTextEdit;
     }
 }
