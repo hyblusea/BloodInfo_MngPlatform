@@ -33,6 +33,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvRole = new System.Windows.Forms.DataGridView();
+            this.gROUPIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mEMODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aTHROLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNewRole = new System.Windows.Forms.ToolStripButton();
             this.btnDelRole = new System.Windows.Forms.ToolStripButton();
@@ -40,6 +43,11 @@
             this.btnRefreshRole = new System.Windows.Forms.ToolStripButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvAct = new System.Windows.Forms.DataGridView();
+            this.wORKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uSERNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rOLEGROUPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.sTATUSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aCCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnNewAct = new System.Windows.Forms.ToolStripButton();
             this.btnDelAct = new System.Windows.Forms.ToolStripButton();
@@ -52,6 +60,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dgvCtrlEnable = new System.Windows.Forms.DataGridView();
+            this.eNABLEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cONTROLNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cONTROLTYPEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aTHCONTROLENABLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.cbxRole1 = new System.Windows.Forms.ToolStripComboBox();
@@ -65,8 +78,15 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.tvMenu = new BloodInfo_MngPlatform.TriStateTreeView();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cbxRole2 = new System.Windows.Forms.ToolStripComboBox();
@@ -77,32 +97,14 @@
             this.btnSelectAllMenu = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.gROUPIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mEMODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aTHROLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.wORKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uSERNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rOLEGROUPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.sTATUSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aCCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.aTHCONTROLENABLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tvMenu = new BloodInfo_MngPlatform.TriStateTreeView();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.eNABLEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cONTROLNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cONTROLTYPEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTHROLEBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -110,6 +112,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCtrlEnable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTHCONTROLENABLEBindingSource)).BeginInit();
             this.toolStrip3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -118,12 +121,9 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            this.toolStrip4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTHROLEBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTHCONTROLENABLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.toolStrip4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -168,6 +168,24 @@
             this.dgvRole.RowTemplate.Height = 23;
             this.dgvRole.Size = new System.Drawing.Size(1121, 382);
             this.dgvRole.TabIndex = 1;
+            // 
+            // gROUPIDDataGridViewTextBoxColumn
+            // 
+            this.gROUPIDDataGridViewTextBoxColumn.DataPropertyName = "GROUP_ID";
+            this.gROUPIDDataGridViewTextBoxColumn.HeaderText = "GROUP_ID";
+            this.gROUPIDDataGridViewTextBoxColumn.Name = "gROUPIDDataGridViewTextBoxColumn";
+            this.gROUPIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mEMODataGridViewTextBoxColumn
+            // 
+            this.mEMODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mEMODataGridViewTextBoxColumn.DataPropertyName = "MEMO";
+            this.mEMODataGridViewTextBoxColumn.HeaderText = "MEMO";
+            this.mEMODataGridViewTextBoxColumn.Name = "mEMODataGridViewTextBoxColumn";
+            // 
+            // aTHROLEBindingSource
+            // 
+            this.aTHROLEBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_ROLE);
             // 
             // toolStrip1
             // 
@@ -248,6 +266,37 @@
             this.dgvAct.RowTemplate.Height = 23;
             this.dgvAct.Size = new System.Drawing.Size(1121, 382);
             this.dgvAct.TabIndex = 2;
+            // 
+            // wORKIDDataGridViewTextBoxColumn
+            // 
+            this.wORKIDDataGridViewTextBoxColumn.DataPropertyName = "WORKID";
+            this.wORKIDDataGridViewTextBoxColumn.HeaderText = "WORKID";
+            this.wORKIDDataGridViewTextBoxColumn.Name = "wORKIDDataGridViewTextBoxColumn";
+            // 
+            // uSERNAMEDataGridViewTextBoxColumn
+            // 
+            this.uSERNAMEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.uSERNAMEDataGridViewTextBoxColumn.DataPropertyName = "USERNAME";
+            this.uSERNAMEDataGridViewTextBoxColumn.HeaderText = "USERNAME";
+            this.uSERNAMEDataGridViewTextBoxColumn.Name = "uSERNAMEDataGridViewTextBoxColumn";
+            // 
+            // rOLEGROUPDataGridViewTextBoxColumn
+            // 
+            this.rOLEGROUPDataGridViewTextBoxColumn.DataPropertyName = "ROLE_GROUP";
+            this.rOLEGROUPDataGridViewTextBoxColumn.HeaderText = "ROLE_GROUP";
+            this.rOLEGROUPDataGridViewTextBoxColumn.Name = "rOLEGROUPDataGridViewTextBoxColumn";
+            this.rOLEGROUPDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.rOLEGROUPDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // sTATUSDataGridViewTextBoxColumn
+            // 
+            this.sTATUSDataGridViewTextBoxColumn.DataPropertyName = "STATUS";
+            this.sTATUSDataGridViewTextBoxColumn.HeaderText = "STATUS";
+            this.sTATUSDataGridViewTextBoxColumn.Name = "sTATUSDataGridViewTextBoxColumn";
+            // 
+            // aCCOUNTBindingSource
+            // 
+            this.aCCOUNTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ACCOUNT);
             // 
             // toolStrip2
             // 
@@ -378,6 +427,43 @@
             this.dgvCtrlEnable.Size = new System.Drawing.Size(745, 382);
             this.dgvCtrlEnable.TabIndex = 2;
             // 
+            // eNABLEDataGridViewTextBoxColumn
+            // 
+            this.eNABLEDataGridViewTextBoxColumn.DataPropertyName = "ENABLE";
+            this.eNABLEDataGridViewTextBoxColumn.FalseValue = "0";
+            this.eNABLEDataGridViewTextBoxColumn.HeaderText = "ENABLE";
+            this.eNABLEDataGridViewTextBoxColumn.Name = "eNABLEDataGridViewTextBoxColumn";
+            this.eNABLEDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.eNABLEDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.eNABLEDataGridViewTextBoxColumn.TrueValue = "1";
+            // 
+            // cONTROLCAPTIONDataGridViewTextBoxColumn
+            // 
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_CAPTION";
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn.HeaderText = "CONTROL_CAPTION";
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn.Name = "cONTROLCAPTIONDataGridViewTextBoxColumn";
+            this.cONTROLCAPTIONDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cONTROLNAMEDataGridViewTextBoxColumn
+            // 
+            this.cONTROLNAMEDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_NAME";
+            this.cONTROLNAMEDataGridViewTextBoxColumn.HeaderText = "CONTROL_NAME";
+            this.cONTROLNAMEDataGridViewTextBoxColumn.Name = "cONTROLNAMEDataGridViewTextBoxColumn";
+            this.cONTROLNAMEDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cONTROLNAMEDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // cONTROLTYPEDataGridViewTextBoxColumn
+            // 
+            this.cONTROLTYPEDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_TYPE";
+            this.cONTROLTYPEDataGridViewTextBoxColumn.HeaderText = "CONTROL_TYPE";
+            this.cONTROLTYPEDataGridViewTextBoxColumn.Name = "cONTROLTYPEDataGridViewTextBoxColumn";
+            this.cONTROLTYPEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aTHCONTROLENABLEBindingSource
+            // 
+            this.aTHCONTROLENABLEBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_CONTROL_ENABLE);
+            // 
             // toolStrip3
             // 
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -494,6 +580,18 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "主菜单";
             // 
+            // tvMenu
+            // 
+            this.tvMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvMenu.ImageIndex = 0;
+            this.tvMenu.ImageList = this.imageList2;
+            this.tvMenu.Location = new System.Drawing.Point(2, 22);
+            this.tvMenu.Name = "tvMenu";
+            this.tvMenu.SelectedImageIndex = 0;
+            this.tvMenu.Size = new System.Drawing.Size(456, 358);
+            this.tvMenu.TabIndex = 3;
+            this.tvMenu.TriStateStyleProperty = BloodInfo_MngPlatform.TriStateTreeView.TriStateStyles.Standard;
+            // 
             // imageList2
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
@@ -509,6 +607,62 @@
             this.groupControl2.Size = new System.Drawing.Size(656, 382);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "主导航栏";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridView1.DataSource = this.bindingSource1;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 22);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(652, 358);
+            this.dataGridView1.TabIndex = 3;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ENABLE";
+            this.dataGridViewCheckBoxColumn1.FalseValue = "0";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "ENABLE";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.TrueValue = "1";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CONTROL_CAPTION";
+            this.dataGridViewTextBoxColumn1.HeaderText = "CONTROL_CAPTION";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "CONTROL_NAME";
+            this.dataGridViewTextBoxColumn2.HeaderText = "CONTROL_NAME";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "CONTROL_TYPE";
+            this.dataGridViewTextBoxColumn3.HeaderText = "CONTROL_TYPE";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_CONTROL_ENABLE);
             // 
             // toolStrip4
             // 
@@ -590,160 +744,6 @@
             this.toolStripLabel4.Size = new System.Drawing.Size(367, 22);
             this.toolStripLabel4.Text = "前端使能控制规则:仅设置明确设置了控件的Enable值为False的控件";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(652, 358);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // gROUPIDDataGridViewTextBoxColumn
-            // 
-            this.gROUPIDDataGridViewTextBoxColumn.DataPropertyName = "GROUP_ID";
-            this.gROUPIDDataGridViewTextBoxColumn.HeaderText = "GROUP_ID";
-            this.gROUPIDDataGridViewTextBoxColumn.Name = "gROUPIDDataGridViewTextBoxColumn";
-            this.gROUPIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mEMODataGridViewTextBoxColumn
-            // 
-            this.mEMODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mEMODataGridViewTextBoxColumn.DataPropertyName = "MEMO";
-            this.mEMODataGridViewTextBoxColumn.HeaderText = "MEMO";
-            this.mEMODataGridViewTextBoxColumn.Name = "mEMODataGridViewTextBoxColumn";
-            // 
-            // aTHROLEBindingSource
-            // 
-            this.aTHROLEBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_ROLE);
-            // 
-            // wORKIDDataGridViewTextBoxColumn
-            // 
-            this.wORKIDDataGridViewTextBoxColumn.DataPropertyName = "WORKID";
-            this.wORKIDDataGridViewTextBoxColumn.HeaderText = "WORKID";
-            this.wORKIDDataGridViewTextBoxColumn.Name = "wORKIDDataGridViewTextBoxColumn";
-            // 
-            // uSERNAMEDataGridViewTextBoxColumn
-            // 
-            this.uSERNAMEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.uSERNAMEDataGridViewTextBoxColumn.DataPropertyName = "USERNAME";
-            this.uSERNAMEDataGridViewTextBoxColumn.HeaderText = "USERNAME";
-            this.uSERNAMEDataGridViewTextBoxColumn.Name = "uSERNAMEDataGridViewTextBoxColumn";
-            // 
-            // rOLEGROUPDataGridViewTextBoxColumn
-            // 
-            this.rOLEGROUPDataGridViewTextBoxColumn.DataPropertyName = "ROLE_GROUP";
-            this.rOLEGROUPDataGridViewTextBoxColumn.HeaderText = "ROLE_GROUP";
-            this.rOLEGROUPDataGridViewTextBoxColumn.Name = "rOLEGROUPDataGridViewTextBoxColumn";
-            this.rOLEGROUPDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.rOLEGROUPDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // sTATUSDataGridViewTextBoxColumn
-            // 
-            this.sTATUSDataGridViewTextBoxColumn.DataPropertyName = "STATUS";
-            this.sTATUSDataGridViewTextBoxColumn.HeaderText = "STATUS";
-            this.sTATUSDataGridViewTextBoxColumn.Name = "sTATUSDataGridViewTextBoxColumn";
-            // 
-            // aCCOUNTBindingSource
-            // 
-            this.aCCOUNTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ACCOUNT);
-            // 
-            // aTHCONTROLENABLEBindingSource
-            // 
-            this.aTHCONTROLENABLEBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_CONTROL_ENABLE);
-            // 
-            // tvMenu
-            // 
-            this.tvMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvMenu.ImageIndex = 0;
-            this.tvMenu.ImageList = this.imageList2;
-            this.tvMenu.Location = new System.Drawing.Point(2, 22);
-            this.tvMenu.Name = "tvMenu";
-            this.tvMenu.SelectedImageIndex = 0;
-            this.tvMenu.Size = new System.Drawing.Size(456, 358);
-            this.tvMenu.TabIndex = 3;
-            this.tvMenu.TriStateStyleProperty = BloodInfo_MngPlatform.TriStateTreeView.TriStateStyles.Standard;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.ATH_CONTROL_ENABLE);
-            // 
-            // eNABLEDataGridViewTextBoxColumn
-            // 
-            this.eNABLEDataGridViewTextBoxColumn.DataPropertyName = "ENABLE";
-            this.eNABLEDataGridViewTextBoxColumn.FalseValue = "0";
-            this.eNABLEDataGridViewTextBoxColumn.HeaderText = "ENABLE";
-            this.eNABLEDataGridViewTextBoxColumn.Name = "eNABLEDataGridViewTextBoxColumn";
-            this.eNABLEDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.eNABLEDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.eNABLEDataGridViewTextBoxColumn.TrueValue = "1";
-            // 
-            // cONTROLCAPTIONDataGridViewTextBoxColumn
-            // 
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_CAPTION";
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn.HeaderText = "CONTROL_CAPTION";
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn.Name = "cONTROLCAPTIONDataGridViewTextBoxColumn";
-            this.cONTROLCAPTIONDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cONTROLNAMEDataGridViewTextBoxColumn
-            // 
-            this.cONTROLNAMEDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_NAME";
-            this.cONTROLNAMEDataGridViewTextBoxColumn.HeaderText = "CONTROL_NAME";
-            this.cONTROLNAMEDataGridViewTextBoxColumn.Name = "cONTROLNAMEDataGridViewTextBoxColumn";
-            this.cONTROLNAMEDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cONTROLNAMEDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // cONTROLTYPEDataGridViewTextBoxColumn
-            // 
-            this.cONTROLTYPEDataGridViewTextBoxColumn.DataPropertyName = "CONTROL_TYPE";
-            this.cONTROLTYPEDataGridViewTextBoxColumn.HeaderText = "CONTROL_TYPE";
-            this.cONTROLTYPEDataGridViewTextBoxColumn.Name = "cONTROLTYPEDataGridViewTextBoxColumn";
-            this.cONTROLTYPEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ENABLE";
-            this.dataGridViewCheckBoxColumn1.FalseValue = "0";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "ENABLE";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.TrueValue = "1";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "CONTROL_CAPTION";
-            this.dataGridViewTextBoxColumn1.HeaderText = "CONTROL_CAPTION";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "CONTROL_NAME";
-            this.dataGridViewTextBoxColumn2.HeaderText = "CONTROL_NAME";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "CONTROL_TYPE";
-            this.dataGridViewTextBoxColumn3.HeaderText = "CONTROL_TYPE";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
             // FrmAuthMng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -757,11 +757,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTHROLEBindingSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -771,6 +773,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCtrlEnable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTHCONTROLENABLEBindingSource)).EndInit();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -781,13 +784,10 @@
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.toolStrip4.ResumeLayout(false);
             this.toolStrip4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTHROLEBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.aTHCONTROLENABLEBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

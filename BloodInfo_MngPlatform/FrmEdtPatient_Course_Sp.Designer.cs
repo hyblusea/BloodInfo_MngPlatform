@@ -52,6 +52,8 @@
             this.ItemForMEMO2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMEMO3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMEMO4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.BACKUP1DateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.ItemForBACKUP1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -69,6 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACKUP1DateEdit.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACKUP1DateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBACKUP1)).BeginInit();
             this.SuspendLayout();
             // 
             // sharedImageCollection1
@@ -376,6 +381,7 @@
             this.dataLayoutControl1.Controls.Add(this.MEMO2MemoEdit);
             this.dataLayoutControl1.Controls.Add(this.MEMO3MemoEdit);
             this.dataLayoutControl1.Controls.Add(this.MEMO4MemoEdit);
+            this.dataLayoutControl1.Controls.Add(this.BACKUP1DateEdit);
             this.dataLayoutControl1.DataSource = this.pATIENTCOURSESPECIALBindingSource;
             this.dataLayoutControl1.Location = new System.Drawing.Point(36, 40);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -387,40 +393,40 @@
             // MEMO1MemoEdit
             // 
             this.MEMO1MemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSESPECIALBindingSource, "MEMO1", true));
-            this.MEMO1MemoEdit.Location = new System.Drawing.Point(91, 12);
+            this.MEMO1MemoEdit.Location = new System.Drawing.Point(91, 36);
             this.MEMO1MemoEdit.MenuManager = this.barManager1;
             this.MEMO1MemoEdit.Name = "MEMO1MemoEdit";
-            this.MEMO1MemoEdit.Size = new System.Drawing.Size(643, 97);
+            this.MEMO1MemoEdit.Size = new System.Drawing.Size(643, 84);
             this.MEMO1MemoEdit.StyleController = this.dataLayoutControl1;
             this.MEMO1MemoEdit.TabIndex = 9;
             // 
             // MEMO2MemoEdit
             // 
             this.MEMO2MemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSESPECIALBindingSource, "MEMO2", true));
-            this.MEMO2MemoEdit.Location = new System.Drawing.Point(91, 113);
+            this.MEMO2MemoEdit.Location = new System.Drawing.Point(91, 124);
             this.MEMO2MemoEdit.MenuManager = this.barManager1;
             this.MEMO2MemoEdit.Name = "MEMO2MemoEdit";
-            this.MEMO2MemoEdit.Size = new System.Drawing.Size(643, 84);
+            this.MEMO2MemoEdit.Size = new System.Drawing.Size(643, 74);
             this.MEMO2MemoEdit.StyleController = this.dataLayoutControl1;
             this.MEMO2MemoEdit.TabIndex = 10;
             // 
             // MEMO3MemoEdit
             // 
             this.MEMO3MemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSESPECIALBindingSource, "MEMO3", true));
-            this.MEMO3MemoEdit.Location = new System.Drawing.Point(91, 201);
+            this.MEMO3MemoEdit.Location = new System.Drawing.Point(91, 202);
             this.MEMO3MemoEdit.MenuManager = this.barManager1;
             this.MEMO3MemoEdit.Name = "MEMO3MemoEdit";
-            this.MEMO3MemoEdit.Size = new System.Drawing.Size(643, 95);
+            this.MEMO3MemoEdit.Size = new System.Drawing.Size(643, 84);
             this.MEMO3MemoEdit.StyleController = this.dataLayoutControl1;
             this.MEMO3MemoEdit.TabIndex = 11;
             // 
             // MEMO4MemoEdit
             // 
             this.MEMO4MemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSESPECIALBindingSource, "MEMO4", true));
-            this.MEMO4MemoEdit.Location = new System.Drawing.Point(91, 300);
+            this.MEMO4MemoEdit.Location = new System.Drawing.Point(91, 290);
             this.MEMO4MemoEdit.MenuManager = this.barManager1;
             this.MEMO4MemoEdit.Name = "MEMO4MemoEdit";
-            this.MEMO4MemoEdit.Size = new System.Drawing.Size(643, 95);
+            this.MEMO4MemoEdit.Size = new System.Drawing.Size(643, 105);
             this.MEMO4MemoEdit.StyleController = this.dataLayoutControl1;
             this.MEMO4MemoEdit.TabIndex = 12;
             // 
@@ -446,7 +452,8 @@
             this.ItemForMEMO1,
             this.ItemForMEMO2,
             this.ItemForMEMO3,
-            this.ItemForMEMO4});
+            this.ItemForMEMO4,
+            this.ItemForBACKUP1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(726, 387);
@@ -456,9 +463,9 @@
             // 
             this.ItemForMEMO1.Control = this.MEMO1MemoEdit;
             this.ItemForMEMO1.CustomizationFormText = "手术操作记录:";
-            this.ItemForMEMO1.Location = new System.Drawing.Point(0, 0);
+            this.ItemForMEMO1.Location = new System.Drawing.Point(0, 24);
             this.ItemForMEMO1.Name = "ItemForMEMO1";
-            this.ItemForMEMO1.Size = new System.Drawing.Size(726, 101);
+            this.ItemForMEMO1.Size = new System.Drawing.Size(726, 88);
             this.ItemForMEMO1.Text = "手术操作记录:";
             this.ItemForMEMO1.TextSize = new System.Drawing.Size(76, 14);
             // 
@@ -466,9 +473,9 @@
             // 
             this.ItemForMEMO2.Control = this.MEMO2MemoEdit;
             this.ItemForMEMO2.CustomizationFormText = "住院病情记录:";
-            this.ItemForMEMO2.Location = new System.Drawing.Point(0, 101);
+            this.ItemForMEMO2.Location = new System.Drawing.Point(0, 112);
             this.ItemForMEMO2.Name = "ItemForMEMO2";
-            this.ItemForMEMO2.Size = new System.Drawing.Size(726, 88);
+            this.ItemForMEMO2.Size = new System.Drawing.Size(726, 78);
             this.ItemForMEMO2.Text = "住院病情记录:";
             this.ItemForMEMO2.TextSize = new System.Drawing.Size(76, 14);
             // 
@@ -476,9 +483,9 @@
             // 
             this.ItemForMEMO3.Control = this.MEMO3MemoEdit;
             this.ItemForMEMO3.CustomizationFormText = "特殊病情记录:";
-            this.ItemForMEMO3.Location = new System.Drawing.Point(0, 189);
+            this.ItemForMEMO3.Location = new System.Drawing.Point(0, 190);
             this.ItemForMEMO3.Name = "ItemForMEMO3";
-            this.ItemForMEMO3.Size = new System.Drawing.Size(726, 99);
+            this.ItemForMEMO3.Size = new System.Drawing.Size(726, 88);
             this.ItemForMEMO3.Text = "特殊病情记录:";
             this.ItemForMEMO3.TextSize = new System.Drawing.Size(76, 14);
             // 
@@ -486,11 +493,36 @@
             // 
             this.ItemForMEMO4.Control = this.MEMO4MemoEdit;
             this.ItemForMEMO4.CustomizationFormText = "抢救记录:";
-            this.ItemForMEMO4.Location = new System.Drawing.Point(0, 288);
+            this.ItemForMEMO4.Location = new System.Drawing.Point(0, 278);
             this.ItemForMEMO4.Name = "ItemForMEMO4";
-            this.ItemForMEMO4.Size = new System.Drawing.Size(726, 99);
+            this.ItemForMEMO4.Size = new System.Drawing.Size(726, 109);
             this.ItemForMEMO4.Text = "抢救记录:";
             this.ItemForMEMO4.TextSize = new System.Drawing.Size(76, 14);
+            // 
+            // BACKUP1DateEdit
+            // 
+            this.BACKUP1DateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pATIENTCOURSESPECIALBindingSource, "BACKUP1", true));
+            this.BACKUP1DateEdit.EditValue = null;
+            this.BACKUP1DateEdit.Location = new System.Drawing.Point(91, 12);
+            this.BACKUP1DateEdit.MenuManager = this.barManager1;
+            this.BACKUP1DateEdit.Name = "BACKUP1DateEdit";
+            this.BACKUP1DateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.BACKUP1DateEdit.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.BACKUP1DateEdit.Size = new System.Drawing.Size(643, 20);
+            this.BACKUP1DateEdit.StyleController = this.dataLayoutControl1;
+            this.BACKUP1DateEdit.TabIndex = 13;
+            // 
+            // ItemForBACKUP1
+            // 
+            this.ItemForBACKUP1.Control = this.BACKUP1DateEdit;
+            this.ItemForBACKUP1.CustomizationFormText = "记录时间:";
+            this.ItemForBACKUP1.Location = new System.Drawing.Point(0, 0);
+            this.ItemForBACKUP1.Name = "ItemForBACKUP1";
+            this.ItemForBACKUP1.Size = new System.Drawing.Size(726, 24);
+            this.ItemForBACKUP1.Text = "记录时间:";
+            this.ItemForBACKUP1.TextSize = new System.Drawing.Size(76, 14);
             // 
             // FrmEdtPatient_Course_Sp
             // 
@@ -523,6 +555,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMEMO4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACKUP1DateEdit.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BACKUP1DateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForBACKUP1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -551,6 +586,8 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO3;
         private DevExpress.XtraLayout.LayoutControlItem ItemForMEMO4;
+        private DevExpress.XtraEditors.DateEdit BACKUP1DateEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForBACKUP1;
 
 
     }
