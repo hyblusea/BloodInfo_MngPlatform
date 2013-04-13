@@ -45,7 +45,7 @@ namespace BloodInfo_MngPlatform
         {
             pATIENTCOURSESPECIALBindingSource.EndEdit();
             pATIENTCOURSESPECIALBindingSource.CurrencyManager.EndCurrentEdit();
-
+            
             v.PT_ID = _baseID;
             v.LOG_TIME = DateTime.Now;
             v.OPERATOR = ClsFrmMng.WorkerID;
