@@ -80,6 +80,8 @@ namespace BloodInfo_MngPlatform
             AuthrzForDevDx.ScanFormControl ctrlEnable = new AuthrzForDevDx.ScanFormControl();
             ctrlEnable.SetBtn(this.components.Components, dic);
 
+            rEGSTATUSBindingSource.DataSource = db.Fetch<REG_STATUS>("");
+
             ucPaing1.dspLenght = 30;
             ucPaing1.PageChanged += ucPaing1_PageChanged;
         }

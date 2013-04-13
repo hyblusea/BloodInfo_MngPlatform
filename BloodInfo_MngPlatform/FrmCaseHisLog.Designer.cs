@@ -345,9 +345,9 @@
             this.repositoryItemCheckedComboBoxEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
             this.colLEFT_OR_RIGHT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMETHOD = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colOTHER3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPOS = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.barDockControl27 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl28 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl26 = new DevExpress.XtraBars.BarDockControl();
@@ -3862,16 +3862,6 @@
             this.colMETHOD.VisibleIndex = 4;
             this.colMETHOD.Width = 112;
             // 
-            // repositoryItemLookUpEdit11
-            // 
-            this.repositoryItemLookUpEdit11.AutoHeight = false;
-            this.repositoryItemLookUpEdit11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit11.DataSource = this.bsdValueCode;
-            this.repositoryItemLookUpEdit11.DisplayMember = "DSP_MEMBER";
-            this.repositoryItemLookUpEdit11.Name = "repositoryItemLookUpEdit11";
-            this.repositoryItemLookUpEdit11.ValueMember = "VALUE_MEMBER";
-            // 
             // colOTHER3
             // 
             this.colOTHER3.Caption = "其他血管通路";
@@ -3891,6 +3881,16 @@
             this.colPOS.Visible = true;
             this.colPOS.VisibleIndex = 7;
             this.colPOS.Width = 97;
+            // 
+            // repositoryItemLookUpEdit11
+            // 
+            this.repositoryItemLookUpEdit11.AutoHeight = false;
+            this.repositoryItemLookUpEdit11.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit11.DataSource = this.bsdValueCode;
+            this.repositoryItemLookUpEdit11.DisplayMember = "DSP_MEMBER";
+            this.repositoryItemLookUpEdit11.Name = "repositoryItemLookUpEdit11";
+            this.repositoryItemLookUpEdit11.ValueMember = "VALUE_MEMBER";
             // 
             // barDockControl27
             // 

@@ -65,6 +65,9 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.rEGSTATUSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
@@ -76,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatientReg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rEGSTATUSBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -485,6 +490,8 @@
             this.dgvPatientReg.MainView = this.gridView1;
             this.dgvPatientReg.MenuManager = this.barManager1;
             this.dgvPatientReg.Name = "dgvPatientReg";
+            this.dgvPatientReg.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1});
             this.dgvPatientReg.Size = new System.Drawing.Size(827, 333);
             this.dgvPatientReg.TabIndex = 44;
             this.dgvPatientReg.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -503,7 +510,8 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.gridColumn12});
             this.gridView1.GridControl = this.dgvPatientReg;
             this.gridView1.Name = "gridView1";
             // 
@@ -584,7 +592,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.VisibleIndex = 10;
             // 
             // gridColumn9
             // 
@@ -595,7 +603,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             // 
             // gridColumn11
             // 
@@ -605,6 +613,29 @@
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 7;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "状态";
+            this.gridColumn12.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.gridColumn12.FieldName = "STATUS";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 8;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.DataSource = this.rEGSTATUSBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "STATUS_MEMO";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.ValueMember = "STATUS_ID";
+            // 
+            // rEGSTATUSBindingSource
+            // 
+            this.rEGSTATUSBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.REG_STATUS);
             // 
             // FrmPatientRigist
             // 
@@ -633,6 +664,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatientReg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rEGSTATUSBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -674,5 +707,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private UcPaging.UcPaing ucPaing1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private System.Windows.Forms.BindingSource rEGSTATUSBindingSource;
     }
 }

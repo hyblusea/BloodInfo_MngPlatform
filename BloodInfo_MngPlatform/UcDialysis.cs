@@ -326,7 +326,12 @@ namespace BloodInfo_MngPlatform
                         }
 
                         DateTime dt = DateTime.Now;
-                        db.Execute("update MACHINE_SCHEDULE set  MACHINE_STATUS = 81, REG_ID = @0, CHCKINTM = @1 where ID = @2", new object[] {regInfo[0].ID, dt,  ScheduleID });
+                        using (var scop = db.GetTransaction())
+                        {
+                            db.Execute("update PATIENT_REGIST set status = 1 where ID = @0", regInfo[0].ID);
+                            db.Execute("update MACHINE_SCHEDULE set  MACHINE_STATUS = 81, REG_ID = @0, CHCKINTM = @1 where ID = @2", new object[] { regInfo[0].ID, dt, ScheduleID });
+                            scop.Complete();
+                        }
                         Status = 81;
                         CheckInTime = dt;
                     }

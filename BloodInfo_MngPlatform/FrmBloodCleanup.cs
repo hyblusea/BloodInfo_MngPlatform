@@ -143,7 +143,9 @@ namespace BloodInfo_MngPlatform
                 {
                     bLOODCLEANUPBindingSource.DataSource = null;
                 }
-            }            
+            }
+            else
+                bLOODCLEANUPBindingSource.DataSource = null;
         }
 
         private void btnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -164,6 +166,13 @@ namespace BloodInfo_MngPlatform
             if (pATIENT_MachineScheduleBindingSource.Current == null)
                 return;
 
+            var v = db.Fetch<VASCULARPATH_HISTORY>("where BASE_INFO_ID = @0 AND  rownum = 1 order by ID desc", ((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).PT_ID);
+            if (v == null || v.Count() == 0 || v[0].FISTULA == null || v[0].FISTULA == 0)
+            {
+                XtraMessageBox.Show("未找到患者基本病史中的血管通路类型, 请确认.", "错误提示", MessageBoxButtons.OK);
+                return;
+            }
+
             pATIENT_MachineScheduleBindingSource_CurrentItemChanged(null, null);
             if (lstBloodCleanup.Count() > 0)
                 XtraMessageBox.Show("该患者的本次挂号,已经存在血液净化记录,不允许重复新增.", "错误提示", MessageBoxButtons.OK);
@@ -174,7 +183,7 @@ namespace BloodInfo_MngPlatform
                     XtraMessageBox.Show("患者还没有签到.");
                     return;
                 }
-                FrmNewBloodCleanBase frmNewbloodBase = new FrmNewBloodCleanBase((Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).PT_ID, (Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).REG_ID, (Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).ID);
+                FrmNewBloodCleanBase frmNewbloodBase = new FrmNewBloodCleanBase((Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).PT_ID, (Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).REG_ID, (Int64)((MACHINE_SCHEDULE)pATIENT_MachineScheduleBindingSource.Current).ID, Convert.ToDecimal(v[0].FISTULA));
                 frmNewbloodBase.NewRegistEvt += frmNewbloodBase_NewRegistEvt;
                 frmNewbloodBase.ShowDialog();
             }

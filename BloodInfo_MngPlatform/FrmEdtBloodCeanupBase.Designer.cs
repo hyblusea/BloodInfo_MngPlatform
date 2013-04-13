@@ -45,11 +45,16 @@
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.vALUECODEBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.aCCOUNTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vALUECODEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.vALUECODEBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource6 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.WEIGHTSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.MACH_POSTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -85,37 +90,56 @@
             this.LIQUID_CALCIUMTextEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ANA_WEIGHTTextEdit = new DevExpress.XtraEditors.SpinEdit();
             this.ANA_END_WEIGHTTextEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.FISTULA_NEEDLE_NUMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.APPLICATOR_NUMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.HEPARIN_CAP_NUMTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.FISTULA_TYPETextEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.FISTULA_NEEDLETextEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.APPLICATORTextEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.FISTULA_CARE_PACKAGESTextEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.HEPARIN_CAPTextEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.PIPELINETextEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForDIAG = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMACH_TYP = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForMACH = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSWITCH_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLOW_LIVER = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForFIX_CAPACITY = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_STAR_TIME = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLIVER_FRIST = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForADD_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_DATE = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_END_TIME = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_TIME = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForMACH_POS = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForWEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForANA_END_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSWITCH_TYPE = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBYPASS_METHOD = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForLIQUID_CALCIUM = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIMPALER = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_END_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_WEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForWEIGHT = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFIX_CAPACITY = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_DATE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_STAR_TIME = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_TIME = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForANA_END_TIME = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFISTULA_TYPE = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForBEFORE_ANA_MEMO = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForEPO = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForONMACH = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForCHECKED = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlGroup9 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForOTHER = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForEPO = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup10 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.ItemForPIPELINE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFISTULA_NEEDLE_NUM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFISTULA_NEEDLE = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFISTULA_CARE_PACKAGES = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForFISTULA_CARE_PACKAGES_NUM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForMACH = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForAPPLICATOR = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForAPPLICATOR_NUM = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForHEPARIN_CAP = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ItemForHEPARIN_CAP_NUM = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.bLOODCLEANUPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
@@ -125,6 +149,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WEIGHTSpinEdit.Properties)).BeginInit();
@@ -156,37 +186,56 @@
             ((System.ComponentModel.ISupportInitialize)(this.LIQUID_CALCIUMTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ANA_WEIGHTTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ANA_END_WEIGHTTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_NEEDLE_NUMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_CARE_PACKAGES_NUMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APPLICATOR_NUMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_CAP_NUMTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_TYPETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_NEEDLETextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APPLICATORTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_CARE_PACKAGESTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_CAPTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PIPELINETextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDIAG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH_TYP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSWITCH_WEIGHT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLOW_LIVER)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFIX_CAPACITY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_STAR_TIME)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLIVER_FRIST)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForADD_WEIGHT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_DATE)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_TIME)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH_POS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForWEIGHT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_WEIGHT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_WEIGHT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSWITCH_TYPE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBYPASS_METHOD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLIQUID_CALCIUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIMPALER)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_WEIGHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_WEIGHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForWEIGHT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFIX_CAPACITY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_DATE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_STAR_TIME)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_TIME)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_TYPE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBEFORE_ANA_MEMO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForONMACH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCHECKED)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForOTHER)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIPELINE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_NEEDLE_NUM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_NEEDLE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_CARE_PACKAGES)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_CARE_PACKAGES_NUM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForAPPLICATOR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForAPPLICATOR_NUM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_CAP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_CAP_NUM)).BeginInit();
             this.SuspendLayout();
             // 
             // bLOODCLEANUPBindingSource
@@ -246,7 +295,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 322);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 459);
             this.barDockControlBottom.Size = new System.Drawing.Size(1046, 0);
             // 
             // barDockControlLeft
@@ -254,14 +303,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 291);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
             // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl1.Location = new System.Drawing.Point(1046, 31);
-            this.barDockControl1.Size = new System.Drawing.Size(0, 291);
+            this.barDockControl1.Size = new System.Drawing.Size(0, 428);
             // 
             // sharedImageCollection1
             // 
@@ -496,10 +545,10 @@
             // 
             this.lineShape1.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 76;
-            this.lineShape1.X2 = 76;
-            this.lineShape1.Y1 = 14;
-            this.lineShape1.Y2 = 277;
+            this.lineShape1.X1 = 78;
+            this.lineShape1.X2 = 78;
+            this.lineShape1.Y1 = 15;
+            this.lineShape1.Y2 = 426;
             // 
             // shapeContainer1
             // 
@@ -508,7 +557,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1046, 291);
+            this.shapeContainer1.Size = new System.Drawing.Size(1046, 428);
             this.shapeContainer1.TabIndex = 12;
             this.shapeContainer1.TabStop = false;
             // 
@@ -519,14 +568,6 @@
             this.labelControl3.Size = new System.Drawing.Size(48, 14);
             this.labelControl3.TabIndex = 11;
             this.labelControl3.Text = "基本信息";
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(12, 248);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 14);
-            this.labelControl1.TabIndex = 11;
-            this.labelControl1.Text = "拟用药";
             // 
             // vALUECODEBindingSource2
             // 
@@ -543,6 +584,30 @@
             // vALUECODEBindingSource3
             // 
             this.vALUECODEBindingSource3.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource3
+            // 
+            this.bindingSource3.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource4
+            // 
+            this.bindingSource4.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource5
+            // 
+            this.bindingSource5.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource6
+            // 
+            this.bindingSource6.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
+            // 
+            // bindingSource2
+            // 
+            this.bindingSource2.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
             // 
             // dataLayoutControl1
             // 
@@ -571,13 +636,23 @@
             this.dataLayoutControl1.Controls.Add(this.LIQUID_CALCIUMTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ANA_WEIGHTTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ANA_END_WEIGHTTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FISTULA_NEEDLE_NUMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FISTULA_CARE_PACKAGES_NUMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.APPLICATOR_NUMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HEPARIN_CAP_NUMTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FISTULA_TYPETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FISTULA_NEEDLETextEdit);
+            this.dataLayoutControl1.Controls.Add(this.APPLICATORTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.FISTULA_CARE_PACKAGESTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.HEPARIN_CAPTextEdit);
+            this.dataLayoutControl1.Controls.Add(this.PIPELINETextEdit);
             this.dataLayoutControl1.DataSource = this.bLOODCLEANUPBindingSource;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(97, 45);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(93, 46);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(488, 194, 615, 467);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(919, 282);
-            this.dataLayoutControl1.TabIndex = 28;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(919, 414);
+            this.dataLayoutControl1.TabIndex = 33;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // WEIGHTSpinEdit
@@ -588,12 +663,12 @@
             0,
             0,
             0});
-            this.WEIGHTSpinEdit.Location = new System.Drawing.Point(331, 36);
+            this.WEIGHTSpinEdit.Location = new System.Drawing.Point(347, 36);
             this.WEIGHTSpinEdit.MenuManager = this.barManager1;
             this.WEIGHTSpinEdit.Name = "WEIGHTSpinEdit";
             this.WEIGHTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.WEIGHTSpinEdit.Size = new System.Drawing.Size(112, 20);
+            this.WEIGHTSpinEdit.Size = new System.Drawing.Size(120, 20);
             this.WEIGHTSpinEdit.StyleController = this.dataLayoutControl1;
             this.WEIGHTSpinEdit.TabIndex = 5;
             this.WEIGHTSpinEdit.EditValueChanged += new System.EventHandler(this.WEIGHTSpinEdit_EditValueChanged);
@@ -601,10 +676,10 @@
             // MACH_POSTextEdit
             // 
             this.MACH_POSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "MACH_POS", true));
-            this.MACH_POSTextEdit.Location = new System.Drawing.Point(331, 12);
+            this.MACH_POSTextEdit.Location = new System.Drawing.Point(347, 12);
             this.MACH_POSTextEdit.MenuManager = this.barManager1;
             this.MACH_POSTextEdit.Name = "MACH_POSTextEdit";
-            this.MACH_POSTextEdit.Size = new System.Drawing.Size(112, 20);
+            this.MACH_POSTextEdit.Size = new System.Drawing.Size(120, 20);
             this.MACH_POSTextEdit.StyleController = this.dataLayoutControl1;
             this.MACH_POSTextEdit.TabIndex = 7;
             // 
@@ -616,15 +691,15 @@
             0,
             0,
             0});
-            this.FIX_CAPACITYSpinEdit.Enabled = false;
-            this.FIX_CAPACITYSpinEdit.Location = new System.Drawing.Point(552, 36);
+            this.FIX_CAPACITYSpinEdit.Location = new System.Drawing.Point(576, 36);
             this.FIX_CAPACITYSpinEdit.MenuManager = this.barManager1;
             this.FIX_CAPACITYSpinEdit.Name = "FIX_CAPACITYSpinEdit";
-            this.FIX_CAPACITYSpinEdit.Properties.Appearance.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.FIX_CAPACITYSpinEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.FIX_CAPACITYSpinEdit.Properties.Appearance.Options.UseBackColor = true;
             this.FIX_CAPACITYSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.FIX_CAPACITYSpinEdit.Size = new System.Drawing.Size(121, 20);
+            this.FIX_CAPACITYSpinEdit.Properties.ReadOnly = true;
+            this.FIX_CAPACITYSpinEdit.Size = new System.Drawing.Size(109, 20);
             this.FIX_CAPACITYSpinEdit.StyleController = this.dataLayoutControl1;
             this.FIX_CAPACITYSpinEdit.TabIndex = 10;
             // 
@@ -641,7 +716,7 @@
             this.LIVER_FRISTSpinEdit.Name = "LIVER_FRISTSpinEdit";
             this.LIVER_FRISTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LIVER_FRISTSpinEdit.Size = new System.Drawing.Size(105, 20);
+            this.LIVER_FRISTSpinEdit.Size = new System.Drawing.Size(121, 20);
             this.LIVER_FRISTSpinEdit.StyleController = this.dataLayoutControl1;
             this.LIVER_FRISTSpinEdit.TabIndex = 13;
             // 
@@ -653,12 +728,12 @@
             0,
             0,
             0});
-            this.ADD_WEIGHTSpinEdit.Location = new System.Drawing.Point(331, 84);
+            this.ADD_WEIGHTSpinEdit.Location = new System.Drawing.Point(347, 84);
             this.ADD_WEIGHTSpinEdit.MenuManager = this.barManager1;
             this.ADD_WEIGHTSpinEdit.Name = "ADD_WEIGHTSpinEdit";
             this.ADD_WEIGHTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.ADD_WEIGHTSpinEdit.Size = new System.Drawing.Size(112, 20);
+            this.ADD_WEIGHTSpinEdit.Size = new System.Drawing.Size(120, 20);
             this.ADD_WEIGHTSpinEdit.StyleController = this.dataLayoutControl1;
             this.ADD_WEIGHTSpinEdit.TabIndex = 14;
             // 
@@ -670,12 +745,12 @@
             0,
             0,
             0});
-            this.LOW_LIVERSpinEdit.Location = new System.Drawing.Point(552, 84);
+            this.LOW_LIVERSpinEdit.Location = new System.Drawing.Point(576, 84);
             this.LOW_LIVERSpinEdit.MenuManager = this.barManager1;
             this.LOW_LIVERSpinEdit.Name = "LOW_LIVERSpinEdit";
             this.LOW_LIVERSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LOW_LIVERSpinEdit.Size = new System.Drawing.Size(121, 20);
+            this.LOW_LIVERSpinEdit.Size = new System.Drawing.Size(109, 20);
             this.LOW_LIVERSpinEdit.StyleController = this.dataLayoutControl1;
             this.LOW_LIVERSpinEdit.TabIndex = 15;
             // 
@@ -687,12 +762,12 @@
             0,
             0,
             0});
-            this.SWITCH_WEIGHTSpinEdit.Location = new System.Drawing.Point(552, 108);
+            this.SWITCH_WEIGHTSpinEdit.Location = new System.Drawing.Point(576, 108);
             this.SWITCH_WEIGHTSpinEdit.MenuManager = this.barManager1;
             this.SWITCH_WEIGHTSpinEdit.Name = "SWITCH_WEIGHTSpinEdit";
             this.SWITCH_WEIGHTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.SWITCH_WEIGHTSpinEdit.Size = new System.Drawing.Size(121, 20);
+            this.SWITCH_WEIGHTSpinEdit.Size = new System.Drawing.Size(109, 20);
             this.SWITCH_WEIGHTSpinEdit.StyleController = this.dataLayoutControl1;
             this.SWITCH_WEIGHTSpinEdit.TabIndex = 21;
             // 
@@ -707,7 +782,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ANA_DATEDateEdit.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.ANA_DATEDateEdit.Size = new System.Drawing.Size(105, 20);
+            this.ANA_DATEDateEdit.Size = new System.Drawing.Size(121, 20);
             this.ANA_DATEDateEdit.StyleController = this.dataLayoutControl1;
             this.ANA_DATEDateEdit.TabIndex = 34;
             // 
@@ -716,28 +791,29 @@
             this.BEFORE_ANA_MEMOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "BEFORE_ANA_MEMO", true));
             this.BEFORE_ANA_MEMOTextEdit.Location = new System.Drawing.Point(117, 156);
             this.BEFORE_ANA_MEMOTextEdit.MenuManager = this.barManager1;
+            this.BEFORE_ANA_MEMOTextEdit.MinimumSize = new System.Drawing.Size(0, 20);
             this.BEFORE_ANA_MEMOTextEdit.Name = "BEFORE_ANA_MEMOTextEdit";
-            this.BEFORE_ANA_MEMOTextEdit.Size = new System.Drawing.Size(790, 40);
+            this.BEFORE_ANA_MEMOTextEdit.Size = new System.Drawing.Size(790, 38);
             this.BEFORE_ANA_MEMOTextEdit.StyleController = this.dataLayoutControl1;
             this.BEFORE_ANA_MEMOTextEdit.TabIndex = 29;
             // 
             // MACH_TYPTextEdit
             // 
             this.MACH_TYPTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "MACH_TYP", true));
-            this.MACH_TYPTextEdit.Location = new System.Drawing.Point(552, 12);
+            this.MACH_TYPTextEdit.Location = new System.Drawing.Point(576, 12);
             this.MACH_TYPTextEdit.MenuManager = this.barManager1;
             this.MACH_TYPTextEdit.Name = "MACH_TYPTextEdit";
             this.MACH_TYPTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MACH_TYPTextEdit.Properties.NullText = "";
-            this.MACH_TYPTextEdit.Size = new System.Drawing.Size(121, 20);
+            this.MACH_TYPTextEdit.Size = new System.Drawing.Size(109, 20);
             this.MACH_TYPTextEdit.StyleController = this.dataLayoutControl1;
             this.MACH_TYPTextEdit.TabIndex = 6;
             // 
             // EPOTextEdit
             // 
             this.EPOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "EPO", true));
-            this.EPOTextEdit.Location = new System.Drawing.Point(117, 200);
+            this.EPOTextEdit.Location = new System.Drawing.Point(129, 230);
             this.EPOTextEdit.MenuManager = this.barManager1;
             this.EPOTextEdit.Name = "EPOTextEdit";
             this.EPOTextEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
@@ -746,7 +822,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, false, false, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true),
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.EPOTextEdit.Properties.ReadOnly = true;
-            this.EPOTextEdit.Size = new System.Drawing.Size(790, 20);
+            this.EPOTextEdit.Size = new System.Drawing.Size(766, 20);
             this.EPOTextEdit.StyleController = this.dataLayoutControl1;
             this.EPOTextEdit.TabIndex = 30;
             this.EPOTextEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.EPOTextEdit_ButtonClick);
@@ -755,10 +831,10 @@
             // OTHERTextEdit
             // 
             this.OTHERTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "OTHER", true));
-            this.OTHERTextEdit.Location = new System.Drawing.Point(117, 225);
+            this.OTHERTextEdit.Location = new System.Drawing.Point(129, 254);
             this.OTHERTextEdit.MenuManager = this.barManager1;
             this.OTHERTextEdit.Name = "OTHERTextEdit";
-            this.OTHERTextEdit.Size = new System.Drawing.Size(790, 20);
+            this.OTHERTextEdit.Size = new System.Drawing.Size(766, 20);
             this.OTHERTextEdit.StyleController = this.dataLayoutControl1;
             this.OTHERTextEdit.TabIndex = 47;
             // 
@@ -774,7 +850,7 @@
             this.DIAGTextEdit.Properties.DisplayMember = "DSP_MEMBER";
             this.DIAGTextEdit.Properties.NullText = "";
             this.DIAGTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.DIAGTextEdit.Size = new System.Drawing.Size(105, 20);
+            this.DIAGTextEdit.Size = new System.Drawing.Size(121, 20);
             this.DIAGTextEdit.StyleController = this.dataLayoutControl1;
             this.DIAGTextEdit.TabIndex = 4;
             // 
@@ -786,30 +862,36 @@
             0,
             0,
             0});
-            this.ANA_TIMETextEdit.Location = new System.Drawing.Point(782, 60);
+            this.ANA_TIMETextEdit.Enabled = false;
+            this.ANA_TIMETextEdit.Location = new System.Drawing.Point(794, 60);
             this.ANA_TIMETextEdit.MenuManager = this.barManager1;
             this.ANA_TIMETextEdit.Name = "ANA_TIMETextEdit";
+            this.ANA_TIMETextEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.ANA_TIMETextEdit.Properties.Appearance.Options.UseBackColor = true;
             this.ANA_TIMETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ANA_TIMETextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.ANA_TIMETextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.ANA_TIMETextEdit.Size = new System.Drawing.Size(125, 20);
+            this.ANA_TIMETextEdit.Properties.ReadOnly = true;
+            this.ANA_TIMETextEdit.Size = new System.Drawing.Size(113, 20);
             this.ANA_TIMETextEdit.StyleController = this.dataLayoutControl1;
             this.ANA_TIMETextEdit.TabIndex = 12;
+            this.ANA_TIMETextEdit.Enter += new System.EventHandler(this.ANA_TIMETextEdit_Enter);
             // 
             // MACHTextEdit
             // 
             this.MACHTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "MACH", true));
-            this.MACHTextEdit.Location = new System.Drawing.Point(782, 12);
+            this.MACHTextEdit.Location = new System.Drawing.Point(129, 322);
             this.MACHTextEdit.MenuManager = this.barManager1;
             this.MACHTextEdit.Name = "MACHTextEdit";
+            this.MACHTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
             this.MACHTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MACHTextEdit.Properties.DataSource = this.vALUECODEBindingSource1;
             this.MACHTextEdit.Properties.DisplayMember = "DSP_MEMBER";
             this.MACHTextEdit.Properties.NullText = "";
             this.MACHTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.MACHTextEdit.Size = new System.Drawing.Size(125, 20);
+            this.MACHTextEdit.Size = new System.Drawing.Size(346, 20);
             this.MACHTextEdit.StyleController = this.dataLayoutControl1;
             this.MACHTextEdit.TabIndex = 8;
             // 
@@ -826,7 +908,7 @@
             this.ONMACHTextEdit.Properties.NullText = "";
             this.ONMACHTextEdit.Properties.ValueMember = "WORKID";
             this.ONMACHTextEdit.Properties.View = this.searchLookUpEdit1View;
-            this.ONMACHTextEdit.Size = new System.Drawing.Size(326, 20);
+            this.ONMACHTextEdit.Size = new System.Drawing.Size(350, 20);
             this.ONMACHTextEdit.StyleController = this.dataLayoutControl1;
             this.ONMACHTextEdit.TabIndex = 113;
             // 
@@ -861,7 +943,7 @@
             // CHECKEDTextEdit
             // 
             this.CHECKEDTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "CHECKED", true));
-            this.CHECKEDTextEdit.Location = new System.Drawing.Point(552, 132);
+            this.CHECKEDTextEdit.Location = new System.Drawing.Point(576, 132);
             this.CHECKEDTextEdit.MenuManager = this.barManager1;
             this.CHECKEDTextEdit.Name = "CHECKEDTextEdit";
             this.CHECKEDTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -871,7 +953,7 @@
             this.CHECKEDTextEdit.Properties.NullText = "";
             this.CHECKEDTextEdit.Properties.ValueMember = "WORKID";
             this.CHECKEDTextEdit.Properties.View = this.gridView1;
-            this.CHECKEDTextEdit.Size = new System.Drawing.Size(355, 20);
+            this.CHECKEDTextEdit.Size = new System.Drawing.Size(331, 20);
             this.CHECKEDTextEdit.StyleController = this.dataLayoutControl1;
             this.CHECKEDTextEdit.TabIndex = 18;
             // 
@@ -904,7 +986,7 @@
             // SWITCH_TYPETextEdit
             // 
             this.SWITCH_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "SWITCH_TYPE", true));
-            this.SWITCH_TYPETextEdit.Location = new System.Drawing.Point(331, 108);
+            this.SWITCH_TYPETextEdit.Location = new System.Drawing.Point(347, 108);
             this.SWITCH_TYPETextEdit.MenuManager = this.barManager1;
             this.SWITCH_TYPETextEdit.Name = "SWITCH_TYPETextEdit";
             this.SWITCH_TYPETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -913,14 +995,14 @@
             "前置换",
             "后置换"});
             this.SWITCH_TYPETextEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.SWITCH_TYPETextEdit.Size = new System.Drawing.Size(112, 20);
+            this.SWITCH_TYPETextEdit.Size = new System.Drawing.Size(120, 20);
             this.SWITCH_TYPETextEdit.StyleController = this.dataLayoutControl1;
             this.SWITCH_TYPETextEdit.TabIndex = 20;
             // 
             // IMPALERTextEdit
             // 
             this.IMPALERTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "IMPALER", true));
-            this.IMPALERTextEdit.Location = new System.Drawing.Point(782, 108);
+            this.IMPALERTextEdit.Location = new System.Drawing.Point(794, 108);
             this.IMPALERTextEdit.MenuManager = this.barManager1;
             this.IMPALERTextEdit.Name = "IMPALERTextEdit";
             this.IMPALERTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -930,7 +1012,7 @@
             this.IMPALERTextEdit.Properties.NullText = "";
             this.IMPALERTextEdit.Properties.ValueMember = "WORKID";
             this.IMPALERTextEdit.Properties.View = this.gridView2;
-            this.IMPALERTextEdit.Size = new System.Drawing.Size(125, 20);
+            this.IMPALERTextEdit.Size = new System.Drawing.Size(113, 20);
             this.IMPALERTextEdit.StyleController = this.dataLayoutControl1;
             this.IMPALERTextEdit.TabIndex = 16;
             // 
@@ -972,7 +1054,7 @@
             this.BYPASS_METHODTextEdit.Properties.DisplayMember = "DSP_MEMBER";
             this.BYPASS_METHODTextEdit.Properties.NullText = "";
             this.BYPASS_METHODTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.BYPASS_METHODTextEdit.Size = new System.Drawing.Size(105, 20);
+            this.BYPASS_METHODTextEdit.Size = new System.Drawing.Size(121, 20);
             this.BYPASS_METHODTextEdit.StyleController = this.dataLayoutControl1;
             this.BYPASS_METHODTextEdit.TabIndex = 17;
             // 
@@ -980,14 +1062,14 @@
             // 
             this.ANA_STAR_TIMEDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "ANA_STAR_TIME", true));
             this.ANA_STAR_TIMEDateEdit.EditValue = null;
-            this.ANA_STAR_TIMEDateEdit.Location = new System.Drawing.Point(331, 60);
+            this.ANA_STAR_TIMEDateEdit.Location = new System.Drawing.Point(347, 60);
             this.ANA_STAR_TIMEDateEdit.MenuManager = this.barManager1;
             this.ANA_STAR_TIMEDateEdit.Name = "ANA_STAR_TIMEDateEdit";
             this.ANA_STAR_TIMEDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ANA_STAR_TIMEDateEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.ANA_STAR_TIMEDateEdit.Properties.Mask.EditMask = "HH:mm";
-            this.ANA_STAR_TIMEDateEdit.Size = new System.Drawing.Size(112, 20);
+            this.ANA_STAR_TIMEDateEdit.Size = new System.Drawing.Size(120, 20);
             this.ANA_STAR_TIMEDateEdit.StyleController = this.dataLayoutControl1;
             this.ANA_STAR_TIMEDateEdit.TabIndex = 73;
             this.ANA_STAR_TIMEDateEdit.EditValueChanged += new System.EventHandler(this.ANA_STAR_TIMEDateEdit_EditValueChanged);
@@ -996,14 +1078,14 @@
             // 
             this.ANA_END_TIMEDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "ANA_END_TIME", true));
             this.ANA_END_TIMEDateEdit.EditValue = null;
-            this.ANA_END_TIMEDateEdit.Location = new System.Drawing.Point(552, 60);
+            this.ANA_END_TIMEDateEdit.Location = new System.Drawing.Point(576, 60);
             this.ANA_END_TIMEDateEdit.MenuManager = this.barManager1;
             this.ANA_END_TIMEDateEdit.Name = "ANA_END_TIMEDateEdit";
             this.ANA_END_TIMEDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ANA_END_TIMEDateEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.ANA_END_TIMEDateEdit.Properties.Mask.EditMask = "HH:mm";
-            this.ANA_END_TIMEDateEdit.Size = new System.Drawing.Size(121, 20);
+            this.ANA_END_TIMEDateEdit.Size = new System.Drawing.Size(109, 20);
             this.ANA_END_TIMEDateEdit.StyleController = this.dataLayoutControl1;
             this.ANA_END_TIMEDateEdit.TabIndex = 68;
             this.ANA_END_TIMEDateEdit.EditValueChanged += new System.EventHandler(this.ANA_END_TIMEDateEdit_EditValueChanged);
@@ -1011,7 +1093,7 @@
             // LIQUID_CALCIUMTextEdit
             // 
             this.LIQUID_CALCIUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "LIQUID_CALCIUM", true));
-            this.LIQUID_CALCIUMTextEdit.Location = new System.Drawing.Point(782, 84);
+            this.LIQUID_CALCIUMTextEdit.Location = new System.Drawing.Point(794, 84);
             this.LIQUID_CALCIUMTextEdit.MenuManager = this.barManager1;
             this.LIQUID_CALCIUMTextEdit.Name = "LIQUID_CALCIUMTextEdit";
             this.LIQUID_CALCIUMTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -1020,7 +1102,7 @@
             this.LIQUID_CALCIUMTextEdit.Properties.DisplayMember = "DSP_MEMBER";
             this.LIQUID_CALCIUMTextEdit.Properties.NullText = "";
             this.LIQUID_CALCIUMTextEdit.Properties.ValueMember = "VALUE_MEMBER";
-            this.LIQUID_CALCIUMTextEdit.Size = new System.Drawing.Size(125, 20);
+            this.LIQUID_CALCIUMTextEdit.Size = new System.Drawing.Size(113, 20);
             this.LIQUID_CALCIUMTextEdit.StyleController = this.dataLayoutControl1;
             this.LIQUID_CALCIUMTextEdit.TabIndex = 9;
             // 
@@ -1039,7 +1121,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ANA_WEIGHTTextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.ANA_WEIGHTTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.ANA_WEIGHTTextEdit.Size = new System.Drawing.Size(105, 20);
+            this.ANA_WEIGHTTextEdit.Size = new System.Drawing.Size(121, 20);
             this.ANA_WEIGHTTextEdit.StyleController = this.dataLayoutControl1;
             this.ANA_WEIGHTTextEdit.TabIndex = 19;
             this.ANA_WEIGHTTextEdit.EditValueChanged += new System.EventHandler(this.ANA_WEIGHTTextEdit_EditValueChanged);
@@ -1052,16 +1134,155 @@
             0,
             0,
             0});
-            this.ANA_END_WEIGHTTextEdit.Location = new System.Drawing.Point(782, 36);
+            this.ANA_END_WEIGHTTextEdit.Location = new System.Drawing.Point(794, 36);
             this.ANA_END_WEIGHTTextEdit.MenuManager = this.barManager1;
             this.ANA_END_WEIGHTTextEdit.Name = "ANA_END_WEIGHTTextEdit";
             this.ANA_END_WEIGHTTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ANA_END_WEIGHTTextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.ANA_END_WEIGHTTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.ANA_END_WEIGHTTextEdit.Size = new System.Drawing.Size(125, 20);
+            this.ANA_END_WEIGHTTextEdit.Size = new System.Drawing.Size(113, 20);
             this.ANA_END_WEIGHTTextEdit.StyleController = this.dataLayoutControl1;
             this.ANA_END_WEIGHTTextEdit.TabIndex = 93;
+            // 
+            // FISTULA_NEEDLE_NUMTextEdit
+            // 
+            this.FISTULA_NEEDLE_NUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "FISTULA_NEEDLE_NUM", true));
+            this.FISTULA_NEEDLE_NUMTextEdit.Location = new System.Drawing.Point(417, 346);
+            this.FISTULA_NEEDLE_NUMTextEdit.MenuManager = this.barManager1;
+            this.FISTULA_NEEDLE_NUMTextEdit.Name = "FISTULA_NEEDLE_NUMTextEdit";
+            this.FISTULA_NEEDLE_NUMTextEdit.Size = new System.Drawing.Size(58, 20);
+            this.FISTULA_NEEDLE_NUMTextEdit.StyleController = this.dataLayoutControl1;
+            this.FISTULA_NEEDLE_NUMTextEdit.TabIndex = 134;
+            // 
+            // FISTULA_CARE_PACKAGES_NUMTextEdit
+            // 
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "FISTULA_CARE_PACKAGES_NUM", true));
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.Location = new System.Drawing.Point(842, 346);
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.MenuManager = this.barManager1;
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.Name = "FISTULA_CARE_PACKAGES_NUMTextEdit";
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.Size = new System.Drawing.Size(53, 20);
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.StyleController = this.dataLayoutControl1;
+            this.FISTULA_CARE_PACKAGES_NUMTextEdit.TabIndex = 136;
+            // 
+            // APPLICATOR_NUMTextEdit
+            // 
+            this.APPLICATOR_NUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "APPLICATOR_NUM", true));
+            this.APPLICATOR_NUMTextEdit.Location = new System.Drawing.Point(417, 370);
+            this.APPLICATOR_NUMTextEdit.MenuManager = this.barManager1;
+            this.APPLICATOR_NUMTextEdit.Name = "APPLICATOR_NUMTextEdit";
+            this.APPLICATOR_NUMTextEdit.Size = new System.Drawing.Size(58, 20);
+            this.APPLICATOR_NUMTextEdit.StyleController = this.dataLayoutControl1;
+            this.APPLICATOR_NUMTextEdit.TabIndex = 138;
+            // 
+            // HEPARIN_CAP_NUMTextEdit
+            // 
+            this.HEPARIN_CAP_NUMTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "HEPARIN_CAP_NUM", true));
+            this.HEPARIN_CAP_NUMTextEdit.Location = new System.Drawing.Point(842, 370);
+            this.HEPARIN_CAP_NUMTextEdit.MenuManager = this.barManager1;
+            this.HEPARIN_CAP_NUMTextEdit.Name = "HEPARIN_CAP_NUMTextEdit";
+            this.HEPARIN_CAP_NUMTextEdit.Size = new System.Drawing.Size(53, 20);
+            this.HEPARIN_CAP_NUMTextEdit.StyleController = this.dataLayoutControl1;
+            this.HEPARIN_CAP_NUMTextEdit.TabIndex = 140;
+            // 
+            // FISTULA_TYPETextEdit
+            // 
+            this.FISTULA_TYPETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "FISTULA_TYPE", true));
+            this.FISTULA_TYPETextEdit.Location = new System.Drawing.Point(794, 12);
+            this.FISTULA_TYPETextEdit.MenuManager = this.barManager1;
+            this.FISTULA_TYPETextEdit.Name = "FISTULA_TYPETextEdit";
+            this.FISTULA_TYPETextEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
+            this.FISTULA_TYPETextEdit.Properties.Appearance.Options.UseBackColor = true;
+            this.FISTULA_TYPETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FISTULA_TYPETextEdit.Properties.DataSource = this.bindingSource1;
+            this.FISTULA_TYPETextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.FISTULA_TYPETextEdit.Properties.NullText = "";
+            this.FISTULA_TYPETextEdit.Properties.ReadOnly = true;
+            this.FISTULA_TYPETextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.FISTULA_TYPETextEdit.Size = new System.Drawing.Size(113, 20);
+            this.FISTULA_TYPETextEdit.StyleController = this.dataLayoutControl1;
+            this.FISTULA_TYPETextEdit.TabIndex = 141;
+            // 
+            // FISTULA_NEEDLETextEdit
+            // 
+            this.FISTULA_NEEDLETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "FISTULA_NEEDLE", true));
+            this.FISTULA_NEEDLETextEdit.Location = new System.Drawing.Point(129, 346);
+            this.FISTULA_NEEDLETextEdit.MenuManager = this.barManager1;
+            this.FISTULA_NEEDLETextEdit.Name = "FISTULA_NEEDLETextEdit";
+            this.FISTULA_NEEDLETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FISTULA_NEEDLETextEdit.Properties.DataSource = this.bindingSource3;
+            this.FISTULA_NEEDLETextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.FISTULA_NEEDLETextEdit.Properties.NullText = "";
+            this.FISTULA_NEEDLETextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.FISTULA_NEEDLETextEdit.Size = new System.Drawing.Size(179, 20);
+            this.FISTULA_NEEDLETextEdit.StyleController = this.dataLayoutControl1;
+            this.FISTULA_NEEDLETextEdit.TabIndex = 133;
+            // 
+            // APPLICATORTextEdit
+            // 
+            this.APPLICATORTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "APPLICATOR", true));
+            this.APPLICATORTextEdit.Location = new System.Drawing.Point(129, 370);
+            this.APPLICATORTextEdit.MenuManager = this.barManager1;
+            this.APPLICATORTextEdit.Name = "APPLICATORTextEdit";
+            this.APPLICATORTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.APPLICATORTextEdit.Properties.DataSource = this.bindingSource4;
+            this.APPLICATORTextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.APPLICATORTextEdit.Properties.NullText = "";
+            this.APPLICATORTextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.APPLICATORTextEdit.Size = new System.Drawing.Size(179, 20);
+            this.APPLICATORTextEdit.StyleController = this.dataLayoutControl1;
+            this.APPLICATORTextEdit.TabIndex = 137;
+            // 
+            // FISTULA_CARE_PACKAGESTextEdit
+            // 
+            this.FISTULA_CARE_PACKAGESTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "FISTULA_CARE_PACKAGES", true));
+            this.FISTULA_CARE_PACKAGESTextEdit.Location = new System.Drawing.Point(584, 346);
+            this.FISTULA_CARE_PACKAGESTextEdit.MenuManager = this.barManager1;
+            this.FISTULA_CARE_PACKAGESTextEdit.Name = "FISTULA_CARE_PACKAGESTextEdit";
+            this.FISTULA_CARE_PACKAGESTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.FISTULA_CARE_PACKAGESTextEdit.Properties.DataSource = this.bindingSource5;
+            this.FISTULA_CARE_PACKAGESTextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.FISTULA_CARE_PACKAGESTextEdit.Properties.NullText = "";
+            this.FISTULA_CARE_PACKAGESTextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.FISTULA_CARE_PACKAGESTextEdit.Size = new System.Drawing.Size(149, 20);
+            this.FISTULA_CARE_PACKAGESTextEdit.StyleController = this.dataLayoutControl1;
+            this.FISTULA_CARE_PACKAGESTextEdit.TabIndex = 135;
+            // 
+            // HEPARIN_CAPTextEdit
+            // 
+            this.HEPARIN_CAPTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "HEPARIN_CAP", true));
+            this.HEPARIN_CAPTextEdit.Location = new System.Drawing.Point(584, 370);
+            this.HEPARIN_CAPTextEdit.MenuManager = this.barManager1;
+            this.HEPARIN_CAPTextEdit.Name = "HEPARIN_CAPTextEdit";
+            this.HEPARIN_CAPTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.HEPARIN_CAPTextEdit.Properties.DataSource = this.bindingSource6;
+            this.HEPARIN_CAPTextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.HEPARIN_CAPTextEdit.Properties.NullText = "";
+            this.HEPARIN_CAPTextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.HEPARIN_CAPTextEdit.Size = new System.Drawing.Size(149, 20);
+            this.HEPARIN_CAPTextEdit.StyleController = this.dataLayoutControl1;
+            this.HEPARIN_CAPTextEdit.TabIndex = 139;
+            // 
+            // PIPELINETextEdit
+            // 
+            this.PIPELINETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPBindingSource, "PIPELINE", true));
+            this.PIPELINETextEdit.Location = new System.Drawing.Point(584, 322);
+            this.PIPELINETextEdit.MenuManager = this.barManager1;
+            this.PIPELINETextEdit.Name = "PIPELINETextEdit";
+            this.PIPELINETextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PIPELINETextEdit.Properties.DataSource = this.bindingSource2;
+            this.PIPELINETextEdit.Properties.DisplayMember = "DSP_MEMBER";
+            this.PIPELINETextEdit.Properties.NullText = "";
+            this.PIPELINETextEdit.Properties.ValueMember = "VALUE_MEMBER";
+            this.PIPELINETextEdit.Size = new System.Drawing.Size(311, 20);
+            this.PIPELINETextEdit.StyleController = this.dataLayoutControl1;
+            this.PIPELINETextEdit.TabIndex = 161;
             // 
             // layoutControlGroup1
             // 
@@ -1071,13 +1292,11 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2,
             this.layoutControlGroup3,
-            this.layoutControlGroup4,
-            this.layoutControlGroup5,
-            this.layoutControlGroup6,
-            this.ItemForOTHER});
+            this.layoutControlGroup9,
+            this.layoutControlGroup10});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(919, 282);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(919, 414);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -1089,24 +1308,24 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForDIAG,
             this.ItemForMACH_TYP,
-            this.ItemForMACH,
             this.ItemForSWITCH_WEIGHT,
             this.ItemForLOW_LIVER,
-            this.ItemForFIX_CAPACITY,
-            this.ItemForANA_STAR_TIME,
             this.ItemForLIVER_FRIST,
             this.ItemForADD_WEIGHT,
-            this.ItemForANA_DATE,
-            this.ItemForANA_END_TIME,
-            this.ItemForANA_TIME,
             this.ItemForMACH_POS,
-            this.ItemForWEIGHT,
-            this.ItemForANA_WEIGHT,
-            this.ItemForANA_END_WEIGHT,
             this.ItemForSWITCH_TYPE,
             this.ItemForBYPASS_METHOD,
             this.ItemForLIQUID_CALCIUM,
-            this.ItemForIMPALER});
+            this.ItemForIMPALER,
+            this.ItemForANA_END_WEIGHT,
+            this.ItemForANA_WEIGHT,
+            this.ItemForWEIGHT,
+            this.ItemForFIX_CAPACITY,
+            this.ItemForANA_DATE,
+            this.ItemForANA_STAR_TIME,
+            this.ItemForANA_TIME,
+            this.ItemForANA_END_TIME,
+            this.ItemForFISTULA_TYPE});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
             this.layoutControlGroup2.Size = new System.Drawing.Size(899, 120);
@@ -1120,7 +1339,7 @@
             this.ItemForDIAG.CustomizationFormText = "DIAG";
             this.ItemForDIAG.Location = new System.Drawing.Point(0, 0);
             this.ItemForDIAG.Name = "ItemForDIAG";
-            this.ItemForDIAG.Size = new System.Drawing.Size(214, 24);
+            this.ItemForDIAG.Size = new System.Drawing.Size(230, 24);
             this.ItemForDIAG.Text = "诊断:";
             this.ItemForDIAG.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1130,23 +1349,11 @@
             this.ItemForMACH_TYP.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForMACH_TYP.Control = this.MACH_TYPTextEdit;
             this.ItemForMACH_TYP.CustomizationFormText = "MACH_TYP";
-            this.ItemForMACH_TYP.Location = new System.Drawing.Point(435, 0);
+            this.ItemForMACH_TYP.Location = new System.Drawing.Point(459, 0);
             this.ItemForMACH_TYP.Name = "ItemForMACH_TYP";
-            this.ItemForMACH_TYP.Size = new System.Drawing.Size(230, 24);
+            this.ItemForMACH_TYP.Size = new System.Drawing.Size(218, 24);
             this.ItemForMACH_TYP.Text = "透析机型:";
             this.ItemForMACH_TYP.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForMACH
-            // 
-            this.ItemForMACH.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForMACH.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForMACH.Control = this.MACHTextEdit;
-            this.ItemForMACH.CustomizationFormText = "MACH";
-            this.ItemForMACH.Location = new System.Drawing.Point(665, 0);
-            this.ItemForMACH.Name = "ItemForMACH";
-            this.ItemForMACH.Size = new System.Drawing.Size(234, 24);
-            this.ItemForMACH.Text = "透析器:";
-            this.ItemForMACH.TextSize = new System.Drawing.Size(102, 14);
             // 
             // ItemForSWITCH_WEIGHT
             // 
@@ -1154,9 +1361,9 @@
             this.ItemForSWITCH_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForSWITCH_WEIGHT.Control = this.SWITCH_WEIGHTSpinEdit;
             this.ItemForSWITCH_WEIGHT.CustomizationFormText = "SWITCH_WEIGHT";
-            this.ItemForSWITCH_WEIGHT.Location = new System.Drawing.Point(435, 96);
+            this.ItemForSWITCH_WEIGHT.Location = new System.Drawing.Point(459, 96);
             this.ItemForSWITCH_WEIGHT.Name = "ItemForSWITCH_WEIGHT";
-            this.ItemForSWITCH_WEIGHT.Size = new System.Drawing.Size(230, 24);
+            this.ItemForSWITCH_WEIGHT.Size = new System.Drawing.Size(218, 24);
             this.ItemForSWITCH_WEIGHT.Text = "置换量(L):";
             this.ItemForSWITCH_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1166,35 +1373,11 @@
             this.ItemForLOW_LIVER.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForLOW_LIVER.Control = this.LOW_LIVERSpinEdit;
             this.ItemForLOW_LIVER.CustomizationFormText = "LOW_LIVER";
-            this.ItemForLOW_LIVER.Location = new System.Drawing.Point(435, 72);
+            this.ItemForLOW_LIVER.Location = new System.Drawing.Point(459, 72);
             this.ItemForLOW_LIVER.Name = "ItemForLOW_LIVER";
-            this.ItemForLOW_LIVER.Size = new System.Drawing.Size(230, 24);
+            this.ItemForLOW_LIVER.Size = new System.Drawing.Size(218, 24);
             this.ItemForLOW_LIVER.Text = "低分子肝素(u):";
             this.ItemForLOW_LIVER.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForFIX_CAPACITY
-            // 
-            this.ItemForFIX_CAPACITY.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForFIX_CAPACITY.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForFIX_CAPACITY.Control = this.FIX_CAPACITYSpinEdit;
-            this.ItemForFIX_CAPACITY.CustomizationFormText = "FIX_CAPACITY";
-            this.ItemForFIX_CAPACITY.Location = new System.Drawing.Point(435, 24);
-            this.ItemForFIX_CAPACITY.Name = "ItemForFIX_CAPACITY";
-            this.ItemForFIX_CAPACITY.Size = new System.Drawing.Size(230, 24);
-            this.ItemForFIX_CAPACITY.Text = "目标定容量(Kg):";
-            this.ItemForFIX_CAPACITY.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_STAR_TIME
-            // 
-            this.ItemForANA_STAR_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_STAR_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_STAR_TIME.Control = this.ANA_STAR_TIMEDateEdit;
-            this.ItemForANA_STAR_TIME.CustomizationFormText = "透析开始时间:";
-            this.ItemForANA_STAR_TIME.Location = new System.Drawing.Point(214, 48);
-            this.ItemForANA_STAR_TIME.Name = "ItemForANA_STAR_TIME";
-            this.ItemForANA_STAR_TIME.Size = new System.Drawing.Size(221, 24);
-            this.ItemForANA_STAR_TIME.Text = "透析开始时间:";
-            this.ItemForANA_STAR_TIME.TextSize = new System.Drawing.Size(102, 14);
             // 
             // ItemForLIVER_FRIST
             // 
@@ -1204,7 +1387,7 @@
             this.ItemForLIVER_FRIST.CustomizationFormText = "LIVER_FRIST";
             this.ItemForLIVER_FRIST.Location = new System.Drawing.Point(0, 72);
             this.ItemForLIVER_FRIST.Name = "ItemForLIVER_FRIST";
-            this.ItemForLIVER_FRIST.Size = new System.Drawing.Size(214, 24);
+            this.ItemForLIVER_FRIST.Size = new System.Drawing.Size(230, 24);
             this.ItemForLIVER_FRIST.Text = "肝首素量(mg):";
             this.ItemForLIVER_FRIST.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1214,47 +1397,11 @@
             this.ItemForADD_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForADD_WEIGHT.Control = this.ADD_WEIGHTSpinEdit;
             this.ItemForADD_WEIGHT.CustomizationFormText = "ADD_WEIGHT";
-            this.ItemForADD_WEIGHT.Location = new System.Drawing.Point(214, 72);
+            this.ItemForADD_WEIGHT.Location = new System.Drawing.Point(230, 72);
             this.ItemForADD_WEIGHT.Name = "ItemForADD_WEIGHT";
-            this.ItemForADD_WEIGHT.Size = new System.Drawing.Size(221, 24);
+            this.ItemForADD_WEIGHT.Size = new System.Drawing.Size(229, 24);
             this.ItemForADD_WEIGHT.Text = "追加量(mg):";
             this.ItemForADD_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_DATE
-            // 
-            this.ItemForANA_DATE.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_DATE.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_DATE.Control = this.ANA_DATEDateEdit;
-            this.ItemForANA_DATE.CustomizationFormText = "ANA_DATE";
-            this.ItemForANA_DATE.Location = new System.Drawing.Point(0, 48);
-            this.ItemForANA_DATE.Name = "ItemForANA_DATE";
-            this.ItemForANA_DATE.Size = new System.Drawing.Size(214, 24);
-            this.ItemForANA_DATE.Text = "日期:";
-            this.ItemForANA_DATE.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_END_TIME
-            // 
-            this.ItemForANA_END_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_END_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_END_TIME.Control = this.ANA_END_TIMEDateEdit;
-            this.ItemForANA_END_TIME.CustomizationFormText = "透析结束时间:";
-            this.ItemForANA_END_TIME.Location = new System.Drawing.Point(435, 48);
-            this.ItemForANA_END_TIME.Name = "ItemForANA_END_TIME";
-            this.ItemForANA_END_TIME.Size = new System.Drawing.Size(230, 24);
-            this.ItemForANA_END_TIME.Text = "透析结束时间:";
-            this.ItemForANA_END_TIME.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_TIME
-            // 
-            this.ItemForANA_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_TIME.Control = this.ANA_TIMETextEdit;
-            this.ItemForANA_TIME.CustomizationFormText = "ANA_TIME";
-            this.ItemForANA_TIME.Location = new System.Drawing.Point(665, 48);
-            this.ItemForANA_TIME.Name = "ItemForANA_TIME";
-            this.ItemForANA_TIME.Size = new System.Drawing.Size(234, 24);
-            this.ItemForANA_TIME.Text = "透析时间(小时):";
-            this.ItemForANA_TIME.TextSize = new System.Drawing.Size(102, 14);
             // 
             // ItemForMACH_POS
             // 
@@ -1262,47 +1409,11 @@
             this.ItemForMACH_POS.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForMACH_POS.Control = this.MACH_POSTextEdit;
             this.ItemForMACH_POS.CustomizationFormText = "MACH_POS";
-            this.ItemForMACH_POS.Location = new System.Drawing.Point(214, 0);
+            this.ItemForMACH_POS.Location = new System.Drawing.Point(230, 0);
             this.ItemForMACH_POS.Name = "ItemForMACH_POS";
-            this.ItemForMACH_POS.Size = new System.Drawing.Size(221, 24);
+            this.ItemForMACH_POS.Size = new System.Drawing.Size(229, 24);
             this.ItemForMACH_POS.Text = "透析机位:";
             this.ItemForMACH_POS.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForWEIGHT
-            // 
-            this.ItemForWEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForWEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForWEIGHT.Control = this.WEIGHTSpinEdit;
-            this.ItemForWEIGHT.CustomizationFormText = "WEIGHT";
-            this.ItemForWEIGHT.Location = new System.Drawing.Point(214, 24);
-            this.ItemForWEIGHT.Name = "ItemForWEIGHT";
-            this.ItemForWEIGHT.Size = new System.Drawing.Size(221, 24);
-            this.ItemForWEIGHT.Text = "干体重(Kg):";
-            this.ItemForWEIGHT.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_WEIGHT
-            // 
-            this.ItemForANA_WEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_WEIGHT.Control = this.ANA_WEIGHTTextEdit;
-            this.ItemForANA_WEIGHT.CustomizationFormText = "ANA_WEIGHT";
-            this.ItemForANA_WEIGHT.Location = new System.Drawing.Point(0, 24);
-            this.ItemForANA_WEIGHT.Name = "ItemForANA_WEIGHT";
-            this.ItemForANA_WEIGHT.Size = new System.Drawing.Size(214, 24);
-            this.ItemForANA_WEIGHT.Text = "透析前体重(Kg):";
-            this.ItemForANA_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForANA_END_WEIGHT
-            // 
-            this.ItemForANA_END_WEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForANA_END_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForANA_END_WEIGHT.Control = this.ANA_END_WEIGHTTextEdit;
-            this.ItemForANA_END_WEIGHT.CustomizationFormText = "透析后体重:";
-            this.ItemForANA_END_WEIGHT.Location = new System.Drawing.Point(665, 24);
-            this.ItemForANA_END_WEIGHT.Name = "ItemForANA_END_WEIGHT";
-            this.ItemForANA_END_WEIGHT.Size = new System.Drawing.Size(234, 24);
-            this.ItemForANA_END_WEIGHT.Text = "透析后体重(Kg):";
-            this.ItemForANA_END_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
             // 
             // ItemForSWITCH_TYPE
             // 
@@ -1310,9 +1421,9 @@
             this.ItemForSWITCH_TYPE.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForSWITCH_TYPE.Control = this.SWITCH_TYPETextEdit;
             this.ItemForSWITCH_TYPE.CustomizationFormText = "SWITCH_TYPE";
-            this.ItemForSWITCH_TYPE.Location = new System.Drawing.Point(214, 96);
+            this.ItemForSWITCH_TYPE.Location = new System.Drawing.Point(230, 96);
             this.ItemForSWITCH_TYPE.Name = "ItemForSWITCH_TYPE";
-            this.ItemForSWITCH_TYPE.Size = new System.Drawing.Size(221, 24);
+            this.ItemForSWITCH_TYPE.Size = new System.Drawing.Size(229, 24);
             this.ItemForSWITCH_TYPE.Text = "置换方式:";
             this.ItemForSWITCH_TYPE.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1324,7 +1435,7 @@
             this.ItemForBYPASS_METHOD.CustomizationFormText = "BYPASS_METHOD";
             this.ItemForBYPASS_METHOD.Location = new System.Drawing.Point(0, 96);
             this.ItemForBYPASS_METHOD.Name = "ItemForBYPASS_METHOD";
-            this.ItemForBYPASS_METHOD.Size = new System.Drawing.Size(214, 24);
+            this.ItemForBYPASS_METHOD.Size = new System.Drawing.Size(230, 24);
             this.ItemForBYPASS_METHOD.Text = "分流方法:";
             this.ItemForBYPASS_METHOD.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1334,9 +1445,9 @@
             this.ItemForLIQUID_CALCIUM.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForLIQUID_CALCIUM.Control = this.LIQUID_CALCIUMTextEdit;
             this.ItemForLIQUID_CALCIUM.CustomizationFormText = "LIQUID_CALCIUM";
-            this.ItemForLIQUID_CALCIUM.Location = new System.Drawing.Point(665, 72);
+            this.ItemForLIQUID_CALCIUM.Location = new System.Drawing.Point(677, 72);
             this.ItemForLIQUID_CALCIUM.Name = "ItemForLIQUID_CALCIUM";
-            this.ItemForLIQUID_CALCIUM.Size = new System.Drawing.Size(234, 24);
+            this.ItemForLIQUID_CALCIUM.Size = new System.Drawing.Size(222, 24);
             this.ItemForLIQUID_CALCIUM.Text = "透析液钙(mmol/L):";
             this.ItemForLIQUID_CALCIUM.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1346,11 +1457,117 @@
             this.ItemForIMPALER.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForIMPALER.Control = this.IMPALERTextEdit;
             this.ItemForIMPALER.CustomizationFormText = "IMPALER";
-            this.ItemForIMPALER.Location = new System.Drawing.Point(665, 96);
+            this.ItemForIMPALER.Location = new System.Drawing.Point(677, 96);
             this.ItemForIMPALER.Name = "ItemForIMPALER";
-            this.ItemForIMPALER.Size = new System.Drawing.Size(234, 24);
+            this.ItemForIMPALER.Size = new System.Drawing.Size(222, 24);
             this.ItemForIMPALER.Text = "穿刺者:";
             this.ItemForIMPALER.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_END_WEIGHT
+            // 
+            this.ItemForANA_END_WEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_END_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_END_WEIGHT.Control = this.ANA_END_WEIGHTTextEdit;
+            this.ItemForANA_END_WEIGHT.CustomizationFormText = "透析后体重:";
+            this.ItemForANA_END_WEIGHT.Location = new System.Drawing.Point(677, 24);
+            this.ItemForANA_END_WEIGHT.Name = "ItemForANA_END_WEIGHT";
+            this.ItemForANA_END_WEIGHT.Size = new System.Drawing.Size(222, 24);
+            this.ItemForANA_END_WEIGHT.Text = "透析后体重(Kg):";
+            this.ItemForANA_END_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_WEIGHT
+            // 
+            this.ItemForANA_WEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_WEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_WEIGHT.Control = this.ANA_WEIGHTTextEdit;
+            this.ItemForANA_WEIGHT.CustomizationFormText = "ANA_WEIGHT";
+            this.ItemForANA_WEIGHT.Location = new System.Drawing.Point(0, 24);
+            this.ItemForANA_WEIGHT.Name = "ItemForANA_WEIGHT";
+            this.ItemForANA_WEIGHT.Size = new System.Drawing.Size(230, 24);
+            this.ItemForANA_WEIGHT.Text = "透析前体重(Kg):";
+            this.ItemForANA_WEIGHT.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForWEIGHT
+            // 
+            this.ItemForWEIGHT.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForWEIGHT.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForWEIGHT.Control = this.WEIGHTSpinEdit;
+            this.ItemForWEIGHT.CustomizationFormText = "WEIGHT";
+            this.ItemForWEIGHT.Location = new System.Drawing.Point(230, 24);
+            this.ItemForWEIGHT.Name = "ItemForWEIGHT";
+            this.ItemForWEIGHT.Size = new System.Drawing.Size(229, 24);
+            this.ItemForWEIGHT.Text = "干体重(Kg):";
+            this.ItemForWEIGHT.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFIX_CAPACITY
+            // 
+            this.ItemForFIX_CAPACITY.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForFIX_CAPACITY.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForFIX_CAPACITY.Control = this.FIX_CAPACITYSpinEdit;
+            this.ItemForFIX_CAPACITY.CustomizationFormText = "FIX_CAPACITY";
+            this.ItemForFIX_CAPACITY.Location = new System.Drawing.Point(459, 24);
+            this.ItemForFIX_CAPACITY.Name = "ItemForFIX_CAPACITY";
+            this.ItemForFIX_CAPACITY.Size = new System.Drawing.Size(218, 24);
+            this.ItemForFIX_CAPACITY.Text = "目标定容量(Kg):";
+            this.ItemForFIX_CAPACITY.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_DATE
+            // 
+            this.ItemForANA_DATE.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_DATE.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_DATE.Control = this.ANA_DATEDateEdit;
+            this.ItemForANA_DATE.CustomizationFormText = "ANA_DATE";
+            this.ItemForANA_DATE.Location = new System.Drawing.Point(0, 48);
+            this.ItemForANA_DATE.Name = "ItemForANA_DATE";
+            this.ItemForANA_DATE.Size = new System.Drawing.Size(230, 24);
+            this.ItemForANA_DATE.Text = "日期:";
+            this.ItemForANA_DATE.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_STAR_TIME
+            // 
+            this.ItemForANA_STAR_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_STAR_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_STAR_TIME.Control = this.ANA_STAR_TIMEDateEdit;
+            this.ItemForANA_STAR_TIME.CustomizationFormText = "透析开始时间:";
+            this.ItemForANA_STAR_TIME.Location = new System.Drawing.Point(230, 48);
+            this.ItemForANA_STAR_TIME.Name = "ItemForANA_STAR_TIME";
+            this.ItemForANA_STAR_TIME.Size = new System.Drawing.Size(229, 24);
+            this.ItemForANA_STAR_TIME.Text = "透析开始时间:";
+            this.ItemForANA_STAR_TIME.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_TIME
+            // 
+            this.ItemForANA_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_TIME.Control = this.ANA_TIMETextEdit;
+            this.ItemForANA_TIME.CustomizationFormText = "ANA_TIME";
+            this.ItemForANA_TIME.Location = new System.Drawing.Point(677, 48);
+            this.ItemForANA_TIME.Name = "ItemForANA_TIME";
+            this.ItemForANA_TIME.Size = new System.Drawing.Size(222, 24);
+            this.ItemForANA_TIME.Text = "透析时间(小时):";
+            this.ItemForANA_TIME.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForANA_END_TIME
+            // 
+            this.ItemForANA_END_TIME.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForANA_END_TIME.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForANA_END_TIME.Control = this.ANA_END_TIMEDateEdit;
+            this.ItemForANA_END_TIME.CustomizationFormText = "透析结束时间:";
+            this.ItemForANA_END_TIME.Location = new System.Drawing.Point(459, 48);
+            this.ItemForANA_END_TIME.Name = "ItemForANA_END_TIME";
+            this.ItemForANA_END_TIME.Size = new System.Drawing.Size(218, 24);
+            this.ItemForANA_END_TIME.Text = "透析结束时间:";
+            this.ItemForANA_END_TIME.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFISTULA_TYPE
+            // 
+            this.ItemForFISTULA_TYPE.Control = this.FISTULA_TYPETextEdit;
+            this.ItemForFISTULA_TYPE.CustomizationFormText = "血管通路类型:";
+            this.ItemForFISTULA_TYPE.Location = new System.Drawing.Point(677, 0);
+            this.ItemForFISTULA_TYPE.Name = "ItemForFISTULA_TYPE";
+            this.ItemForFISTULA_TYPE.Size = new System.Drawing.Size(222, 24);
+            this.ItemForFISTULA_TYPE.Text = "血管通路类型:";
+            this.ItemForFISTULA_TYPE.TextSize = new System.Drawing.Size(102, 14);
             // 
             // layoutControlGroup3
             // 
@@ -1359,12 +1576,11 @@
             this.layoutControlGroup3.GroupBordersVisible = false;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForBEFORE_ANA_MEMO,
-            this.ItemForEPO,
             this.ItemForONMACH,
             this.ItemForCHECKED});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 120);
             this.layoutControlGroup3.Name = "autoGeneratedGroup1";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(899, 92);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(899, 66);
             this.layoutControlGroup3.Text = "autoGeneratedGroup1";
             // 
             // ItemForBEFORE_ANA_MEMO
@@ -1373,21 +1589,9 @@
             this.ItemForBEFORE_ANA_MEMO.CustomizationFormText = "BEFORE_ANA_MEMO";
             this.ItemForBEFORE_ANA_MEMO.Location = new System.Drawing.Point(0, 24);
             this.ItemForBEFORE_ANA_MEMO.Name = "ItemForBEFORE_ANA_MEMO";
-            this.ItemForBEFORE_ANA_MEMO.Size = new System.Drawing.Size(899, 44);
+            this.ItemForBEFORE_ANA_MEMO.Size = new System.Drawing.Size(899, 42);
             this.ItemForBEFORE_ANA_MEMO.Text = "透析前症状及处理:";
             this.ItemForBEFORE_ANA_MEMO.TextSize = new System.Drawing.Size(102, 14);
-            // 
-            // ItemForEPO
-            // 
-            this.ItemForEPO.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.ItemForEPO.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.ItemForEPO.Control = this.EPOTextEdit;
-            this.ItemForEPO.CustomizationFormText = "EPO";
-            this.ItemForEPO.Location = new System.Drawing.Point(0, 68);
-            this.ItemForEPO.Name = "ItemForEPO";
-            this.ItemForEPO.Size = new System.Drawing.Size(899, 24);
-            this.ItemForEPO.Text = "拟用药:";
-            this.ItemForEPO.TextSize = new System.Drawing.Size(102, 14);
             // 
             // ItemForONMACH
             // 
@@ -1397,7 +1601,7 @@
             this.ItemForONMACH.CustomizationFormText = "上机:";
             this.ItemForONMACH.Location = new System.Drawing.Point(0, 0);
             this.ItemForONMACH.Name = "ItemForONMACH";
-            this.ItemForONMACH.Size = new System.Drawing.Size(435, 24);
+            this.ItemForONMACH.Size = new System.Drawing.Size(459, 24);
             this.ItemForONMACH.Text = "上机:";
             this.ItemForONMACH.TextSize = new System.Drawing.Size(102, 14);
             // 
@@ -1407,41 +1611,22 @@
             this.ItemForCHECKED.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForCHECKED.Control = this.CHECKEDTextEdit;
             this.ItemForCHECKED.CustomizationFormText = "CHECKED";
-            this.ItemForCHECKED.Location = new System.Drawing.Point(435, 0);
+            this.ItemForCHECKED.Location = new System.Drawing.Point(459, 0);
             this.ItemForCHECKED.Name = "ItemForCHECKED";
-            this.ItemForCHECKED.Size = new System.Drawing.Size(464, 24);
+            this.ItemForCHECKED.Size = new System.Drawing.Size(440, 24);
             this.ItemForCHECKED.Text = "核对:";
             this.ItemForCHECKED.TextSize = new System.Drawing.Size(102, 14);
             // 
-            // layoutControlGroup4
+            // layoutControlGroup9
             // 
-            this.layoutControlGroup4.AllowDrawBackground = false;
-            this.layoutControlGroup4.CustomizationFormText = "autoGeneratedGroup2";
-            this.layoutControlGroup4.GroupBordersVisible = false;
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 212);
-            this.layoutControlGroup4.Name = "autoGeneratedGroup2";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(899, 1);
-            this.layoutControlGroup4.Text = "autoGeneratedGroup2";
-            // 
-            // layoutControlGroup5
-            // 
-            this.layoutControlGroup5.AllowDrawBackground = false;
-            this.layoutControlGroup5.CustomizationFormText = "autoGeneratedGroup3";
-            this.layoutControlGroup5.GroupBordersVisible = false;
-            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 237);
-            this.layoutControlGroup5.Name = "autoGeneratedGroup3";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(899, 14);
-            this.layoutControlGroup5.Text = "autoGeneratedGroup3";
-            // 
-            // layoutControlGroup6
-            // 
-            this.layoutControlGroup6.AllowDrawBackground = false;
-            this.layoutControlGroup6.CustomizationFormText = "autoGeneratedGroup4";
-            this.layoutControlGroup6.GroupBordersVisible = false;
-            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 251);
-            this.layoutControlGroup6.Name = "autoGeneratedGroup4";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(899, 11);
-            this.layoutControlGroup6.Text = "autoGeneratedGroup4";
+            this.layoutControlGroup9.CustomizationFormText = "透析用药";
+            this.layoutControlGroup9.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForOTHER,
+            this.ItemForEPO});
+            this.layoutControlGroup9.Location = new System.Drawing.Point(0, 186);
+            this.layoutControlGroup9.Name = "layoutControlGroup9";
+            this.layoutControlGroup9.Size = new System.Drawing.Size(899, 92);
+            this.layoutControlGroup9.Text = "透析用药";
             // 
             // ItemForOTHER
             // 
@@ -1449,19 +1634,169 @@
             this.ItemForOTHER.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.ItemForOTHER.Control = this.OTHERTextEdit;
             this.ItemForOTHER.CustomizationFormText = "其他:";
-            this.ItemForOTHER.Location = new System.Drawing.Point(0, 213);
+            this.ItemForOTHER.Location = new System.Drawing.Point(0, 24);
             this.ItemForOTHER.Name = "ItemForOTHER";
-            this.ItemForOTHER.Size = new System.Drawing.Size(899, 24);
+            this.ItemForOTHER.Size = new System.Drawing.Size(875, 24);
             this.ItemForOTHER.Text = "其他:";
             this.ItemForOTHER.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForEPO
+            // 
+            this.ItemForEPO.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForEPO.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForEPO.Control = this.EPOTextEdit;
+            this.ItemForEPO.CustomizationFormText = "EPO";
+            this.ItemForEPO.Location = new System.Drawing.Point(0, 0);
+            this.ItemForEPO.Name = "ItemForEPO";
+            this.ItemForEPO.Size = new System.Drawing.Size(875, 24);
+            this.ItemForEPO.Text = "药品名称:";
+            this.ItemForEPO.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // layoutControlGroup10
+            // 
+            this.layoutControlGroup10.CustomizationFormText = "透析用耗材";
+            this.layoutControlGroup10.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.ItemForPIPELINE,
+            this.ItemForFISTULA_NEEDLE_NUM,
+            this.ItemForFISTULA_NEEDLE,
+            this.ItemForFISTULA_CARE_PACKAGES,
+            this.ItemForFISTULA_CARE_PACKAGES_NUM,
+            this.ItemForMACH,
+            this.ItemForAPPLICATOR,
+            this.ItemForAPPLICATOR_NUM,
+            this.ItemForHEPARIN_CAP,
+            this.ItemForHEPARIN_CAP_NUM});
+            this.layoutControlGroup10.Location = new System.Drawing.Point(0, 278);
+            this.layoutControlGroup10.Name = "layoutControlGroup10";
+            this.layoutControlGroup10.Size = new System.Drawing.Size(899, 116);
+            this.layoutControlGroup10.Text = "透析用耗材";
+            // 
+            // ItemForPIPELINE
+            // 
+            this.ItemForPIPELINE.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForPIPELINE.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForPIPELINE.Control = this.PIPELINETextEdit;
+            this.ItemForPIPELINE.CustomizationFormText = "管路:";
+            this.ItemForPIPELINE.Location = new System.Drawing.Point(455, 0);
+            this.ItemForPIPELINE.Name = "ItemForPIPELINE";
+            this.ItemForPIPELINE.Size = new System.Drawing.Size(420, 24);
+            this.ItemForPIPELINE.Text = "管路:";
+            this.ItemForPIPELINE.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFISTULA_NEEDLE_NUM
+            // 
+            this.ItemForFISTULA_NEEDLE_NUM.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForFISTULA_NEEDLE_NUM.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForFISTULA_NEEDLE_NUM.Control = this.FISTULA_NEEDLE_NUMTextEdit;
+            this.ItemForFISTULA_NEEDLE_NUM.CustomizationFormText = "内瘘穿刺针数量:";
+            this.ItemForFISTULA_NEEDLE_NUM.Location = new System.Drawing.Point(288, 24);
+            this.ItemForFISTULA_NEEDLE_NUM.Name = "ItemForFISTULA_NEEDLE_NUM";
+            this.ItemForFISTULA_NEEDLE_NUM.Size = new System.Drawing.Size(167, 24);
+            this.ItemForFISTULA_NEEDLE_NUM.Text = "内瘘穿刺针数量:";
+            this.ItemForFISTULA_NEEDLE_NUM.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFISTULA_NEEDLE
+            // 
+            this.ItemForFISTULA_NEEDLE.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForFISTULA_NEEDLE.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForFISTULA_NEEDLE.Control = this.FISTULA_NEEDLETextEdit;
+            this.ItemForFISTULA_NEEDLE.CustomizationFormText = "内瘘穿刺针:";
+            this.ItemForFISTULA_NEEDLE.Location = new System.Drawing.Point(0, 24);
+            this.ItemForFISTULA_NEEDLE.Name = "ItemForFISTULA_NEEDLE";
+            this.ItemForFISTULA_NEEDLE.Size = new System.Drawing.Size(288, 24);
+            this.ItemForFISTULA_NEEDLE.Text = "内瘘穿刺针:";
+            this.ItemForFISTULA_NEEDLE.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFISTULA_CARE_PACKAGES
+            // 
+            this.ItemForFISTULA_CARE_PACKAGES.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForFISTULA_CARE_PACKAGES.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForFISTULA_CARE_PACKAGES.Control = this.FISTULA_CARE_PACKAGESTextEdit;
+            this.ItemForFISTULA_CARE_PACKAGES.CustomizationFormText = "内瘘护理包:";
+            this.ItemForFISTULA_CARE_PACKAGES.Location = new System.Drawing.Point(455, 24);
+            this.ItemForFISTULA_CARE_PACKAGES.Name = "ItemForFISTULA_CARE_PACKAGES";
+            this.ItemForFISTULA_CARE_PACKAGES.Size = new System.Drawing.Size(258, 24);
+            this.ItemForFISTULA_CARE_PACKAGES.Text = "内瘘护理包:";
+            this.ItemForFISTULA_CARE_PACKAGES.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForFISTULA_CARE_PACKAGES_NUM
+            // 
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.Control = this.FISTULA_CARE_PACKAGES_NUMTextEdit;
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.CustomizationFormText = "内瘘护理包数量:";
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.Location = new System.Drawing.Point(713, 24);
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.Name = "ItemForFISTULA_CARE_PACKAGES_NUM";
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.Size = new System.Drawing.Size(162, 24);
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.Text = "内瘘护理包数量:";
+            this.ItemForFISTULA_CARE_PACKAGES_NUM.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForMACH
+            // 
+            this.ItemForMACH.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForMACH.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForMACH.Control = this.MACHTextEdit;
+            this.ItemForMACH.CustomizationFormText = "MACH";
+            this.ItemForMACH.Location = new System.Drawing.Point(0, 0);
+            this.ItemForMACH.Name = "ItemForMACH";
+            this.ItemForMACH.Size = new System.Drawing.Size(455, 24);
+            this.ItemForMACH.Text = "透析器:";
+            this.ItemForMACH.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForAPPLICATOR
+            // 
+            this.ItemForAPPLICATOR.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForAPPLICATOR.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForAPPLICATOR.Control = this.APPLICATORTextEdit;
+            this.ItemForAPPLICATOR.CustomizationFormText = "敷贴:";
+            this.ItemForAPPLICATOR.Location = new System.Drawing.Point(0, 48);
+            this.ItemForAPPLICATOR.Name = "ItemForAPPLICATOR";
+            this.ItemForAPPLICATOR.Size = new System.Drawing.Size(288, 24);
+            this.ItemForAPPLICATOR.Text = "敷贴:";
+            this.ItemForAPPLICATOR.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForAPPLICATOR_NUM
+            // 
+            this.ItemForAPPLICATOR_NUM.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForAPPLICATOR_NUM.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForAPPLICATOR_NUM.Control = this.APPLICATOR_NUMTextEdit;
+            this.ItemForAPPLICATOR_NUM.CustomizationFormText = "敷贴数量";
+            this.ItemForAPPLICATOR_NUM.Location = new System.Drawing.Point(288, 48);
+            this.ItemForAPPLICATOR_NUM.Name = "ItemForAPPLICATOR_NUM";
+            this.ItemForAPPLICATOR_NUM.Size = new System.Drawing.Size(167, 24);
+            this.ItemForAPPLICATOR_NUM.Text = "敷贴数量";
+            this.ItemForAPPLICATOR_NUM.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForHEPARIN_CAP
+            // 
+            this.ItemForHEPARIN_CAP.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForHEPARIN_CAP.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForHEPARIN_CAP.Control = this.HEPARIN_CAPTextEdit;
+            this.ItemForHEPARIN_CAP.CustomizationFormText = "肝素帽:";
+            this.ItemForHEPARIN_CAP.Location = new System.Drawing.Point(455, 48);
+            this.ItemForHEPARIN_CAP.Name = "ItemForHEPARIN_CAP";
+            this.ItemForHEPARIN_CAP.Size = new System.Drawing.Size(258, 24);
+            this.ItemForHEPARIN_CAP.Text = "肝素帽:";
+            this.ItemForHEPARIN_CAP.TextSize = new System.Drawing.Size(102, 14);
+            // 
+            // ItemForHEPARIN_CAP_NUM
+            // 
+            this.ItemForHEPARIN_CAP_NUM.AppearanceItemCaption.Options.UseTextOptions = true;
+            this.ItemForHEPARIN_CAP_NUM.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.ItemForHEPARIN_CAP_NUM.Control = this.HEPARIN_CAP_NUMTextEdit;
+            this.ItemForHEPARIN_CAP_NUM.CustomizationFormText = "肝素帽数量:";
+            this.ItemForHEPARIN_CAP_NUM.Location = new System.Drawing.Point(713, 48);
+            this.ItemForHEPARIN_CAP_NUM.Name = "ItemForHEPARIN_CAP_NUM";
+            this.ItemForHEPARIN_CAP_NUM.Size = new System.Drawing.Size(162, 24);
+            this.ItemForHEPARIN_CAP_NUM.Text = "肝素帽数量:";
+            this.ItemForHEPARIN_CAP_NUM.TextSize = new System.Drawing.Size(102, 14);
             // 
             // FrmEdtBloodCeanupBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 322);
+            this.ClientSize = new System.Drawing.Size(1046, 459);
             this.Controls.Add(this.dataLayoutControl1);
-            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.shapeContainer1);
             this.Controls.Add(this.barDockControlLeft);
@@ -1481,6 +1816,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WEIGHTSpinEdit.Properties)).EndInit();
@@ -1512,37 +1853,56 @@
             ((System.ComponentModel.ISupportInitialize)(this.LIQUID_CALCIUMTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ANA_WEIGHTTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ANA_END_WEIGHTTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_NEEDLE_NUMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_CARE_PACKAGES_NUMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APPLICATOR_NUMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_CAP_NUMTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_TYPETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_NEEDLETextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.APPLICATORTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FISTULA_CARE_PACKAGESTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HEPARIN_CAPTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PIPELINETextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDIAG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH_TYP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSWITCH_WEIGHT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLOW_LIVER)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFIX_CAPACITY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_STAR_TIME)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLIVER_FRIST)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForADD_WEIGHT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_DATE)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_TIME)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH_POS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForWEIGHT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_WEIGHT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_WEIGHT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSWITCH_TYPE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBYPASS_METHOD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForLIQUID_CALCIUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIMPALER)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_WEIGHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_WEIGHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForWEIGHT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFIX_CAPACITY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_DATE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_STAR_TIME)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_END_TIME)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_TYPE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBEFORE_ANA_MEMO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForONMACH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCHECKED)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForOTHER)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForEPO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForPIPELINE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_NEEDLE_NUM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_NEEDLE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_CARE_PACKAGES)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForFISTULA_CARE_PACKAGES_NUM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForMACH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForAPPLICATOR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForAPPLICATOR_NUM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_CAP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemForHEPARIN_CAP_NUM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1563,12 +1923,17 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.BindingSource vALUECODEBindingSource;
         private System.Windows.Forms.BindingSource vALUECODEBindingSource2;
         private System.Windows.Forms.BindingSource aCCOUNTBindingSource;
         private System.Windows.Forms.BindingSource vALUECODEBindingSource1;
         private System.Windows.Forms.BindingSource vALUECODEBindingSource3;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.BindingSource bindingSource3;
+        private System.Windows.Forms.BindingSource bindingSource4;
+        private System.Windows.Forms.BindingSource bindingSource5;
+        private System.Windows.Forms.BindingSource bindingSource6;
+        private System.Windows.Forms.BindingSource bindingSource2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraEditors.SpinEdit WEIGHTSpinEdit;
         private DevExpress.XtraEditors.TextEdit MACH_POSTextEdit;
@@ -1602,38 +1967,57 @@
         private DevExpress.XtraEditors.TimeEdit ANA_STAR_TIMEDateEdit;
         private DevExpress.XtraEditors.TimeEdit ANA_END_TIMEDateEdit;
         private DevExpress.XtraEditors.LookUpEdit LIQUID_CALCIUMTextEdit;
+        private DevExpress.XtraEditors.SpinEdit ANA_WEIGHTTextEdit;
+        private DevExpress.XtraEditors.SpinEdit ANA_END_WEIGHTTextEdit;
+        private DevExpress.XtraEditors.TextEdit FISTULA_NEEDLE_NUMTextEdit;
+        private DevExpress.XtraEditors.TextEdit FISTULA_CARE_PACKAGES_NUMTextEdit;
+        private DevExpress.XtraEditors.TextEdit APPLICATOR_NUMTextEdit;
+        private DevExpress.XtraEditors.TextEdit HEPARIN_CAP_NUMTextEdit;
+        private DevExpress.XtraEditors.LookUpEdit FISTULA_TYPETextEdit;
+        private DevExpress.XtraEditors.LookUpEdit FISTULA_NEEDLETextEdit;
+        private DevExpress.XtraEditors.LookUpEdit APPLICATORTextEdit;
+        private DevExpress.XtraEditors.LookUpEdit FISTULA_CARE_PACKAGESTextEdit;
+        private DevExpress.XtraEditors.LookUpEdit HEPARIN_CAPTextEdit;
+        private DevExpress.XtraEditors.LookUpEdit PIPELINETextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForDIAG;
         private DevExpress.XtraLayout.LayoutControlItem ItemForMACH_TYP;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForMACH;
         private DevExpress.XtraLayout.LayoutControlItem ItemForSWITCH_WEIGHT;
         private DevExpress.XtraLayout.LayoutControlItem ItemForLOW_LIVER;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForFIX_CAPACITY;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_STAR_TIME;
         private DevExpress.XtraLayout.LayoutControlItem ItemForLIVER_FRIST;
         private DevExpress.XtraLayout.LayoutControlItem ItemForADD_WEIGHT;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_DATE;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_END_TIME;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_TIME;
         private DevExpress.XtraLayout.LayoutControlItem ItemForMACH_POS;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForWEIGHT;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_WEIGHT;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_END_WEIGHT;
         private DevExpress.XtraLayout.LayoutControlItem ItemForSWITCH_TYPE;
         private DevExpress.XtraLayout.LayoutControlItem ItemForBYPASS_METHOD;
         private DevExpress.XtraLayout.LayoutControlItem ItemForLIQUID_CALCIUM;
         private DevExpress.XtraLayout.LayoutControlItem ItemForIMPALER;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_END_WEIGHT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_WEIGHT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForWEIGHT;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFIX_CAPACITY;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_DATE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_STAR_TIME;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_TIME;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForANA_END_TIME;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFISTULA_TYPE;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem ItemForBEFORE_ANA_MEMO;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForEPO;
         private DevExpress.XtraLayout.LayoutControlItem ItemForONMACH;
         private DevExpress.XtraLayout.LayoutControlItem ItemForCHECKED;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup9;
         private DevExpress.XtraLayout.LayoutControlItem ItemForOTHER;
-        private DevExpress.XtraEditors.SpinEdit ANA_WEIGHTTextEdit;
-        private DevExpress.XtraEditors.SpinEdit ANA_END_WEIGHTTextEdit;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForEPO;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup10;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForPIPELINE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFISTULA_NEEDLE_NUM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFISTULA_NEEDLE;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFISTULA_CARE_PACKAGES;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForFISTULA_CARE_PACKAGES_NUM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForMACH;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForAPPLICATOR;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForAPPLICATOR_NUM;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN_CAP;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForHEPARIN_CAP_NUM;
     }
 }
