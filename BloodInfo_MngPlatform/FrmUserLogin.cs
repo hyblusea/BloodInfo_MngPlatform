@@ -25,6 +25,14 @@ namespace BloodInfo_MngPlatform
             try
             {
                 txtUserID.Text = ConfigurationManager.AppSettings["UserID"];
+                if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["ShowCommTestToolsLink"]))
+                {
+                    try
+                    {
+                        linkLabel1.Visible = Convert.ToBoolean(ConfigurationManager.AppSettings["ShowCommTestToolsLink"]);
+                    }
+                    catch { }
+                }
             }
             catch { txtUserID.Text = ""; }
 
@@ -70,6 +78,15 @@ namespace BloodInfo_MngPlatform
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _FrmCommTest frm = new _FrmCommTest();
+            frm.WindowState = FormWindowState.Maximized;
+            this.Visible = false;
+            frm.ShowDialog();
+            this.Close();            
         }
     }
 }

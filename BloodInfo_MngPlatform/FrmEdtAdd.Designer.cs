@@ -409,7 +409,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 540);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 543);
             this.barDockControlBottom.Size = new System.Drawing.Size(1082, 0);
             // 
             // barDockControlLeft
@@ -417,14 +417,14 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 509);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 512);
             // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControl1.Location = new System.Drawing.Point(1082, 31);
-            this.barDockControl1.Size = new System.Drawing.Size(0, 509);
+            this.barDockControl1.Size = new System.Drawing.Size(0, 512);
             // 
             // sharedImageCollection1
             // 
@@ -873,17 +873,17 @@
             this.URINE_PASSTextEdit.Location = new System.Drawing.Point(540, 36);
             this.URINE_PASSTextEdit.MenuManager = this.barManager1;
             this.URINE_PASSTextEdit.Name = "URINE_PASSTextEdit";
-            this.URINE_PASSTextEdit.Size = new System.Drawing.Size(55, 20);
+            this.URINE_PASSTextEdit.Size = new System.Drawing.Size(158, 20);
             this.URINE_PASSTextEdit.StyleController = this.dataLayoutControl1;
             this.URINE_PASSTextEdit.TabIndex = 12;
             // 
             // MANURETextEdit
             // 
             this.MANURETextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "MANURE", true));
-            this.MANURETextEdit.Location = new System.Drawing.Point(686, 36);
+            this.MANURETextEdit.Location = new System.Drawing.Point(789, 36);
             this.MANURETextEdit.MenuManager = this.barManager1;
             this.MANURETextEdit.Name = "MANURETextEdit";
-            this.MANURETextEdit.Size = new System.Drawing.Size(242, 20);
+            this.MANURETextEdit.Size = new System.Drawing.Size(139, 20);
             this.MANURETextEdit.StyleController = this.dataLayoutControl1;
             this.MANURETextEdit.TabIndex = 13;
             // 
@@ -935,7 +935,7 @@
             this.SCRSpinEdit.Name = "SCRSpinEdit";
             this.SCRSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.SCRSpinEdit.Size = new System.Drawing.Size(55, 20);
+            this.SCRSpinEdit.Size = new System.Drawing.Size(158, 20);
             this.SCRSpinEdit.StyleController = this.dataLayoutControl1;
             this.SCRSpinEdit.TabIndex = 17;
             // 
@@ -947,12 +947,12 @@
             0,
             0,
             0});
-            this.UASpinEdit.Location = new System.Drawing.Point(686, 84);
+            this.UASpinEdit.Location = new System.Drawing.Point(789, 84);
             this.UASpinEdit.MenuManager = this.barManager1;
             this.UASpinEdit.Name = "UASpinEdit";
             this.UASpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.UASpinEdit.Size = new System.Drawing.Size(242, 20);
+            this.UASpinEdit.Size = new System.Drawing.Size(139, 20);
             this.UASpinEdit.StyleController = this.dataLayoutControl1;
             this.UASpinEdit.TabIndex = 18;
             // 
@@ -1020,7 +1020,7 @@
             this.CASpinEdit.Name = "CASpinEdit";
             this.CASpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.CASpinEdit.Size = new System.Drawing.Size(55, 20);
+            this.CASpinEdit.Size = new System.Drawing.Size(158, 20);
             this.CASpinEdit.StyleController = this.dataLayoutControl1;
             this.CASpinEdit.TabIndex = 22;
             // 
@@ -1032,12 +1032,12 @@
             0,
             0,
             0});
-            this.PSpinEdit.Location = new System.Drawing.Point(686, 108);
+            this.PSpinEdit.Location = new System.Drawing.Point(789, 108);
             this.PSpinEdit.MenuManager = this.barManager1;
             this.PSpinEdit.Name = "PSpinEdit";
             this.PSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.PSpinEdit.Size = new System.Drawing.Size(242, 20);
+            this.PSpinEdit.Size = new System.Drawing.Size(139, 20);
             this.PSpinEdit.StyleController = this.dataLayoutControl1;
             this.PSpinEdit.TabIndex = 23;
             // 
@@ -1139,7 +1139,7 @@
             this.LIVER_BILIRUBINSpinEdit.Name = "LIVER_BILIRUBINSpinEdit";
             this.LIVER_BILIRUBINSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LIVER_BILIRUBINSpinEdit.Size = new System.Drawing.Size(55, 20);
+            this.LIVER_BILIRUBINSpinEdit.Size = new System.Drawing.Size(157, 20);
             this.LIVER_BILIRUBINSpinEdit.StyleController = this.dataLayoutControl1;
             this.LIVER_BILIRUBINSpinEdit.TabIndex = 29;
             // 
@@ -1151,12 +1151,12 @@
             0,
             0,
             0});
-            this.LIVER_DIRECTSpinEdit.Location = new System.Drawing.Point(686, 156);
+            this.LIVER_DIRECTSpinEdit.Location = new System.Drawing.Point(788, 156);
             this.LIVER_DIRECTSpinEdit.MenuManager = this.barManager1;
             this.LIVER_DIRECTSpinEdit.Name = "LIVER_DIRECTSpinEdit";
             this.LIVER_DIRECTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LIVER_DIRECTSpinEdit.Size = new System.Drawing.Size(242, 20);
+            this.LIVER_DIRECTSpinEdit.Size = new System.Drawing.Size(140, 20);
             this.LIVER_DIRECTSpinEdit.StyleController = this.dataLayoutControl1;
             this.LIVER_DIRECTSpinEdit.TabIndex = 30;
             // 
@@ -1292,7 +1292,7 @@
             this.LIPIDS_LDL_CHSpinEdit.Name = "LIPIDS_LDL_CHSpinEdit";
             this.LIPIDS_LDL_CHSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LIPIDS_LDL_CHSpinEdit.Size = new System.Drawing.Size(55, 20);
+            this.LIPIDS_LDL_CHSpinEdit.Size = new System.Drawing.Size(157, 20);
             this.LIPIDS_LDL_CHSpinEdit.StyleController = this.dataLayoutControl1;
             this.LIPIDS_LDL_CHSpinEdit.TabIndex = 38;
             // 
@@ -1304,12 +1304,12 @@
             0,
             0,
             0});
-            this.LIPIDS_1PHTSpinEdit.Location = new System.Drawing.Point(686, 204);
+            this.LIPIDS_1PHTSpinEdit.Location = new System.Drawing.Point(788, 204);
             this.LIPIDS_1PHTSpinEdit.MenuManager = this.barManager1;
             this.LIPIDS_1PHTSpinEdit.Name = "LIPIDS_1PHTSpinEdit";
             this.LIPIDS_1PHTSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.LIPIDS_1PHTSpinEdit.Size = new System.Drawing.Size(242, 20);
+            this.LIPIDS_1PHTSpinEdit.Size = new System.Drawing.Size(140, 20);
             this.LIPIDS_1PHTSpinEdit.StyleController = this.dataLayoutControl1;
             this.LIPIDS_1PHTSpinEdit.TabIndex = 39;
             // 
@@ -1411,7 +1411,7 @@
             this.IRON_SISpinEdit.Name = "IRON_SISpinEdit";
             this.IRON_SISpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.IRON_SISpinEdit.Size = new System.Drawing.Size(56, 20);
+            this.IRON_SISpinEdit.Size = new System.Drawing.Size(157, 20);
             this.IRON_SISpinEdit.StyleController = this.dataLayoutControl1;
             this.IRON_SISpinEdit.TabIndex = 45;
             // 
@@ -1423,12 +1423,12 @@
             0,
             0,
             0});
-            this.IRON_COMBINSpinEdit.Location = new System.Drawing.Point(687, 252);
+            this.IRON_COMBINSpinEdit.Location = new System.Drawing.Point(788, 252);
             this.IRON_COMBINSpinEdit.MenuManager = this.barManager1;
             this.IRON_COMBINSpinEdit.Name = "IRON_COMBINSpinEdit";
             this.IRON_COMBINSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.IRON_COMBINSpinEdit.Size = new System.Drawing.Size(241, 20);
+            this.IRON_COMBINSpinEdit.Size = new System.Drawing.Size(140, 20);
             this.IRON_COMBINSpinEdit.StyleController = this.dataLayoutControl1;
             this.IRON_COMBINSpinEdit.TabIndex = 46;
             // 
@@ -1468,17 +1468,17 @@
             this.HEPATITIS_HBSAGTextEdit.Location = new System.Drawing.Point(540, 276);
             this.HEPATITIS_HBSAGTextEdit.MenuManager = this.barManager1;
             this.HEPATITIS_HBSAGTextEdit.Name = "HEPATITIS_HBSAGTextEdit";
-            this.HEPATITIS_HBSAGTextEdit.Size = new System.Drawing.Size(56, 20);
+            this.HEPATITIS_HBSAGTextEdit.Size = new System.Drawing.Size(157, 20);
             this.HEPATITIS_HBSAGTextEdit.StyleController = this.dataLayoutControl1;
             this.HEPATITIS_HBSAGTextEdit.TabIndex = 50;
             // 
             // HEPATITIS_HBSABTextEdit
             // 
             this.HEPATITIS_HBSABTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "HEPATITIS_HBSAB", true));
-            this.HEPATITIS_HBSABTextEdit.Location = new System.Drawing.Point(687, 276);
+            this.HEPATITIS_HBSABTextEdit.Location = new System.Drawing.Point(788, 276);
             this.HEPATITIS_HBSABTextEdit.MenuManager = this.barManager1;
             this.HEPATITIS_HBSABTextEdit.Name = "HEPATITIS_HBSABTextEdit";
-            this.HEPATITIS_HBSABTextEdit.Size = new System.Drawing.Size(241, 20);
+            this.HEPATITIS_HBSABTextEdit.Size = new System.Drawing.Size(140, 20);
             this.HEPATITIS_HBSABTextEdit.StyleController = this.dataLayoutControl1;
             this.HEPATITIS_HBSABTextEdit.TabIndex = 51;
             // 
@@ -1498,17 +1498,17 @@
             this.HEPATITIS_BGCABTextEdit.Location = new System.Drawing.Point(540, 300);
             this.HEPATITIS_BGCABTextEdit.MenuManager = this.barManager1;
             this.HEPATITIS_BGCABTextEdit.Name = "HEPATITIS_BGCABTextEdit";
-            this.HEPATITIS_BGCABTextEdit.Size = new System.Drawing.Size(56, 20);
+            this.HEPATITIS_BGCABTextEdit.Size = new System.Drawing.Size(157, 20);
             this.HEPATITIS_BGCABTextEdit.StyleController = this.dataLayoutControl1;
             this.HEPATITIS_BGCABTextEdit.TabIndex = 53;
             // 
             // HEPATITIS_HBEABTextEdit
             // 
             this.HEPATITIS_HBEABTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "HEPATITIS_HBEAB", true));
-            this.HEPATITIS_HBEABTextEdit.Location = new System.Drawing.Point(687, 300);
+            this.HEPATITIS_HBEABTextEdit.Location = new System.Drawing.Point(788, 300);
             this.HEPATITIS_HBEABTextEdit.MenuManager = this.barManager1;
             this.HEPATITIS_HBEABTextEdit.Name = "HEPATITIS_HBEABTextEdit";
-            this.HEPATITIS_HBEABTextEdit.Size = new System.Drawing.Size(241, 20);
+            this.HEPATITIS_HBEABTextEdit.Size = new System.Drawing.Size(140, 20);
             this.HEPATITIS_HBEABTextEdit.StyleController = this.dataLayoutControl1;
             this.HEPATITIS_HBEABTextEdit.TabIndex = 54;
             // 
@@ -1572,17 +1572,17 @@
             this.ECGTextEdit.Location = new System.Drawing.Point(99, 348);
             this.ECGTextEdit.MenuManager = this.barManager1;
             this.ECGTextEdit.Name = "ECGTextEdit";
-            this.ECGTextEdit.Size = new System.Drawing.Size(349, 20);
+            this.ECGTextEdit.Size = new System.Drawing.Size(350, 20);
             this.ECGTextEdit.StyleController = this.dataLayoutControl1;
             this.ECGTextEdit.TabIndex = 59;
             // 
             // CHEST_X_RAYTextEdit
             // 
             this.CHEST_X_RAYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "CHEST_X_RAY", true));
-            this.CHEST_X_RAYTextEdit.Location = new System.Drawing.Point(539, 348);
+            this.CHEST_X_RAYTextEdit.Location = new System.Drawing.Point(540, 348);
             this.CHEST_X_RAYTextEdit.MenuManager = this.barManager1;
             this.CHEST_X_RAYTextEdit.Name = "CHEST_X_RAYTextEdit";
-            this.CHEST_X_RAYTextEdit.Size = new System.Drawing.Size(57, 20);
+            this.CHEST_X_RAYTextEdit.Size = new System.Drawing.Size(157, 20);
             this.CHEST_X_RAYTextEdit.StyleController = this.dataLayoutControl1;
             this.CHEST_X_RAYTextEdit.TabIndex = 60;
             // 
@@ -1594,12 +1594,12 @@
             0,
             0,
             0});
-            this.CARDIOTHORACIC_RATIOSpinEdit.Location = new System.Drawing.Point(687, 348);
+            this.CARDIOTHORACIC_RATIOSpinEdit.Location = new System.Drawing.Point(788, 348);
             this.CARDIOTHORACIC_RATIOSpinEdit.MenuManager = this.barManager1;
             this.CARDIOTHORACIC_RATIOSpinEdit.Name = "CARDIOTHORACIC_RATIOSpinEdit";
             this.CARDIOTHORACIC_RATIOSpinEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.CARDIOTHORACIC_RATIOSpinEdit.Size = new System.Drawing.Size(241, 20);
+            this.CARDIOTHORACIC_RATIOSpinEdit.Size = new System.Drawing.Size(140, 20);
             this.CARDIOTHORACIC_RATIOSpinEdit.StyleController = this.dataLayoutControl1;
             this.CARDIOTHORACIC_RATIOSpinEdit.TabIndex = 61;
             // 
@@ -1609,17 +1609,17 @@
             this.ECHOCARDIOGRAPHYTextEdit.Location = new System.Drawing.Point(99, 372);
             this.ECHOCARDIOGRAPHYTextEdit.MenuManager = this.barManager1;
             this.ECHOCARDIOGRAPHYTextEdit.Name = "ECHOCARDIOGRAPHYTextEdit";
-            this.ECHOCARDIOGRAPHYTextEdit.Size = new System.Drawing.Size(349, 20);
+            this.ECHOCARDIOGRAPHYTextEdit.Size = new System.Drawing.Size(350, 20);
             this.ECHOCARDIOGRAPHYTextEdit.StyleController = this.dataLayoutControl1;
             this.ECHOCARDIOGRAPHYTextEdit.TabIndex = 62;
             // 
             // B_KIDNEYSTextEdit
             // 
             this.B_KIDNEYSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "B_KIDNEYS", true));
-            this.B_KIDNEYSTextEdit.Location = new System.Drawing.Point(539, 372);
+            this.B_KIDNEYSTextEdit.Location = new System.Drawing.Point(540, 372);
             this.B_KIDNEYSTextEdit.MenuManager = this.barManager1;
             this.B_KIDNEYSTextEdit.Name = "B_KIDNEYSTextEdit";
-            this.B_KIDNEYSTextEdit.Size = new System.Drawing.Size(389, 20);
+            this.B_KIDNEYSTextEdit.Size = new System.Drawing.Size(388, 20);
             this.B_KIDNEYSTextEdit.StyleController = this.dataLayoutControl1;
             this.B_KIDNEYSTextEdit.TabIndex = 63;
             // 
@@ -1629,17 +1629,17 @@
             this.AKI_APACHEIITextEdit.Location = new System.Drawing.Point(99, 396);
             this.AKI_APACHEIITextEdit.MenuManager = this.barManager1;
             this.AKI_APACHEIITextEdit.Name = "AKI_APACHEIITextEdit";
-            this.AKI_APACHEIITextEdit.Size = new System.Drawing.Size(349, 20);
+            this.AKI_APACHEIITextEdit.Size = new System.Drawing.Size(350, 20);
             this.AKI_APACHEIITextEdit.StyleController = this.dataLayoutControl1;
             this.AKI_APACHEIITextEdit.TabIndex = 64;
             // 
             // AKI_ATN_ISNTextEdit
             // 
             this.AKI_ATN_ISNTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "AKI_ATN_ISN", true));
-            this.AKI_ATN_ISNTextEdit.Location = new System.Drawing.Point(539, 396);
+            this.AKI_ATN_ISNTextEdit.Location = new System.Drawing.Point(540, 396);
             this.AKI_ATN_ISNTextEdit.MenuManager = this.barManager1;
             this.AKI_ATN_ISNTextEdit.Name = "AKI_ATN_ISNTextEdit";
-            this.AKI_ATN_ISNTextEdit.Size = new System.Drawing.Size(159, 20);
+            this.AKI_ATN_ISNTextEdit.Size = new System.Drawing.Size(158, 20);
             this.AKI_ATN_ISNTextEdit.StyleController = this.dataLayoutControl1;
             this.AKI_ATN_ISNTextEdit.TabIndex = 65;
             // 
@@ -1669,17 +1669,17 @@
             this.HOSPITALIZED_DIAGTextEdit.Location = new System.Drawing.Point(99, 444);
             this.HOSPITALIZED_DIAGTextEdit.MenuManager = this.barManager1;
             this.HOSPITALIZED_DIAGTextEdit.Name = "HOSPITALIZED_DIAGTextEdit";
-            this.HOSPITALIZED_DIAGTextEdit.Size = new System.Drawing.Size(349, 20);
+            this.HOSPITALIZED_DIAGTextEdit.Size = new System.Drawing.Size(350, 20);
             this.HOSPITALIZED_DIAGTextEdit.StyleController = this.dataLayoutControl1;
             this.HOSPITALIZED_DIAGTextEdit.TabIndex = 68;
             // 
             // PATHOLOGYTextEdit
             // 
             this.PATHOLOGYTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "PATHOLOGY", true));
-            this.PATHOLOGYTextEdit.Location = new System.Drawing.Point(539, 444);
+            this.PATHOLOGYTextEdit.Location = new System.Drawing.Point(540, 444);
             this.PATHOLOGYTextEdit.MenuManager = this.barManager1;
             this.PATHOLOGYTextEdit.Name = "PATHOLOGYTextEdit";
-            this.PATHOLOGYTextEdit.Size = new System.Drawing.Size(158, 20);
+            this.PATHOLOGYTextEdit.Size = new System.Drawing.Size(157, 20);
             this.PATHOLOGYTextEdit.StyleController = this.dataLayoutControl1;
             this.PATHOLOGYTextEdit.TabIndex = 69;
             // 
@@ -1699,17 +1699,17 @@
             this.COMPLICATIONTextEdit.Location = new System.Drawing.Point(99, 468);
             this.COMPLICATIONTextEdit.MenuManager = this.barManager1;
             this.COMPLICATIONTextEdit.Name = "COMPLICATIONTextEdit";
-            this.COMPLICATIONTextEdit.Size = new System.Drawing.Size(349, 20);
+            this.COMPLICATIONTextEdit.Size = new System.Drawing.Size(350, 20);
             this.COMPLICATIONTextEdit.StyleController = this.dataLayoutControl1;
             this.COMPLICATIONTextEdit.TabIndex = 71;
             // 
             // WITH_COMPLICATIONSTextEdit
             // 
             this.WITH_COMPLICATIONSTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.aDDTIONCHECKHISTORYBindingSource, "WITH_COMPLICATIONS", true));
-            this.WITH_COMPLICATIONSTextEdit.Location = new System.Drawing.Point(539, 468);
+            this.WITH_COMPLICATIONSTextEdit.Location = new System.Drawing.Point(540, 468);
             this.WITH_COMPLICATIONSTextEdit.MenuManager = this.barManager1;
             this.WITH_COMPLICATIONSTextEdit.Name = "WITH_COMPLICATIONSTextEdit";
-            this.WITH_COMPLICATIONSTextEdit.Size = new System.Drawing.Size(389, 20);
+            this.WITH_COMPLICATIONSTextEdit.Size = new System.Drawing.Size(388, 20);
             this.WITH_COMPLICATIONSTextEdit.StyleController = this.dataLayoutControl1;
             this.WITH_COMPLICATIONSTextEdit.TabIndex = 72;
             // 
@@ -1862,7 +1862,7 @@
             this.ItemForSCR.CustomizationFormText = "SCR";
             this.ItemForSCR.Location = new System.Drawing.Point(441, 72);
             this.ItemForSCR.Name = "ItemForSCR";
-            this.ItemForSCR.Size = new System.Drawing.Size(146, 24);
+            this.ItemForSCR.Size = new System.Drawing.Size(249, 24);
             this.ItemForSCR.Text = "SCR";
             this.ItemForSCR.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -1870,9 +1870,9 @@
             // 
             this.ItemForUA.Control = this.UASpinEdit;
             this.ItemForUA.CustomizationFormText = "UA";
-            this.ItemForUA.Location = new System.Drawing.Point(587, 72);
+            this.ItemForUA.Location = new System.Drawing.Point(690, 72);
             this.ItemForUA.Name = "ItemForUA";
-            this.ItemForUA.Size = new System.Drawing.Size(333, 24);
+            this.ItemForUA.Size = new System.Drawing.Size(230, 24);
             this.ItemForUA.Text = "UA";
             this.ItemForUA.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -1882,7 +1882,7 @@
             this.ItemForURINE_PASS.CustomizationFormText = "尿渗透压";
             this.ItemForURINE_PASS.Location = new System.Drawing.Point(441, 24);
             this.ItemForURINE_PASS.Name = "ItemForURINE_PASS";
-            this.ItemForURINE_PASS.Size = new System.Drawing.Size(146, 24);
+            this.ItemForURINE_PASS.Size = new System.Drawing.Size(249, 24);
             this.ItemForURINE_PASS.Text = "尿渗透压";
             this.ItemForURINE_PASS.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -1900,9 +1900,9 @@
             // 
             this.ItemForMANURE.Control = this.MANURETextEdit;
             this.ItemForMANURE.CustomizationFormText = "粪潜血";
-            this.ItemForMANURE.Location = new System.Drawing.Point(587, 24);
+            this.ItemForMANURE.Location = new System.Drawing.Point(690, 24);
             this.ItemForMANURE.Name = "ItemForMANURE";
-            this.ItemForMANURE.Size = new System.Drawing.Size(333, 24);
+            this.ItemForMANURE.Size = new System.Drawing.Size(230, 24);
             this.ItemForMANURE.Text = "粪潜血";
             this.ItemForMANURE.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2014,7 +2014,7 @@
             this.ItemForCA.CustomizationFormText = "CA";
             this.ItemForCA.Location = new System.Drawing.Point(441, 0);
             this.ItemForCA.Name = "ItemForCA";
-            this.ItemForCA.Size = new System.Drawing.Size(146, 24);
+            this.ItemForCA.Size = new System.Drawing.Size(249, 24);
             this.ItemForCA.Text = "CA";
             this.ItemForCA.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2022,9 +2022,9 @@
             // 
             this.ItemForP.Control = this.PSpinEdit;
             this.ItemForP.CustomizationFormText = "P";
-            this.ItemForP.Location = new System.Drawing.Point(587, 0);
+            this.ItemForP.Location = new System.Drawing.Point(690, 0);
             this.ItemForP.Name = "ItemForP";
-            this.ItemForP.Size = new System.Drawing.Size(333, 24);
+            this.ItemForP.Size = new System.Drawing.Size(230, 24);
             this.ItemForP.Text = "P";
             this.ItemForP.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2094,7 +2094,7 @@
             this.ItemForLIVER_BILIRUBIN.CustomizationFormText = "总胆红素";
             this.ItemForLIVER_BILIRUBIN.Location = new System.Drawing.Point(441, 48);
             this.ItemForLIVER_BILIRUBIN.Name = "ItemForLIVER_BILIRUBIN";
-            this.ItemForLIVER_BILIRUBIN.Size = new System.Drawing.Size(146, 24);
+            this.ItemForLIVER_BILIRUBIN.Size = new System.Drawing.Size(248, 24);
             this.ItemForLIVER_BILIRUBIN.Text = "总胆红素";
             this.ItemForLIVER_BILIRUBIN.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2102,9 +2102,9 @@
             // 
             this.ItemForLIVER_DIRECT.Control = this.LIVER_DIRECTSpinEdit;
             this.ItemForLIVER_DIRECT.CustomizationFormText = "直接胆红素";
-            this.ItemForLIVER_DIRECT.Location = new System.Drawing.Point(587, 48);
+            this.ItemForLIVER_DIRECT.Location = new System.Drawing.Point(689, 48);
             this.ItemForLIVER_DIRECT.Name = "ItemForLIVER_DIRECT";
-            this.ItemForLIVER_DIRECT.Size = new System.Drawing.Size(333, 24);
+            this.ItemForLIVER_DIRECT.Size = new System.Drawing.Size(231, 24);
             this.ItemForLIVER_DIRECT.Text = "直接胆红素";
             this.ItemForLIVER_DIRECT.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2134,7 +2134,7 @@
             this.ItemForLIPIDS_LDL_CH.CustomizationFormText = "LDL-CH";
             this.ItemForLIPIDS_LDL_CH.Location = new System.Drawing.Point(441, 96);
             this.ItemForLIPIDS_LDL_CH.Name = "ItemForLIPIDS_LDL_CH";
-            this.ItemForLIPIDS_LDL_CH.Size = new System.Drawing.Size(146, 24);
+            this.ItemForLIPIDS_LDL_CH.Size = new System.Drawing.Size(248, 24);
             this.ItemForLIPIDS_LDL_CH.Text = "LDL-CH";
             this.ItemForLIPIDS_LDL_CH.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2142,9 +2142,9 @@
             // 
             this.ItemForLIPIDS_1PHT.Control = this.LIPIDS_1PHTSpinEdit;
             this.ItemForLIPIDS_1PHT.CustomizationFormText = "1PHT";
-            this.ItemForLIPIDS_1PHT.Location = new System.Drawing.Point(587, 96);
+            this.ItemForLIPIDS_1PHT.Location = new System.Drawing.Point(689, 96);
             this.ItemForLIPIDS_1PHT.Name = "ItemForLIPIDS_1PHT";
-            this.ItemForLIPIDS_1PHT.Size = new System.Drawing.Size(333, 24);
+            this.ItemForLIPIDS_1PHT.Size = new System.Drawing.Size(231, 24);
             this.ItemForLIPIDS_1PHT.Text = "1PHT";
             this.ItemForLIPIDS_1PHT.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2250,7 +2250,7 @@
             this.ItemForIRON_SI.CustomizationFormText = "血清铁(ST)";
             this.ItemForIRON_SI.Location = new System.Drawing.Point(441, 24);
             this.ItemForIRON_SI.Name = "ItemForIRON_SI";
-            this.ItemForIRON_SI.Size = new System.Drawing.Size(147, 24);
+            this.ItemForIRON_SI.Size = new System.Drawing.Size(248, 24);
             this.ItemForIRON_SI.Text = "血清铁(ST)";
             this.ItemForIRON_SI.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2258,9 +2258,9 @@
             // 
             this.ItemForIRON_COMBIN.Control = this.IRON_COMBINSpinEdit;
             this.ItemForIRON_COMBIN.CustomizationFormText = "总铁结合力";
-            this.ItemForIRON_COMBIN.Location = new System.Drawing.Point(588, 24);
+            this.ItemForIRON_COMBIN.Location = new System.Drawing.Point(689, 24);
             this.ItemForIRON_COMBIN.Name = "ItemForIRON_COMBIN";
-            this.ItemForIRON_COMBIN.Size = new System.Drawing.Size(332, 24);
+            this.ItemForIRON_COMBIN.Size = new System.Drawing.Size(231, 24);
             this.ItemForIRON_COMBIN.Text = "总铁结合力";
             this.ItemForIRON_COMBIN.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2290,7 +2290,7 @@
             this.ItemForHEPATITIS_HBSAG.CustomizationFormText = "HBsAg";
             this.ItemForHEPATITIS_HBSAG.Location = new System.Drawing.Point(441, 48);
             this.ItemForHEPATITIS_HBSAG.Name = "ItemForHEPATITIS_HBSAG";
-            this.ItemForHEPATITIS_HBSAG.Size = new System.Drawing.Size(147, 24);
+            this.ItemForHEPATITIS_HBSAG.Size = new System.Drawing.Size(248, 24);
             this.ItemForHEPATITIS_HBSAG.Text = "HBsAg";
             this.ItemForHEPATITIS_HBSAG.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2298,9 +2298,9 @@
             // 
             this.ItemForHEPATITIS_HBSAB.Control = this.HEPATITIS_HBSABTextEdit;
             this.ItemForHEPATITIS_HBSAB.CustomizationFormText = "HBsAb";
-            this.ItemForHEPATITIS_HBSAB.Location = new System.Drawing.Point(588, 48);
+            this.ItemForHEPATITIS_HBSAB.Location = new System.Drawing.Point(689, 48);
             this.ItemForHEPATITIS_HBSAB.Name = "ItemForHEPATITIS_HBSAB";
-            this.ItemForHEPATITIS_HBSAB.Size = new System.Drawing.Size(332, 24);
+            this.ItemForHEPATITIS_HBSAB.Size = new System.Drawing.Size(231, 24);
             this.ItemForHEPATITIS_HBSAB.Text = "HBsAb";
             this.ItemForHEPATITIS_HBSAB.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2310,7 +2310,7 @@
             this.ItemForHEPATITIS_BGCAB.CustomizationFormText = "BGcAb";
             this.ItemForHEPATITIS_BGCAB.Location = new System.Drawing.Point(441, 72);
             this.ItemForHEPATITIS_BGCAB.Name = "ItemForHEPATITIS_BGCAB";
-            this.ItemForHEPATITIS_BGCAB.Size = new System.Drawing.Size(147, 24);
+            this.ItemForHEPATITIS_BGCAB.Size = new System.Drawing.Size(248, 24);
             this.ItemForHEPATITIS_BGCAB.Text = "BGcAb";
             this.ItemForHEPATITIS_BGCAB.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2318,9 +2318,9 @@
             // 
             this.ItemForHEPATITIS_HBEAB.Control = this.HEPATITIS_HBEABTextEdit;
             this.ItemForHEPATITIS_HBEAB.CustomizationFormText = "HBeAb";
-            this.ItemForHEPATITIS_HBEAB.Location = new System.Drawing.Point(588, 72);
+            this.ItemForHEPATITIS_HBEAB.Location = new System.Drawing.Point(689, 72);
             this.ItemForHEPATITIS_HBEAB.Name = "ItemForHEPATITIS_HBEAB";
-            this.ItemForHEPATITIS_HBEAB.Size = new System.Drawing.Size(332, 24);
+            this.ItemForHEPATITIS_HBEAB.Size = new System.Drawing.Size(231, 24);
             this.ItemForHEPATITIS_HBEAB.Text = "HBeAb";
             this.ItemForHEPATITIS_HBEAB.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2367,7 +2367,7 @@
             this.ItemForECG.CustomizationFormText = "心电图";
             this.ItemForECG.Location = new System.Drawing.Point(0, 24);
             this.ItemForECG.Name = "ItemForECG";
-            this.ItemForECG.Size = new System.Drawing.Size(440, 24);
+            this.ItemForECG.Size = new System.Drawing.Size(441, 24);
             this.ItemForECG.Text = "心电图";
             this.ItemForECG.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2387,7 +2387,7 @@
             this.ItemForHOSPITALIZED_DIAG.CustomizationFormText = "病因";
             this.ItemForHOSPITALIZED_DIAG.Location = new System.Drawing.Point(0, 120);
             this.ItemForHOSPITALIZED_DIAG.Name = "ItemForHOSPITALIZED_DIAG";
-            this.ItemForHOSPITALIZED_DIAG.Size = new System.Drawing.Size(440, 24);
+            this.ItemForHOSPITALIZED_DIAG.Size = new System.Drawing.Size(441, 24);
             this.ItemForHOSPITALIZED_DIAG.Text = "病因";
             this.ItemForHOSPITALIZED_DIAG.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2425,9 +2425,9 @@
             // 
             this.ItemForCHEST_X_RAY.Control = this.CHEST_X_RAYTextEdit;
             this.ItemForCHEST_X_RAY.CustomizationFormText = "胸片";
-            this.ItemForCHEST_X_RAY.Location = new System.Drawing.Point(440, 24);
+            this.ItemForCHEST_X_RAY.Location = new System.Drawing.Point(441, 24);
             this.ItemForCHEST_X_RAY.Name = "ItemForCHEST_X_RAY";
-            this.ItemForCHEST_X_RAY.Size = new System.Drawing.Size(148, 24);
+            this.ItemForCHEST_X_RAY.Size = new System.Drawing.Size(248, 24);
             this.ItemForCHEST_X_RAY.Text = "胸片";
             this.ItemForCHEST_X_RAY.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2435,9 +2435,9 @@
             // 
             this.ItemForCARDIOTHORACIC_RATIO.Control = this.CARDIOTHORACIC_RATIOSpinEdit;
             this.ItemForCARDIOTHORACIC_RATIO.CustomizationFormText = "心胸比";
-            this.ItemForCARDIOTHORACIC_RATIO.Location = new System.Drawing.Point(588, 24);
+            this.ItemForCARDIOTHORACIC_RATIO.Location = new System.Drawing.Point(689, 24);
             this.ItemForCARDIOTHORACIC_RATIO.Name = "ItemForCARDIOTHORACIC_RATIO";
-            this.ItemForCARDIOTHORACIC_RATIO.Size = new System.Drawing.Size(332, 24);
+            this.ItemForCARDIOTHORACIC_RATIO.Size = new System.Drawing.Size(231, 24);
             this.ItemForCARDIOTHORACIC_RATIO.Text = "心胸比";
             this.ItemForCARDIOTHORACIC_RATIO.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2447,7 +2447,7 @@
             this.ItemForECHOCARDIOGRAPHY.CustomizationFormText = "超声心动图";
             this.ItemForECHOCARDIOGRAPHY.Location = new System.Drawing.Point(0, 48);
             this.ItemForECHOCARDIOGRAPHY.Name = "ItemForECHOCARDIOGRAPHY";
-            this.ItemForECHOCARDIOGRAPHY.Size = new System.Drawing.Size(440, 24);
+            this.ItemForECHOCARDIOGRAPHY.Size = new System.Drawing.Size(441, 24);
             this.ItemForECHOCARDIOGRAPHY.Text = "超声心动图";
             this.ItemForECHOCARDIOGRAPHY.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2455,9 +2455,9 @@
             // 
             this.ItemForB_KIDNEYS.Control = this.B_KIDNEYSTextEdit;
             this.ItemForB_KIDNEYS.CustomizationFormText = "B超双肾";
-            this.ItemForB_KIDNEYS.Location = new System.Drawing.Point(440, 48);
+            this.ItemForB_KIDNEYS.Location = new System.Drawing.Point(441, 48);
             this.ItemForB_KIDNEYS.Name = "ItemForB_KIDNEYS";
-            this.ItemForB_KIDNEYS.Size = new System.Drawing.Size(480, 24);
+            this.ItemForB_KIDNEYS.Size = new System.Drawing.Size(479, 24);
             this.ItemForB_KIDNEYS.Text = "B超双肾";
             this.ItemForB_KIDNEYS.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2465,9 +2465,9 @@
             // 
             this.ItemForAKI_ATN_ISN.Control = this.AKI_ATN_ISNTextEdit;
             this.ItemForAKI_ATN_ISN.CustomizationFormText = "ATN-ISN";
-            this.ItemForAKI_ATN_ISN.Location = new System.Drawing.Point(440, 72);
+            this.ItemForAKI_ATN_ISN.Location = new System.Drawing.Point(441, 72);
             this.ItemForAKI_ATN_ISN.Name = "ItemForAKI_ATN_ISN";
-            this.ItemForAKI_ATN_ISN.Size = new System.Drawing.Size(250, 24);
+            this.ItemForAKI_ATN_ISN.Size = new System.Drawing.Size(249, 24);
             this.ItemForAKI_ATN_ISN.Text = "ATN-ISN";
             this.ItemForAKI_ATN_ISN.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2477,7 +2477,7 @@
             this.ItemForAKI_APACHEII.CustomizationFormText = "APACHEII评分";
             this.ItemForAKI_APACHEII.Location = new System.Drawing.Point(0, 72);
             this.ItemForAKI_APACHEII.Name = "ItemForAKI_APACHEII";
-            this.ItemForAKI_APACHEII.Size = new System.Drawing.Size(440, 24);
+            this.ItemForAKI_APACHEII.Size = new System.Drawing.Size(441, 24);
             this.ItemForAKI_APACHEII.Text = "APACHEII评分";
             this.ItemForAKI_APACHEII.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2495,9 +2495,9 @@
             // 
             this.ItemForPATHOLOGY.Control = this.PATHOLOGYTextEdit;
             this.ItemForPATHOLOGY.CustomizationFormText = "病理";
-            this.ItemForPATHOLOGY.Location = new System.Drawing.Point(440, 120);
+            this.ItemForPATHOLOGY.Location = new System.Drawing.Point(441, 120);
             this.ItemForPATHOLOGY.Name = "ItemForPATHOLOGY";
-            this.ItemForPATHOLOGY.Size = new System.Drawing.Size(249, 24);
+            this.ItemForPATHOLOGY.Size = new System.Drawing.Size(248, 24);
             this.ItemForPATHOLOGY.Text = "病理";
             this.ItemForPATHOLOGY.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2530,7 +2530,7 @@
             this.ItemForCOMPLICATION.CustomizationFormText = "并发症";
             this.ItemForCOMPLICATION.Location = new System.Drawing.Point(0, 0);
             this.ItemForCOMPLICATION.Name = "ItemForCOMPLICATION";
-            this.ItemForCOMPLICATION.Size = new System.Drawing.Size(440, 26);
+            this.ItemForCOMPLICATION.Size = new System.Drawing.Size(441, 26);
             this.ItemForCOMPLICATION.Text = "并发症";
             this.ItemForCOMPLICATION.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2538,9 +2538,9 @@
             // 
             this.ItemForWITH_COMPLICATIONS.Control = this.WITH_COMPLICATIONSTextEdit;
             this.ItemForWITH_COMPLICATIONS.CustomizationFormText = "伴发症";
-            this.ItemForWITH_COMPLICATIONS.Location = new System.Drawing.Point(440, 0);
+            this.ItemForWITH_COMPLICATIONS.Location = new System.Drawing.Point(441, 0);
             this.ItemForWITH_COMPLICATIONS.Name = "ItemForWITH_COMPLICATIONS";
-            this.ItemForWITH_COMPLICATIONS.Size = new System.Drawing.Size(480, 26);
+            this.ItemForWITH_COMPLICATIONS.Size = new System.Drawing.Size(479, 26);
             this.ItemForWITH_COMPLICATIONS.Text = "伴发症";
             this.ItemForWITH_COMPLICATIONS.TextSize = new System.Drawing.Size(84, 14);
             // 
@@ -2560,7 +2560,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1082, 509);
+            this.shapeContainer1.Size = new System.Drawing.Size(1082, 512);
             this.shapeContainer1.TabIndex = 18;
             this.shapeContainer1.TabStop = false;
             // 
@@ -2664,14 +2664,14 @@
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 540);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 543);
             this.barDockControl2.Size = new System.Drawing.Size(1082, 0);
             // 
             // FrmEdtAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 540);
+            this.ClientSize = new System.Drawing.Size(1082, 543);
             this.Controls.Add(this.labelControl8);
             this.Controls.Add(this.labelControl10);
             this.Controls.Add(this.labelControl7);
