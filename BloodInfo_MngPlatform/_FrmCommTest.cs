@@ -86,9 +86,9 @@ namespace BloodInfo_MngPlatform
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            byte[] byMsg = Encoding.ASCII.GetBytes(txtSend.Text);
-            _spManager.SendMsg(byMsg);
-
+            byte[] byMsg1 = new byte[] {75, 13, 10 };
+            //byte[] byMsg = Encoding.ASCII.GetBytes(txtSend.Text);
+            _spManager.SendMsg(byMsg1);
         }
 
 
