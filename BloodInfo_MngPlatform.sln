@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketAsyncServer", "Socket
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonServiceLibrary", "CommonServiceLibrary\CommonServiceLibrary.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClient", "WcfClient\WcfClient.csproj", "{DB8DF1CA-ABF7-4FFD-AA73-4EF6FC5C47B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfClient_Test", "WcfClient\WcfClient_Test.csproj", "{DB8DF1CA-ABF7-4FFD-AA73-4EF6FC5C47B3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
 	EndProjectSection

@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\MsgSubscribe\Reference.cs">
+    <Compile Include="Service References\BroadcastSub\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -81,8 +81,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\MsgSubscribe\service.wsdl" />
-    <None Include="Service References\MsgSubscribe\service.xsd">
+    <None Include="Service References\BroadcastSub\service.wsdl" />
+    <None Include="Service References\BroadcastSub\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BroadcastSub\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -90,16 +93,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MsgSubscribe\" />
+    <WCFMetadataStorage Include="Service References\BroadcastSub\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\MsgSubscribe\configuration91.svcinfo" />
+    <None Include="Service References\BroadcastSub\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\MsgSubscribe\configuration.svcinfo" />
+    <None Include="Service References\BroadcastSub\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\MsgSubscribe\Reference.svcmap">
+    <None Include="Service References\BroadcastSub\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

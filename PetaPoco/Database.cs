@@ -40,7 +40,7 @@ namespace PetaPoco
 		/// The supplied IDbConnection will not be closed/disposed by PetaPoco - that remains
 		/// the responsibility of the caller.XXX
 		/// </remarks>
-		private Database(IDbConnection connection)
+		public Database(IDbConnection connection)
 		{
 			_sharedConnection = connection;
 			_connectionString = connection.ConnectionString;
@@ -58,7 +58,7 @@ namespace PetaPoco
 		/// </remarks>
 		public Database(string connectionString, string providerName)
 		{
-			_connectionString = string.Format(connectionString, AES.Decrypt(AES.KEY, ConfigurationManager.AppSettings["DbPwd"]));
+			_connectionString = connectionString;
 			_providerName = providerName;
 			CommonConstruct();
 		}
@@ -70,7 +70,7 @@ namespace PetaPoco
 		/// <param name="provider">The DbProviderFactory to use for instantiating IDbConnection's</param>
 		public Database(string connectionString, DbProviderFactory provider)
 		{
-			_connectionString = string.Format(connectionString, AES.Decrypt(AES.KEY, ConfigurationManager.AppSettings["DbPwd"]));
+			_connectionString = connectionString;
 			_factory = provider;
 			CommonConstruct();
 		}
@@ -83,8 +83,8 @@ namespace PetaPoco
 		public Database(string connectionStringName)
 		{
 			// Use first?
-		if (connectionStringName == "")
-				connectionStringName = ConfigurationManager.ConnectionStrings[0].Name;
+			if (string.IsNullOrEmpty(connectionStringName))
+				throw new Exception("Null of connectionStringName");
 
 			// Work out connection string and provider name
 			var providerName = "System.Data.SqlClient";
@@ -99,7 +99,7 @@ namespace PetaPoco
 			}
 
 			// Store factory and connection string
-			_connectionString = string.Format(ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString, AES.Decrypt(AES.KEY, ConfigurationManager.AppSettings["DbPwd"]));
+			_connectionString = string.Format(ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString, AES.Decrypt(AES.KEY, ConfigurationManager.AppSettings[connectionStringName + "_Pwd"]));
 			_providerName = providerName;
 			CommonConstruct();
 		}
