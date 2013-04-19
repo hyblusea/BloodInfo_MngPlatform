@@ -24,17 +24,13 @@ namespace WcfServiceHost
             dt.Columns.Add("Name", typeof(string));
             dt.Columns.Add("Status", typeof(string));
             dt.Columns.Add("MetUrl", typeof(string));
-            dt.Columns.Add("SerHost", typeof(ServiceHost));
+            dt.Columns.Add("SrvHost", typeof(ServiceHost));
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //var server = new ServiceHost(typeof(CommonServiceLibrary.CommonService));
-            //server.Open();
-            //var server = new ServiceHost(typeof(CommonServiceLibrary.CommonService), uri);
-
             dt.Rows.Add(new object[] { "CommonServiceLibrary.CommonService", "Stop", uri1.ToString(), DBNull.Value });
-            dt.Rows.Add(new object[] { "MsgSubscribe.IMsgSubscribe", "Stop", uri2.ToString(), DBNull.Value });
+            dt.Rows.Add(new object[] { "CommonServiceLibrary.BroadcastingSubscribe", "Stop", uri2.ToString(), DBNull.Value });
             bindingSource1.DataSource = dt;
         }
 
@@ -43,20 +39,22 @@ namespace WcfServiceHost
             if (bindingSource1.Current != null)
             {
                 DataRowView dr = (DataRowView)bindingSource1.Current;
-                var server = new ServiceHost(typeof(CommonServiceLibrary.CommonService), new Uri(dr["MetUrl"].ToString()));
+                var type = Type.GetType(string.Format("{0}, CommonServiceLibrary", dr["Name"].ToString()));
+                var server = new ServiceHost(type);
+
                 try
                 {
-                    if (dr["SerHost"] == DBNull.Value )
+                    if (dr["SrvHost"] == DBNull.Value)
                     {
-                        dr["SerHost"] = server;
-                        ((ServiceHost)dr["SerHost"]).Open();
+                        dr["SrvHost"] = server;
+                        ((ServiceHost)dr["SrvHost"]).Open();
                         dr["Status"] = "Run";
                         bindingSource1.ResetCurrentItem();
                     }
-                    else if (((ServiceHost)dr["SerHost"]).State != CommunicationState.Opened && ((ServiceHost)dr["SerHost"]).State != CommunicationState.Opening)
+                    else if (((ServiceHost)dr["SrvHost"]).State != CommunicationState.Opened && ((ServiceHost)dr["SrvHost"]).State != CommunicationState.Opening)
                     {
-                        dr["SerHost"] = server;
-                        ((ServiceHost)dr["SerHost"]).Open();
+                        dr["SrvHost"] = server;
+                        ((ServiceHost)dr["SrvHost"]).Open();
                         dr["Status"] = "Run";
                         bindingSource1.ResetCurrentItem();
                     }
@@ -76,7 +74,7 @@ namespace WcfServiceHost
 
                 try
                 {
-                    ((ServiceHost)dr["SerHost"]).Close(new TimeSpan(0, 0, 15));
+                    ((ServiceHost)dr["SrvHost"]).Close(new TimeSpan(0, 0, 15));
                     dr["Status"] = "Stop";
                     bindingSource1.ResetCurrentItem();
                 }

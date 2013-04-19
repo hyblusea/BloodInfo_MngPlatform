@@ -14,38 +14,100 @@ namespace WcfClient
     {
         //DataCallbackImp dcb = new DataCallbackImp();
 
+        BroadcastSub.IBroadcastingSubscribeCallback callback = new PublishCallbackImp();
+        BroadcastSub.BroadcastingSubscribeClient cs;
+
+        //var service = DuplexChannelFactory<MsgSubscribe.IMsgSubscribe>.CreateChannel(instanceContext, new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:8739/CommonServiceLibrary/MsgSubscribe/"));
+        //cs.Subscribe();
+
+
         public Form1()
         {
             InitializeComponent();
+
+            try
+            {
+                ((PublishCallbackImp)callback).OnRecvSubMsgEvent += Form1_OnRecvSubMsgEvent;
+                InstanceContext instanceContext = new InstanceContext(callback);
+                cs = new BroadcastSub.BroadcastingSubscribeClient(instanceContext);
+                cs.Subscribe();
+            }
+            catch (Exception err)
+            {
+                cs.Abort();
+                textBox2.Text = "通道出现异常, " + DateTime.Now.ToString();
+                MessageBox.Show(err.Message);
+            }
+                        
+            
+        }
+
+        void Form1_OnRecvSubMsgEvent(string sMsg)
+        {
+            textBox1.Text = sMsg;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //CommonService.CommonServiceClient cs = new CommonService.CommonServiceClient();
+            //CommService.CommonServiceClient cs = new CommService.CommonServiceClient();
             //Console.WriteLine(cs.GetData(9));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MsgSubscribe.IMsgSubscribeCallback callback = new DataCallbackImp();
-            InstanceContext instanceContext = new InstanceContext(callback);
-            MsgSubscribe.MsgSubscribeClient cs = new MsgSubscribe.MsgSubscribeClient(instanceContext);
-
-            //var service = DuplexChannelFactory<MsgSubscribe.IMsgSubscribe>.CreateChannel(instanceContext, new NetTcpBinding(), new EndpointAddress("net.tcp://localhost:8739/CommonServiceLibrary/MsgSubscribe/"));
-            cs.Subscribe();
-
-            cs.DoWork();
+            try
+            {
+                cs.PublishMsg(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:ffffff"));
+            }
+            catch (Exception)
+            {
+            }
+            
+            //Console.WriteLine(cs.InnerChannel.SessionId);
         }
 
-        class DataCallbackImp : MsgSubscribe.IMsgSubscribeCallback
+        private void Form1_Load(object sender, EventArgs e)
         {
-            /// <summary> 
-            /// 实现SleepCallback方法 
-            /// </summary> 
-            public void DataCallback(string text)
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (cs.State == CommunicationState.Faulted || cs.State == CommunicationState.Closed)
             {
-                Console.WriteLine("收到回调了：" + text);
+                textBox2.Text = "通道出现异常, " + DateTime.Now.ToString();
+                cs.Abort();
+
+                try
+                {
+                    InstanceContext instanceContext = new InstanceContext(callback);
+                    cs = new BroadcastSub.BroadcastingSubscribeClient(instanceContext);
+                    cs.Subscribe();
+                }
+                catch (Exception )
+                {
+                    cs.Abort();                    
+                }
+
+                
             }
-        } 
+        }
+
+        
+
     }
+
+    public class PublishCallbackImp : BroadcastSub.IBroadcastingSubscribeCallback
+    {
+        public delegate void OnRecvSubMsg(string sMsg);
+        public event OnRecvSubMsg OnRecvSubMsgEvent;
+
+        public void MsgPublished(string Msg)
+        {
+            if (OnRecvSubMsgEvent != null)
+                OnRecvSubMsgEvent(Msg);
+        }
+    }
+
+    
 }
