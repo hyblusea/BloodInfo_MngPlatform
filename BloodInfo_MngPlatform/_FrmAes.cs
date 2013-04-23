@@ -14,7 +14,7 @@ namespace BloodInfo_MngPlatform
     {
         public _FrmAes()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
