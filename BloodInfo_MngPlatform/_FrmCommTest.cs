@@ -209,6 +209,11 @@ namespace BloodInfo_MngPlatform
         {
 
         }
+
+        private void simpleButton8_Click(object sender, EventArgs e)
+        {
+            _spManager.SendDataRequest2();
+        }
     }
 
     public static class Extensions
