@@ -37,7 +37,6 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.Table1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.lISLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbData = new System.Windows.Forms.TextBox();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -78,6 +77,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lISLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
@@ -89,7 +89,6 @@
             this.Table1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -103,6 +102,7 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // baudRateLabel
@@ -156,7 +156,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.Table1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1202, 491);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1028, 491);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.Table1,
@@ -170,7 +170,7 @@
             this.Table1.Controls.Add(this.groupControl1);
             this.Table1.Image = global::BloodInfo_MngPlatform.Properties.Resources._20130307020756735_easyicon_cn_16;
             this.Table1.Name = "Table1";
-            this.Table1.Size = new System.Drawing.Size(1196, 460);
+            this.Table1.Size = new System.Drawing.Size(1022, 460);
             this.Table1.Text = "串口调试器";
             // 
             // groupControl2
@@ -179,13 +179,9 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 185);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1196, 275);
+            this.groupControl2.Size = new System.Drawing.Size(1022, 275);
             this.groupControl2.TabIndex = 3;
             this.groupControl2.Text = "设备数据";
-            // 
-            // lISLISTBindingSource
-            // 
-            this.lISLISTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.LISDBModels.LIS_LIST);
             // 
             // tbData
             // 
@@ -195,7 +191,7 @@
             this.tbData.Name = "tbData";
             this.tbData.ReadOnly = true;
             this.tbData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbData.Size = new System.Drawing.Size(1192, 251);
+            this.tbData.Size = new System.Drawing.Size(1018, 251);
             this.tbData.TabIndex = 14;
             // 
             // groupControl3
@@ -205,7 +201,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 113);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1196, 72);
+            this.groupControl3.Size = new System.Drawing.Size(1022, 72);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "发送数据";
             // 
@@ -244,7 +240,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1196, 113);
+            this.groupControl1.Size = new System.Drawing.Size(1022, 113);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "串口设置";
             // 
@@ -327,7 +323,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1192, 89);
+            this.shapeContainer1.Size = new System.Drawing.Size(1018, 89);
             this.shapeContainer1.TabIndex = 22;
             this.shapeContainer1.TabStop = false;
             // 
@@ -338,7 +334,7 @@
             this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 12;
-            this.lineShape1.X2 = 1185;
+            this.lineShape1.X2 = 1011;
             this.lineShape1.Y1 = 45;
             this.lineShape1.Y2 = 45;
             // 
@@ -594,7 +590,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 491);
+            this.ClientSize = new System.Drawing.Size(1028, 491);
             this.Controls.Add(this.xtraTabControl1);
             this.DoubleBuffered = true;
             this.Name = "_FrmCommTest";
@@ -605,7 +601,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
@@ -624,6 +619,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
