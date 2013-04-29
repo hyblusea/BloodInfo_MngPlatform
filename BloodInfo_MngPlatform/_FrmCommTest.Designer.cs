@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label baudRateLabel;
             System.Windows.Forms.Label stopBitsLabel;
             System.Windows.Forms.Label dataBitsLabel;
@@ -36,6 +37,7 @@
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.Table1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.lISLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbData = new System.Windows.Forms.TextBox();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -55,6 +57,7 @@
             this.group2 = new DevExpress.XtraEditors.GroupControl();
             this.txtSocketSvr = new System.Windows.Forms.TextBox();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,7 +78,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
             dataBitsLabel = new System.Windows.Forms.Label();
@@ -86,6 +89,7 @@
             this.Table1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -95,10 +99,10 @@
             this.group2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // baudRateLabel
@@ -179,6 +183,10 @@
             this.groupControl2.TabIndex = 3;
             this.groupControl2.Text = "设备数据";
             // 
+            // lISLISTBindingSource
+            // 
+            this.lISLISTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.LISDBModels.LIS_LIST);
+            // 
             // tbData
             // 
             this.tbData.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -212,9 +220,9 @@
             // 
             // txtSend
             // 
-            this.txtSend.Location = new System.Drawing.Point(110, 35);
+            this.txtSend.Location = new System.Drawing.Point(260, 35);
             this.txtSend.Name = "txtSend";
-            this.txtSend.Size = new System.Drawing.Size(870, 22);
+            this.txtSend.Size = new System.Drawing.Size(720, 22);
             this.txtSend.TabIndex = 23;
             // 
             // groupControl1
@@ -380,6 +388,16 @@
             this.groupControl4.Size = new System.Drawing.Size(1196, 111);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "网络信息";
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.EditValue = true;
+            this.checkEdit1.Location = new System.Drawing.Point(293, 82);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "显示日志";
+            this.checkEdit1.Size = new System.Drawing.Size(75, 19);
+            this.checkEdit1.TabIndex = 24;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // simpleButton7
             // 
@@ -568,15 +586,9 @@
             this.lineShape3.Y1 = 45;
             this.lineShape3.Y2 = 45;
             // 
-            // checkEdit1
+            // serialPort1
             // 
-            this.checkEdit1.EditValue = true;
-            this.checkEdit1.Location = new System.Drawing.Point(293, 82);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "显示日志";
-            this.checkEdit1.Size = new System.Drawing.Size(75, 19);
-            this.checkEdit1.TabIndex = 24;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            this.serialPort1.RtsEnable = true;
             // 
             // _FrmCommTest
             // 
@@ -593,6 +605,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
@@ -606,11 +619,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -660,5 +673,7 @@
         private DevExpress.XtraEditors.GroupControl group2;
         private System.Windows.Forms.TextBox txtSocketSvr;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.BindingSource lISLISTBindingSource;
     }
 }

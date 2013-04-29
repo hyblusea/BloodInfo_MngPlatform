@@ -49,8 +49,9 @@ namespace WcfClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //CommService.CommonServiceClient cs = new CommService.CommonServiceClient();
-            //Console.WriteLine(cs.GetData(9));
+            CommService.CommonServiceClient cs = new CommService.CommonServiceClient();
+            cs.GetData(1);
+
         }
 
         private void button2_Click(object sender, EventArgs e)

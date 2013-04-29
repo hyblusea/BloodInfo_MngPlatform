@@ -59,6 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\CommService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,12 +93,26 @@
     <None Include="Service References\BroadcastSub\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\CommService\CommonServiceLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommService\service.wsdl" />
+    <None Include="Service References\CommService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommService\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommService\WcfClient.CommService.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\BroadcastSub\" />
+    <WCFMetadataStorage Include="Service References\CommService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\BroadcastSub\configuration91.svcinfo" />
@@ -103,6 +122,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\BroadcastSub\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CommService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CommService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CommService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
