@@ -103,6 +103,11 @@ namespace SerialPortComm
             _serialPort.WriteLine("K" + "\r\n");
         }
 
+        public void SendDataRequest2()
+        {
+            _serialPort.WriteLine("K");
+        }
+
         /// <summary>
         /// Closes the serial port
         /// </summary>

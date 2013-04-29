@@ -79,6 +79,7 @@
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lISLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
             dataBitsLabel = new System.Windows.Forms.Label();
@@ -196,6 +197,7 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.simpleButton8);
             this.groupControl3.Controls.Add(this.simpleButton3);
             this.groupControl3.Controls.Add(this.txtSend);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -582,9 +584,22 @@
             this.lineShape3.Y1 = 45;
             this.lineShape3.Y2 = 45;
             // 
+            // lISLISTBindingSource
+            // 
+            this.lISLISTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.LISDBModels.LIS_LIST);
+            // 
             // serialPort1
             // 
             this.serialPort1.RtsEnable = true;
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Location = new System.Drawing.Point(110, 34);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton8.TabIndex = 24;
+            this.simpleButton8.Text = "发送2";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // _FrmCommTest
             // 
@@ -671,5 +686,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.BindingSource lISLISTBindingSource;
+        private DevExpress.XtraEditors.SimpleButton simpleButton8;
     }
 }
