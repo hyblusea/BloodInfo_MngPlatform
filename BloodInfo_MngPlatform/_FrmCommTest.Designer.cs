@@ -39,9 +39,9 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tbData = new System.Windows.Forms.TextBox();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.txtSend = new System.Windows.Forms.TextBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -79,6 +79,7 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
             dataBitsLabel = new System.Windows.Forms.Label();
@@ -195,9 +196,10 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.simpleButton10);
+            this.groupControl3.Controls.Add(this.simpleButton9);
             this.groupControl3.Controls.Add(this.simpleButton8);
             this.groupControl3.Controls.Add(this.simpleButton3);
-            this.groupControl3.Controls.Add(this.txtSend);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl3.Location = new System.Drawing.Point(0, 113);
             this.groupControl3.Name = "groupControl3";
@@ -205,9 +207,18 @@
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "发送数据";
             // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Location = new System.Drawing.Point(285, 35);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton9.TabIndex = 25;
+            this.simpleButton9.Text = "读取";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            // 
             // simpleButton8
             // 
-            this.simpleButton8.Location = new System.Drawing.Point(110, 34);
+            this.simpleButton8.Location = new System.Drawing.Point(195, 34);
             this.simpleButton8.Name = "simpleButton8";
             this.simpleButton8.Size = new System.Drawing.Size(75, 23);
             this.simpleButton8.TabIndex = 24;
@@ -216,19 +227,12 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(26, 35);
+            this.simpleButton3.Location = new System.Drawing.Point(111, 35);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(75, 23);
             this.simpleButton3.TabIndex = 21;
-            this.simpleButton3.Text = "发送";
+            this.simpleButton3.Text = "发送1";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
-            // txtSend
-            // 
-            this.txtSend.Location = new System.Drawing.Point(260, 35);
-            this.txtSend.Name = "txtSend";
-            this.txtSend.Size = new System.Drawing.Size(720, 22);
-            this.txtSend.TabIndex = 23;
             // 
             // groupControl1
             // 
@@ -595,6 +599,15 @@
             // 
             this.serialPort1.RtsEnable = true;
             // 
+            // simpleButton10
+            // 
+            this.simpleButton10.Location = new System.Drawing.Point(26, 35);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton10.TabIndex = 26;
+            this.simpleButton10.Text = "发送";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
+            // 
             // _FrmCommTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -612,7 +625,6 @@
             this.groupControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -641,7 +653,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private System.Windows.Forms.TextBox txtSend;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.ComboBox stopBitsComboBox;
@@ -679,5 +690,7 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.IO.Ports.SerialPort serialPort1;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
     }
 }

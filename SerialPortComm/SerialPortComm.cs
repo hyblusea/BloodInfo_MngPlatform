@@ -108,6 +108,11 @@ namespace SerialPortComm
             _serialPort.WriteLine("K");
         }
 
+        public string ReadData()
+        {
+            return _serialPort.ReadExisting();
+        }
+
         /// <summary>
         /// Closes the serial port
         /// </summary>
