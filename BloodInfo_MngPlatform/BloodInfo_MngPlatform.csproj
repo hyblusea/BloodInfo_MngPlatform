@@ -370,11 +370,15 @@
     <Compile Include="FrmEdtPatientBaseInfo.Designer.cs">
       <DependentUpon>FrmEdtPatientBaseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEdtPatient_Course.cs" />
+    <Compile Include="FrmEdtPatient_Course.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmEdtPatient_Course.Designer.cs">
       <DependentUpon>FrmEdtPatient_Course.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEdtPatient_Course_Sp.cs" />
+    <Compile Include="FrmEdtPatient_Course_Sp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmEdtPatient_Course_Sp.Designer.cs">
       <DependentUpon>FrmEdtPatient_Course_Sp.cs</DependentUpon>
     </Compile>
@@ -510,7 +514,9 @@
     <Compile Include="FrmNewPatientBaseInfo.Designer.cs">
       <DependentUpon>FrmNewPatientBaseInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmNewPatient_Course_Sp.cs" />
+    <Compile Include="FrmNewPatient_Course_Sp.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmNewPatient_Course_Sp.Designer.cs">
       <DependentUpon>FrmNewPatient_Course_Sp.cs</DependentUpon>
     </Compile>
@@ -1081,7 +1087,6 @@
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\DataSources\BloodInfo_MngPlatform.LISDBModels.LIS_LIST.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.AAA.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ACCOUNT.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ADDTION_CHECK_HISTORY.datasource" />
