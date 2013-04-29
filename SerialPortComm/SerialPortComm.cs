@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO.Ports;
 using System.Reflection;
-using System.ComponentModel;
+using System.ComponentModel;    
 using System.Threading;
 using System.IO;
 
@@ -96,6 +96,11 @@ namespace SerialPortComm
         public void SendMsg(byte[] byMsg)
         {
             _serialPort.Write(byMsg, 0, byMsg.Length);
+        }
+
+        public void SendDataRequest()
+        {
+            _serialPort.WriteLine("K" + "\r\n");
         }
 
         /// <summary>

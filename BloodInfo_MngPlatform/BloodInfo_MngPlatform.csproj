@@ -1087,6 +1087,7 @@
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\BloodInfo_MngPlatform.LISDBModels.LIS_LIST.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.AAA.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ACCOUNT.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.ADDTION_CHECK_HISTORY.datasource" />

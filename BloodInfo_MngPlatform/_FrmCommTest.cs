@@ -86,9 +86,7 @@ namespace BloodInfo_MngPlatform
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            byte[] byMsg1 = new byte[] {75, 13, 10 };
-            //byte[] byMsg = Encoding.ASCII.GetBytes(txtSend.Text);
-            _spManager.SendMsg(byMsg1);
+            _spManager.SendDataRequest();
         }
 
 
@@ -205,6 +203,11 @@ namespace BloodInfo_MngPlatform
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {
             isView = checkEdit1.Checked;
+        }
+
+        private void triStateTreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 
