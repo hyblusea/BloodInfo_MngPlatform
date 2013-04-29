@@ -39,6 +39,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tbData = new System.Windows.Forms.TextBox();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -77,9 +78,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lISLISTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
             dataBitsLabel = new System.Windows.Forms.Label();
@@ -103,7 +102,6 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // baudRateLabel
@@ -206,6 +204,15 @@
             this.groupControl3.Size = new System.Drawing.Size(1022, 72);
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "发送数据";
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Location = new System.Drawing.Point(110, 34);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton8.TabIndex = 24;
+            this.simpleButton8.Text = "发送2";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // simpleButton3
             // 
@@ -584,22 +591,9 @@
             this.lineShape3.Y1 = 45;
             this.lineShape3.Y2 = 45;
             // 
-            // lISLISTBindingSource
-            // 
-            this.lISLISTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.LISDBModels.LIS_LIST);
-            // 
             // serialPort1
             // 
             this.serialPort1.RtsEnable = true;
-            // 
-            // simpleButton8
-            // 
-            this.simpleButton8.Location = new System.Drawing.Point(110, 34);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton8.TabIndex = 24;
-            this.simpleButton8.Text = "发送2";
-            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // _FrmCommTest
             // 
@@ -634,7 +628,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lISLISTBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -685,7 +678,6 @@
         private System.Windows.Forms.TextBox txtSocketSvr;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.BindingSource lISLISTBindingSource;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
     }
 }
