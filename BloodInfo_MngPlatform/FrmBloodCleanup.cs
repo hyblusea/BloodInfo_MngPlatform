@@ -374,8 +374,9 @@ namespace BloodInfo_MngPlatform
                     string sTmp = log.MSG.Substring(log.MSG.LastIndexOf('F') + 1, 5);
                     string sVp = log.MSG.Substring(log.MSG.LastIndexOf('H') + 1, 5);
                     string sBf = log.MSG.Substring(log.MSG.LastIndexOf('D') + 1, 5);
-                    string sMaxBp = log.MSG.Substring(log.MSG.LastIndexOf('M') + 1, 5);
-                    string sMinBp = log.MSG.Substring(log.MSG.LastIndexOf('N') + 1, 5);
+                    string sMaxBp = log.MSG.Substring(log.MSG.LastIndexOf('N') + 1, 5);
+                    string sMinBp = log.MSG.Substring(log.MSG.LastIndexOf('O') + 1, 5);
+                    string sPulse = log.MSG.Substring(log.MSG.LastIndexOf('P') + 1, 5);
 
                     BLOODCLEANUP_PROCESS proc = new BLOODCLEANUP_PROCESS();
                     proc.ANA_TIME = log.RECEIVE_TIME;
@@ -383,6 +384,7 @@ namespace BloodInfo_MngPlatform
                     proc.VENOUS_PRESSURE = decimal.Parse(sVp);
                     proc.BLOOD_FLOW = decimal.Parse(sBf);
                     proc.BP = decimal.Parse(sMaxBp).ToString() + "~" + decimal.Parse(sMinBp);
+                    proc.P = decimal.Parse(sPulse);
 
                     proc.LOG_TIME = DateTime.Now;
                     proc.BLOODCLEANUP_ID = bc.ID;
