@@ -34,7 +34,7 @@ namespace BloodInfo_MngPlatform
 
         private void FrmBloodCleanup_Load(object sender, EventArgs e)
         {
-            
+
             bLOODCLEANUPBindingSource.CurrentItemChanged += bLOODCLEANUPBindingSource_CurrentItemChanged;
             pATIENT_MachineScheduleBindingSource.CurrentItemChanged += pATIENT_MachineScheduleBindingSource_CurrentItemChanged;
             //btnSearch_ItemClick(null, null);
@@ -67,7 +67,7 @@ namespace BloodInfo_MngPlatform
             repositoryItemLookUpEdit7.DisplayMember = "MEMO";
             repositoryItemLookUpEdit7.ValueMember = "ID";
 
-            docAdvTypeBindingSource.DataSource = ClsFrmMng.lstDocDavType;            
+            docAdvTypeBindingSource.DataSource = ClsFrmMng.lstDocDavType;
 
             vALUECODEBindingSource3.DataSource = db.Fetch<VALUE_CODE>("");
             aCCOUNTBindingSource.DataSource = db.Fetch<ACCOUNT>("");
@@ -133,7 +133,7 @@ namespace BloodInfo_MngPlatform
                     lblName2.Caption = sPatientName;
                     lblName3.Caption = sPatientName;
 
-                    Reg_ID = (Int64)p.ID; 
+                    Reg_ID = (Int64)p.ID;
 
                     // 血液净化记录
                     lstBloodCleanup = db.Fetch<BLOODCLEANUP>(string.Format("where reg_id ={0} order by log_time desc", p.ID));
@@ -155,7 +155,7 @@ namespace BloodInfo_MngPlatform
                 XtraMessageBox.Show("请指定明确的楼层与区域.", "错误提示");
                 return;
             }
-            
+
             List<MACHINE_SCHEDULE> lstMc1 = db.Fetch<MACHINE_SCHEDULE>("where SCHEDULE_TIME = @0 and SCHEEDULE_PERIOD = @1 and FLOOR_ID = @2 and AREA_ID = @3",
                 new object[] { ((DateTime)btnTime.EditValue).Date, rdoPer.EditValue, barEditItem1.EditValue, barEditItem2.EditValue });
             pATIENT_MachineScheduleBindingSource.DataSource = lstMc1;
@@ -203,9 +203,9 @@ namespace BloodInfo_MngPlatform
                 return;
             }
             Int64 id = (Int64)((BLOODCLEANUP)bLOODCLEANUPBindingSource.Current).ID;
-            FrmEdtBloodCeanupBase frmEdtBloodBase = new  FrmEdtBloodCeanupBase(id);
+            FrmEdtBloodCeanupBase frmEdtBloodBase = new FrmEdtBloodCeanupBase(id);
             frmEdtBloodBase.NewRegistEvt += frmEdtBloodBase_NewRegistEvt;
-            frmEdtBloodBase.ShowDialog(); 
+            frmEdtBloodBase.ShowDialog();
         }
 
         void frmEdtBloodBase_NewRegistEvt()
@@ -219,7 +219,7 @@ namespace BloodInfo_MngPlatform
             if (pATIENT_MachineScheduleBindingSource.Current == null)
             {
                 XtraMessageBox.Show("请选择需要结束治疗的患者记住.");
-                    return;
+                return;
             }
 
             if (XtraMessageBox.Show("确定结束该患者的本次医疗？", "操作确认", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
@@ -292,9 +292,9 @@ namespace BloodInfo_MngPlatform
                 return;
             }
             Int64 id = (Int64)((BLOODCLEANUP_PROCESS)bLOODCLEANUPPROCESSBindingSource.Current).ID;
-            FrmEdtBloodCleanupProcess frmEdtProcess = new  FrmEdtBloodCleanupProcess(id);
+            FrmEdtBloodCleanupProcess frmEdtProcess = new FrmEdtBloodCleanupProcess(id);
             frmEdtProcess.NewRegistEvt += frmEdtProcess_NewRegistEvt;
-            frmEdtProcess.ShowDialog(); 
+            frmEdtProcess.ShowDialog();
         }
 
         void frmEdtProcess_NewRegistEvt()
@@ -316,9 +316,9 @@ namespace BloodInfo_MngPlatform
                 return;
             }
             Int64 id = (Int64)((BLOODCLEANUP)bLOODCLEANUPBindingSource.Current).ID;
-            FrmEdtBloodCleanup_Summary frmEdtSummary = new  FrmEdtBloodCleanup_Summary(id);
+            FrmEdtBloodCleanup_Summary frmEdtSummary = new FrmEdtBloodCleanup_Summary(id);
             frmEdtSummary.NewRegistEvt += frmEdtSummary_NewRegistEvt;
-            frmEdtSummary.ShowDialog(); 
+            frmEdtSummary.ShowDialog();
         }
 
         void frmEdtSummary_NewRegistEvt()
@@ -330,12 +330,12 @@ namespace BloodInfo_MngPlatform
         private void btnRpt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (pATIENT_MachineScheduleBindingSource.Current == null)
-            {   
+            {
                 XtraMessageBox.Show("请选择需要生成报表的患者基本记录.");
                 return;
             }
             if (lstBloodCleanup.Count() < 1)
-            {   
+            {
                 XtraMessageBox.Show("未找到血液净化相关记录.");
                 return;
             }
@@ -362,9 +362,40 @@ namespace BloodInfo_MngPlatform
 
         }
 
-        
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (bLOODCLEANUPBindingSource.Current != null)
+            {
+                BLOODCLEANUP bc = (BLOODCLEANUP)bLOODCLEANUPBindingSource.Current;
 
-       
+                DEVICECOMMUNICATION_LOG log = db.Single<DEVICECOMMUNICATION_LOG>("where remote_ip=@0 and rownum=1 order by id desc ", "com3");
+                if (log != null)
+                {
+                    string sTmp = log.MSG.Substring(log.MSG.LastIndexOf('F') + 1, 5);
+                    string sVp = log.MSG.Substring(log.MSG.LastIndexOf('H') + 1, 5);
+                    string sBf = log.MSG.Substring(log.MSG.LastIndexOf('D') + 1, 5);
+                    string sMaxBp = log.MSG.Substring(log.MSG.LastIndexOf('M') + 1, 5);
+                    string sMinBp = log.MSG.Substring(log.MSG.LastIndexOf('N') + 1, 5);
+
+                    BLOODCLEANUP_PROCESS proc = new BLOODCLEANUP_PROCESS();
+                    proc.ANA_TIME = log.RECEIVE_TIME;
+                    proc.TEMP = decimal.Parse(sTmp);
+                    proc.VENOUS_PRESSURE = decimal.Parse(sVp);
+                    proc.BLOOD_FLOW = decimal.Parse(sBf);
+                    proc.BP = decimal.Parse(sMaxBp).ToString() + "~" + decimal.Parse(sMinBp);
+
+                    proc.LOG_TIME = DateTime.Now;
+                    proc.BLOODCLEANUP_ID = bc.ID;
+                    proc.OPERATOR = ClsFrmMng.WorkerID;
+                    db.Insert(proc);
+                    frmNewprocess_NewRegistEvt();
+                }
+            }
+        }
+
+
+
+
 
 
     }

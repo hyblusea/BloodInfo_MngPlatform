@@ -89,7 +89,7 @@ namespace SerialPortComm
             _serialPort = new SerialPort(pName, pBaudRate, pParity, pDataBits, pStopBits);
 
             // Subscribe to event and open serial port for data
-            _serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
+            //_serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
             _serialPort.Open();
         }
 

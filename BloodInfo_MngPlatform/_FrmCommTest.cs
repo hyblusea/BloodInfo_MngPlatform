@@ -77,11 +77,15 @@ namespace BloodInfo_MngPlatform
                 Convert.ToInt32( dataBitsComboBox.Text),
                 (System.IO.Ports.StopBits)Enum.Parse(typeof(System.IO.Ports.StopBits), stopBitsComboBox.SelectedItem.ToString(), false)
                 );
+
+            timer1.Enabled = true;
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             _spManager.StopListening();
+
+            timer1.Enabled = false;
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -217,13 +221,37 @@ namespace BloodInfo_MngPlatform
 
         private void simpleButton9_Click(object sender, EventArgs e)
         {
-            tbData.AppendText(_spManager.ReadData());
+            
         }
 
         private void simpleButton10_Click(object sender, EventArgs e)
         {
-            byte[] by = new byte[]{0x4b, 0x0d, 0x0a};
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // 发送数据
+            byte[] by = new byte[] { 0x4b, 0x0d, 0x0a };
             _spManager.SendMsg(by);
+
+            //  获取串口返回
+            string sData = _spManager.ReadData();
+            tbData.Text =DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + sData;
+
+            if (sData.Length > 20)
+            {
+                // 写入数据库
+                PetaPoco.Database db = new Database("XE");
+
+                DEVICECOMMUNICATION_LOG log = new DEVICECOMMUNICATION_LOG();
+                log.MSG = sData.Length > 3999 ? sData.Substring(0, 3999) : sData;
+                log.REMOTE_IP = "com3";
+                //log.REMOTE_PORT = remotePort;
+                log.RECEIVE_TIME = DateTime.Now;
+
+                db.Insert(log);
+            }
         }
     }
 

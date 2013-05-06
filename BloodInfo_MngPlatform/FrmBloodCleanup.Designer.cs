@@ -265,6 +265,7 @@
             this.lblName2 = new DevExpress.XtraBars.BarStaticItem();
             this.btnNewDetail = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdtDetail = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barManager4 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.barStaticItem4 = new DevExpress.XtraBars.BarStaticItem();
@@ -515,14 +516,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1225, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1028, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 742);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1225, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 0);
             // 
             // barDockControlLeft
             // 
@@ -535,7 +536,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1225, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1028, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 711);
             // 
             // sharedImageCollection1
@@ -779,7 +780,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1009, 711);
+            this.xtraTabControl1.Size = new System.Drawing.Size(812, 711);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -788,7 +789,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1003, 682);
+            this.xtraTabPage1.Size = new System.Drawing.Size(806, 682);
             this.xtraTabPage1.Text = "血液净化过程管理";
             // 
             // splitContainerControl2
@@ -801,7 +802,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.splitContainerControl3);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1003, 682);
+            this.splitContainerControl2.Size = new System.Drawing.Size(806, 682);
             this.splitContainerControl2.SplitterPosition = 157;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -816,7 +817,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1003, 157);
+            this.groupControl2.Size = new System.Drawing.Size(806, 157);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "血液净化记录";
             // 
@@ -833,7 +834,7 @@
             this.repositoryItemLookUpEdit12,
             this.repositoryItemLookUpEdit13,
             this.repositoryItemCheckedComboBoxEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(999, 102);
+            this.gridControl1.Size = new System.Drawing.Size(802, 102);
             this.gridControl1.TabIndex = 9;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView1});
@@ -1719,7 +1720,7 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1001, 53);
+            this.barDockControl4.Location = new System.Drawing.Point(804, 53);
             this.barDockControl4.Size = new System.Drawing.Size(0, 102);
             // 
             // barDockControl2
@@ -1727,14 +1728,14 @@
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl2.Location = new System.Drawing.Point(2, 155);
-            this.barDockControl2.Size = new System.Drawing.Size(999, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(802, 0);
             // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 22);
-            this.barDockControl1.Size = new System.Drawing.Size(999, 31);
+            this.barDockControl1.Size = new System.Drawing.Size(802, 31);
             // 
             // splitContainerControl3
             // 
@@ -1746,7 +1747,7 @@
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.groupControl4);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1003, 520);
+            this.splitContainerControl3.Size = new System.Drawing.Size(806, 520);
             this.splitContainerControl3.SplitterPosition = 257;
             this.splitContainerControl3.TabIndex = 2;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -1761,7 +1762,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1003, 257);
+            this.groupControl3.Size = new System.Drawing.Size(806, 257);
             this.groupControl3.TabIndex = 0;
             this.groupControl3.Text = "净化过程明细";
             // 
@@ -1773,7 +1774,7 @@
             this.gridControl2.MainView = this.gridView4;
             this.gridControl2.MenuManager = this.barManager1;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(999, 202);
+            this.gridControl2.Size = new System.Drawing.Size(802, 202);
             this.gridControl2.TabIndex = 10;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
@@ -1827,6 +1828,7 @@
             this.colANA_TIME1.OptionsColumn.AllowEdit = false;
             this.colANA_TIME1.Visible = true;
             this.colANA_TIME1.VisibleIndex = 0;
+            this.colANA_TIME1.Width = 55;
             // 
             // colCONDUCTIVITY
             // 
@@ -1836,6 +1838,7 @@
             this.colCONDUCTIVITY.OptionsColumn.AllowEdit = false;
             this.colCONDUCTIVITY.Visible = true;
             this.colCONDUCTIVITY.VisibleIndex = 1;
+            this.colCONDUCTIVITY.Width = 55;
             // 
             // colTEMP
             // 
@@ -1845,6 +1848,7 @@
             this.colTEMP.OptionsColumn.AllowEdit = false;
             this.colTEMP.Visible = true;
             this.colTEMP.VisibleIndex = 2;
+            this.colTEMP.Width = 55;
             // 
             // colULTRAFILTRATION
             // 
@@ -1854,6 +1858,7 @@
             this.colULTRAFILTRATION.OptionsColumn.AllowEdit = false;
             this.colULTRAFILTRATION.Visible = true;
             this.colULTRAFILTRATION.VisibleIndex = 3;
+            this.colULTRAFILTRATION.Width = 55;
             // 
             // colARTERIAL_PRESSURE
             // 
@@ -1863,6 +1868,7 @@
             this.colARTERIAL_PRESSURE.OptionsColumn.AllowEdit = false;
             this.colARTERIAL_PRESSURE.Visible = true;
             this.colARTERIAL_PRESSURE.VisibleIndex = 4;
+            this.colARTERIAL_PRESSURE.Width = 55;
             // 
             // colVENOUS_PRESSURE
             // 
@@ -1872,6 +1878,7 @@
             this.colVENOUS_PRESSURE.OptionsColumn.AllowEdit = false;
             this.colVENOUS_PRESSURE.Visible = true;
             this.colVENOUS_PRESSURE.VisibleIndex = 5;
+            this.colVENOUS_PRESSURE.Width = 55;
             // 
             // colBLOOD_FLOW
             // 
@@ -1881,6 +1888,7 @@
             this.colBLOOD_FLOW.OptionsColumn.AllowEdit = false;
             this.colBLOOD_FLOW.Visible = true;
             this.colBLOOD_FLOW.VisibleIndex = 6;
+            this.colBLOOD_FLOW.Width = 55;
             // 
             // colT
             // 
@@ -1890,7 +1898,7 @@
             this.colT.OptionsColumn.AllowEdit = false;
             this.colT.Visible = true;
             this.colT.VisibleIndex = 7;
-            this.colT.Width = 49;
+            this.colT.Width = 36;
             // 
             // colP
             // 
@@ -1910,7 +1918,7 @@
             this.colR.OptionsColumn.AllowEdit = false;
             this.colR.Visible = true;
             this.colR.VisibleIndex = 9;
-            this.colR.Width = 37;
+            this.colR.Width = 27;
             // 
             // colBP
             // 
@@ -1920,7 +1928,7 @@
             this.colBP.OptionsColumn.AllowEdit = false;
             this.colBP.Visible = true;
             this.colBP.VisibleIndex = 10;
-            this.colBP.Width = 43;
+            this.colBP.Width = 40;
             // 
             // colDISEASE
             // 
@@ -1930,7 +1938,7 @@
             this.colDISEASE.OptionsColumn.AllowEdit = false;
             this.colDISEASE.Visible = true;
             this.colDISEASE.VisibleIndex = 11;
-            this.colDISEASE.Width = 207;
+            this.colDISEASE.Width = 138;
             // 
             // colOPERATOR1
             // 
@@ -1940,7 +1948,7 @@
             this.colOPERATOR1.OptionsColumn.AllowEdit = false;
             this.colOPERATOR1.Visible = true;
             this.colOPERATOR1.VisibleIndex = 12;
-            this.colOPERATOR1.Width = 66;
+            this.colOPERATOR1.Width = 41;
             // 
             // colLOG_TIME1
             // 
@@ -1950,7 +1958,7 @@
             this.colLOG_TIME1.OptionsColumn.AllowEdit = false;
             this.colLOG_TIME1.Visible = true;
             this.colLOG_TIME1.VisibleIndex = 13;
-            this.colLOG_TIME1.Width = 89;
+            this.colLOG_TIME1.Width = 73;
             // 
             // barDockControl7
             // 
@@ -1963,7 +1971,7 @@
             // 
             this.barDockControl8.CausesValidation = false;
             this.barDockControl8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl8.Location = new System.Drawing.Point(1001, 53);
+            this.barDockControl8.Location = new System.Drawing.Point(804, 53);
             this.barDockControl8.Size = new System.Drawing.Size(0, 202);
             // 
             // barDockControl6
@@ -1971,14 +1979,14 @@
             this.barDockControl6.CausesValidation = false;
             this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl6.Location = new System.Drawing.Point(2, 255);
-            this.barDockControl6.Size = new System.Drawing.Size(999, 0);
+            this.barDockControl6.Size = new System.Drawing.Size(802, 0);
             // 
             // barDockControl5
             // 
             this.barDockControl5.CausesValidation = false;
             this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl5.Location = new System.Drawing.Point(2, 22);
-            this.barDockControl5.Size = new System.Drawing.Size(999, 31);
+            this.barDockControl5.Size = new System.Drawing.Size(802, 31);
             // 
             // groupControl4
             // 
@@ -1990,7 +1998,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1003, 258);
+            this.groupControl4.Size = new System.Drawing.Size(806, 258);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "净化过程小结";
             // 
@@ -2006,7 +2014,7 @@
             this.repositoryItemGridLookUpEdit2,
             this.repositoryItemGridLookUpEdit3,
             this.repositoryItemLookUpEdit7});
-            this.gridControl3.Size = new System.Drawing.Size(999, 203);
+            this.gridControl3.Size = new System.Drawing.Size(802, 203);
             this.gridControl3.TabIndex = 17;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -2530,7 +2538,7 @@
             // 
             this.barDockControl12.CausesValidation = false;
             this.barDockControl12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl12.Location = new System.Drawing.Point(1001, 53);
+            this.barDockControl12.Location = new System.Drawing.Point(804, 53);
             this.barDockControl12.Size = new System.Drawing.Size(0, 203);
             // 
             // barDockControl10
@@ -2538,14 +2546,14 @@
             this.barDockControl10.CausesValidation = false;
             this.barDockControl10.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl10.Location = new System.Drawing.Point(2, 256);
-            this.barDockControl10.Size = new System.Drawing.Size(999, 0);
+            this.barDockControl10.Size = new System.Drawing.Size(802, 0);
             // 
             // barDockControl9
             // 
             this.barDockControl9.CausesValidation = false;
             this.barDockControl9.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl9.Location = new System.Drawing.Point(2, 22);
-            this.barDockControl9.Size = new System.Drawing.Size(999, 31);
+            this.barDockControl9.Size = new System.Drawing.Size(802, 31);
             // 
             // vALUECODEBindingSource
             // 
@@ -2641,8 +2649,9 @@
             this.barStaticItem3,
             this.lblName2,
             this.btnNewDetail,
-            this.btnEdtDetail});
-            this.barManager3.MaxItemId = 4;
+            this.btnEdtDetail,
+            this.barButtonItem1});
+            this.barManager3.MaxItemId = 5;
             // 
             // bar3
             // 
@@ -2655,7 +2664,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblName2),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNewDetail, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdtDetail, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdtDetail, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar3.Text = "Tools";
             // 
             // barStaticItem3
@@ -2689,6 +2699,14 @@
             this.btnEdtDetail.ImageIndex = 88;
             this.btnEdtDetail.Name = "btnEdtDetail";
             this.btnEdtDetail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdtDetail_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "获取";
+            this.barButtonItem1.Id = 4;
+            this.barButtonItem1.ImageIndex = 9;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barManager4
             // 
@@ -2762,7 +2780,7 @@
             this.splitContainerControl5.Panel1.Text = "Panel1";
             this.splitContainerControl5.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl5.Panel2.Text = "Panel2";
-            this.splitContainerControl5.Size = new System.Drawing.Size(1225, 711);
+            this.splitContainerControl5.Size = new System.Drawing.Size(1028, 711);
             this.splitContainerControl5.SplitterPosition = 211;
             this.splitContainerControl5.TabIndex = 9;
             this.splitContainerControl5.Text = "splitContainerControl5";
@@ -2880,7 +2898,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 742);
+            this.ClientSize = new System.Drawing.Size(1028, 742);
             this.Controls.Add(this.splitContainerControl5);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -3213,5 +3231,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand24;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand27;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

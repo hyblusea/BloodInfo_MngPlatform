@@ -38,10 +38,6 @@
             this.Table1 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.tbData = new System.Windows.Forms.TextBox();
-            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -79,7 +75,7 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             baudRateLabel = new System.Windows.Forms.Label();
             stopBitsLabel = new System.Windows.Forms.Label();
             dataBitsLabel = new System.Windows.Forms.Label();
@@ -90,8 +86,6 @@
             this.Table1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
-            this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -166,7 +160,6 @@
             // Table1
             // 
             this.Table1.Controls.Add(this.groupControl2);
-            this.Table1.Controls.Add(this.groupControl3);
             this.Table1.Controls.Add(this.groupControl1);
             this.Table1.Image = global::BloodInfo_MngPlatform.Properties.Resources._20130307020756735_easyicon_cn_16;
             this.Table1.Name = "Table1";
@@ -177,9 +170,9 @@
             // 
             this.groupControl2.Controls.Add(this.tbData);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 185);
+            this.groupControl2.Location = new System.Drawing.Point(0, 113);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1022, 275);
+            this.groupControl2.Size = new System.Drawing.Size(1022, 347);
             this.groupControl2.TabIndex = 3;
             this.groupControl2.Text = "设备数据";
             // 
@@ -191,48 +184,8 @@
             this.tbData.Name = "tbData";
             this.tbData.ReadOnly = true;
             this.tbData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbData.Size = new System.Drawing.Size(1018, 251);
+            this.tbData.Size = new System.Drawing.Size(1018, 323);
             this.tbData.TabIndex = 14;
-            // 
-            // groupControl3
-            // 
-            this.groupControl3.Controls.Add(this.simpleButton10);
-            this.groupControl3.Controls.Add(this.simpleButton9);
-            this.groupControl3.Controls.Add(this.simpleButton8);
-            this.groupControl3.Controls.Add(this.simpleButton3);
-            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl3.Location = new System.Drawing.Point(0, 113);
-            this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(1022, 72);
-            this.groupControl3.TabIndex = 2;
-            this.groupControl3.Text = "发送数据";
-            // 
-            // simpleButton9
-            // 
-            this.simpleButton9.Location = new System.Drawing.Point(285, 35);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton9.TabIndex = 25;
-            this.simpleButton9.Text = "读取";
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
-            // 
-            // simpleButton8
-            // 
-            this.simpleButton8.Location = new System.Drawing.Point(195, 34);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton8.TabIndex = 24;
-            this.simpleButton8.Text = "发送2";
-            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Location = new System.Drawing.Point(111, 35);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton3.TabIndex = 21;
-            this.simpleButton3.Text = "发送1";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // groupControl1
             // 
@@ -281,7 +234,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 20;
-            this.simpleButton1.Text = "监听";
+            this.simpleButton1.Text = "打开/开始";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // stopBitsComboBox
@@ -357,7 +310,7 @@
             this.xtraTabPage2.Controls.Add(this.groupControl4);
             this.xtraTabPage2.Image = global::BloodInfo_MngPlatform.Properties.Resources._20130307021031884_easyicon_cn_16;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1196, 460);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1022, 460);
             this.xtraTabPage2.Text = "Tcp Server";
             // 
             // group2
@@ -366,7 +319,7 @@
             this.group2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.group2.Location = new System.Drawing.Point(0, 111);
             this.group2.Name = "group2";
-            this.group2.Size = new System.Drawing.Size(1196, 349);
+            this.group2.Size = new System.Drawing.Size(1022, 349);
             this.group2.TabIndex = 2;
             this.group2.Text = "客户端消息";
             // 
@@ -377,7 +330,7 @@
             this.txtSocketSvr.Multiline = true;
             this.txtSocketSvr.Name = "txtSocketSvr";
             this.txtSocketSvr.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSocketSvr.Size = new System.Drawing.Size(1192, 325);
+            this.txtSocketSvr.Size = new System.Drawing.Size(1018, 325);
             this.txtSocketSvr.TabIndex = 1;
             // 
             // groupControl4
@@ -394,7 +347,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(1196, 111);
+            this.groupControl4.Size = new System.Drawing.Size(1022, 111);
             this.groupControl4.TabIndex = 0;
             this.groupControl4.Text = "网络信息";
             // 
@@ -476,7 +429,7 @@
             this.shapeContainer2.Name = "shapeContainer2";
             this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(1192, 87);
+            this.shapeContainer2.Size = new System.Drawing.Size(1018, 87);
             this.shapeContainer2.TabIndex = 3;
             this.shapeContainer2.TabStop = false;
             // 
@@ -487,7 +440,7 @@
             this.lineShape2.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape2.Name = "lineShape2";
             this.lineShape2.X1 = 14;
-            this.lineShape2.X2 = 1187;
+            this.lineShape2.X2 = 1013;
             this.lineShape2.Y1 = 45;
             this.lineShape2.Y2 = 45;
             // 
@@ -496,7 +449,7 @@
             this.xtraTabPage1.Controls.Add(this.groupControl6);
             this.xtraTabPage1.Image = global::BloodInfo_MngPlatform.Properties.Resources._20130307021059678_easyicon_cn_16;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1196, 460);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1022, 460);
             this.xtraTabPage1.Text = "Tcp Client";
             // 
             // groupControl6
@@ -512,7 +465,7 @@
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(1196, 111);
+            this.groupControl6.Size = new System.Drawing.Size(1022, 111);
             this.groupControl6.TabIndex = 3;
             this.groupControl6.Text = "网络信息";
             // 
@@ -580,7 +533,7 @@
             this.shapeContainer3.Name = "shapeContainer3";
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape3});
-            this.shapeContainer3.Size = new System.Drawing.Size(1192, 87);
+            this.shapeContainer3.Size = new System.Drawing.Size(1018, 87);
             this.shapeContainer3.TabIndex = 3;
             this.shapeContainer3.TabStop = false;
             // 
@@ -591,7 +544,7 @@
             this.lineShape3.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape3.Name = "lineShape2";
             this.lineShape3.X1 = 14;
-            this.lineShape3.X2 = 1187;
+            this.lineShape3.X2 = 1013;
             this.lineShape3.Y1 = 45;
             this.lineShape3.Y2 = 45;
             // 
@@ -599,14 +552,10 @@
             // 
             this.serialPort1.RtsEnable = true;
             // 
-            // simpleButton10
+            // timer1
             // 
-            this.simpleButton10.Location = new System.Drawing.Point(26, 35);
-            this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton10.TabIndex = 26;
-            this.simpleButton10.Text = "发送";
-            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // _FrmCommTest
             // 
@@ -623,8 +572,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
-            this.groupControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
@@ -652,7 +599,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.ComboBox stopBitsComboBox;
@@ -664,7 +610,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private System.Windows.Forms.TextBox tbData;
-        private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private System.Windows.Forms.ComboBox cbxIP;
@@ -689,8 +634,6 @@
         private System.Windows.Forms.TextBox txtSocketSvr;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.IO.Ports.SerialPort serialPort1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -53,6 +53,7 @@
             this.RSpinEdit = new DevExpress.XtraEditors.SpinEdit();
             this.DISEASEMemoEdit = new DevExpress.XtraEditors.MemoEdit();
             this.BPTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ANA_TIMEDateEdit = new DevExpress.XtraEditors.TimeEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForANA_TIME = new DevExpress.XtraLayout.LayoutControlItem();
@@ -67,7 +68,6 @@
             this.ItemForR = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForDISEASE = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBP = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ANA_TIMEDateEdit = new DevExpress.XtraEditors.TimeEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -85,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RSpinEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DISEASEMemoEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BPTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_TIMEDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).BeginInit();
@@ -99,7 +100,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDISEASE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ANA_TIMEDateEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -405,6 +405,7 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(106, "_98");
             this.sharedImageCollection1.ImageSource.InsertImage(global::BloodInfo_MngPlatform.Properties.Resources._99, "_99", typeof(global::BloodInfo_MngPlatform.Properties.Resources), 107);
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(107, "_99");
+            this.sharedImageCollection1.ImageSource.Images.SetKeyName(108, "Add.png");
             this.sharedImageCollection1.ParentControl = this;
             // 
             // bLOODCLEANUPPROCESSBindingSource
@@ -599,6 +600,25 @@
             this.BPTextEdit.StyleController = this.dataLayoutControl1;
             this.BPTextEdit.TabIndex = 18;
             // 
+            // ANA_TIMEDateEdit
+            // 
+            this.ANA_TIMEDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPPROCESSBindingSource, "ANA_TIME", true));
+            this.ANA_TIMEDateEdit.EditValue = null;
+            this.ANA_TIMEDateEdit.Location = new System.Drawing.Point(79, 12);
+            this.ANA_TIMEDateEdit.MenuManager = this.barManager1;
+            this.ANA_TIMEDateEdit.Name = "ANA_TIMEDateEdit";
+            this.ANA_TIMEDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.ANA_TIMEDateEdit.Properties.DisplayFormat.FormatString = "HH:mm";
+            this.ANA_TIMEDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ANA_TIMEDateEdit.Properties.EditFormat.FormatString = "HH:mm";
+            this.ANA_TIMEDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ANA_TIMEDateEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.ANA_TIMEDateEdit.Properties.Mask.EditMask = "HH:mm";
+            this.ANA_TIMEDateEdit.Size = new System.Drawing.Size(230, 20);
+            this.ANA_TIMEDateEdit.StyleController = this.dataLayoutControl1;
+            this.ANA_TIMEDateEdit.TabIndex = 4;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
@@ -755,25 +775,6 @@
             this.ItemForBP.Text = "BP";
             this.ItemForBP.TextSize = new System.Drawing.Size(64, 14);
             // 
-            // ANA_TIMEDateEdit
-            // 
-            this.ANA_TIMEDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bLOODCLEANUPPROCESSBindingSource, "ANA_TIME", true));
-            this.ANA_TIMEDateEdit.EditValue = null;
-            this.ANA_TIMEDateEdit.Location = new System.Drawing.Point(79, 12);
-            this.ANA_TIMEDateEdit.MenuManager = this.barManager1;
-            this.ANA_TIMEDateEdit.Name = "ANA_TIMEDateEdit";
-            this.ANA_TIMEDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.ANA_TIMEDateEdit.Properties.DisplayFormat.FormatString = "HH:mm";
-            this.ANA_TIMEDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ANA_TIMEDateEdit.Properties.EditFormat.FormatString = "HH:mm";
-            this.ANA_TIMEDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ANA_TIMEDateEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.ANA_TIMEDateEdit.Properties.Mask.EditMask = "HH:mm";
-            this.ANA_TIMEDateEdit.Size = new System.Drawing.Size(230, 20);
-            this.ANA_TIMEDateEdit.StyleController = this.dataLayoutControl1;
-            this.ANA_TIMEDateEdit.TabIndex = 4;
-            // 
             // FrmNewBloodCleanupProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -805,6 +806,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RSpinEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DISEASEMemoEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BPTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ANA_TIMEDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForANA_TIME)).EndInit();
@@ -819,7 +821,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForDISEASE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ANA_TIMEDateEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
