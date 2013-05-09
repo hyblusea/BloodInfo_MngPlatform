@@ -21,6 +21,8 @@ namespace BloodInfo_MngPlatform
     public partial class _FrmCommTest : DevExpress.XtraEditors.XtraForm
     {
         SerialPortManager _spManager;
+        Dictionary<string, SerialPortManager> dicSerialPort = new Dictionary<string, SerialPortManager>();
+        bool isRun = true;
 
         static bool isView = true;
 
@@ -35,9 +37,7 @@ namespace BloodInfo_MngPlatform
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            _spManager = new SerialPortManager();
-
-            SerialSettings mySerialSettings = _spManager.CurrentSerialSettings;
+            
             portNameComboBox.DataSource = mySerialSettings.PortNameCollection;
             baudRateComboBox.DataSource = mySerialSettings.BaudRateCollection;
             dataBitsComboBox.DataSource = mySerialSettings.DataBitsCollection;
@@ -72,13 +72,7 @@ namespace BloodInfo_MngPlatform
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            _spManager.StartListening(portNameComboBox.Text, Convert.ToInt32(baudRateComboBox.SelectedItem),
-                (System.IO.Ports.Parity)Enum.Parse(typeof(System.IO.Ports.Parity), parityComboBox.SelectedItem.ToString(), false),
-                Convert.ToInt32( dataBitsComboBox.Text),
-                (System.IO.Ports.StopBits)Enum.Parse(typeof(System.IO.Ports.StopBits), stopBitsComboBox.SelectedItem.ToString(), false)
-                );
-
-            timer1.Enabled = true;
+          
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -231,27 +225,112 @@ namespace BloodInfo_MngPlatform
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // 发送数据
-            byte[] by = new byte[] { 0x4b, 0x0d, 0x0a };
-            _spManager.SendMsg(by);
+            
+        }
 
-            //  获取串口返回
-            string sData = _spManager.ReadData();
-            tbData.Text =DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + sData;
+        private void _FrmCommTest_Load(object sender, EventArgs e)
+        {
+            _spManager = new SerialPortManager();
+            SerialSettings mySerialSettings = _spManager.CurrentSerialSettings;
 
-            if (sData.Length > 20)
+            for (int i = 0; i < mySerialSettings.PortNameCollection.Length; i++)
             {
-                // 写入数据库
-                PetaPoco.Database db = new Database("XE");
-
-                DEVICECOMMUNICATION_LOG log = new DEVICECOMMUNICATION_LOG();
-                log.MSG = sData.Length > 3999 ? sData.Substring(0, 3999) : sData;
-                log.REMOTE_IP = "com3";
-                //log.REMOTE_PORT = remotePort;
-                log.RECEIVE_TIME = DateTime.Now;
-
-                db.Insert(log);
+                TreeNode tn = new TreeNode();
+                tn.Text = mySerialSettings.PortNameCollection[i];
             }
+        }
+
+        private void Table1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (!backgroundWorker1.IsBusy)
+                backgroundWorker1.RunWorkerAsync();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            byte[] by = new byte[] { 0x4b, 0x0d, 0x0a };
+
+            // 打开所有串口
+            foreach (KeyValuePair<string, SerialPortManager> item in dicSerialPort)
+            {
+                try
+                {
+                    item.Value.StartListening(item.Key, 9600, System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);
+                }
+                catch (Exception err)
+                {
+                    tbData.SafeCall(delegate()
+                    {
+                        tbData.AppendText("初始化串口" + item.Key + "发生异常: " + err.Message + Environment.NewLine);
+                    });
+                }
+            }
+
+            while (isRun)
+            {
+                foreach (KeyValuePair<string, SerialPortManager> item in dicSerialPort)
+                {
+                    try
+                    {
+                        item.Value.SendMsg(by);
+                    }
+                    catch (Exception err)
+                    {
+                        tbData.SafeCall(delegate()
+                        {
+                            tbData.AppendText("向串口" + item.Key + "发送数据失败: " + err.Message);
+                        });
+                    }
+                }
+
+                tbData.SafeCall(delegate()
+                {
+                    tbData.Clear();
+                });
+
+                foreach (KeyValuePair<string, SerialPortManager> item in dicSerialPort)
+                {
+                    try
+                    {
+                        string sData = item.Value.ReadData();
+                        tbData.SafeCall(delegate()
+                        {
+                            tbData.AppendText( DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + sData + Environment.NewLine);
+                        });
+                    }
+                    catch (Exception err)
+                    {
+                        tbData.SafeCall(delegate()
+                        {
+                            tbData.AppendText("读取串口" + item.Key + "数据失败: " + err.Message + Environment.NewLine);
+                        });
+                    }
+                }
+
+                //  获取串口返回
+                string sData = _spManager.ReadData();
+                tbData.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + sData;
+
+                if (sData.Length > 20)
+                {
+                    // 写入数据库
+                    PetaPoco.Database db = new Database("XE");
+
+                    DEVICECOMMUNICATION_LOG log = new DEVICECOMMUNICATION_LOG();
+                    log.MSG = sData.Length > 3999 ? sData.Substring(0, 3999) : sData;
+                    log.REMOTE_IP = "com3";
+                    //log.REMOTE_PORT = remotePort;
+                    log.RECEIVE_TIME = DateTime.Now;
+
+                    db.Insert(log);
+                }
+            }
+
         }
     }
 

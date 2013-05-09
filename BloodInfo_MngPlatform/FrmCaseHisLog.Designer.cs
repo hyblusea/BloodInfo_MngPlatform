@@ -567,8 +567,6 @@
             this.gridBand179 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand180 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colLIPIDS_CHOL = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand181 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colLIPIDS_GT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand182 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colLIPIDS_HDL_CH = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand183 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -592,8 +590,6 @@
             this.colIRON_COMBIN = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colIRON_TOTAL = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand191 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand192 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colHEPATITIS_B = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand193 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colHEPATITIS_C = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand194 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -611,8 +607,6 @@
             this.gridBand200 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand201 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colAKI_PH = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand202 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colAKI_HCO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand203 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colAKI_PO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand204 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -655,10 +649,38 @@
             this.colID7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colREG_ID7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colCASE_HIS_ID7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colLIPIDS_GT = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colHEPATITIS_B = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colAKI_HCO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barDockControl35 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl36 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl34 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl33 = new DevExpress.XtraBars.BarDockControl();
+            this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl9 = new DevExpress.XtraGrid.GridControl();
+            this.aDDTIONCHECKHISTORYEXTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colECG1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCHEST_X_RAY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCARDIOTHORACIC_RATIO1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colECHOCARDIOGRAPHY1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colB_KIDNEYS1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOPERATOR9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLOG_TIME7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colID8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBASE_INFO_ID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAPPLYNO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colREG_ID8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMEMO3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEF1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEF2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEF3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEF4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDEF5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barDockControl39 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl40 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl38 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl37 = new DevExpress.XtraBars.BarDockControl();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.barManager2 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -721,8 +743,21 @@
             this.lblName9 = new DevExpress.XtraBars.BarStaticItem();
             this.btnNewAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdtAdd = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.vALUECODEBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.barManager11 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar11 = new DevExpress.XtraBars.Bar();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.lblName10 = new DevExpress.XtraBars.BarStaticItem();
+            this.btnNewCheckInfoExt = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEdtCheckInfoExt = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem5 = new DevExpress.XtraBars.BarStaticItem();
+            this.label = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barStaticItem9 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsdValueCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit4)).BeginInit();
@@ -804,6 +839,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aDDTIONCHECKHISTORYBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView2)).BeginInit();
+            this.xtraTabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aDDTIONCHECKHISTORYEXTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -822,6 +861,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit11)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemLookUpEdit9
@@ -916,14 +957,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1155, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1028, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 543);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1155, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 0);
             // 
             // barDockControlLeft
             // 
@@ -936,7 +977,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1155, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1028, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // sharedImageCollection1
@@ -1161,7 +1202,6 @@
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(106, "_98");
             this.sharedImageCollection1.ImageSource.InsertImage(global::BloodInfo_MngPlatform.Properties.Resources._99, "_99", typeof(global::BloodInfo_MngPlatform.Properties.Resources), 107);
             this.sharedImageCollection1.ImageSource.Images.SetKeyName(107, "_99");
-            this.sharedImageCollection1.ImageSource.Images.SetKeyName(108, "Add.png");
             this.sharedImageCollection1.ParentControl = this;
             // 
             // repositoryItemTextEdit1
@@ -1179,7 +1219,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1155, 512);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1028, 512);
             this.splitContainerControl1.SplitterPosition = 314;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1191,7 +1231,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1155, 314);
+            this.groupControl1.Size = new System.Drawing.Size(1028, 314);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "患者基本信息";
             // 
@@ -1215,7 +1255,7 @@
             this.repositoryItemLookUpEdit4,
             this.repositoryItemLookUpEdit5,
             this.repositoryItemLookUpEdit6});
-            this.dgvPatientBaseInfo.Size = new System.Drawing.Size(1151, 267);
+            this.dgvPatientBaseInfo.Size = new System.Drawing.Size(1024, 267);
             this.dgvPatientBaseInfo.TabIndex = 45;
             this.dgvPatientBaseInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1394,7 +1434,7 @@
             this.ucPaing1.Location = new System.Drawing.Point(2, 289);
             this.ucPaing1.Name = "ucPaing1";
             this.ucPaing1.recordCnt = ((long)(0));
-            this.ucPaing1.Size = new System.Drawing.Size(1151, 23);
+            this.ucPaing1.Size = new System.Drawing.Size(1024, 23);
             this.ucPaing1.TabIndex = 44;
             this.ucPaing1.totalPage = ((long)(0));
             // 
@@ -1404,7 +1444,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1155, 193);
+            this.groupControl2.Size = new System.Drawing.Size(1028, 193);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "病历信息";
             // 
@@ -1414,7 +1454,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(2, 22);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1151, 169);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1024, 169);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1425,7 +1465,8 @@
             this.xtraTabPage6,
             this.xtraTabPage7,
             this.xtraTabPage8,
-            this.xtraTabPage9});
+            this.xtraTabPage9,
+            this.xtraTabPage10});
             // 
             // xtraTabPage1
             // 
@@ -1435,7 +1476,7 @@
             this.xtraTabPage1.Controls.Add(this.barDockControl2);
             this.xtraTabPage1.Controls.Add(this.barDockControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1145, 140);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1018, 140);
             this.xtraTabPage1.Text = "基本病史";
             // 
             // gdvCaseHis
@@ -1450,7 +1491,7 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckedComboBoxEdit1});
-            this.gdvCaseHis.Size = new System.Drawing.Size(1145, 109);
+            this.gdvCaseHis.Size = new System.Drawing.Size(1018, 109);
             this.gdvCaseHis.TabIndex = 13;
             this.gdvCaseHis.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView4});
@@ -1967,7 +2008,7 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1145, 31);
+            this.barDockControl4.Location = new System.Drawing.Point(1018, 31);
             this.barDockControl4.Size = new System.Drawing.Size(0, 109);
             // 
             // barDockControl2
@@ -1975,14 +2016,14 @@
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl2.Location = new System.Drawing.Point(0, 140);
-            this.barDockControl2.Size = new System.Drawing.Size(1145, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1018, 0);
             // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl1.Size = new System.Drawing.Size(1145, 31);
+            this.barDockControl1.Size = new System.Drawing.Size(1018, 31);
             // 
             // xtraTabPage2
             // 
@@ -5136,7 +5177,7 @@
             this.xtraTabPage9.Controls.Add(this.barDockControl33);
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(1145, 140);
-            this.xtraTabPage9.Text = "辅助检查";
+            this.xtraTabPage9.Text = "辅助检验";
             // 
             // gridControl8
             // 
@@ -5264,7 +5305,7 @@
             this.gridBand150,
             this.gridBand151});
             this.gridBand147.Name = "gridBand147";
-            this.gridBand147.Width = 155;
+            this.gridBand147.Width = 268;
             // 
             // gridBand148
             // 
@@ -5272,7 +5313,7 @@
             this.gridBand148.Columns.Add(this.colHB);
             this.gridBand148.Name = "gridBand148";
             this.gridBand148.OptionsBand.FixedWidth = true;
-            this.gridBand148.Width = 45;
+            this.gridBand148.Width = 65;
             // 
             // colHB
             // 
@@ -5280,7 +5321,7 @@
             this.colHB.Name = "colHB";
             this.colHB.OptionsColumn.AllowEdit = false;
             this.colHB.Visible = true;
-            this.colHB.Width = 45;
+            this.colHB.Width = 65;
             // 
             // gridBand149
             // 
@@ -5288,7 +5329,7 @@
             this.gridBand149.Columns.Add(this.colHCT);
             this.gridBand149.Name = "gridBand149";
             this.gridBand149.OptionsBand.FixedWidth = true;
-            this.gridBand149.Width = 31;
+            this.gridBand149.Width = 66;
             // 
             // colHCT
             // 
@@ -5296,7 +5337,7 @@
             this.colHCT.Name = "colHCT";
             this.colHCT.OptionsColumn.AllowEdit = false;
             this.colHCT.Visible = true;
-            this.colHCT.Width = 31;
+            this.colHCT.Width = 66;
             // 
             // gridBand150
             // 
@@ -5304,7 +5345,7 @@
             this.gridBand150.Columns.Add(this.colWBC);
             this.gridBand150.Name = "gridBand150";
             this.gridBand150.OptionsBand.FixedWidth = true;
-            this.gridBand150.Width = 36;
+            this.gridBand150.Width = 68;
             // 
             // colWBC
             // 
@@ -5312,14 +5353,14 @@
             this.colWBC.Name = "colWBC";
             this.colWBC.OptionsColumn.AllowEdit = false;
             this.colWBC.Visible = true;
-            this.colWBC.Width = 36;
+            this.colWBC.Width = 68;
             // 
             // gridBand151
             // 
             this.gridBand151.Caption = "PLT";
             this.gridBand151.Columns.Add(this.colPLT);
             this.gridBand151.Name = "gridBand151";
-            this.gridBand151.Width = 43;
+            this.gridBand151.Width = 69;
             // 
             // colPLT
             // 
@@ -5327,7 +5368,7 @@
             this.colPLT.Name = "colPLT";
             this.colPLT.OptionsColumn.AllowEdit = false;
             this.colPLT.Visible = true;
-            this.colPLT.Width = 43;
+            this.colPLT.Width = 69;
             // 
             // gridBand152
             // 
@@ -5340,14 +5381,14 @@
             this.gridBand154,
             this.gridBand155});
             this.gridBand152.Name = "gridBand152";
-            this.gridBand152.Width = 309;
+            this.gridBand152.Width = 485;
             // 
             // gridBand223
             // 
             this.gridBand223.Caption = "常规";
             this.gridBand223.Columns.Add(this.colURINE_COMMON);
             this.gridBand223.Name = "gridBand223";
-            this.gridBand223.Width = 36;
+            this.gridBand223.Width = 123;
             // 
             // colURINE_COMMON
             // 
@@ -5355,14 +5396,14 @@
             this.colURINE_COMMON.Name = "colURINE_COMMON";
             this.colURINE_COMMON.OptionsColumn.AllowEdit = false;
             this.colURINE_COMMON.Visible = true;
-            this.colURINE_COMMON.Width = 36;
+            this.colURINE_COMMON.Width = 123;
             // 
             // gridBand224
             // 
             this.gridBand224.Caption = "其他";
             this.gridBand224.Columns.Add(this.colURINE_OTHER);
             this.gridBand224.Name = "gridBand224";
-            this.gridBand224.Width = 44;
+            this.gridBand224.Width = 99;
             // 
             // colURINE_OTHER
             // 
@@ -5370,14 +5411,14 @@
             this.colURINE_OTHER.Name = "colURINE_OTHER";
             this.colURINE_OTHER.OptionsColumn.AllowEdit = false;
             this.colURINE_OTHER.Visible = true;
-            this.colURINE_OTHER.Width = 44;
+            this.colURINE_OTHER.Width = 99;
             // 
             // gridBand225
             // 
             this.gridBand225.Caption = "尿沉渣";
             this.gridBand225.Columns.Add(this.colURINARY_SEDIMENT);
             this.gridBand225.Name = "gridBand225";
-            this.gridBand225.Width = 55;
+            this.gridBand225.Width = 73;
             // 
             // colURINARY_SEDIMENT
             // 
@@ -5385,14 +5426,14 @@
             this.colURINARY_SEDIMENT.Name = "colURINARY_SEDIMENT";
             this.colURINARY_SEDIMENT.OptionsColumn.AllowEdit = false;
             this.colURINARY_SEDIMENT.Visible = true;
-            this.colURINARY_SEDIMENT.Width = 55;
+            this.colURINARY_SEDIMENT.Width = 73;
             // 
             // gridBand153
             // 
             this.gridBand153.Caption = "尿Na+";
             this.gridBand153.Columns.Add(this.colURINE_NA);
             this.gridBand153.Name = "gridBand153";
-            this.gridBand153.Width = 41;
+            this.gridBand153.Width = 63;
             // 
             // colURINE_NA
             // 
@@ -5400,14 +5441,14 @@
             this.colURINE_NA.Name = "colURINE_NA";
             this.colURINE_NA.OptionsColumn.AllowEdit = false;
             this.colURINE_NA.Visible = true;
-            this.colURINE_NA.Width = 41;
+            this.colURINE_NA.Width = 63;
             // 
             // gridBand154
             // 
             this.gridBand154.Caption = "尿渗透压";
             this.gridBand154.Columns.Add(this.colURINE_PASS);
             this.gridBand154.Name = "gridBand154";
-            this.gridBand154.Width = 65;
+            this.gridBand154.Width = 56;
             // 
             // colURINE_PASS
             // 
@@ -5415,14 +5456,14 @@
             this.colURINE_PASS.Name = "colURINE_PASS";
             this.colURINE_PASS.OptionsColumn.AllowEdit = false;
             this.colURINE_PASS.Visible = true;
-            this.colURINE_PASS.Width = 65;
+            this.colURINE_PASS.Width = 56;
             // 
             // gridBand155
             // 
             this.gridBand155.Caption = "粪替血";
             this.gridBand155.Columns.Add(this.colMANURE);
             this.gridBand155.Name = "gridBand155";
-            this.gridBand155.Width = 68;
+            this.gridBand155.Width = 71;
             // 
             // colMANURE
             // 
@@ -5430,7 +5471,7 @@
             this.colMANURE.Name = "colMANURE";
             this.colMANURE.OptionsColumn.AllowEdit = false;
             this.colMANURE.Visible = true;
-            this.colMANURE.Width = 68;
+            this.colMANURE.Width = 71;
             // 
             // gridBand228
             // 
@@ -5449,7 +5490,7 @@
             this.gridBand167,
             this.gridBand161});
             this.gridBand228.Name = "gridBand228";
-            this.gridBand228.Width = 551;
+            this.gridBand228.Width = 637;
             // 
             // gridBand156
             // 
@@ -5471,7 +5512,7 @@
             this.gridBand157.Caption = "Ccr";
             this.gridBand157.Columns.Add(this.colCCR);
             this.gridBand157.Name = "gridBand157";
-            this.gridBand157.Width = 47;
+            this.gridBand157.Width = 63;
             // 
             // colCCR
             // 
@@ -5479,14 +5520,14 @@
             this.colCCR.Name = "colCCR";
             this.colCCR.OptionsColumn.AllowEdit = false;
             this.colCCR.Visible = true;
-            this.colCCR.Width = 47;
+            this.colCCR.Width = 63;
             // 
             // gridBand158
             // 
             this.gridBand158.Caption = "BUN";
             this.gridBand158.Columns.Add(this.colBUN);
             this.gridBand158.Name = "gridBand158";
-            this.gridBand158.Width = 45;
+            this.gridBand158.Width = 59;
             // 
             // colBUN
             // 
@@ -5494,7 +5535,7 @@
             this.colBUN.Name = "colBUN";
             this.colBUN.OptionsColumn.AllowEdit = false;
             this.colBUN.Visible = true;
-            this.colBUN.Width = 45;
+            this.colBUN.Width = 59;
             // 
             // gridBand166
             // 
@@ -5516,7 +5557,7 @@
             this.gridBand164.Caption = "Ca2+";
             this.gridBand164.Columns.Add(this.colCA);
             this.gridBand164.Name = "gridBand164";
-            this.gridBand164.Width = 46;
+            this.gridBand164.Width = 53;
             // 
             // colCA
             // 
@@ -5524,14 +5565,14 @@
             this.colCA.Name = "colCA";
             this.colCA.OptionsColumn.AllowEdit = false;
             this.colCA.Visible = true;
-            this.colCA.Width = 46;
+            this.colCA.Width = 53;
             // 
             // gridBand163
             // 
             this.gridBand163.Caption = "Na+";
             this.gridBand163.Columns.Add(this.colNA);
             this.gridBand163.Name = "gridBand163";
-            this.gridBand163.Width = 44;
+            this.gridBand163.Width = 51;
             // 
             // colNA
             // 
@@ -5539,14 +5580,14 @@
             this.colNA.Name = "colNA";
             this.colNA.OptionsColumn.AllowEdit = false;
             this.colNA.Visible = true;
-            this.colNA.Width = 44;
+            this.colNA.Width = 51;
             // 
             // gridBand162
             // 
             this.gridBand162.Caption = "K+";
             this.gridBand162.Columns.Add(this.colK);
             this.gridBand162.Name = "gridBand162";
-            this.gridBand162.Width = 33;
+            this.gridBand162.Width = 48;
             // 
             // colK
             // 
@@ -5554,14 +5595,14 @@
             this.colK.Name = "colK";
             this.colK.OptionsColumn.AllowEdit = false;
             this.colK.Visible = true;
-            this.colK.Width = 33;
+            this.colK.Width = 48;
             // 
             // gridBand159
             // 
             this.gridBand159.Caption = "Scr";
             this.gridBand159.Columns.Add(this.colSCR);
             this.gridBand159.Name = "gridBand159";
-            this.gridBand159.Width = 31;
+            this.gridBand159.Width = 44;
             // 
             // colSCR
             // 
@@ -5569,14 +5610,14 @@
             this.colSCR.Name = "colSCR";
             this.colSCR.OptionsColumn.AllowEdit = false;
             this.colSCR.Visible = true;
-            this.colSCR.Width = 31;
+            this.colSCR.Width = 44;
             // 
             // gridBand160
             // 
-            this.gridBand160.Caption = "UA";
+            this.gridBand160.Caption = "Sua";
             this.gridBand160.Columns.Add(this.colUA);
             this.gridBand160.Name = "gridBand160";
-            this.gridBand160.Width = 44;
+            this.gridBand160.Width = 49;
             // 
             // colUA
             // 
@@ -5584,7 +5625,7 @@
             this.colUA.Name = "colUA";
             this.colUA.OptionsColumn.AllowEdit = false;
             this.colUA.Visible = true;
-            this.colUA.Width = 44;
+            this.colUA.Width = 49;
             // 
             // gridBand165
             // 
@@ -5606,7 +5647,7 @@
             this.gridBand167.Caption = "AKP";
             this.gridBand167.Columns.Add(this.colAKP);
             this.gridBand167.Name = "gridBand167";
-            this.gridBand167.Width = 38;
+            this.gridBand167.Width = 47;
             // 
             // colAKP
             // 
@@ -5614,11 +5655,11 @@
             this.colAKP.Name = "colAKP";
             this.colAKP.OptionsColumn.AllowEdit = false;
             this.colAKP.Visible = true;
-            this.colAKP.Width = 38;
+            this.colAKP.Width = 47;
             // 
             // gridBand161
             // 
-            this.gridBand161.Caption = "T-CO";
+            this.gridBand161.Caption = "T-CO2";
             this.gridBand161.Columns.Add(this.colT_CO);
             this.gridBand161.Name = "gridBand161";
             this.gridBand161.Width = 58;
@@ -5639,14 +5680,14 @@
             this.gridBand170,
             this.gridBand171});
             this.gridBand168.Name = "gridBand168";
-            this.gridBand168.Width = 139;
+            this.gridBand168.Width = 178;
             // 
             // gridBand169
             // 
             this.gridBand169.Caption = "FBG";
             this.gridBand169.Columns.Add(this.colBLOOD_SUGAR_PBG);
             this.gridBand169.Name = "gridBand169";
-            this.gridBand169.Width = 53;
+            this.gridBand169.Width = 72;
             // 
             // colBLOOD_SUGAR_PBG
             // 
@@ -5654,14 +5695,14 @@
             this.colBLOOD_SUGAR_PBG.Name = "colBLOOD_SUGAR_PBG";
             this.colBLOOD_SUGAR_PBG.OptionsColumn.AllowEdit = false;
             this.colBLOOD_SUGAR_PBG.Visible = true;
-            this.colBLOOD_SUGAR_PBG.Width = 53;
+            this.colBLOOD_SUGAR_PBG.Width = 72;
             // 
             // gridBand170
             // 
             this.gridBand170.Caption = "2hPG";
             this.gridBand170.Columns.Add(this.colBLOOD_SUGAR_2HPG);
             this.gridBand170.Name = "gridBand170";
-            this.gridBand170.Width = 39;
+            this.gridBand170.Width = 50;
             // 
             // colBLOOD_SUGAR_2HPG
             // 
@@ -5669,14 +5710,14 @@
             this.colBLOOD_SUGAR_2HPG.Name = "colBLOOD_SUGAR_2HPG";
             this.colBLOOD_SUGAR_2HPG.OptionsColumn.AllowEdit = false;
             this.colBLOOD_SUGAR_2HPG.Visible = true;
-            this.colBLOOD_SUGAR_2HPG.Width = 39;
+            this.colBLOOD_SUGAR_2HPG.Width = 50;
             // 
             // gridBand171
             // 
             this.gridBand171.Caption = "HbA1";
             this.gridBand171.Columns.Add(this.colBLOOD_SUGAR_HBA1);
             this.gridBand171.Name = "gridBand171";
-            this.gridBand171.Width = 47;
+            this.gridBand171.Width = 56;
             // 
             // colBLOOD_SUGAR_HBA1
             // 
@@ -5684,7 +5725,7 @@
             this.colBLOOD_SUGAR_HBA1.Name = "colBLOOD_SUGAR_HBA1";
             this.colBLOOD_SUGAR_HBA1.OptionsColumn.AllowEdit = false;
             this.colBLOOD_SUGAR_HBA1.Visible = true;
-            this.colBLOOD_SUGAR_HBA1.Width = 47;
+            this.colBLOOD_SUGAR_HBA1.Width = 56;
             // 
             // gridBand172
             // 
@@ -5761,7 +5802,7 @@
             // 
             // gridBand177
             // 
-            this.gridBand177.Caption = "Y-GT";
+            this.gridBand177.Caption = "γ-GT";
             this.gridBand177.Columns.Add(this.colLIVER_Y_GT);
             this.gridBand177.Name = "gridBand177";
             this.gridBand177.Width = 56;
@@ -5794,18 +5835,17 @@
             this.gridBand179.Caption = "血脂";
             this.gridBand179.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand180,
-            this.gridBand181,
             this.gridBand182,
             this.gridBand183,
             this.gridBand184,
             this.gridBand185,
             this.gridBand186});
             this.gridBand179.Name = "gridBand179";
-            this.gridBand179.Width = 469;
+            this.gridBand179.Width = 402;
             // 
             // gridBand180
             // 
-            this.gridBand180.Caption = "Chol";
+            this.gridBand180.Caption = "TCH";
             this.gridBand180.Columns.Add(this.colLIPIDS_CHOL);
             this.gridBand180.Name = "gridBand180";
             // 
@@ -5817,24 +5857,9 @@
             this.colLIPIDS_CHOL.Visible = true;
             this.colLIPIDS_CHOL.Width = 70;
             // 
-            // gridBand181
-            // 
-            this.gridBand181.Caption = "TG";
-            this.gridBand181.Columns.Add(this.colLIPIDS_GT);
-            this.gridBand181.Name = "gridBand181";
-            this.gridBand181.Width = 67;
-            // 
-            // colLIPIDS_GT
-            // 
-            this.colLIPIDS_GT.FieldName = "LIPIDS_GT";
-            this.colLIPIDS_GT.Name = "colLIPIDS_GT";
-            this.colLIPIDS_GT.OptionsColumn.AllowEdit = false;
-            this.colLIPIDS_GT.Visible = true;
-            this.colLIPIDS_GT.Width = 67;
-            // 
             // gridBand182
             // 
-            this.gridBand182.Caption = "HDL-CH";
+            this.gridBand182.Caption = "HDL_C";
             this.gridBand182.Columns.Add(this.colLIPIDS_HDL_CH);
             this.gridBand182.Name = "gridBand182";
             this.gridBand182.Width = 69;
@@ -5849,7 +5874,7 @@
             // 
             // gridBand183
             // 
-            this.gridBand183.Caption = "LDL-CH";
+            this.gridBand183.Caption = "LDL-C";
             this.gridBand183.Columns.Add(this.colLIPIDS_LDL_CH);
             this.gridBand183.Name = "gridBand183";
             this.gridBand183.Width = 62;
@@ -5864,7 +5889,7 @@
             // 
             // gridBand184
             // 
-            this.gridBand184.Caption = "1PTH";
+            this.gridBand184.Caption = "iPTH";
             this.gridBand184.Columns.Add(this.colLIPIDS_1PHT);
             this.gridBand184.Name = "gridBand184";
             this.gridBand184.Width = 58;
@@ -5917,7 +5942,7 @@
             this.gridBand189,
             this.gridBand190});
             this.gridBand187.Name = "gridBand187";
-            this.gridBand187.Width = 411;
+            this.gridBand187.Width = 493;
             // 
             // gridBand196
             // 
@@ -5950,10 +5975,10 @@
             // 
             // gridBand197
             // 
-            this.gridBand197.Caption = "转运铁蛋白(TF)";
+            this.gridBand197.Caption = "血清转铁蛋白（TRF）";
             this.gridBand197.Columns.Add(this.colIRON_IRONPROTEIN);
             this.gridBand197.Name = "gridBand197";
-            this.gridBand197.Width = 98;
+            this.gridBand197.Width = 128;
             // 
             // colIRON_IRONPROTEIN
             // 
@@ -5961,11 +5986,11 @@
             this.colIRON_IRONPROTEIN.Name = "colIRON_IRONPROTEIN";
             this.colIRON_IRONPROTEIN.OptionsColumn.AllowEdit = false;
             this.colIRON_IRONPROTEIN.Visible = true;
-            this.colIRON_IRONPROTEIN.Width = 98;
+            this.colIRON_IRONPROTEIN.Width = 128;
             // 
             // gridBand189
             // 
-            this.gridBand189.Caption = "血清铁(SI)";
+            this.gridBand189.Caption = "铁血清(SI)";
             this.gridBand189.Columns.Add(this.colIRON_SI);
             this.gridBand189.Name = "gridBand189";
             this.gridBand189.Width = 74;
@@ -5980,10 +6005,11 @@
             // 
             // gridBand190
             // 
-            this.gridBand190.Caption = "总铁结合力";
+            this.gridBand190.Caption = "血清总铁结合力测定";
             this.gridBand190.Columns.Add(this.colIRON_COMBIN);
             this.gridBand190.Columns.Add(this.colIRON_TOTAL);
             this.gridBand190.Name = "gridBand190";
+            this.gridBand190.Width = 122;
             // 
             // colIRON_COMBIN
             // 
@@ -5991,7 +6017,7 @@
             this.colIRON_COMBIN.Name = "colIRON_COMBIN";
             this.colIRON_COMBIN.OptionsColumn.AllowEdit = false;
             this.colIRON_COMBIN.Visible = true;
-            this.colIRON_COMBIN.Width = 70;
+            this.colIRON_COMBIN.Width = 122;
             // 
             // colIRON_TOTAL
             // 
@@ -6004,7 +6030,6 @@
             // 
             this.gridBand191.Caption = "肝炎病毒学指标";
             this.gridBand191.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand192,
             this.gridBand193,
             this.gridBand194,
             this.gridBand195,
@@ -6013,29 +6038,14 @@
             this.gridBand198,
             this.gridBand199});
             this.gridBand191.Name = "gridBand191";
-            this.gridBand191.Width = 402;
-            // 
-            // gridBand192
-            // 
-            this.gridBand192.Caption = "乙";
-            this.gridBand192.Columns.Add(this.colHEPATITIS_B);
-            this.gridBand192.Name = "gridBand192";
-            this.gridBand192.Width = 49;
-            // 
-            // colHEPATITIS_B
-            // 
-            this.colHEPATITIS_B.FieldName = "HEPATITIS_B";
-            this.colHEPATITIS_B.Name = "colHEPATITIS_B";
-            this.colHEPATITIS_B.OptionsColumn.AllowEdit = false;
-            this.colHEPATITIS_B.Visible = true;
-            this.colHEPATITIS_B.Width = 49;
+            this.gridBand191.Width = 467;
             // 
             // gridBand193
             // 
-            this.gridBand193.Caption = "丙";
+            this.gridBand193.Caption = "丙肝抗体（HCV）";
             this.gridBand193.Columns.Add(this.colHEPATITIS_C);
             this.gridBand193.Name = "gridBand193";
-            this.gridBand193.Width = 40;
+            this.gridBand193.Width = 104;
             // 
             // colHEPATITIS_C
             // 
@@ -6043,14 +6053,14 @@
             this.colHEPATITIS_C.Name = "colHEPATITIS_C";
             this.colHEPATITIS_C.OptionsColumn.AllowEdit = false;
             this.colHEPATITIS_C.Visible = true;
-            this.colHEPATITIS_C.Width = 40;
+            this.colHEPATITIS_C.Width = 104;
             // 
             // gridBand194
             // 
             this.gridBand194.Caption = "其他";
             this.gridBand194.Columns.Add(this.colHEPATITIS_OTHER);
             this.gridBand194.Name = "gridBand194";
-            this.gridBand194.Width = 43;
+            this.gridBand194.Width = 93;
             // 
             // colHEPATITIS_OTHER
             // 
@@ -6058,7 +6068,7 @@
             this.colHEPATITIS_OTHER.Name = "colHEPATITIS_OTHER";
             this.colHEPATITIS_OTHER.OptionsColumn.AllowEdit = false;
             this.colHEPATITIS_OTHER.Visible = true;
-            this.colHEPATITIS_OTHER.Width = 43;
+            this.colHEPATITIS_OTHER.Width = 93;
             // 
             // gridBand195
             // 
@@ -6077,7 +6087,7 @@
             // 
             // gridBand218
             // 
-            this.gridBand218.Caption = "ABsAb";
+            this.gridBand218.Caption = "HBsAb";
             this.gridBand218.Columns.Add(this.colHEPATITIS_HBSAB);
             this.gridBand218.Name = "gridBand218";
             this.gridBand218.Width = 56;
@@ -6092,7 +6102,7 @@
             // 
             // gridBand146
             // 
-            this.gridBand146.Caption = "HBcAb";
+            this.gridBand146.Caption = "HBeAg";
             this.gridBand146.Columns.Add(this.colHEPATITIS_BGCAB);
             this.gridBand146.Name = "gridBand146";
             // 
@@ -6139,18 +6149,17 @@
             this.gridBand200.Caption = "AKI者血气分析";
             this.gridBand200.Children.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand201,
-            this.gridBand202,
             this.gridBand203,
             this.gridBand204});
             this.gridBand200.Name = "gridBand200";
-            this.gridBand200.Width = 149;
+            this.gridBand200.Width = 172;
             // 
             // gridBand201
             // 
-            this.gridBand201.Caption = "PH";
+            this.gridBand201.Caption = "pH";
             this.gridBand201.Columns.Add(this.colAKI_PH);
             this.gridBand201.Name = "gridBand201";
-            this.gridBand201.Width = 36;
+            this.gridBand201.Width = 63;
             // 
             // colAKI_PH
             // 
@@ -6158,29 +6167,14 @@
             this.colAKI_PH.Name = "colAKI_PH";
             this.colAKI_PH.OptionsColumn.AllowEdit = false;
             this.colAKI_PH.Visible = true;
-            this.colAKI_PH.Width = 36;
-            // 
-            // gridBand202
-            // 
-            this.gridBand202.Caption = "HCO";
-            this.gridBand202.Columns.Add(this.colAKI_HCO);
-            this.gridBand202.Name = "gridBand202";
-            this.gridBand202.Width = 39;
-            // 
-            // colAKI_HCO
-            // 
-            this.colAKI_HCO.FieldName = "AKI_HCO";
-            this.colAKI_HCO.Name = "colAKI_HCO";
-            this.colAKI_HCO.OptionsColumn.AllowEdit = false;
-            this.colAKI_HCO.Visible = true;
-            this.colAKI_HCO.Width = 39;
+            this.colAKI_PH.Width = 63;
             // 
             // gridBand203
             // 
             this.gridBand203.Caption = "PO2";
             this.gridBand203.Columns.Add(this.colAKI_PO);
             this.gridBand203.Name = "gridBand203";
-            this.gridBand203.Width = 33;
+            this.gridBand203.Width = 58;
             // 
             // colAKI_PO
             // 
@@ -6188,14 +6182,14 @@
             this.colAKI_PO.Name = "colAKI_PO";
             this.colAKI_PO.OptionsColumn.AllowEdit = false;
             this.colAKI_PO.Visible = true;
-            this.colAKI_PO.Width = 33;
+            this.colAKI_PO.Width = 58;
             // 
             // gridBand204
             // 
             this.gridBand204.Caption = "PCO2";
             this.gridBand204.Columns.Add(this.colAKI_PCO);
             this.gridBand204.Name = "gridBand204";
-            this.gridBand204.Width = 41;
+            this.gridBand204.Width = 51;
             // 
             // colAKI_PCO
             // 
@@ -6203,7 +6197,7 @@
             this.colAKI_PCO.Name = "colAKI_PCO";
             this.colAKI_PCO.OptionsColumn.AllowEdit = false;
             this.colAKI_PCO.Visible = true;
-            this.colAKI_PCO.Width = 41;
+            this.colAKI_PCO.Width = 51;
             // 
             // gridBand208
             // 
@@ -6216,7 +6210,7 @@
             this.gridBand210,
             this.gridBand215});
             this.gridBand208.Name = "gridBand208";
-            this.gridBand208.Width = 581;
+            this.gridBand208.Width = 445;
             // 
             // gridBand205
             // 
@@ -6238,7 +6232,7 @@
             this.gridBand206.Caption = "胸片";
             this.gridBand206.Columns.Add(this.colCHEST_X_RAY);
             this.gridBand206.Name = "gridBand206";
-            this.gridBand206.Width = 58;
+            this.gridBand206.Width = 89;
             // 
             // colCHEST_X_RAY
             // 
@@ -6246,14 +6240,14 @@
             this.colCHEST_X_RAY.Name = "colCHEST_X_RAY";
             this.colCHEST_X_RAY.OptionsColumn.AllowEdit = false;
             this.colCHEST_X_RAY.Visible = true;
-            this.colCHEST_X_RAY.Width = 58;
+            this.colCHEST_X_RAY.Width = 89;
             // 
             // gridBand207
             // 
             this.gridBand207.Caption = "心胸比";
             this.gridBand207.Columns.Add(this.colCARDIOTHORACIC_RATIO);
             this.gridBand207.Name = "gridBand207";
-            this.gridBand207.Width = 65;
+            this.gridBand207.Width = 81;
             // 
             // colCARDIOTHORACIC_RATIO
             // 
@@ -6261,14 +6255,14 @@
             this.colCARDIOTHORACIC_RATIO.Name = "colCARDIOTHORACIC_RATIO";
             this.colCARDIOTHORACIC_RATIO.OptionsColumn.AllowEdit = false;
             this.colCARDIOTHORACIC_RATIO.Visible = true;
-            this.colCARDIOTHORACIC_RATIO.Width = 65;
+            this.colCARDIOTHORACIC_RATIO.Width = 81;
             // 
             // gridBand209
             // 
             this.gridBand209.Caption = "超声心动图";
             this.gridBand209.Columns.Add(this.colECHOCARDIOGRAPHY);
             this.gridBand209.Name = "gridBand209";
-            this.gridBand209.Width = 98;
+            this.gridBand209.Width = 113;
             // 
             // colECHOCARDIOGRAPHY
             // 
@@ -6276,14 +6270,14 @@
             this.colECHOCARDIOGRAPHY.Name = "colECHOCARDIOGRAPHY";
             this.colECHOCARDIOGRAPHY.OptionsColumn.AllowEdit = false;
             this.colECHOCARDIOGRAPHY.Visible = true;
-            this.colECHOCARDIOGRAPHY.Width = 98;
+            this.colECHOCARDIOGRAPHY.Width = 113;
             // 
             // gridBand210
             // 
             this.gridBand210.Caption = "B超双肾图";
             this.gridBand210.Columns.Add(this.colB_KIDNEYS);
             this.gridBand210.Name = "gridBand210";
-            this.gridBand210.Width = 67;
+            this.gridBand210.Width = 88;
             // 
             // colB_KIDNEYS
             // 
@@ -6291,7 +6285,7 @@
             this.colB_KIDNEYS.Name = "colB_KIDNEYS";
             this.colB_KIDNEYS.OptionsColumn.AllowEdit = false;
             this.colB_KIDNEYS.Visible = true;
-            this.colB_KIDNEYS.Width = 67;
+            this.colB_KIDNEYS.Width = 88;
             // 
             // gridBand215
             // 
@@ -6301,6 +6295,7 @@
             this.gridBand212,
             this.gridBand213});
             this.gridBand215.Name = "gridBand215";
+            this.gridBand215.Visible = false;
             this.gridBand215.Width = 219;
             // 
             // gridBand211
@@ -6353,6 +6348,7 @@
             this.gridBand214.Caption = "修正诊断";
             this.gridBand214.Columns.Add(this.colMODIFY_DIAGNOSIS);
             this.gridBand214.Name = "gridBand214";
+            this.gridBand214.Visible = false;
             this.gridBand214.Width = 100;
             // 
             // colMODIFY_DIAGNOSIS
@@ -6373,6 +6369,7 @@
             this.gridBand221,
             this.gridBand222});
             this.gridBand216.Name = "gridBand216";
+            this.gridBand216.Visible = false;
             this.gridBand216.Width = 375;
             // 
             // gridBand217
@@ -6498,6 +6495,30 @@
             this.colCASE_HIS_ID7.Name = "colCASE_HIS_ID7";
             this.colCASE_HIS_ID7.OptionsColumn.AllowEdit = false;
             // 
+            // colLIPIDS_GT
+            // 
+            this.colLIPIDS_GT.FieldName = "LIPIDS_GT";
+            this.colLIPIDS_GT.Name = "colLIPIDS_GT";
+            this.colLIPIDS_GT.OptionsColumn.AllowEdit = false;
+            this.colLIPIDS_GT.Visible = true;
+            this.colLIPIDS_GT.Width = 67;
+            // 
+            // colHEPATITIS_B
+            // 
+            this.colHEPATITIS_B.FieldName = "HEPATITIS_B";
+            this.colHEPATITIS_B.Name = "colHEPATITIS_B";
+            this.colHEPATITIS_B.OptionsColumn.AllowEdit = false;
+            this.colHEPATITIS_B.Visible = true;
+            this.colHEPATITIS_B.Width = 49;
+            // 
+            // colAKI_HCO
+            // 
+            this.colAKI_HCO.FieldName = "AKI_HCO";
+            this.colAKI_HCO.Name = "colAKI_HCO";
+            this.colAKI_HCO.OptionsColumn.AllowEdit = false;
+            this.colAKI_HCO.Visible = true;
+            this.colAKI_HCO.Width = 39;
+            // 
             // barDockControl35
             // 
             this.barDockControl35.CausesValidation = false;
@@ -6525,6 +6546,200 @@
             this.barDockControl33.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl33.Location = new System.Drawing.Point(0, 0);
             this.barDockControl33.Size = new System.Drawing.Size(1145, 31);
+            // 
+            // xtraTabPage10
+            // 
+            this.xtraTabPage10.Controls.Add(this.gridControl9);
+            this.xtraTabPage10.Controls.Add(this.barDockControl39);
+            this.xtraTabPage10.Controls.Add(this.barDockControl40);
+            this.xtraTabPage10.Controls.Add(this.barDockControl38);
+            this.xtraTabPage10.Controls.Add(this.barDockControl37);
+            this.xtraTabPage10.Name = "xtraTabPage10";
+            this.xtraTabPage10.Size = new System.Drawing.Size(1018, 140);
+            this.xtraTabPage10.Text = "辅助检查";
+            // 
+            // gridControl9
+            // 
+            this.gridControl9.DataSource = this.aDDTIONCHECKHISTORYEXTBindingSource;
+            this.gridControl9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl9.Location = new System.Drawing.Point(0, 31);
+            this.gridControl9.MainView = this.gridView5;
+            this.gridControl9.MenuManager = this.barManager1;
+            this.gridControl9.Name = "gridControl9";
+            this.gridControl9.Size = new System.Drawing.Size(1018, 109);
+            this.gridControl9.TabIndex = 9;
+            this.gridControl9.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView5});
+            // 
+            // aDDTIONCHECKHISTORYEXTBindingSource
+            // 
+            this.aDDTIONCHECKHISTORYEXTBindingSource.DataSource = typeof(BloodInfo_MngPlatform.Models.ADDTION_CHECK_HISTORY_EXT);
+            // 
+            // gridView5
+            // 
+            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colECG1,
+            this.colCHEST_X_RAY1,
+            this.colCARDIOTHORACIC_RATIO1,
+            this.colECHOCARDIOGRAPHY1,
+            this.colB_KIDNEYS1,
+            this.colOPERATOR9,
+            this.colLOG_TIME7,
+            this.colID8,
+            this.colBASE_INFO_ID,
+            this.colAPPLYNO,
+            this.colREG_ID8,
+            this.colMEMO3,
+            this.colDEF1,
+            this.colDEF2,
+            this.colDEF3,
+            this.colDEF4,
+            this.colDEF5});
+            this.gridView5.GridControl = this.gridControl9;
+            this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsView.ColumnAutoWidth = false;
+            this.gridView5.OptionsView.ShowGroupPanel = false;
+            // 
+            // colECG1
+            // 
+            this.colECG1.Caption = "心电图";
+            this.colECG1.FieldName = "ECG";
+            this.colECG1.Name = "colECG1";
+            this.colECG1.Visible = true;
+            this.colECG1.VisibleIndex = 0;
+            this.colECG1.Width = 93;
+            // 
+            // colCHEST_X_RAY1
+            // 
+            this.colCHEST_X_RAY1.Caption = "胸片";
+            this.colCHEST_X_RAY1.FieldName = "CHEST_X_RAY";
+            this.colCHEST_X_RAY1.Name = "colCHEST_X_RAY1";
+            this.colCHEST_X_RAY1.Visible = true;
+            this.colCHEST_X_RAY1.VisibleIndex = 1;
+            this.colCHEST_X_RAY1.Width = 95;
+            // 
+            // colCARDIOTHORACIC_RATIO1
+            // 
+            this.colCARDIOTHORACIC_RATIO1.Caption = "心胸比";
+            this.colCARDIOTHORACIC_RATIO1.FieldName = "CARDIOTHORACIC_RATIO";
+            this.colCARDIOTHORACIC_RATIO1.Name = "colCARDIOTHORACIC_RATIO1";
+            this.colCARDIOTHORACIC_RATIO1.Visible = true;
+            this.colCARDIOTHORACIC_RATIO1.VisibleIndex = 2;
+            this.colCARDIOTHORACIC_RATIO1.Width = 101;
+            // 
+            // colECHOCARDIOGRAPHY1
+            // 
+            this.colECHOCARDIOGRAPHY1.Caption = "超声心动图";
+            this.colECHOCARDIOGRAPHY1.FieldName = "ECHOCARDIOGRAPHY";
+            this.colECHOCARDIOGRAPHY1.Name = "colECHOCARDIOGRAPHY1";
+            this.colECHOCARDIOGRAPHY1.Visible = true;
+            this.colECHOCARDIOGRAPHY1.VisibleIndex = 3;
+            this.colECHOCARDIOGRAPHY1.Width = 106;
+            // 
+            // colB_KIDNEYS1
+            // 
+            this.colB_KIDNEYS1.Caption = "B超双肾图";
+            this.colB_KIDNEYS1.FieldName = "B_KIDNEYS";
+            this.colB_KIDNEYS1.Name = "colB_KIDNEYS1";
+            this.colB_KIDNEYS1.Visible = true;
+            this.colB_KIDNEYS1.VisibleIndex = 4;
+            this.colB_KIDNEYS1.Width = 108;
+            // 
+            // colOPERATOR9
+            // 
+            this.colOPERATOR9.Caption = "操作人";
+            this.colOPERATOR9.FieldName = "OPERATOR";
+            this.colOPERATOR9.Name = "colOPERATOR9";
+            this.colOPERATOR9.Visible = true;
+            this.colOPERATOR9.VisibleIndex = 5;
+            this.colOPERATOR9.Width = 115;
+            // 
+            // colLOG_TIME7
+            // 
+            this.colLOG_TIME7.Caption = "时间";
+            this.colLOG_TIME7.FieldName = "LOG_TIME";
+            this.colLOG_TIME7.Name = "colLOG_TIME7";
+            this.colLOG_TIME7.Visible = true;
+            this.colLOG_TIME7.VisibleIndex = 6;
+            this.colLOG_TIME7.Width = 114;
+            // 
+            // colID8
+            // 
+            this.colID8.FieldName = "ID";
+            this.colID8.Name = "colID8";
+            // 
+            // colBASE_INFO_ID
+            // 
+            this.colBASE_INFO_ID.FieldName = "BASE_INFO_ID";
+            this.colBASE_INFO_ID.Name = "colBASE_INFO_ID";
+            // 
+            // colAPPLYNO
+            // 
+            this.colAPPLYNO.FieldName = "APPLYNO";
+            this.colAPPLYNO.Name = "colAPPLYNO";
+            // 
+            // colREG_ID8
+            // 
+            this.colREG_ID8.FieldName = "REG_ID";
+            this.colREG_ID8.Name = "colREG_ID8";
+            // 
+            // colMEMO3
+            // 
+            this.colMEMO3.FieldName = "MEMO";
+            this.colMEMO3.Name = "colMEMO3";
+            // 
+            // colDEF1
+            // 
+            this.colDEF1.FieldName = "DEF1";
+            this.colDEF1.Name = "colDEF1";
+            // 
+            // colDEF2
+            // 
+            this.colDEF2.FieldName = "DEF2";
+            this.colDEF2.Name = "colDEF2";
+            // 
+            // colDEF3
+            // 
+            this.colDEF3.FieldName = "DEF3";
+            this.colDEF3.Name = "colDEF3";
+            // 
+            // colDEF4
+            // 
+            this.colDEF4.FieldName = "DEF4";
+            this.colDEF4.Name = "colDEF4";
+            // 
+            // colDEF5
+            // 
+            this.colDEF5.FieldName = "DEF5";
+            this.colDEF5.Name = "colDEF5";
+            // 
+            // barDockControl39
+            // 
+            this.barDockControl39.CausesValidation = false;
+            this.barDockControl39.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl39.Location = new System.Drawing.Point(0, 31);
+            this.barDockControl39.Size = new System.Drawing.Size(0, 109);
+            // 
+            // barDockControl40
+            // 
+            this.barDockControl40.CausesValidation = false;
+            this.barDockControl40.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl40.Location = new System.Drawing.Point(1018, 31);
+            this.barDockControl40.Size = new System.Drawing.Size(0, 109);
+            // 
+            // barDockControl38
+            // 
+            this.barDockControl38.CausesValidation = false;
+            this.barDockControl38.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl38.Location = new System.Drawing.Point(0, 140);
+            this.barDockControl38.Size = new System.Drawing.Size(1018, 0);
+            // 
+            // barDockControl37
+            // 
+            this.barDockControl37.CausesValidation = false;
+            this.barDockControl37.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl37.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl37.Size = new System.Drawing.Size(1018, 31);
             // 
             // gridBand1
             // 
@@ -7091,8 +7306,9 @@
             this.barStaticItem25,
             this.lblName9,
             this.btnNewAdd,
-            this.btnEdtAdd});
-            this.barManager10.MaxItemId = 9;
+            this.btnEdtAdd,
+            this.barButtonItem1});
+            this.barManager10.MaxItemId = 10;
             this.barManager10.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit9});
             // 
@@ -7106,7 +7322,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem25),
             new DevExpress.XtraBars.LinkPersistInfo(this.lblName9),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNewAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdtAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdtAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar10.Text = "Custom 3";
             // 
             // barStaticItem25
@@ -7141,6 +7358,14 @@
             this.btnEdtAdd.Name = "btnEdtAdd";
             this.btnEdtAdd.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdtAdd_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "获取患者检查信息";
+            this.barButtonItem1.Id = 9;
+            this.barButtonItem1.ImageIndex = 72;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // repositoryItemTextEdit9
             // 
             this.repositoryItemTextEdit9.AutoHeight = false;
@@ -7150,11 +7375,122 @@
             // 
             this.vALUECODEBindingSource1.DataSource = typeof(BloodInfo_MngPlatform.Models.VALUE_CODE);
             // 
+            // barManager11
+            // 
+            this.barManager11.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar11});
+            this.barManager11.DockControls.Add(this.barDockControl37);
+            this.barManager11.DockControls.Add(this.barDockControl38);
+            this.barManager11.DockControls.Add(this.barDockControl39);
+            this.barManager11.DockControls.Add(this.barDockControl40);
+            this.barManager11.Form = this.xtraTabPage10;
+            this.barManager11.Images = this.sharedImageCollection1;
+            this.barManager11.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barStaticItem1,
+            this.barStaticItem5,
+            this.label,
+            this.barEditItem1,
+            this.barStaticItem9,
+            this.lblName10,
+            this.btnNewCheckInfoExt,
+            this.btnEdtCheckInfoExt,
+            this.barButtonItem4});
+            this.barManager11.MaxItemId = 9;
+            this.barManager11.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit11});
+            // 
+            // bar11
+            // 
+            this.bar11.BarName = "Tools";
+            this.bar11.DockCol = 0;
+            this.bar11.DockRow = 0;
+            this.bar11.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar11.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(((DevExpress.XtraBars.BarLinkUserDefines)((DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle))), this.lblName10, "姓名", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNewCheckInfoExt, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdtCheckInfoExt, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem4, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.bar11.Text = "Tools";
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "患者姓名：";
+            this.barStaticItem1.Id = 0;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // lblName10
+            // 
+            this.lblName10.Caption = "姓名";
+            this.lblName10.Id = 5;
+            this.lblName10.Name = "lblName10";
+            this.lblName10.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.lblName10.Width = 131;
+            // 
+            // btnNewCheckInfoExt
+            // 
+            this.btnNewCheckInfoExt.Caption = "新建辅助检查信息";
+            this.btnNewCheckInfoExt.Id = 6;
+            this.btnNewCheckInfoExt.ImageIndex = 92;
+            this.btnNewCheckInfoExt.Name = "btnNewCheckInfoExt";
+            this.btnNewCheckInfoExt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNewCheckInfoExt_ItemClick);
+            // 
+            // btnEdtCheckInfoExt
+            // 
+            this.btnEdtCheckInfoExt.Caption = "编辑辅助检查信息";
+            this.btnEdtCheckInfoExt.Id = 7;
+            this.btnEdtCheckInfoExt.ImageIndex = 91;
+            this.btnEdtCheckInfoExt.Name = "btnEdtCheckInfoExt";
+            this.btnEdtCheckInfoExt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEdtCheckInfoExt_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "获取患者检查信息";
+            this.barButtonItem4.Id = 8;
+            this.barButtonItem4.ImageIndex = 72;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // barStaticItem5
+            // 
+            this.barStaticItem5.Caption = "姓名";
+            this.barStaticItem5.Id = 1;
+            this.barStaticItem5.Name = "barStaticItem5";
+            this.barStaticItem5.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // label
+            // 
+            this.label.Caption = "姓名";
+            this.label.Id = 2;
+            this.label.Name = "label";
+            this.label.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.label.Width = 131;
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemTextEdit11;
+            this.barEditItem1.Id = 3;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemTextEdit11
+            // 
+            this.repositoryItemTextEdit11.AutoHeight = false;
+            this.repositoryItemTextEdit11.Name = "repositoryItemTextEdit11";
+            // 
+            // barStaticItem9
+            // 
+            this.barStaticItem9.Caption = "barStaticItem9";
+            this.barStaticItem9.Id = 4;
+            this.barStaticItem9.Name = "barStaticItem9";
+            this.barStaticItem9.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // FrmCaseHisLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 543);
+            this.ClientSize = new System.Drawing.Size(1028, 543);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -7245,6 +7581,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aDDTIONCHECKHISTORYBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView2)).EndInit();
+            this.xtraTabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aDDTIONCHECKHISTORYEXTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
@@ -7263,6 +7603,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vALUECODEBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7609,89 +7951,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colID7;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colREG_ID7;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCASE_HIS_ID7;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand147;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand148;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand149;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand150;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand151;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand152;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand223;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand224;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand225;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand153;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand154;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand155;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand228;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand156;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand157;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand158;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand166;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand164;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand163;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand162;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand159;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand160;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand165;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand167;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand161;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand168;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand169;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand170;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand171;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand172;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand173;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand174;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand175;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand176;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand177;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand178;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand179;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand180;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand181;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand182;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand183;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand184;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand185;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand186;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand187;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand196;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand188;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand197;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand189;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand190;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand191;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand192;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand193;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand194;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand195;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand218;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand146;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand198;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand199;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand200;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand201;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand202;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand203;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand204;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand208;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand205;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand206;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand207;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand209;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand210;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand215;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand211;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand212;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand213;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand214;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand216;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand217;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand219;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand220;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand221;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand222;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand226;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand227;
         private DevExpress.XtraBars.BarStaticItem barStaticItem4;
         private DevExpress.XtraBars.BarEditItem txtName;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit10;
@@ -7962,5 +8221,123 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPOS;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit11;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
+        private DevExpress.XtraGrid.GridControl gridControl9;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
+        private DevExpress.XtraBars.BarDockControl barDockControl39;
+        private DevExpress.XtraBars.BarDockControl barDockControl40;
+        private DevExpress.XtraBars.BarDockControl barDockControl38;
+        private DevExpress.XtraBars.BarDockControl barDockControl37;
+        private DevExpress.XtraBars.BarManager barManager11;
+        private DevExpress.XtraBars.Bar bar11;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem label;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit11;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem9;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem5;
+        private DevExpress.XtraBars.BarStaticItem lblName10;
+        private DevExpress.XtraBars.BarButtonItem btnNewCheckInfoExt;
+        private DevExpress.XtraBars.BarButtonItem btnEdtCheckInfoExt;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand147;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand148;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand149;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand150;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand151;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand152;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand223;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand224;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand225;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand153;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand154;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand155;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand228;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand156;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand157;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand158;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand166;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand164;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand163;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand162;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand159;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand160;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand165;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand167;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand161;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand168;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand169;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand170;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand171;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand172;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand173;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand174;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand175;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand176;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand177;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand178;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand179;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand180;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand182;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand183;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand184;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand185;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand186;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand187;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand196;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand188;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand197;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand189;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand190;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand191;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand193;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand194;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand195;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand218;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand146;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand198;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand199;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand200;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand201;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand203;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand204;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand208;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand205;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand206;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand207;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand209;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand210;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand215;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand211;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand212;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand213;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand214;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand216;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand217;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand219;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand220;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand221;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand222;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand226;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand227;
+        private System.Windows.Forms.BindingSource aDDTIONCHECKHISTORYEXTBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colECG1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCHEST_X_RAY1;
+        private DevExpress.XtraGrid.Columns.GridColumn colCARDIOTHORACIC_RATIO1;
+        private DevExpress.XtraGrid.Columns.GridColumn colECHOCARDIOGRAPHY1;
+        private DevExpress.XtraGrid.Columns.GridColumn colB_KIDNEYS1;
+        private DevExpress.XtraGrid.Columns.GridColumn colOPERATOR9;
+        private DevExpress.XtraGrid.Columns.GridColumn colLOG_TIME7;
+        private DevExpress.XtraGrid.Columns.GridColumn colID8;
+        private DevExpress.XtraGrid.Columns.GridColumn colBASE_INFO_ID;
+        private DevExpress.XtraGrid.Columns.GridColumn colAPPLYNO;
+        private DevExpress.XtraGrid.Columns.GridColumn colREG_ID8;
+        private DevExpress.XtraGrid.Columns.GridColumn colMEMO3;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEF1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEF2;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEF3;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEF4;
+        private DevExpress.XtraGrid.Columns.GridColumn colDEF5;
     }
 }

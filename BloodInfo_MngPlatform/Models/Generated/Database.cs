@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `XE`
 //     Provider:               `Oracle.DataAccess.Client`
-//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=XE)));User Id=dbuser;password=**zapped**;`
+//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.244)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=XE)));User Id=dbuser;password=**zapped**;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -18,14011 +18,14141 @@ using PetaPoco;
 
 namespace BloodInfo_MngPlatform.Models
 {
-    public partial class XEDB : Database
-    {
-        public XEDB()
-            : base("XE")
-        {
-            CommonConstruct();
-        }
-
-        public XEDB(string connectionStringName)
-            : base(connectionStringName)
-        {
-            CommonConstruct();
-        }
-
-        partial void CommonConstruct();
-
-        public interface IFactory
-        {
-            XEDB GetInstance();
-        }
-
-        public static IFactory Factory { get; set; }
-        public static XEDB GetInstance()
-        {
-            if (_instance != null)
-                return _instance;
-
-            if (Factory != null)
-                return Factory.GetInstance();
-            else
-                return new XEDB();
-        }
-
-        [ThreadStatic]
-        static XEDB _instance;
-
-        public override void OnBeginTransaction()
-        {
-            if (_instance == null)
-                _instance = this;
-        }
-
-        public override void OnEndTransaction()
-        {
-            if (_instance == this)
-                _instance = null;
-        }
-
-        public class Record<T> where T : new()
-        {
-            public static XEDB repo { get { return XEDB.GetInstance(); } }
-            public bool IsNew() { return repo.IsNew(this); }
-            public object Insert() { return repo.Insert(this); }
-            public int Update(IEnumerable<string> columns) { return repo.Update(this, columns); }
-            public static int Update(string sql, params object[] args) { return repo.Update<T>(sql, args); }
-            public static int Update(Sql sql) { return repo.Update<T>(sql); }
-            public int Delete() { return repo.Delete(this); }
-            public static int Delete(string sql, params object[] args) { return repo.Delete<T>(sql, args); }
-            public static int Delete(Sql sql) { return repo.Delete<T>(sql); }
-            public static int Delete(object primaryKey) { return repo.Delete<T>(primaryKey); }
-            public static bool Exists(object primaryKey) { return repo.Exists<T>(primaryKey); }
-            public static bool Exists(string sql, params object[] args) { return repo.Exists<T>(sql, args); }
-            public static T SingleOrDefault(object primaryKey) { return repo.SingleOrDefault<T>(primaryKey); }
-            public static T SingleOrDefault(string sql, params object[] args) { return repo.SingleOrDefault<T>(sql, args); }
-            public static T SingleOrDefault(Sql sql) { return repo.SingleOrDefault<T>(sql); }
-            public static T FirstOrDefault(string sql, params object[] args) { return repo.FirstOrDefault<T>(sql, args); }
-            public static T FirstOrDefault(Sql sql) { return repo.FirstOrDefault<T>(sql); }
-            public static T Single(object primaryKey) { return repo.Single<T>(primaryKey); }
-            public static T Single(string sql, params object[] args) { return repo.Single<T>(sql, args); }
-            public static T Single(Sql sql) { return repo.Single<T>(sql); }
-            public static T First(string sql, params object[] args) { return repo.First<T>(sql, args); }
-            public static T First(Sql sql) { return repo.First<T>(sql); }
-            public static List<T> Fetch(string sql, params object[] args) { return repo.Fetch<T>(sql, args); }
-            public static List<T> Fetch(Sql sql) { return repo.Fetch<T>(sql); }
-            public static List<T> Fetch(long page, long itemsPerPage, string sql, params object[] args) { return repo.Fetch<T>(page, itemsPerPage, sql, args); }
-            public static List<T> Fetch(long page, long itemsPerPage, Sql sql) { return repo.Fetch<T>(page, itemsPerPage, sql); }
-            public static List<T> SkipTake(long skip, long take, string sql, params object[] args) { return repo.SkipTake<T>(skip, take, sql, args); }
-            public static List<T> SkipTake(long skip, long take, Sql sql) { return repo.SkipTake<T>(skip, take, sql); }
-            public static Page<T> Page(long page, long itemsPerPage, string sql, params object[] args) { return repo.Page<T>(page, itemsPerPage, sql, args); }
-            public static Page<T> Page(long page, long itemsPerPage, Sql sql) { return repo.Page<T>(page, itemsPerPage, sql); }
-            public static IEnumerable<T> Query(string sql, params object[] args) { return repo.Query<T>(sql, args); }
-            public static IEnumerable<T> Query(Sql sql) { return repo.Query<T>(sql); }
-
-            private Dictionary<string, bool> ModifiedColumns;
-            private void OnLoaded()
-            {
-                ModifiedColumns = new Dictionary<string, bool>();
-            }
-            protected void MarkColumnModified(string column_name)
-            {
-                if (ModifiedColumns != null)
-                    ModifiedColumns[column_name] = true;
-            }
-            public int Update()
-            {
-                if (ModifiedColumns == null || ModifiedColumns.Count == 0)
-                    return repo.Update(this);
-
-                int retv = repo.Update(this, ModifiedColumns.Keys);
-                ModifiedColumns.Clear();
-                return retv;
-            }
-            public void Save()
-            {
-                if (repo.IsNew(this))
-                    repo.Insert(this);
-                else
-                    Update();
-            }
-        }
-    }
-
-
-
-    [TableName("ACCOUNT")]
-    [PrimaryKey("WORKID", autoIncrement = false)]
-    [ExplicitColumns]
-    public partial class ACCOUNT : XEDB.Record<ACCOUNT>
-    {
-        public bool isNew = false;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string WORKID
-        {
-            get
-            {
-                return _WORKID;
-            }
-            set
-            {
-                _WORKID = value;
-                MarkColumnModified("WORKID");
-            }
-        }
-        string _WORKID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string USERNAME
-        {
-            get
-            {
-                return _USERNAME;
-            }
-            set
-            {
-                _USERNAME = value;
-                MarkColumnModified("USERNAME");
-            }
-        }
-        string _USERNAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PWD
-        {
-            get
-            {
-                return _PWD;
-            }
-            set
-            {
-                _PWD = value;
-                MarkColumnModified("PWD");
-            }
-        }
-        string _PWD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ROLE_GROUP
-        {
-            get
-            {
-                return _ROLE_GROUP;
-            }
-            set
-            {
-                _ROLE_GROUP = value;
-                MarkColumnModified("ROLE_GROUP");
-            }
-        }
-        decimal? _ROLE_GROUP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? STATUS
-        {
-            get
-            {
-                return _STATUS;
-            }
-            set
-            {
-                _STATUS = value;
-                MarkColumnModified("STATUS");
-            }
-        }
-        decimal? _STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PHONENUM
-        {
-            get
-            {
-                return _PHONENUM;
-            }
-            set
-            {
-                _PHONENUM = value;
-                MarkColumnModified("PHONENUM");
-            }
-        }
-        string _PHONENUM;
-
-    }
-
-    [TableName("ADDTION_CHECK_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class ADDTION_CHECK_HISTORY : XEDB.Record<ADDTION_CHECK_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HB
-        {
-            get
-            {
-                return _HB;
-            }
-            set
-            {
-                _HB = value;
-                MarkColumnModified("HB");
-            }
-        }
-        decimal? _HB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HCT
-        {
-            get
-            {
-                return _HCT;
-            }
-            set
-            {
-                _HCT = value;
-                MarkColumnModified("HCT");
-            }
-        }
-        decimal? _HCT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? WBC
-        {
-            get
-            {
-                return _WBC;
-            }
-            set
-            {
-                _WBC = value;
-                MarkColumnModified("WBC");
-            }
-        }
-        decimal? _WBC;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PLT
-        {
-            get
-            {
-                return _PLT;
-            }
-            set
-            {
-                _PLT = value;
-                MarkColumnModified("PLT");
-            }
-        }
-        decimal? _PLT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string URINE_COMMON
-        {
-            get
-            {
-                return _URINE_COMMON;
-            }
-            set
-            {
-                _URINE_COMMON = value;
-                MarkColumnModified("URINE_COMMON");
-            }
-        }
-        string _URINE_COMMON;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string URINARY_SEDIMENT
-        {
-            get
-            {
-                return _URINARY_SEDIMENT;
-            }
-            set
-            {
-                _URINARY_SEDIMENT = value;
-                MarkColumnModified("URINARY_SEDIMENT");
-            }
-        }
-        string _URINARY_SEDIMENT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string URINE_OTHER
-        {
-            get
-            {
-                return _URINE_OTHER;
-            }
-            set
-            {
-                _URINE_OTHER = value;
-                MarkColumnModified("URINE_OTHER");
-            }
-        }
-        string _URINE_OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string URINE_NA
-        {
-            get
-            {
-                return _URINE_NA;
-            }
-            set
-            {
-                _URINE_NA = value;
-                MarkColumnModified("URINE_NA");
-            }
-        }
-        string _URINE_NA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string URINE_PASS
-        {
-            get
-            {
-                return _URINE_PASS;
-            }
-            set
-            {
-                _URINE_PASS = value;
-                MarkColumnModified("URINE_PASS");
-            }
-        }
-        string _URINE_PASS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MANURE
-        {
-            get
-            {
-                return _MANURE;
-            }
-            set
-            {
-                _MANURE = value;
-                MarkColumnModified("MANURE");
-            }
-        }
-        string _MANURE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime BLOOD
-        {
-            get
-            {
-                return _BLOOD;
-            }
-            set
-            {
-                _BLOOD = value;
-                MarkColumnModified("BLOOD");
-            }
-        }
-        DateTime _BLOOD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CCR
-        {
-            get
-            {
-                return _CCR;
-            }
-            set
-            {
-                _CCR = value;
-                MarkColumnModified("CCR");
-            }
-        }
-        string _CCR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BUN
-        {
-            get
-            {
-                return _BUN;
-            }
-            set
-            {
-                _BUN = value;
-                MarkColumnModified("BUN");
-            }
-        }
-        string _BUN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SCR
-        {
-            get
-            {
-                return _SCR;
-            }
-            set
-            {
-                _SCR = value;
-                MarkColumnModified("SCR");
-            }
-        }
-        decimal? _SCR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? UA
-        {
-            get
-            {
-                return _UA;
-            }
-            set
-            {
-                _UA = value;
-                MarkColumnModified("UA");
-            }
-        }
-        decimal? _UA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? K
-        {
-            get
-            {
-                return _K;
-            }
-            set
-            {
-                _K = value;
-                MarkColumnModified("K");
-            }
-        }
-        decimal? _K;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? NA
-        {
-            get
-            {
-                return _NA;
-            }
-            set
-            {
-                _NA = value;
-                MarkColumnModified("NA");
-            }
-        }
-        decimal? _NA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CL
-        {
-            get
-            {
-                return _CL;
-            }
-            set
-            {
-                _CL = value;
-                MarkColumnModified("CL");
-            }
-        }
-        decimal? _CL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CA
-        {
-            get
-            {
-                return _CA;
-            }
-            set
-            {
-                _CA = value;
-                MarkColumnModified("CA");
-            }
-        }
-        decimal? _CA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? P
-        {
-            get
-            {
-                return _P;
-            }
-            set
-            {
-                _P = value;
-                MarkColumnModified("P");
-            }
-        }
-        decimal? _P;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AKP
-        {
-            get
-            {
-                return _AKP;
-            }
-            set
-            {
-                _AKP = value;
-                MarkColumnModified("AKP");
-            }
-        }
-        decimal? _AKP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? T_CO
-        {
-            get
-            {
-                return _T_CO;
-            }
-            set
-            {
-                _T_CO = value;
-                MarkColumnModified("T_CO");
-            }
-        }
-        decimal? _T_CO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_SUGAR_PBG
-        {
-            get
-            {
-                return _BLOOD_SUGAR_PBG;
-            }
-            set
-            {
-                _BLOOD_SUGAR_PBG = value;
-                MarkColumnModified("BLOOD_SUGAR_PBG");
-            }
-        }
-        decimal? _BLOOD_SUGAR_PBG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_SUGAR_2HPG
-        {
-            get
-            {
-                return _BLOOD_SUGAR_2HPG;
-            }
-            set
-            {
-                _BLOOD_SUGAR_2HPG = value;
-                MarkColumnModified("BLOOD_SUGAR_2HPG");
-            }
-        }
-        decimal? _BLOOD_SUGAR_2HPG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_SUGAR_HBA1
-        {
-            get
-            {
-                return _BLOOD_SUGAR_HBA1;
-            }
-            set
-            {
-                _BLOOD_SUGAR_HBA1 = value;
-                MarkColumnModified("BLOOD_SUGAR_HBA1");
-            }
-        }
-        decimal? _BLOOD_SUGAR_HBA1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_BILIRUBIN
-        {
-            get
-            {
-                return _LIVER_BILIRUBIN;
-            }
-            set
-            {
-                _LIVER_BILIRUBIN = value;
-                MarkColumnModified("LIVER_BILIRUBIN");
-            }
-        }
-        decimal? _LIVER_BILIRUBIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_DIRECT
-        {
-            get
-            {
-                return _LIVER_DIRECT;
-            }
-            set
-            {
-                _LIVER_DIRECT = value;
-                MarkColumnModified("LIVER_DIRECT");
-            }
-        }
-        decimal? _LIVER_DIRECT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_ALT
-        {
-            get
-            {
-                return _LIVER_ALT;
-            }
-            set
-            {
-                _LIVER_ALT = value;
-                MarkColumnModified("LIVER_ALT");
-            }
-        }
-        decimal? _LIVER_ALT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_ALB
-        {
-            get
-            {
-                return _LIVER_ALB;
-            }
-            set
-            {
-                _LIVER_ALB = value;
-                MarkColumnModified("LIVER_ALB");
-            }
-        }
-        decimal? _LIVER_ALB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_Y_GT
-        {
-            get
-            {
-                return _LIVER_Y_GT;
-            }
-            set
-            {
-                _LIVER_Y_GT = value;
-                MarkColumnModified("LIVER_Y_GT");
-            }
-        }
-        decimal? _LIVER_Y_GT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_A_G
-        {
-            get
-            {
-                return _LIVER_A_G;
-            }
-            set
-            {
-                _LIVER_A_G = value;
-                MarkColumnModified("LIVER_A_G");
-            }
-        }
-        decimal? _LIVER_A_G;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_CHOL
-        {
-            get
-            {
-                return _LIPIDS_CHOL;
-            }
-            set
-            {
-                _LIPIDS_CHOL = value;
-                MarkColumnModified("LIPIDS_CHOL");
-            }
-        }
-        decimal? _LIPIDS_CHOL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_GT
-        {
-            get
-            {
-                return _LIPIDS_GT;
-            }
-            set
-            {
-                _LIPIDS_GT = value;
-                MarkColumnModified("LIPIDS_GT");
-            }
-        }
-        decimal? _LIPIDS_GT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_HDL_CH
-        {
-            get
-            {
-                return _LIPIDS_HDL_CH;
-            }
-            set
-            {
-                _LIPIDS_HDL_CH = value;
-                MarkColumnModified("LIPIDS_HDL_CH");
-            }
-        }
-        decimal? _LIPIDS_HDL_CH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_LDL_CH
-        {
-            get
-            {
-                return _LIPIDS_LDL_CH;
-            }
-            set
-            {
-                _LIPIDS_LDL_CH = value;
-                MarkColumnModified("LIPIDS_LDL_CH");
-            }
-        }
-        decimal? _LIPIDS_LDL_CH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_1PHT
-        {
-            get
-            {
-                return _LIPIDS_1PHT;
-            }
-            set
-            {
-                _LIPIDS_1PHT = value;
-                MarkColumnModified("LIPIDS_1PHT");
-            }
-        }
-        decimal? _LIPIDS_1PHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_CRP
-        {
-            get
-            {
-                return _LIPIDS_CRP;
-            }
-            set
-            {
-                _LIPIDS_CRP = value;
-                MarkColumnModified("LIPIDS_CRP");
-            }
-        }
-        decimal? _LIPIDS_CRP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIPIDS_PROTEIN
-        {
-            get
-            {
-                return _LIPIDS_PROTEIN;
-            }
-            set
-            {
-                _LIPIDS_PROTEIN = value;
-                MarkColumnModified("LIPIDS_PROTEIN");
-            }
-        }
-        decimal? _LIPIDS_PROTEIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_PROTEIN
-        {
-            get
-            {
-                return _IRON_PROTEIN;
-            }
-            set
-            {
-                _IRON_PROTEIN = value;
-                MarkColumnModified("IRON_PROTEIN");
-            }
-        }
-        decimal? _IRON_PROTEIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_SATURATION
-        {
-            get
-            {
-                return _IRON_SATURATION;
-            }
-            set
-            {
-                _IRON_SATURATION = value;
-                MarkColumnModified("IRON_SATURATION");
-            }
-        }
-        decimal? _IRON_SATURATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_IRONPROTEIN
-        {
-            get
-            {
-                return _IRON_IRONPROTEIN;
-            }
-            set
-            {
-                _IRON_IRONPROTEIN = value;
-                MarkColumnModified("IRON_IRONPROTEIN");
-            }
-        }
-        decimal? _IRON_IRONPROTEIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_SI
-        {
-            get
-            {
-                return _IRON_SI;
-            }
-            set
-            {
-                _IRON_SI = value;
-                MarkColumnModified("IRON_SI");
-            }
-        }
-        decimal? _IRON_SI;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_COMBIN
-        {
-            get
-            {
-                return _IRON_COMBIN;
-            }
-            set
-            {
-                _IRON_COMBIN = value;
-                MarkColumnModified("IRON_COMBIN");
-            }
-        }
-        decimal? _IRON_COMBIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_B
-        {
-            get
-            {
-                return _HEPATITIS_B;
-            }
-            set
-            {
-                _HEPATITIS_B = value;
-                MarkColumnModified("HEPATITIS_B");
-            }
-        }
-        string _HEPATITIS_B;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_C
-        {
-            get
-            {
-                return _HEPATITIS_C;
-            }
-            set
-            {
-                _HEPATITIS_C = value;
-                MarkColumnModified("HEPATITIS_C");
-            }
-        }
-        string _HEPATITIS_C;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_OTHER
-        {
-            get
-            {
-                return _HEPATITIS_OTHER;
-            }
-            set
-            {
-                _HEPATITIS_OTHER = value;
-                MarkColumnModified("HEPATITIS_OTHER");
-            }
-        }
-        string _HEPATITIS_OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_HBSAG
-        {
-            get
-            {
-                return _HEPATITIS_HBSAG;
-            }
-            set
-            {
-                _HEPATITIS_HBSAG = value;
-                MarkColumnModified("HEPATITIS_HBSAG");
-            }
-        }
-        string _HEPATITIS_HBSAG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_HBSAB
-        {
-            get
-            {
-                return _HEPATITIS_HBSAB;
-            }
-            set
-            {
-                _HEPATITIS_HBSAB = value;
-                MarkColumnModified("HEPATITIS_HBSAB");
-            }
-        }
-        string _HEPATITIS_HBSAB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_HBCAG
-        {
-            get
-            {
-                return _HEPATITIS_HBCAG;
-            }
-            set
-            {
-                _HEPATITIS_HBCAG = value;
-                MarkColumnModified("HEPATITIS_HBCAG");
-            }
-        }
-        string _HEPATITIS_HBCAG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_BGCAB
-        {
-            get
-            {
-                return _HEPATITIS_BGCAB;
-            }
-            set
-            {
-                _HEPATITIS_BGCAB = value;
-                MarkColumnModified("HEPATITIS_BGCAB");
-            }
-        }
-        string _HEPATITIS_BGCAB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEPATITIS_HBEAB
-        {
-            get
-            {
-                return _HEPATITIS_HBEAB;
-            }
-            set
-            {
-                _HEPATITIS_HBEAB = value;
-                MarkColumnModified("HEPATITIS_HBEAB");
-            }
-        }
-        string _HEPATITIS_HBEAB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string AKI_PH
-        {
-            get
-            {
-                return _AKI_PH;
-            }
-            set
-            {
-                _AKI_PH = value;
-                MarkColumnModified("AKI_PH");
-            }
-        }
-        string _AKI_PH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string AKI_HCO
-        {
-            get
-            {
-                return _AKI_HCO;
-            }
-            set
-            {
-                _AKI_HCO = value;
-                MarkColumnModified("AKI_HCO");
-            }
-        }
-        string _AKI_HCO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AKI_PO
-        {
-            get
-            {
-                return _AKI_PO;
-            }
-            set
-            {
-                _AKI_PO = value;
-                MarkColumnModified("AKI_PO");
-            }
-        }
-        decimal? _AKI_PO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AKI_PCO
-        {
-            get
-            {
-                return _AKI_PCO;
-            }
-            set
-            {
-                _AKI_PCO = value;
-                MarkColumnModified("AKI_PCO");
-            }
-        }
-        decimal? _AKI_PCO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string ECG
-        {
-            get
-            {
-                return _ECG;
-            }
-            set
-            {
-                _ECG = value;
-                MarkColumnModified("ECG");
-            }
-        }
-        string _ECG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string CHEST_X_RAY
-        {
-            get
-            {
-                return _CHEST_X_RAY;
-            }
-            set
-            {
-                _CHEST_X_RAY = value;
-                MarkColumnModified("CHEST_X_RAY");
-            }
-        }
-        string _CHEST_X_RAY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOTHORACIC_RATIO
-        {
-            get
-            {
-                return _CARDIOTHORACIC_RATIO;
-            }
-            set
-            {
-                _CARDIOTHORACIC_RATIO = value;
-                MarkColumnModified("CARDIOTHORACIC_RATIO");
-            }
-        }
-        decimal? _CARDIOTHORACIC_RATIO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string ECHOCARDIOGRAPHY
-        {
-            get
-            {
-                return _ECHOCARDIOGRAPHY;
-            }
-            set
-            {
-                _ECHOCARDIOGRAPHY = value;
-                MarkColumnModified("ECHOCARDIOGRAPHY");
-            }
-        }
-        string _ECHOCARDIOGRAPHY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string B_KIDNEYS
-        {
-            get
-            {
-                return _B_KIDNEYS;
-            }
-            set
-            {
-                _B_KIDNEYS = value;
-                MarkColumnModified("B_KIDNEYS");
-            }
-        }
-        string _B_KIDNEYS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string AKI_APACHEII
-        {
-            get
-            {
-                return _AKI_APACHEII;
-            }
-            set
-            {
-                _AKI_APACHEII = value;
-                MarkColumnModified("AKI_APACHEII");
-            }
-        }
-        string _AKI_APACHEII;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string AKI_ATN_ISN
-        {
-            get
-            {
-                return _AKI_ATN_ISN;
-            }
-            set
-            {
-                _AKI_ATN_ISN = value;
-                MarkColumnModified("AKI_ATN_ISN");
-            }
-        }
-        string _AKI_ATN_ISN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string MODIFY_DIAGNOSIS
-        {
-            get
-            {
-                return _MODIFY_DIAGNOSIS;
-            }
-            set
-            {
-                _MODIFY_DIAGNOSIS = value;
-                MarkColumnModified("MODIFY_DIAGNOSIS");
-            }
-        }
-        string _MODIFY_DIAGNOSIS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string HOSPITALIZED_DIAG
-        {
-            get
-            {
-                return _HOSPITALIZED_DIAG;
-            }
-            set
-            {
-                _HOSPITALIZED_DIAG = value;
-                MarkColumnModified("HOSPITALIZED_DIAG");
-            }
-        }
-        string _HOSPITALIZED_DIAG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string PATHOLOGY
-        {
-            get
-            {
-                return _PATHOLOGY;
-            }
-            set
-            {
-                _PATHOLOGY = value;
-                MarkColumnModified("PATHOLOGY");
-            }
-        }
-        string _PATHOLOGY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string FUNCATION
-        {
-            get
-            {
-                return _FUNCATION;
-            }
-            set
-            {
-                _FUNCATION = value;
-                MarkColumnModified("FUNCATION");
-            }
-        }
-        string _FUNCATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string COMPLICATION
-        {
-            get
-            {
-                return _COMPLICATION;
-            }
-            set
-            {
-                _COMPLICATION = value;
-                MarkColumnModified("COMPLICATION");
-            }
-        }
-        string _COMPLICATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string WITH_COMPLICATIONS
-        {
-            get
-            {
-                return _WITH_COMPLICATIONS;
-            }
-            set
-            {
-                _WITH_COMPLICATIONS = value;
-                MarkColumnModified("WITH_COMPLICATIONS");
-            }
-        }
-        string _WITH_COMPLICATIONS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IRON_TOTAL
-        {
-            get
-            {
-                return _IRON_TOTAL;
-            }
-            set
-            {
-                _IRON_TOTAL = value;
-                MarkColumnModified("IRON_TOTAL");
-            }
-        }
-        decimal? _IRON_TOTAL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? APPLYNO
-        {
-            get
-            {
-                return _APPLYNO;
-            }
-            set
-            {
-                _APPLYNO = value;
-                MarkColumnModified("APPLYNO");
-            }
-        }
-        decimal? _APPLYNO;
-
-    }
-
-    [TableName("ATH_CONTROL_ENABLE")]
-    [PrimaryKey("OBJ_ID")]
-    [ExplicitColumns]
-    public partial class ATH_CONTROL_ENABLE : XEDB.Record<ATH_CONTROL_ENABLE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? GROUP_ID
-        {
-            get
-            {
-                return _GROUP_ID;
-            }
-            set
-            {
-                _GROUP_ID = value;
-                MarkColumnModified("GROUP_ID");
-            }
-        }
-        decimal? _GROUP_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CONTROL_NAME
-        {
-            get
-            {
-                return _CONTROL_NAME;
-            }
-            set
-            {
-                _CONTROL_NAME = value;
-                MarkColumnModified("CONTROL_NAME");
-            }
-        }
-        string _CONTROL_NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CONTROL_CAPTION
-        {
-            get
-            {
-                return _CONTROL_CAPTION;
-            }
-            set
-            {
-                _CONTROL_CAPTION = value;
-                MarkColumnModified("CONTROL_CAPTION");
-            }
-        }
-        string _CONTROL_CAPTION;
-
-        [Column]
-        [Comments("0: XtraButtonControl1: XtraMenuControl")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONTROL_TYPE
-        {
-            get
-            {
-                return _CONTROL_TYPE;
-            }
-            set
-            {
-                _CONTROL_TYPE = value;
-                MarkColumnModified("CONTROL_TYPE");
-            }
-        }
-        decimal? _CONTROL_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ENABLE
-        {
-            get
-            {
-                return _ENABLE;
-            }
-            set
-            {
-                _ENABLE = value;
-                MarkColumnModified("ENABLE");
-            }
-        }
-        decimal? _ENABLE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FATHERITEM
-        {
-            get
-            {
-                return _FATHERITEM;
-            }
-            set
-            {
-                _FATHERITEM = value;
-                MarkColumnModified("FATHERITEM");
-            }
-        }
-        string _FATHERITEM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal OBJ_ID
-        {
-            get
-            {
-                return _OBJ_ID;
-            }
-            set
-            {
-                _OBJ_ID = value;
-                MarkColumnModified("OBJ_ID");
-            }
-        }
-        decimal _OBJ_ID;
-
-    }
-
-    [TableName("ATH_FORMBUTTON")]
-    [ExplicitColumns]
-    public partial class ATH_FORMBUTTON : XEDB.Record<ATH_FORMBUTTON>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMNAME
-        {
-            get
-            {
-                return _ITEMNAME;
-            }
-            set
-            {
-                _ITEMNAME = value;
-                MarkColumnModified("ITEMNAME");
-            }
-        }
-        string _ITEMNAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMCAPTION
-        {
-            get
-            {
-                return _ITEMCAPTION;
-            }
-            set
-            {
-                _ITEMCAPTION = value;
-                MarkColumnModified("ITEMCAPTION");
-            }
-        }
-        string _ITEMCAPTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FATHERITEM
-        {
-            get
-            {
-                return _FATHERITEM;
-            }
-            set
-            {
-                _FATHERITEM = value;
-                MarkColumnModified("FATHERITEM");
-            }
-        }
-        string _FATHERITEM;
-
-    }
-
-    [TableName("ATH_MAINMENU")]
-    [ExplicitColumns]
-    public partial class ATH_MAINMENU : XEDB.Record<ATH_MAINMENU>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMNAME
-        {
-            get
-            {
-                return _ITEMNAME;
-            }
-            set
-            {
-                _ITEMNAME = value;
-                MarkColumnModified("ITEMNAME");
-            }
-        }
-        string _ITEMNAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMCAPTION
-        {
-            get
-            {
-                return _ITEMCAPTION;
-            }
-            set
-            {
-                _ITEMCAPTION = value;
-                MarkColumnModified("ITEMCAPTION");
-            }
-        }
-        string _ITEMCAPTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FATHERITEM
-        {
-            get
-            {
-                return _FATHERITEM;
-            }
-            set
-            {
-                _FATHERITEM = value;
-                MarkColumnModified("FATHERITEM");
-            }
-        }
-        string _FATHERITEM;
-
-    }
-
-    [TableName("ATH_NAVGATIONITEM")]
-    [ExplicitColumns]
-    public partial class ATH_NAVGATIONITEM : XEDB.Record<ATH_NAVGATIONITEM>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMNAME
-        {
-            get
-            {
-                return _ITEMNAME;
-            }
-            set
-            {
-                _ITEMNAME = value;
-                MarkColumnModified("ITEMNAME");
-            }
-        }
-        string _ITEMNAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ITEMCAPTION
-        {
-            get
-            {
-                return _ITEMCAPTION;
-            }
-            set
-            {
-                _ITEMCAPTION = value;
-                MarkColumnModified("ITEMCAPTION");
-            }
-        }
-        string _ITEMCAPTION;
-
-    }
-
-    [TableName("ATH_ROLE")]
-    [PrimaryKey("GROUP_ID")]
-    [ExplicitColumns]
-    public partial class ATH_ROLE : XEDB.Record<ATH_ROLE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal GROUP_ID
-        {
-            get
-            {
-                return _GROUP_ID;
-            }
-            set
-            {
-                _GROUP_ID = value;
-                MarkColumnModified("GROUP_ID");
-            }
-        }
-        decimal _GROUP_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-    }
-
-    [TableName("BLOODCLEANUP")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class BLOODCLEANUP : XEDB.Record<BLOODCLEANUP>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DIAG
-        {
-            get
-            {
-                return _DIAG;
-            }
-            set
-            {
-                _DIAG = value;
-                MarkColumnModified("DIAG");
-            }
-        }
-        decimal? _DIAG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? WEIGHT
-        {
-            get
-            {
-                return _WEIGHT;
-            }
-            set
-            {
-                _WEIGHT = value;
-                MarkColumnModified("WEIGHT");
-            }
-        }
-        decimal? _WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MACH_TYP
-        {
-            get
-            {
-                return _MACH_TYP;
-            }
-            set
-            {
-                _MACH_TYP = value;
-                MarkColumnModified("MACH_TYP");
-            }
-        }
-        string _MACH_TYP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MACH_POS
-        {
-            get
-            {
-                return _MACH_POS;
-            }
-            set
-            {
-                _MACH_POS = value;
-                MarkColumnModified("MACH_POS");
-            }
-        }
-        string _MACH_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACH
-        {
-            get
-            {
-                return _MACH;
-            }
-            set
-            {
-                _MACH = value;
-                MarkColumnModified("MACH");
-            }
-        }
-        decimal? _MACH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LIQUID_CALCIUM
-        {
-            get
-            {
-                return _LIQUID_CALCIUM;
-            }
-            set
-            {
-                _LIQUID_CALCIUM = value;
-                MarkColumnModified("LIQUID_CALCIUM");
-            }
-        }
-        string _LIQUID_CALCIUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FIX_CAPACITY
-        {
-            get
-            {
-                return _FIX_CAPACITY;
-            }
-            set
-            {
-                _FIX_CAPACITY = value;
-                MarkColumnModified("FIX_CAPACITY");
-            }
-        }
-        decimal? _FIX_CAPACITY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime ANA_STAR_TIME
-        {
-            get
-            {
-                return _ANA_STAR_TIME;
-            }
-            set
-            {
-                _ANA_STAR_TIME = value;
-                MarkColumnModified("ANA_STAR_TIME");
-            }
-        }
-        DateTime _ANA_STAR_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ANA_TIME
-        {
-            get
-            {
-                return _ANA_TIME;
-            }
-            set
-            {
-                _ANA_TIME = value;
-                MarkColumnModified("ANA_TIME");
-            }
-        }
-        decimal? _ANA_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_FRIST
-        {
-            get
-            {
-                return _LIVER_FRIST;
-            }
-            set
-            {
-                _LIVER_FRIST = value;
-                MarkColumnModified("LIVER_FRIST");
-            }
-        }
-        decimal? _LIVER_FRIST;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ADD_WEIGHT
-        {
-            get
-            {
-                return _ADD_WEIGHT;
-            }
-            set
-            {
-                _ADD_WEIGHT = value;
-                MarkColumnModified("ADD_WEIGHT");
-            }
-        }
-        decimal? _ADD_WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LOW_LIVER
-        {
-            get
-            {
-                return _LOW_LIVER;
-            }
-            set
-            {
-                _LOW_LIVER = value;
-                MarkColumnModified("LOW_LIVER");
-            }
-        }
-        decimal? _LOW_LIVER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string IMPALER
-        {
-            get
-            {
-                return _IMPALER;
-            }
-            set
-            {
-                _IMPALER = value;
-                MarkColumnModified("IMPALER");
-            }
-        }
-        string _IMPALER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BYPASS_METHOD
-        {
-            get
-            {
-                return _BYPASS_METHOD;
-            }
-            set
-            {
-                _BYPASS_METHOD = value;
-                MarkColumnModified("BYPASS_METHOD");
-            }
-        }
-        string _BYPASS_METHOD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CHECKED
-        {
-            get
-            {
-                return _CHECKED;
-            }
-            set
-            {
-                _CHECKED = value;
-                MarkColumnModified("CHECKED");
-            }
-        }
-        string _CHECKED;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ANA_WEIGHT
-        {
-            get
-            {
-                return _ANA_WEIGHT;
-            }
-            set
-            {
-                _ANA_WEIGHT = value;
-                MarkColumnModified("ANA_WEIGHT");
-            }
-        }
-        decimal? _ANA_WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SWITCH_TYPE
-        {
-            get
-            {
-                return _SWITCH_TYPE;
-            }
-            set
-            {
-                _SWITCH_TYPE = value;
-                MarkColumnModified("SWITCH_TYPE");
-            }
-        }
-        string _SWITCH_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SWITCH_WEIGHT
-        {
-            get
-            {
-                return _SWITCH_WEIGHT;
-            }
-            set
-            {
-                _SWITCH_WEIGHT = value;
-                MarkColumnModified("SWITCH_WEIGHT");
-            }
-        }
-        decimal? _SWITCH_WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CLEANUP_TYPE
-        {
-            get
-            {
-                return _CLEANUP_TYPE;
-            }
-            set
-            {
-                _CLEANUP_TYPE = value;
-                MarkColumnModified("CLEANUP_TYPE");
-            }
-        }
-        string _CLEANUP_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PERIOD_TIME
-        {
-            get
-            {
-                return _PERIOD_TIME;
-            }
-            set
-            {
-                _PERIOD_TIME = value;
-                MarkColumnModified("PERIOD_TIME");
-            }
-        }
-        decimal? _PERIOD_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BLOOD_PASS
-        {
-            get
-            {
-                return _BLOOD_PASS;
-            }
-            set
-            {
-                _BLOOD_PASS = value;
-                MarkColumnModified("BLOOD_PASS");
-            }
-        }
-        string _BLOOD_PASS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FLUCTUATION
-        {
-            get
-            {
-                return _FLUCTUATION;
-            }
-            set
-            {
-                _FLUCTUATION = value;
-                MarkColumnModified("FLUCTUATION");
-            }
-        }
-        decimal? _FLUCTUATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DEHYDRATION
-        {
-            get
-            {
-                return _DEHYDRATION;
-            }
-            set
-            {
-                _DEHYDRATION = value;
-                MarkColumnModified("DEHYDRATION");
-            }
-        }
-        decimal? _DEHYDRATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SYMPTOM
-        {
-            get
-            {
-                return _SYMPTOM;
-            }
-            set
-            {
-                _SYMPTOM = value;
-                MarkColumnModified("SYMPTOM");
-            }
-        }
-        string _SYMPTOM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string BEFORE_ANA_MEMO
-        {
-            get
-            {
-                return _BEFORE_ANA_MEMO;
-            }
-            set
-            {
-                _BEFORE_ANA_MEMO = value;
-                MarkColumnModified("BEFORE_ANA_MEMO");
-            }
-        }
-        string _BEFORE_ANA_MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string EPO
-        {
-            get
-            {
-                return _EPO;
-            }
-            set
-            {
-                _EPO = value;
-                MarkColumnModified("EPO");
-            }
-        }
-        string _EPO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LEFT_CARD
-        {
-            get
-            {
-                return _LEFT_CARD;
-            }
-            set
-            {
-                _LEFT_CARD = value;
-                MarkColumnModified("LEFT_CARD");
-            }
-        }
-        string _LEFT_CARD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string IRON
-        {
-            get
-            {
-                return _IRON;
-            }
-            set
-            {
-                _IRON = value;
-                MarkColumnModified("IRON");
-            }
-        }
-        string _IRON;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime ANA_DATE
-        {
-            get
-            {
-                return _ANA_DATE;
-            }
-            set
-            {
-                _ANA_DATE = value;
-                MarkColumnModified("ANA_DATE");
-            }
-        }
-        DateTime _ANA_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FLUCTUATION_HI
-        {
-            get
-            {
-                return _FLUCTUATION_HI;
-            }
-            set
-            {
-                _FLUCTUATION_HI = value;
-                MarkColumnModified("FLUCTUATION_HI");
-            }
-        }
-        decimal? _FLUCTUATION_HI;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME2
-        {
-            get
-            {
-                return _LOG_TIME2;
-            }
-            set
-            {
-                _LOG_TIME2 = value;
-                MarkColumnModified("LOG_TIME2");
-            }
-        }
-        DateTime _LOG_TIME2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR2
-        {
-            get
-            {
-                return _OPERATOR2;
-            }
-            set
-            {
-                _OPERATOR2 = value;
-                MarkColumnModified("OPERATOR2");
-            }
-        }
-        string _OPERATOR2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DEHYDRATION_2
-        {
-            get
-            {
-                return _DEHYDRATION_2;
-            }
-            set
-            {
-                _DEHYDRATION_2 = value;
-                MarkColumnModified("DEHYDRATION_2");
-            }
-        }
-        decimal? _DEHYDRATION_2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DEHYDRATION_HI_2
-        {
-            get
-            {
-                return _DEHYDRATION_HI_2;
-            }
-            set
-            {
-                _DEHYDRATION_HI_2 = value;
-                MarkColumnModified("DEHYDRATION_HI_2");
-            }
-        }
-        decimal? _DEHYDRATION_HI_2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime ANA_END_TIME
-        {
-            get
-            {
-                return _ANA_END_TIME;
-            }
-            set
-            {
-                _ANA_END_TIME = value;
-                MarkColumnModified("ANA_END_TIME");
-            }
-        }
-        DateTime _ANA_END_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ANA_END_WEIGHT
-        {
-            get
-            {
-                return _ANA_END_WEIGHT;
-            }
-            set
-            {
-                _ANA_END_WEIGHT = value;
-                MarkColumnModified("ANA_END_WEIGHT");
-            }
-        }
-        decimal? _ANA_END_WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ONMACH
-        {
-            get
-            {
-                return _ONMACH;
-            }
-            set
-            {
-                _ONMACH = value;
-                MarkColumnModified("ONMACH");
-            }
-        }
-        string _ONMACH;
-
-        [Column]
-        [Comments("内瘘穿刺针")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FISTULA_NEEDLE
-        {
-            get
-            {
-                return _FISTULA_NEEDLE;
-            }
-            set
-            {
-                _FISTULA_NEEDLE = value;
-                MarkColumnModified("FISTULA_NEEDLE");
-            }
-        }
-        decimal? _FISTULA_NEEDLE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "2")]
-        public Int16? FISTULA_NEEDLE_NUM
-        {
-            get
-            {
-                return _FISTULA_NEEDLE_NUM;
-            }
-            set
-            {
-                _FISTULA_NEEDLE_NUM = value;
-                MarkColumnModified("FISTULA_NEEDLE_NUM");
-            }
-        }
-        Int16? _FISTULA_NEEDLE_NUM;
-
-        [Column]
-        [Comments("内瘘护理包")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FISTULA_CARE_PACKAGES
-        {
-            get
-            {
-                return _FISTULA_CARE_PACKAGES;
-            }
-            set
-            {
-                _FISTULA_CARE_PACKAGES = value;
-                MarkColumnModified("FISTULA_CARE_PACKAGES");
-            }
-        }
-        decimal? _FISTULA_CARE_PACKAGES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "2")]
-        public Int16? FISTULA_CARE_PACKAGES_NUM
-        {
-            get
-            {
-                return _FISTULA_CARE_PACKAGES_NUM;
-            }
-            set
-            {
-                _FISTULA_CARE_PACKAGES_NUM = value;
-                MarkColumnModified("FISTULA_CARE_PACKAGES_NUM");
-            }
-        }
-        Int16? _FISTULA_CARE_PACKAGES_NUM;
-
-        [Column]
-        [Comments("敷贴")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? APPLICATOR
-        {
-            get
-            {
-                return _APPLICATOR;
-            }
-            set
-            {
-                _APPLICATOR = value;
-                MarkColumnModified("APPLICATOR");
-            }
-        }
-        decimal? _APPLICATOR;
-
-        [Column]
-        [Comments("敷贴数")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "2")]
-        public Int16? APPLICATOR_NUM
-        {
-            get
-            {
-                return _APPLICATOR_NUM;
-            }
-            set
-            {
-                _APPLICATOR_NUM = value;
-                MarkColumnModified("APPLICATOR_NUM");
-            }
-        }
-        Int16? _APPLICATOR_NUM;
-
-        [Column]
-        [Comments("肝素帽")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEPARIN_CAP
-        {
-            get
-            {
-                return _HEPARIN_CAP;
-            }
-            set
-            {
-                _HEPARIN_CAP = value;
-                MarkColumnModified("HEPARIN_CAP");
-            }
-        }
-        decimal? _HEPARIN_CAP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "2")]
-        public Int16? HEPARIN_CAP_NUM
-        {
-            get
-            {
-                return _HEPARIN_CAP_NUM;
-            }
-            set
-            {
-                _HEPARIN_CAP_NUM = value;
-                MarkColumnModified("HEPARIN_CAP_NUM");
-            }
-        }
-        Int16? _HEPARIN_CAP_NUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FISTULA_TYPE
-        {
-            get
-            {
-                return _FISTULA_TYPE;
-            }
-            set
-            {
-                _FISTULA_TYPE = value;
-                MarkColumnModified("FISTULA_TYPE");
-            }
-        }
-        decimal? _FISTULA_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PIPELINE
-        {
-            get
-            {
-                return _PIPELINE;
-            }
-            set
-            {
-                _PIPELINE = value;
-                MarkColumnModified("PIPELINE");
-            }
-        }
-        decimal? _PIPELINE;
-
-    }
-
-    [TableName("BLOODCLEANUP_PROCESS")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class BLOODCLEANUP_PROCESS : XEDB.Record<BLOODCLEANUP_PROCESS>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOODCLEANUP_ID
-        {
-            get
-            {
-                return _BLOODCLEANUP_ID;
-            }
-            set
-            {
-                _BLOODCLEANUP_ID = value;
-                MarkColumnModified("BLOODCLEANUP_ID");
-            }
-        }
-        decimal? _BLOODCLEANUP_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime ANA_TIME
-        {
-            get
-            {
-                return _ANA_TIME;
-            }
-            set
-            {
-                _ANA_TIME = value;
-                MarkColumnModified("ANA_TIME");
-            }
-        }
-        DateTime _ANA_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CONDUCTIVITY
-        {
-            get
-            {
-                return _CONDUCTIVITY;
-            }
-            set
-            {
-                _CONDUCTIVITY = value;
-                MarkColumnModified("CONDUCTIVITY");
-            }
-        }
-        string _CONDUCTIVITY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? TEMP
-        {
-            get
-            {
-                return _TEMP;
-            }
-            set
-            {
-                _TEMP = value;
-                MarkColumnModified("TEMP");
-            }
-        }
-        decimal? _TEMP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ULTRAFILTRATION
-        {
-            get
-            {
-                return _ULTRAFILTRATION;
-            }
-            set
-            {
-                _ULTRAFILTRATION = value;
-                MarkColumnModified("ULTRAFILTRATION");
-            }
-        }
-        decimal? _ULTRAFILTRATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ARTERIAL_PRESSURE
-        {
-            get
-            {
-                return _ARTERIAL_PRESSURE;
-            }
-            set
-            {
-                _ARTERIAL_PRESSURE = value;
-                MarkColumnModified("ARTERIAL_PRESSURE");
-            }
-        }
-        decimal? _ARTERIAL_PRESSURE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? VENOUS_PRESSURE
-        {
-            get
-            {
-                return _VENOUS_PRESSURE;
-            }
-            set
-            {
-                _VENOUS_PRESSURE = value;
-                MarkColumnModified("VENOUS_PRESSURE");
-            }
-        }
-        decimal? _VENOUS_PRESSURE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_FLOW
-        {
-            get
-            {
-                return _BLOOD_FLOW;
-            }
-            set
-            {
-                _BLOOD_FLOW = value;
-                MarkColumnModified("BLOOD_FLOW");
-            }
-        }
-        decimal? _BLOOD_FLOW;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? T
-        {
-            get
-            {
-                return _T;
-            }
-            set
-            {
-                _T = value;
-                MarkColumnModified("T");
-            }
-        }
-        decimal? _T;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? P
-        {
-            get
-            {
-                return _P;
-            }
-            set
-            {
-                _P = value;
-                MarkColumnModified("P");
-            }
-        }
-        decimal? _P;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? R
-        {
-            get
-            {
-                return _R;
-            }
-            set
-            {
-                _R = value;
-                MarkColumnModified("R");
-            }
-        }
-        decimal? _R;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BP
-        {
-            get
-            {
-                return _BP;
-            }
-            set
-            {
-                _BP = value;
-                MarkColumnModified("BP");
-            }
-        }
-        string _BP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DISEASE
-        {
-            get
-            {
-                return _DISEASE;
-            }
-            set
-            {
-                _DISEASE = value;
-                MarkColumnModified("DISEASE");
-            }
-        }
-        string _DISEASE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-    }
-
-    [TableName("BODY_CHECK_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class BODY_CHECK_HISTORY : XEDB.Record<BODY_CHECK_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? T
-        {
-            get
-            {
-                return _T;
-            }
-            set
-            {
-                _T = value;
-                MarkColumnModified("T");
-            }
-        }
-        decimal? _T;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? P
-        {
-            get
-            {
-                return _P;
-            }
-            set
-            {
-                _P = value;
-                MarkColumnModified("P");
-            }
-        }
-        decimal? _P;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BP
-        {
-            get
-            {
-                return _BP;
-            }
-            set
-            {
-                _BP = value;
-                MarkColumnModified("BP");
-            }
-        }
-        decimal? _BP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BP_POSITION
-        {
-            get
-            {
-                return _BP_POSITION;
-            }
-            set
-            {
-                _BP_POSITION = value;
-                MarkColumnModified("BP_POSITION");
-            }
-        }
-        string _BP_POSITION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? WEIGHT
-        {
-            get
-            {
-                return _WEIGHT;
-            }
-            set
-            {
-                _WEIGHT = value;
-                MarkColumnModified("WEIGHT");
-            }
-        }
-        decimal? _WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEIGHT
-        {
-            get
-            {
-                return _HEIGHT;
-            }
-            set
-            {
-                _HEIGHT = value;
-                MarkColumnModified("HEIGHT");
-            }
-        }
-        decimal? _HEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? URINE
-        {
-            get
-            {
-                return _URINE;
-            }
-            set
-            {
-                _URINE = value;
-                MarkColumnModified("URINE");
-            }
-        }
-        decimal? _URINE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string NUTRITION
-        {
-            get
-            {
-                return _NUTRITION;
-            }
-            set
-            {
-                _NUTRITION = value;
-                MarkColumnModified("NUTRITION");
-            }
-        }
-        string _NUTRITION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FACE
-        {
-            get
-            {
-                return _FACE;
-            }
-            set
-            {
-                _FACE = value;
-                MarkColumnModified("FACE");
-            }
-        }
-        string _FACE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MIND
-        {
-            get
-            {
-                return _MIND;
-            }
-            set
-            {
-                _MIND = value;
-                MarkColumnModified("MIND");
-            }
-        }
-        string _MIND;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string POSTURAL
-        {
-            get
-            {
-                return _POSTURAL;
-            }
-            set
-            {
-                _POSTURAL = value;
-                MarkColumnModified("POSTURAL");
-            }
-        }
-        string _POSTURAL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ANEMIA
-        {
-            get
-            {
-                return _ANEMIA;
-            }
-            set
-            {
-                _ANEMIA = value;
-                MarkColumnModified("ANEMIA");
-            }
-        }
-        string _ANEMIA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SKIN
-        {
-            get
-            {
-                return _SKIN;
-            }
-            set
-            {
-                _SKIN = value;
-                MarkColumnModified("SKIN");
-            }
-        }
-        string _SKIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string JAUNDICE
-        {
-            get
-            {
-                return _JAUNDICE;
-            }
-            set
-            {
-                _JAUNDICE = value;
-                MarkColumnModified("JAUNDICE");
-            }
-        }
-        string _JAUNDICE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EDEMA
-        {
-            get
-            {
-                return _EDEMA;
-            }
-            set
-            {
-                _EDEMA = value;
-                MarkColumnModified("EDEMA");
-            }
-        }
-        string _EDEMA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EDEMA_POS
-        {
-            get
-            {
-                return _EDEMA_POS;
-            }
-            set
-            {
-                _EDEMA_POS = value;
-                MarkColumnModified("EDEMA_POS");
-            }
-        }
-        string _EDEMA_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EYE
-        {
-            get
-            {
-                return _EYE;
-            }
-            set
-            {
-                _EYE = value;
-                MarkColumnModified("EYE");
-            }
-        }
-        string _EYE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FIVE
-        {
-            get
-            {
-                return _FIVE;
-            }
-            set
-            {
-                _FIVE = value;
-                MarkColumnModified("FIVE");
-            }
-        }
-        string _FIVE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string JUGULAR_VEIN
-        {
-            get
-            {
-                return _JUGULAR_VEIN;
-            }
-            set
-            {
-                _JUGULAR_VEIN = value;
-                MarkColumnModified("JUGULAR_VEIN");
-            }
-        }
-        string _JUGULAR_VEIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string THYROID
-        {
-            get
-            {
-                return _THYROID;
-            }
-            set
-            {
-                _THYROID = value;
-                MarkColumnModified("THYROID");
-            }
-        }
-        string _THYROID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LUNG
-        {
-            get
-            {
-                return _LUNG;
-            }
-            set
-            {
-                _LUNG = value;
-                MarkColumnModified("LUNG");
-            }
-        }
-        string _LUNG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string RALES
-        {
-            get
-            {
-                return _RALES;
-            }
-            set
-            {
-                _RALES = value;
-                MarkColumnModified("RALES");
-            }
-        }
-        string _RALES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1", Scale = "", Precision = "")]
-        public string HEART
-        {
-            get
-            {
-                return _HEART;
-            }
-            set
-            {
-                _HEART = value;
-                MarkColumnModified("HEART");
-            }
-        }
-        string _HEART;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEART_CENTER_LINE
-        {
-            get
-            {
-                return _HEART_CENTER_LINE;
-            }
-            set
-            {
-                _HEART_CENTER_LINE = value;
-                MarkColumnModified("HEART_CENTER_LINE");
-            }
-        }
-        decimal? _HEART_CENTER_LINE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEART_RATE
-        {
-            get
-            {
-                return _HEART_RATE;
-            }
-            set
-            {
-                _HEART_RATE = value;
-                MarkColumnModified("HEART_RATE");
-            }
-        }
-        decimal? _HEART_RATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEART_POS
-        {
-            get
-            {
-                return _HEART_POS;
-            }
-            set
-            {
-                _HEART_POS = value;
-                MarkColumnModified("HEART_POS");
-            }
-        }
-        string _HEART_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEART_NOISE
-        {
-            get
-            {
-                return _HEART_NOISE;
-            }
-            set
-            {
-                _HEART_NOISE = value;
-                MarkColumnModified("HEART_NOISE");
-            }
-        }
-        string _HEART_NOISE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? HEART_FRICTION
-        {
-            get
-            {
-                return _HEART_FRICTION;
-            }
-            set
-            {
-                _HEART_FRICTION = value;
-                MarkColumnModified("HEART_FRICTION");
-            }
-        }
-        Int16? _HEART_FRICTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ABDOMEN
-        {
-            get
-            {
-                return _ABDOMEN;
-            }
-            set
-            {
-                _ABDOMEN = value;
-                MarkColumnModified("ABDOMEN");
-            }
-        }
-        string _ABDOMEN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? PRESS_PAIN
-        {
-            get
-            {
-                return _PRESS_PAIN;
-            }
-            set
-            {
-                _PRESS_PAIN = value;
-                MarkColumnModified("PRESS_PAIN");
-            }
-        }
-        Int16? _PRESS_PAIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PRESS_PAIN_POS
-        {
-            get
-            {
-                return _PRESS_PAIN_POS;
-            }
-            set
-            {
-                _PRESS_PAIN_POS = value;
-                MarkColumnModified("PRESS_PAIN_POS");
-            }
-        }
-        string _PRESS_PAIN_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_RIB_UNDERPOS
-        {
-            get
-            {
-                return _LIVER_RIB_UNDERPOS;
-            }
-            set
-            {
-                _LIVER_RIB_UNDERPOS = value;
-                MarkColumnModified("LIVER_RIB_UNDERPOS");
-            }
-        }
-        decimal? _LIVER_RIB_UNDERPOS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LIVER_SWORD_UNDERPOS
-        {
-            get
-            {
-                return _LIVER_SWORD_UNDERPOS;
-            }
-            set
-            {
-                _LIVER_SWORD_UNDERPOS = value;
-                MarkColumnModified("LIVER_SWORD_UNDERPOS");
-            }
-        }
-        decimal? _LIVER_SWORD_UNDERPOS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LIVER_TEXTURE
-        {
-            get
-            {
-                return _LIVER_TEXTURE;
-            }
-            set
-            {
-                _LIVER_TEXTURE = value;
-                MarkColumnModified("LIVER_TEXTURE");
-            }
-        }
-        string _LIVER_TEXTURE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SPLEEN_RIB_UNDERPOS
-        {
-            get
-            {
-                return _SPLEEN_RIB_UNDERPOS;
-            }
-            set
-            {
-                _SPLEEN_RIB_UNDERPOS = value;
-                MarkColumnModified("SPLEEN_RIB_UNDERPOS");
-            }
-        }
-        decimal? _SPLEEN_RIB_UNDERPOS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LEG
-        {
-            get
-            {
-                return _LEG;
-            }
-            set
-            {
-                _LEG = value;
-                MarkColumnModified("LEG");
-            }
-        }
-        string _LEG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? JOINT
-        {
-            get
-            {
-                return _JOINT;
-            }
-            set
-            {
-                _JOINT = value;
-                MarkColumnModified("JOINT");
-            }
-        }
-        Int16? _JOINT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? JOINT_PAIN
-        {
-            get
-            {
-                return _JOINT_PAIN;
-            }
-            set
-            {
-                _JOINT_PAIN = value;
-                MarkColumnModified("JOINT_PAIN");
-            }
-        }
-        Int16? _JOINT_PAIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? JOINT_SWELLING
-        {
-            get
-            {
-                return _JOINT_SWELLING;
-            }
-            set
-            {
-                _JOINT_SWELLING = value;
-                MarkColumnModified("JOINT_SWELLING");
-            }
-        }
-        Int16? _JOINT_SWELLING;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? JOINT_ACTIVE
-        {
-            get
-            {
-                return _JOINT_ACTIVE;
-            }
-            set
-            {
-                _JOINT_ACTIVE = value;
-                MarkColumnModified("JOINT_ACTIVE");
-            }
-        }
-        Int16? _JOINT_ACTIVE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ARM_LEG
-        {
-            get
-            {
-                return _ARM_LEG;
-            }
-            set
-            {
-                _ARM_LEG = value;
-                MarkColumnModified("ARM_LEG");
-            }
-        }
-        string _ARM_LEG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MENTALLY
-        {
-            get
-            {
-                return _MENTALLY;
-            }
-            set
-            {
-                _MENTALLY = value;
-                MarkColumnModified("MENTALLY");
-            }
-        }
-        string _MENTALLY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string TENSION
-        {
-            get
-            {
-                return _TENSION;
-            }
-            set
-            {
-                _TENSION = value;
-                MarkColumnModified("TENSION");
-            }
-        }
-        string _TENSION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK1
-        {
-            get
-            {
-                return _BACK1;
-            }
-            set
-            {
-                _BACK1 = value;
-                MarkColumnModified("BACK1");
-            }
-        }
-        string _BACK1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK2
-        {
-            get
-            {
-                return _BACK2;
-            }
-            set
-            {
-                _BACK2 = value;
-                MarkColumnModified("BACK2");
-            }
-        }
-        string _BACK2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK3
-        {
-            get
-            {
-                return _BACK3;
-            }
-            set
-            {
-                _BACK3 = value;
-                MarkColumnModified("BACK3");
-            }
-        }
-        string _BACK3;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK4
-        {
-            get
-            {
-                return _BACK4;
-            }
-            set
-            {
-                _BACK4 = value;
-                MarkColumnModified("BACK4");
-            }
-        }
-        string _BACK4;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK5
-        {
-            get
-            {
-                return _BACK5;
-            }
-            set
-            {
-                _BACK5 = value;
-                MarkColumnModified("BACK5");
-            }
-        }
-        string _BACK5;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? R
-        {
-            get
-            {
-                return _R;
-            }
-            set
-            {
-                _R = value;
-                MarkColumnModified("R");
-            }
-        }
-        decimal? _R;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVERTER
-        {
-            get
-            {
-                return _CARDIOVERTER;
-            }
-            set
-            {
-                _CARDIOVERTER = value;
-                MarkColumnModified("CARDIOVERTER");
-            }
-        }
-        string _CARDIOVERTER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SCRATCHES
-        {
-            get
-            {
-                return _SCRATCHES;
-            }
-            set
-            {
-                _SCRATCHES = value;
-                MarkColumnModified("SCRATCHES");
-            }
-        }
-        string _SCRATCHES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string RALES_POS
-        {
-            get
-            {
-                return _RALES_POS;
-            }
-            set
-            {
-                _RALES_POS = value;
-                MarkColumnModified("RALES_POS");
-            }
-        }
-        string _RALES_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string JOINT_POS
-        {
-            get
-            {
-                return _JOINT_POS;
-            }
-            set
-            {
-                _JOINT_POS = value;
-                MarkColumnModified("JOINT_POS");
-            }
-        }
-        string _JOINT_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string ARM_LEG_POS
-        {
-            get
-            {
-                return _ARM_LEG_POS;
-            }
-            set
-            {
-                _ARM_LEG_POS = value;
-                MarkColumnModified("ARM_LEG_POS");
-            }
-        }
-        string _ARM_LEG_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HEART_DIVIDE
-        {
-            get
-            {
-                return _HEART_DIVIDE;
-            }
-            set
-            {
-                _HEART_DIVIDE = value;
-                MarkColumnModified("HEART_DIVIDE");
-            }
-        }
-        string _HEART_DIVIDE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK6
-        {
-            get
-            {
-                return _BACK6;
-            }
-            set
-            {
-                _BACK6 = value;
-                MarkColumnModified("BACK6");
-            }
-        }
-        string _BACK6;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BACK7
-        {
-            get
-            {
-                return _BACK7;
-            }
-            set
-            {
-                _BACK7 = value;
-                MarkColumnModified("BACK7");
-            }
-        }
-        string _BACK7;
-
-    }
-
-    [TableName("CASE_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CASE_HISTORY : XEDB.Record<CASE_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_DATE
-        {
-            get
-            {
-                return _LOG_DATE;
-            }
-            set
-            {
-                _LOG_DATE = value;
-                MarkColumnModified("LOG_DATE");
-            }
-        }
-        DateTime _LOG_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string DOSE_MEMO
-        {
-            get
-            {
-                return _DOSE_MEMO;
-            }
-            set
-            {
-                _DOSE_MEMO = value;
-                MarkColumnModified("DOSE_MEMO");
-            }
-        }
-        string _DOSE_MEMO;
-
-        [Column]
-        [Comments("慢性肾小球肾炎")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? CHRONIC_GLOMERULONEPHRITIS
-        {
-            get
-            {
-                return _CHRONIC_GLOMERULONEPHRITIS;
-            }
-            set
-            {
-                _CHRONIC_GLOMERULONEPHRITIS = value;
-                MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS");
-            }
-        }
-        Int16? _CHRONIC_GLOMERULONEPHRITIS;
-
-        [Column]
-        [Comments("慢性肾小球肾炎_病理")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CHRONIC_GLOMERULONEPHRITIS_PTH
-        {
-            get
-            {
-                return _CHRONIC_GLOMERULONEPHRITIS_PTH;
-            }
-            set
-            {
-                _CHRONIC_GLOMERULONEPHRITIS_PTH = value;
-                MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS_PTH");
-            }
-        }
-        string _CHRONIC_GLOMERULONEPHRITIS_PTH;
-
-        [Column]
-        [Comments("慢性肾小球肾炎_病程")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string CHRONIC_GLOMERULONEPHRITIS_COS
-        {
-            get
-            {
-                return _CHRONIC_GLOMERULONEPHRITIS_COS;
-            }
-            set
-            {
-                _CHRONIC_GLOMERULONEPHRITIS_COS = value;
-                MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS_COS");
-            }
-        }
-        string _CHRONIC_GLOMERULONEPHRITIS_COS;
-
-        [Column]
-        [Comments("间质性肾炎")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? INTERSTITIAL_NEPHRITIS
-        {
-            get
-            {
-                return _INTERSTITIAL_NEPHRITIS;
-            }
-            set
-            {
-                _INTERSTITIAL_NEPHRITIS = value;
-                MarkColumnModified("INTERSTITIAL_NEPHRITIS");
-            }
-        }
-        Int16? _INTERSTITIAL_NEPHRITIS;
-
-        [Column]
-        [Comments("间质性肾炎_病因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string INTERSTITIAL_NEPHRITIS_RSN
-        {
-            get
-            {
-                return _INTERSTITIAL_NEPHRITIS_RSN;
-            }
-            set
-            {
-                _INTERSTITIAL_NEPHRITIS_RSN = value;
-                MarkColumnModified("INTERSTITIAL_NEPHRITIS_RSN");
-            }
-        }
-        string _INTERSTITIAL_NEPHRITIS_RSN;
-
-        [Column]
-        [Comments("血管炎")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? VASCULITIS
-        {
-            get
-            {
-                return _VASCULITIS;
-            }
-            set
-            {
-                _VASCULITIS = value;
-                MarkColumnModified("VASCULITIS");
-            }
-        }
-        Int16? _VASCULITIS;
-
-        [Column]
-        [Comments("高血压N期")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string HYPERTENSION_COS
-        {
-            get
-            {
-                return _HYPERTENSION_COS;
-            }
-            set
-            {
-                _HYPERTENSION_COS = value;
-                MarkColumnModified("HYPERTENSION_COS");
-            }
-        }
-        string _HYPERTENSION_COS;
-
-        [Column]
-        [Comments("高血压合并症")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HYPERTENSION_OTHER
-        {
-            get
-            {
-                return _HYPERTENSION_OTHER;
-            }
-            set
-            {
-                _HYPERTENSION_OTHER = value;
-                MarkColumnModified("HYPERTENSION_OTHER");
-            }
-        }
-        string _HYPERTENSION_OTHER;
-
-        [Column]
-        [Comments("糖尿病类型")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DIABETES_TYPE
-        {
-            get
-            {
-                return _DIABETES_TYPE;
-            }
-            set
-            {
-                _DIABETES_TYPE = value;
-                MarkColumnModified("DIABETES_TYPE");
-            }
-        }
-        decimal? _DIABETES_TYPE;
-
-        [Column]
-        [Comments("糖尿病N年")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string DIABETES_COS
-        {
-            get
-            {
-                return _DIABETES_COS;
-            }
-            set
-            {
-                _DIABETES_COS = value;
-                MarkColumnModified("DIABETES_COS");
-            }
-        }
-        string _DIABETES_COS;
-
-        [Column]
-        [Comments("血糖控制")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIABETES_CTL
-        {
-            get
-            {
-                return _DIABETES_CTL;
-            }
-            set
-            {
-                _DIABETES_CTL = value;
-                MarkColumnModified("DIABETES_CTL");
-            }
-        }
-        string _DIABETES_CTL;
-
-        [Column]
-        [Comments("多襄炎")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? MULTI_HSIANG
-        {
-            get
-            {
-                return _MULTI_HSIANG;
-            }
-            set
-            {
-                _MULTI_HSIANG = value;
-                MarkColumnModified("MULTI_HSIANG");
-            }
-        }
-        Int16? _MULTI_HSIANG;
-
-        [Column]
-        [Comments("痛风")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string GOUT
-        {
-            get
-            {
-                return _GOUT;
-            }
-            set
-            {
-                _GOUT = value;
-                MarkColumnModified("GOUT");
-            }
-        }
-        string _GOUT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? SEL
-        {
-            get
-            {
-                return _SEL;
-            }
-            set
-            {
-                _SEL = value;
-                MarkColumnModified("SEL");
-            }
-        }
-        Int16? _SEL;
-
-        [Column]
-        [Comments("梗阻性肾炎")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? OBSTRUCTIVE_NEPHRITIS
-        {
-            get
-            {
-                return _OBSTRUCTIVE_NEPHRITIS;
-            }
-            set
-            {
-                _OBSTRUCTIVE_NEPHRITIS = value;
-                MarkColumnModified("OBSTRUCTIVE_NEPHRITIS");
-            }
-        }
-        Int16? _OBSTRUCTIVE_NEPHRITIS;
-
-        [Column]
-        [Comments("既往史")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string PSTHIS
-        {
-            get
-            {
-                return _PSTHIS;
-            }
-            set
-            {
-                _PSTHIS = value;
-                MarkColumnModified("PSTHIS");
-            }
-        }
-        string _PSTHIS;
-
-        [Column]
-        [Comments("家族史")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string FAMILYHIS
-        {
-            get
-            {
-                return _FAMILYHIS;
-            }
-            set
-            {
-                _FAMILYHIS = value;
-                MarkColumnModified("FAMILYHIS");
-            }
-        }
-        string _FAMILYHIS;
-
-        [Column]
-        [Comments("其他重要病史")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string OTHERHIS
-        {
-            get
-            {
-                return _OTHERHIS;
-            }
-            set
-            {
-                _OTHERHIS = value;
-                MarkColumnModified("OTHERHIS");
-            }
-        }
-        string _OTHERHIS;
-
-        [Column]
-        [Comments("既往诊治经过")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string HIS_DOS
-        {
-            get
-            {
-                return _HIS_DOS;
-            }
-            set
-            {
-                _HIS_DOS = value;
-                MarkColumnModified("HIS_DOS");
-            }
-        }
-        string _HIS_DOS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string MAINTALK
-        {
-            get
-            {
-                return _MAINTALK;
-            }
-            set
-            {
-                _MAINTALK = value;
-                MarkColumnModified("MAINTALK");
-            }
-        }
-        string _MAINTALK;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? DRUGALLERGY_IS
-        {
-            get
-            {
-                return _DRUGALLERGY_IS;
-            }
-            set
-            {
-                _DRUGALLERGY_IS = value;
-                MarkColumnModified("DRUGALLERGY_IS");
-            }
-        }
-        Int16? _DRUGALLERGY_IS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DRUGALLERGY
-        {
-            get
-            {
-                return _DRUGALLERGY;
-            }
-            set
-            {
-                _DRUGALLERGY = value;
-                MarkColumnModified("DRUGALLERGY");
-            }
-        }
-        string _DRUGALLERGY;
-
-    }
-
-    [TableName("CONSUMABLES_LIST")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_LIST : XEDB.Record<CONSUMABLES_LIST>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal? _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        string _NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string TYPE_CODE
-        {
-            get
-            {
-                return _TYPE_CODE;
-            }
-            set
-            {
-                _TYPE_CODE = value;
-                MarkColumnModified("TYPE_CODE");
-            }
-        }
-        string _TYPE_CODE;
-
-    }
-
-    [TableName("CONSUMABLES_LOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_LOG : XEDB.Record<CONSUMABLES_LOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_ID
-        {
-            get
-            {
-                return _CONSUMABLES_ID;
-            }
-            set
-            {
-                _CONSUMABLES_ID = value;
-                MarkColumnModified("CONSUMABLES_ID");
-            }
-        }
-        decimal? _CONSUMABLES_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OPERATOR_TYPE
-        {
-            get
-            {
-                return _OPERATOR_TYPE;
-            }
-            set
-            {
-                _OPERATOR_TYPE = value;
-                MarkColumnModified("OPERATOR_TYPE");
-            }
-        }
-        decimal? _OPERATOR_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OPERATOR_NUM
-        {
-            get
-            {
-                return _OPERATOR_NUM;
-            }
-            set
-            {
-                _OPERATOR_NUM = value;
-                MarkColumnModified("OPERATOR_NUM");
-            }
-        }
-        decimal? _OPERATOR_NUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CONFIRMOR
-        {
-            get
-            {
-                return _CONFIRMOR;
-            }
-            set
-            {
-                _CONFIRMOR = value;
-                MarkColumnModified("CONFIRMOR");
-            }
-        }
-        string _CONFIRMOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime PRODUCTION_DATE
-        {
-            get
-            {
-                return _PRODUCTION_DATE;
-            }
-            set
-            {
-                _PRODUCTION_DATE = value;
-                MarkColumnModified("PRODUCTION_DATE");
-            }
-        }
-        DateTime _PRODUCTION_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? VALID
-        {
-            get
-            {
-                return _VALID;
-            }
-            set
-            {
-                _VALID = value;
-                MarkColumnModified("VALID");
-            }
-        }
-        decimal? _VALID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [Comments("剩余量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SURPLUS
-        {
-            get
-            {
-                return _SURPLUS;
-            }
-            set
-            {
-                _SURPLUS = value;
-                MarkColumnModified("SURPLUS");
-            }
-        }
-        decimal? _SURPLUS;
-
-    }
-
-    [TableName("CONSUMABLES_LOG1")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_LOG1 : XEDB.Record<CONSUMABLES_LOG1>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_ID
-        {
-            get
-            {
-                return _CONSUMABLES_ID;
-            }
-            set
-            {
-                _CONSUMABLES_ID = value;
-                MarkColumnModified("CONSUMABLES_ID");
-            }
-        }
-        decimal? _CONSUMABLES_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OPERATOR_TYPE
-        {
-            get
-            {
-                return _OPERATOR_TYPE;
-            }
-            set
-            {
-                _OPERATOR_TYPE = value;
-                MarkColumnModified("OPERATOR_TYPE");
-            }
-        }
-        decimal? _OPERATOR_TYPE;
-
-        [Column]
-        [Comments("入库量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OPERATOR_NUM
-        {
-            get
-            {
-                return _OPERATOR_NUM;
-            }
-            set
-            {
-                _OPERATOR_NUM = value;
-                MarkColumnModified("OPERATOR_NUM");
-            }
-        }
-        decimal? _OPERATOR_NUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CONFIRMOR
-        {
-            get
-            {
-                return _CONFIRMOR;
-            }
-            set
-            {
-                _CONFIRMOR = value;
-                MarkColumnModified("CONFIRMOR");
-            }
-        }
-        string _CONFIRMOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime PRODUCTION_DATE
-        {
-            get
-            {
-                return _PRODUCTION_DATE;
-            }
-            set
-            {
-                _PRODUCTION_DATE = value;
-                MarkColumnModified("PRODUCTION_DATE");
-            }
-        }
-        DateTime _PRODUCTION_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? VALID
-        {
-            get
-            {
-                return _VALID;
-            }
-            set
-            {
-                _VALID = value;
-                MarkColumnModified("VALID");
-            }
-        }
-        decimal? _VALID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [Comments("剩余量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SURPLUS
-        {
-            get
-            {
-                return _SURPLUS;
-            }
-            set
-            {
-                _SURPLUS = value;
-                MarkColumnModified("SURPLUS");
-            }
-        }
-        decimal? _SURPLUS;
-
-        [Column]
-        [Comments("出库量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OUT_NUM
-        {
-            get
-            {
-                return _OUT_NUM;
-            }
-            set
-            {
-                _OUT_NUM = value;
-                MarkColumnModified("OUT_NUM");
-            }
-        }
-        decimal? _OUT_NUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_IN_LOG_ID
-        {
-            get
-            {
-                return _CONSUMABLES_IN_LOG_ID;
-            }
-            set
-            {
-                _CONSUMABLES_IN_LOG_ID = value;
-                MarkColumnModified("CONSUMABLES_IN_LOG_ID");
-            }
-        }
-        decimal? _CONSUMABLES_IN_LOG_ID;
-
-    }
-
-    [TableName("CONSUMABLES_REQUEST")]
-    [PrimaryKey("REQUEST_ID", autoIncrement = false)]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_REQUEST : XEDB.Record<CONSUMABLES_REQUEST>
-    {
-        public bool isNew = false;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string REQUEST_ID
-        {
-            get
-            {
-                return _REQUEST_ID;
-            }
-            set
-            {
-                _REQUEST_ID = value;
-                MarkColumnModified("REQUEST_ID");
-            }
-        }
-        string _REQUEST_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? REQUEST_NUM
-        {
-            get
-            {
-                return _REQUEST_NUM;
-            }
-            set
-            {
-                _REQUEST_NUM = value;
-                MarkColumnModified("REQUEST_NUM");
-            }
-        }
-        decimal? _REQUEST_NUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string STATUS
-        {
-            get
-            {
-                return _STATUS;
-            }
-            set
-            {
-                _STATUS = value;
-                MarkColumnModified("STATUS");
-            }
-        }
-        string _STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-    }
-
-    [TableName("CONSUMABLES_REQUEST_LST")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_REQUEST_LST : XEDB.Record<CONSUMABLES_REQUEST_LST>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string REQUEST_ID
-        {
-            get
-            {
-                return _REQUEST_ID;
-            }
-            set
-            {
-                _REQUEST_ID = value;
-                MarkColumnModified("REQUEST_ID");
-            }
-        }
-        string _REQUEST_ID;
-
-        [Column]
-        [Comments("需求数")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? REQUEST_NUM
-        {
-            get
-            {
-                return _REQUEST_NUM;
-            }
-            set
-            {
-                _REQUEST_NUM = value;
-                MarkColumnModified("REQUEST_NUM");
-            }
-        }
-        decimal? _REQUEST_NUM;
-
-        [Column]
-        [Comments("库存ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLE_ID
-        {
-            get
-            {
-                return _CONSUMABLE_ID;
-            }
-            set
-            {
-                _CONSUMABLE_ID = value;
-                MarkColumnModified("CONSUMABLE_ID");
-            }
-        }
-        decimal? _CONSUMABLE_ID;
-
-        [Column]
-        [Comments("入库ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_IN_LOG_ID
-        {
-            get
-            {
-                return _CONSUMABLES_IN_LOG_ID;
-            }
-            set
-            {
-                _CONSUMABLES_IN_LOG_ID = value;
-                MarkColumnModified("CONSUMABLES_IN_LOG_ID");
-            }
-        }
-        decimal? _CONSUMABLES_IN_LOG_ID;
-
-        [Column]
-        [Comments("有效期(月)")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? VALID
-        {
-            get
-            {
-                return _VALID;
-            }
-            set
-            {
-                _VALID = value;
-                MarkColumnModified("VALID");
-            }
-        }
-        decimal? _VALID;
-
-        [Column]
-        [Comments("序列号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [Comments("生产日期")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime PRODUCTION_DATE
-        {
-            get
-            {
-                return _PRODUCTION_DATE;
-            }
-            set
-            {
-                _PRODUCTION_DATE = value;
-                MarkColumnModified("PRODUCTION_DATE");
-            }
-        }
-        DateTime _PRODUCTION_DATE;
-
-        [Column]
-        [Comments("型号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MODEL
-        {
-            get
-            {
-                return _MODEL;
-            }
-            set
-            {
-                _MODEL = value;
-                MarkColumnModified("MODEL");
-            }
-        }
-        string _MODEL;
-
-        [Column]
-        [Comments("供应商")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FIRM
-        {
-            get
-            {
-                return _FIRM;
-            }
-            set
-            {
-                _FIRM = value;
-                MarkColumnModified("FIRM");
-            }
-        }
-        decimal? _FIRM;
-
-        [Column]
-        [Comments("耗材名称")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        decimal? _NAME;
-
-        [Column]
-        [Comments("尺寸")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SIZE1
-        {
-            get
-            {
-                return _SIZE1;
-            }
-            set
-            {
-                _SIZE1 = value;
-                MarkColumnModified("SIZE1");
-            }
-        }
-        string _SIZE1;
-
-        [Column]
-        [Comments("耗材大类ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLE_TYPE_CODE
-        {
-            get
-            {
-                return _CONSUMABLE_TYPE_CODE;
-            }
-            set
-            {
-                _CONSUMABLE_TYPE_CODE = value;
-                MarkColumnModified("CONSUMABLE_TYPE_CODE");
-            }
-        }
-        decimal? _CONSUMABLE_TYPE_CODE;
-
-        [Column]
-        [Comments("使用量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? USECOUNT
-        {
-            get
-            {
-                return _USECOUNT;
-            }
-            set
-            {
-                _USECOUNT = value;
-                MarkColumnModified("USECOUNT");
-            }
-        }
-        decimal? _USECOUNT;
-
-        [Column]
-        [Comments("余量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SURPLUS
-        {
-            get
-            {
-                return _SURPLUS;
-            }
-            set
-            {
-                _SURPLUS = value;
-                MarkColumnModified("SURPLUS");
-            }
-        }
-        decimal? _SURPLUS;
-
-    }
-
-    [TableName("CONSUMABLES_REQUEST_LST_USELOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_REQUEST_LST_USELOG : XEDB.Record<CONSUMABLES_REQUEST_LST_USELOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("申请单号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string REQUEST_ID
-        {
-            get
-            {
-                return _REQUEST_ID;
-            }
-            set
-            {
-                _REQUEST_ID = value;
-                MarkColumnModified("REQUEST_ID");
-            }
-        }
-        string _REQUEST_ID;
-
-        [Column]
-        [Comments("申请量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? REQUEST_NUM
-        {
-            get
-            {
-                return _REQUEST_NUM;
-            }
-            set
-            {
-                _REQUEST_NUM = value;
-                MarkColumnModified("REQUEST_NUM");
-            }
-        }
-        decimal? _REQUEST_NUM;
-
-        [Column]
-        [Comments("库存ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLE_ID
-        {
-            get
-            {
-                return _CONSUMABLE_ID;
-            }
-            set
-            {
-                _CONSUMABLE_ID = value;
-                MarkColumnModified("CONSUMABLE_ID");
-            }
-        }
-        decimal? _CONSUMABLE_ID;
-
-        [Column]
-        [Comments("入库ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_IN_LOG_ID
-        {
-            get
-            {
-                return _CONSUMABLES_IN_LOG_ID;
-            }
-            set
-            {
-                _CONSUMABLES_IN_LOG_ID = value;
-                MarkColumnModified("CONSUMABLES_IN_LOG_ID");
-            }
-        }
-        decimal? _CONSUMABLES_IN_LOG_ID;
-
-        [Column]
-        [Comments("有效期(月)")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? VALID
-        {
-            get
-            {
-                return _VALID;
-            }
-            set
-            {
-                _VALID = value;
-                MarkColumnModified("VALID");
-            }
-        }
-        decimal? _VALID;
-
-        [Column]
-        [Comments("序列号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [Comments("生产日期")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime PRODUCTION_DATE
-        {
-            get
-            {
-                return _PRODUCTION_DATE;
-            }
-            set
-            {
-                _PRODUCTION_DATE = value;
-                MarkColumnModified("PRODUCTION_DATE");
-            }
-        }
-        DateTime _PRODUCTION_DATE;
-
-        [Column]
-        [Comments("型号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MODEL
-        {
-            get
-            {
-                return _MODEL;
-            }
-            set
-            {
-                _MODEL = value;
-                MarkColumnModified("MODEL");
-            }
-        }
-        string _MODEL;
-
-        [Column]
-        [Comments("供货商")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FIRM
-        {
-            get
-            {
-                return _FIRM;
-            }
-            set
-            {
-                _FIRM = value;
-                MarkColumnModified("FIRM");
-            }
-        }
-        decimal? _FIRM;
-
-        [Column]
-        [Comments("名称")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        decimal? _NAME;
-
-        [Column]
-        [Comments("尺寸")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SIZE1
-        {
-            get
-            {
-                return _SIZE1;
-            }
-            set
-            {
-                _SIZE1 = value;
-                MarkColumnModified("SIZE1");
-            }
-        }
-        string _SIZE1;
-
-        [Column]
-        [Comments("大类ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLE_TYPE_CODE
-        {
-            get
-            {
-                return _CONSUMABLE_TYPE_CODE;
-            }
-            set
-            {
-                _CONSUMABLE_TYPE_CODE = value;
-                MarkColumnModified("CONSUMABLE_TYPE_CODE");
-            }
-        }
-        decimal? _CONSUMABLE_TYPE_CODE;
-
-        [Column]
-        [Comments("使用量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? USECOUNT
-        {
-            get
-            {
-                return _USECOUNT;
-            }
-            set
-            {
-                _USECOUNT = value;
-                MarkColumnModified("USECOUNT");
-            }
-        }
-        decimal? _USECOUNT;
-
-        [Column]
-        [Comments("使用时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime USETIME
-        {
-            get
-            {
-                return _USETIME;
-            }
-            set
-            {
-                _USETIME = value;
-                MarkColumnModified("USETIME");
-            }
-        }
-        DateTime _USETIME;
-
-        [Column]
-        [Comments("挂号ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [Comments("患者ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [Comments("操作人")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REQUEST_LIST_ID
-        {
-            get
-            {
-                return _REQUEST_LIST_ID;
-            }
-            set
-            {
-                _REQUEST_LIST_ID = value;
-                MarkColumnModified("REQUEST_LIST_ID");
-            }
-        }
-        decimal? _REQUEST_LIST_ID;
-
-    }
-
-    [TableName("CONSUMABLES_WAREHOUSE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class CONSUMABLES_WAREHOUSE : XEDB.Record<CONSUMABLES_WAREHOUSE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CONSUMABLES_CODE
-        {
-            get
-            {
-                return _CONSUMABLES_CODE;
-            }
-            set
-            {
-                _CONSUMABLES_CODE = value;
-                MarkColumnModified("CONSUMABLES_CODE");
-            }
-        }
-        decimal? _CONSUMABLES_CODE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        decimal? _NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SIZE1
-        {
-            get
-            {
-                return _SIZE1;
-            }
-            set
-            {
-                _SIZE1 = value;
-                MarkColumnModified("SIZE1");
-            }
-        }
-        string _SIZE1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FIRM
-        {
-            get
-            {
-                return _FIRM;
-            }
-            set
-            {
-                _FIRM = value;
-                MarkColumnModified("FIRM");
-            }
-        }
-        decimal? _FIRM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string MODEL
-        {
-            get
-            {
-                return _MODEL;
-            }
-            set
-            {
-                _MODEL = value;
-                MarkColumnModified("MODEL");
-            }
-        }
-        string _MODEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? COUNT
-        {
-            get
-            {
-                return _COUNT;
-            }
-            set
-            {
-                _COUNT = value;
-                MarkColumnModified("COUNT");
-            }
-        }
-        decimal? _COUNT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-    }
-
-    [TableName("DEVICECOMMUNICATION_LOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DEVICECOMMUNICATION_LOG : XEDB.Record<DEVICECOMMUNICATION_LOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string MSG
-        {
-            get
-            {
-                return _MSG;
-            }
-            set
-            {
-                _MSG = value;
-                MarkColumnModified("MSG");
-            }
-        }
-        string _MSG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime RECEIVE_TIME
-        {
-            get
-            {
-                return _RECEIVE_TIME;
-            }
-            set
-            {
-                _RECEIVE_TIME = value;
-                MarkColumnModified("RECEIVE_TIME");
-            }
-        }
-        DateTime _RECEIVE_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string REMOTE_IP
-        {
-            get
-            {
-                return _REMOTE_IP;
-            }
-            set
-            {
-                _REMOTE_IP = value;
-                MarkColumnModified("REMOTE_IP");
-            }
-        }
-        string _REMOTE_IP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REMOTE_PORT
-        {
-            get
-            {
-                return _REMOTE_PORT;
-            }
-            set
-            {
-                _REMOTE_PORT = value;
-                MarkColumnModified("REMOTE_PORT");
-            }
-        }
-        decimal? _REMOTE_PORT;
-
-    }
-
-    [TableName("DIAGNOSIS_ALLERGY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_ALLERGY : XEDB.Record<DIAGNOSIS_ALLERGY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [Comments("过敏反应")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ALLERGIC_REACTIONS
-        {
-            get
-            {
-                return _ALLERGIC_REACTIONS;
-            }
-            set
-            {
-                _ALLERGIC_REACTIONS = value;
-                MarkColumnModified("ALLERGIC_REACTIONS");
-            }
-        }
-        string _ALLERGIC_REACTIONS;
-
-        [Column]
-        [Comments("其他过敏反应")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string ALLERGIC_REACTIONS_OTH
-        {
-            get
-            {
-                return _ALLERGIC_REACTIONS_OTH;
-            }
-            set
-            {
-                _ALLERGIC_REACTIONS_OTH = value;
-                MarkColumnModified("ALLERGIC_REACTIONS_OTH");
-            }
-        }
-        string _ALLERGIC_REACTIONS_OTH;
-
-        [Column]
-        [Comments("透析器材过敏")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DIALYSIS_EQUIPMENT_ALLERGIES
-        {
-            get
-            {
-                return _DIALYSIS_EQUIPMENT_ALLERGIES;
-            }
-            set
-            {
-                _DIALYSIS_EQUIPMENT_ALLERGIES = value;
-                MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES");
-            }
-        }
-        string _DIALYSIS_EQUIPMENT_ALLERGIES;
-
-        [Column]
-        [Comments("其他透析器材过敏")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string DIALYSIS_EQUIPMENT_ALLERGIES_O
-        {
-            get
-            {
-                return _DIALYSIS_EQUIPMENT_ALLERGIES_O;
-            }
-            set
-            {
-                _DIALYSIS_EQUIPMENT_ALLERGIES_O = value;
-                MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES_O");
-            }
-        }
-        string _DIALYSIS_EQUIPMENT_ALLERGIES_O;
-
-        [Column]
-        [Comments("透析膜")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DIALYSIS_MEMBRANE
-        {
-            get
-            {
-                return _DIALYSIS_MEMBRANE;
-            }
-            set
-            {
-                _DIALYSIS_MEMBRANE = value;
-                MarkColumnModified("DIALYSIS_MEMBRANE");
-            }
-        }
-        string _DIALYSIS_MEMBRANE;
-
-        [Column]
-        [Comments("其他透析膜")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string DIALYSIS_MEMBRANE_OTH
-        {
-            get
-            {
-                return _DIALYSIS_MEMBRANE_OTH;
-            }
-            set
-            {
-                _DIALYSIS_MEMBRANE_OTH = value;
-                MarkColumnModified("DIALYSIS_MEMBRANE_OTH");
-            }
-        }
-        string _DIALYSIS_MEMBRANE_OTH;
-
-        [Column]
-        [Comments("透析器材型号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DIALYSIS_EQUIPMENT_ALLERGIES_N
-        {
-            get
-            {
-                return _DIALYSIS_EQUIPMENT_ALLERGIES_N;
-            }
-            set
-            {
-                _DIALYSIS_EQUIPMENT_ALLERGIES_N = value;
-                MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES_N");
-            }
-        }
-        string _DIALYSIS_EQUIPMENT_ALLERGIES_N;
-
-        [Column]
-        [Comments("消毒剂")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DISINFECTANTS
-        {
-            get
-            {
-                return _DISINFECTANTS;
-            }
-            set
-            {
-                _DISINFECTANTS = value;
-                MarkColumnModified("DISINFECTANTS");
-            }
-        }
-        string _DISINFECTANTS;
-
-        [Column]
-        [Comments("其他消毒剂")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string DISINFECTANTS_OTH
-        {
-            get
-            {
-                return _DISINFECTANTS_OTH;
-            }
-            set
-            {
-                _DISINFECTANTS_OTH = value;
-                MarkColumnModified("DISINFECTANTS_OTH");
-            }
-        }
-        string _DISINFECTANTS_OTH;
-
-        [Column]
-        [Comments("药物过敏")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DRUG_ALLERGY
-        {
-            get
-            {
-                return _DRUG_ALLERGY;
-            }
-            set
-            {
-                _DRUG_ALLERGY = value;
-                MarkColumnModified("DRUG_ALLERGY");
-            }
-        }
-        string _DRUG_ALLERGY;
-
-        [Column]
-        [Comments("抗生素")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ANTIBIOTIC
-        {
-            get
-            {
-                return _ANTIBIOTIC;
-            }
-            set
-            {
-                _ANTIBIOTIC = value;
-                MarkColumnModified("ANTIBIOTIC");
-            }
-        }
-        string _ANTIBIOTIC;
-
-        [Column]
-        [Comments("静脉铁剂")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string INTRAVENOUS_IRON
-        {
-            get
-            {
-                return _INTRAVENOUS_IRON;
-            }
-            set
-            {
-                _INTRAVENOUS_IRON = value;
-                MarkColumnModified("INTRAVENOUS_IRON");
-            }
-        }
-        string _INTRAVENOUS_IRON;
-
-        [Column]
-        [Comments("蔗糖铁")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string IRON_SUCROSE
-        {
-            get
-            {
-                return _IRON_SUCROSE;
-            }
-            set
-            {
-                _IRON_SUCROSE = value;
-                MarkColumnModified("IRON_SUCROSE");
-            }
-        }
-        string _IRON_SUCROSE;
-
-        [Column]
-        [Comments("右旋糖苷铁")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string IRON_DEXTRAN
-        {
-            get
-            {
-                return _IRON_DEXTRAN;
-            }
-            set
-            {
-                _IRON_DEXTRAN = value;
-                MarkColumnModified("IRON_DEXTRAN");
-            }
-        }
-        string _IRON_DEXTRAN;
-
-        [Column]
-        [Comments("肝素")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string HEPARIN
-        {
-            get
-            {
-                return _HEPARIN;
-            }
-            set
-            {
-                _HEPARIN = value;
-                MarkColumnModified("HEPARIN");
-            }
-        }
-        string _HEPARIN;
-
-        [Column]
-        [Comments("其他肝素")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string HEPARIN_OTH
-        {
-            get
-            {
-                return _HEPARIN_OTH;
-            }
-            set
-            {
-                _HEPARIN_OTH = value;
-                MarkColumnModified("HEPARIN_OTH");
-            }
-        }
-        string _HEPARIN_OTH;
-
-        [Column]
-        [Comments("其他药物过敏")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string DRUG_ALLERGY_OTH
-        {
-            get
-            {
-                return _DRUG_ALLERGY_OTH;
-            }
-            set
-            {
-                _DRUG_ALLERGY_OTH = value;
-                MarkColumnModified("DRUG_ALLERGY_OTH");
-            }
-        }
-        string _DRUG_ALLERGY_OTH;
-
-    }
-
-    [TableName("DIAGNOSIS_COMPLICATION")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_COMPLICATION : XEDB.Record<DIAGNOSIS_COMPLICATION>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [Comments("并发症类别")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string COMPLICATIONS_TYPE
-        {
-            get
-            {
-                return _COMPLICATIONS_TYPE;
-            }
-            set
-            {
-                _COMPLICATIONS_TYPE = value;
-                MarkColumnModified("COMPLICATIONS_TYPE");
-            }
-        }
-        string _COMPLICATIONS_TYPE;
-
-        [Column]
-        [Comments("骨矿物质代谢紊乱")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string BONE_MINERAL_METABOLISM
-        {
-            get
-            {
-                return _BONE_MINERAL_METABOLISM;
-            }
-            set
-            {
-                _BONE_MINERAL_METABOLISM = value;
-                MarkColumnModified("BONE_MINERAL_METABOLISM");
-            }
-        }
-        string _BONE_MINERAL_METABOLISM;
-
-        [Column]
-        [Comments("其他骨矿物质代谢紊乱")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string BONE_MINERAL_METABOLISM_OTH
-        {
-            get
-            {
-                return _BONE_MINERAL_METABOLISM_OTH;
-            }
-            set
-            {
-                _BONE_MINERAL_METABOLISM_OTH = value;
-                MarkColumnModified("BONE_MINERAL_METABOLISM_OTH");
-            }
-        }
-        string _BONE_MINERAL_METABOLISM_OTH;
-
-        [Column]
-        [Comments("淀粉样变性")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string AMYLOIDOSIS
-        {
-            get
-            {
-                return _AMYLOIDOSIS;
-            }
-            set
-            {
-                _AMYLOIDOSIS = value;
-                MarkColumnModified("AMYLOIDOSIS");
-            }
-        }
-        string _AMYLOIDOSIS;
-
-        [Column]
-        [Comments("其他淀粉样变性")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string AMYLOIDOSIS_OTH
-        {
-            get
-            {
-                return _AMYLOIDOSIS_OTH;
-            }
-            set
-            {
-                _AMYLOIDOSIS_OTH = value;
-                MarkColumnModified("AMYLOIDOSIS_OTH");
-            }
-        }
-        string _AMYLOIDOSIS_OTH;
-
-        [Column]
-        [Comments("呼吸系统并发症")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string RESPIRATORY_COMPLICATIONS
-        {
-            get
-            {
-                return _RESPIRATORY_COMPLICATIONS;
-            }
-            set
-            {
-                _RESPIRATORY_COMPLICATIONS = value;
-                MarkColumnModified("RESPIRATORY_COMPLICATIONS");
-            }
-        }
-        string _RESPIRATORY_COMPLICATIONS;
-
-        [Column]
-        [Comments("其他呼吸系统并发症")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string RESPIRATORY_COMPLICATIONS_OTH
-        {
-            get
-            {
-                return _RESPIRATORY_COMPLICATIONS_OTH;
-            }
-            set
-            {
-                _RESPIRATORY_COMPLICATIONS_OTH = value;
-                MarkColumnModified("RESPIRATORY_COMPLICATIONS_OTH");
-            }
-        }
-        string _RESPIRATORY_COMPLICATIONS_OTH;
-
-        [Column]
-        [Comments("心血管")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR
-        {
-            get
-            {
-                return _CARDIOVASCULAR;
-            }
-            set
-            {
-                _CARDIOVASCULAR = value;
-                MarkColumnModified("CARDIOVASCULAR");
-            }
-        }
-        string _CARDIOVASCULAR;
-
-        [Column]
-        [Comments("其他心血管")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_OTH
-        {
-            get
-            {
-                return _CARDIOVASCULAR_OTH;
-            }
-            set
-            {
-                _CARDIOVASCULAR_OTH = value;
-                MarkColumnModified("CARDIOVASCULAR_OTH");
-            }
-        }
-        string _CARDIOVASCULAR_OTH;
-
-        [Column]
-        [Comments("神经系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string NERVOUS_SYSTEM
-        {
-            get
-            {
-                return _NERVOUS_SYSTEM;
-            }
-            set
-            {
-                _NERVOUS_SYSTEM = value;
-                MarkColumnModified("NERVOUS_SYSTEM");
-            }
-        }
-        string _NERVOUS_SYSTEM;
-
-        [Column]
-        [Comments("其他神经系统并发症")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string NERVOUS_SYSTEM_OTH
-        {
-            get
-            {
-                return _NERVOUS_SYSTEM_OTH;
-            }
-            set
-            {
-                _NERVOUS_SYSTEM_OTH = value;
-                MarkColumnModified("NERVOUS_SYSTEM_OTH");
-            }
-        }
-        string _NERVOUS_SYSTEM_OTH;
-
-        [Column]
-        [Comments("其他并发症")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string OTH_COMPLICATIONS
-        {
-            get
-            {
-                return _OTH_COMPLICATIONS;
-            }
-            set
-            {
-                _OTH_COMPLICATIONS = value;
-                MarkColumnModified("OTH_COMPLICATIONS");
-            }
-        }
-        string _OTH_COMPLICATIONS;
-
-        [Column]
-        [Comments("具体情况描述")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [Comments("消化系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string DIGESTIVE_SYSTEM
-        {
-            get
-            {
-                return _DIGESTIVE_SYSTEM;
-            }
-            set
-            {
-                _DIGESTIVE_SYSTEM = value;
-                MarkColumnModified("DIGESTIVE_SYSTEM");
-            }
-        }
-        string _DIGESTIVE_SYSTEM;
-
-        [Column]
-        [Comments("其他消化系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string DIGESTIVE_SYSTEM_OTH
-        {
-            get
-            {
-                return _DIGESTIVE_SYSTEM_OTH;
-            }
-            set
-            {
-                _DIGESTIVE_SYSTEM_OTH = value;
-                MarkColumnModified("DIGESTIVE_SYSTEM_OTH");
-            }
-        }
-        string _DIGESTIVE_SYSTEM_OTH;
-
-    }
-
-    [TableName("DIAGNOSIS_INFECTIOUS_DISEASE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_INFECTIOUS_DISEASE : XEDB.Record<DIAGNOSIS_INFECTIOUS_DISEASE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [Comments("疾病种类")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string INFECTIOUS_DISEASE
-        {
-            get
-            {
-                return _INFECTIOUS_DISEASE;
-            }
-            set
-            {
-                _INFECTIOUS_DISEASE = value;
-                MarkColumnModified("INFECTIOUS_DISEASE");
-            }
-        }
-        string _INFECTIOUS_DISEASE;
-
-        [Column]
-        [Comments("其他疾病说明")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string INFECTIOUS_DISEASE_OTH
-        {
-            get
-            {
-                return _INFECTIOUS_DISEASE_OTH;
-            }
-            set
-            {
-                _INFECTIOUS_DISEASE_OTH = value;
-                MarkColumnModified("INFECTIOUS_DISEASE_OTH");
-            }
-        }
-        string _INFECTIOUS_DISEASE_OTH;
-
-    }
-
-    [TableName("DIAGNOSIS_OUTCOME")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_OUTCOME : XEDB.Record<DIAGNOSIS_OUTCOME>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [Comments("转归情况")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OUTCOM_TYPE
-        {
-            get
-            {
-                return _OUTCOM_TYPE;
-            }
-            set
-            {
-                _OUTCOM_TYPE = value;
-                MarkColumnModified("OUTCOM_TYPE");
-            }
-        }
-        string _OUTCOM_TYPE;
-
-        [Column]
-        [Comments("退出情况")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string EXIT_STATUS
-        {
-            get
-            {
-                return _EXIT_STATUS;
-            }
-            set
-            {
-                _EXIT_STATUS = value;
-                MarkColumnModified("EXIT_STATUS");
-            }
-        }
-        string _EXIT_STATUS;
-
-        [Column]
-        [Comments("其他退出情况说明")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string EXIT_STATUS_OTH
-        {
-            get
-            {
-                return _EXIT_STATUS_OTH;
-            }
-            set
-            {
-                _EXIT_STATUS_OTH = value;
-                MarkColumnModified("EXIT_STATUS_OTH");
-            }
-        }
-        string _EXIT_STATUS_OTH;
-
-        [Column]
-        [Comments("转出地点")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ROLL_OUT_POS
-        {
-            get
-            {
-                return _ROLL_OUT_POS;
-            }
-            set
-            {
-                _ROLL_OUT_POS = value;
-                MarkColumnModified("ROLL_OUT_POS");
-            }
-        }
-        string _ROLL_OUT_POS;
-
-        [Column]
-        [Comments("转出原因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ROLL_OUT_REASON
-        {
-            get
-            {
-                return _ROLL_OUT_REASON;
-            }
-            set
-            {
-                _ROLL_OUT_REASON = value;
-                MarkColumnModified("ROLL_OUT_REASON");
-            }
-        }
-        string _ROLL_OUT_REASON;
-
-        [Column]
-        [Comments("其他转出原因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ROLL_OUT_REASON_OTH
-        {
-            get
-            {
-                return _ROLL_OUT_REASON_OTH;
-            }
-            set
-            {
-                _ROLL_OUT_REASON_OTH = value;
-                MarkColumnModified("ROLL_OUT_REASON_OTH");
-            }
-        }
-        string _ROLL_OUT_REASON_OTH;
-
-        [Column]
-        [Comments("死亡原因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CAUSE_OF_DEATH
-        {
-            get
-            {
-                return _CAUSE_OF_DEATH;
-            }
-            set
-            {
-                _CAUSE_OF_DEATH = value;
-                MarkColumnModified("CAUSE_OF_DEATH");
-            }
-        }
-        string _CAUSE_OF_DEATH;
-
-        [Column]
-        [Comments("其他死亡原因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string CAUSE_OF_DEATH_OTH
-        {
-            get
-            {
-                return _CAUSE_OF_DEATH_OTH;
-            }
-            set
-            {
-                _CAUSE_OF_DEATH_OTH = value;
-                MarkColumnModified("CAUSE_OF_DEATH_OTH");
-            }
-        }
-        string _CAUSE_OF_DEATH_OTH;
-
-        [Column]
-        [Comments("心血管事件")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_EVENTS
-        {
-            get
-            {
-                return _CARDIOVASCULAR_EVENTS;
-            }
-            set
-            {
-                _CARDIOVASCULAR_EVENTS = value;
-                MarkColumnModified("CARDIOVASCULAR_EVENTS");
-            }
-        }
-        string _CARDIOVASCULAR_EVENTS;
-
-        [Column]
-        [Comments("其他心血管事件")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_EVENTS_OTH
-        {
-            get
-            {
-                return _CARDIOVASCULAR_EVENTS_OTH;
-            }
-            set
-            {
-                _CARDIOVASCULAR_EVENTS_OTH = value;
-                MarkColumnModified("CARDIOVASCULAR_EVENTS_OTH");
-            }
-        }
-        string _CARDIOVASCULAR_EVENTS_OTH;
-
-        [Column]
-        [Comments("脑血管事件")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string CEREBROVASCULAR_EVENTS
-        {
-            get
-            {
-                return _CEREBROVASCULAR_EVENTS;
-            }
-            set
-            {
-                _CEREBROVASCULAR_EVENTS = value;
-                MarkColumnModified("CEREBROVASCULAR_EVENTS");
-            }
-        }
-        string _CEREBROVASCULAR_EVENTS;
-
-        [Column]
-        [Comments("其他脑血管事件")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string CEREBROVASCULAR_EVENTS_OTH
-        {
-            get
-            {
-                return _CEREBROVASCULAR_EVENTS_OTH;
-            }
-            set
-            {
-                _CEREBROVASCULAR_EVENTS_OTH = value;
-                MarkColumnModified("CEREBROVASCULAR_EVENTS_OTH");
-            }
-        }
-        string _CEREBROVASCULAR_EVENTS_OTH;
-
-        [Column]
-        [Comments("感染")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string INFECTION
-        {
-            get
-            {
-                return _INFECTION;
-            }
-            set
-            {
-                _INFECTION = value;
-                MarkColumnModified("INFECTION");
-            }
-        }
-        string _INFECTION;
-
-        [Column]
-        [Comments("其他感染")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string INFECTION_OTH
-        {
-            get
-            {
-                return _INFECTION_OTH;
-            }
-            set
-            {
-                _INFECTION_OTH = value;
-                MarkColumnModified("INFECTION_OTH");
-            }
-        }
-        string _INFECTION_OTH;
-
-        [Column]
-        [Comments("备注")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [Comments("转归日期")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime OUTCOME_DATE
-        {
-            get
-            {
-                return _OUTCOME_DATE;
-            }
-            set
-            {
-                _OUTCOME_DATE = value;
-                MarkColumnModified("OUTCOME_DATE");
-            }
-        }
-        DateTime _OUTCOME_DATE;
-
-    }
-
-    [TableName("DIAGNOSIS_PATHOLOGICAL")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_PATHOLOGICAL : XEDB.Record<DIAGNOSIS_PATHOLOGICAL>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("原发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string PRIMARY_GLOMERULAR_DISEASE
-        {
-            get
-            {
-                return _PRIMARY_GLOMERULAR_DISEASE;
-            }
-            set
-            {
-                _PRIMARY_GLOMERULAR_DISEASE = value;
-                MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE");
-            }
-        }
-        string _PRIMARY_GLOMERULAR_DISEASE;
-
-        [Column]
-        [Comments("其他原发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string PRIMARY_GLOMERULAR_DISEASE_OTH
-        {
-            get
-            {
-                return _PRIMARY_GLOMERULAR_DISEASE_OTH;
-            }
-            set
-            {
-                _PRIMARY_GLOMERULAR_DISEASE_OTH = value;
-                MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE_OTH");
-            }
-        }
-        string _PRIMARY_GLOMERULAR_DISEASE_OTH;
-
-        [Column]
-        [Comments("继发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string SECONDARY_GLOMERULAR_DISEASES
-        {
-            get
-            {
-                return _SECONDARY_GLOMERULAR_DISEASES;
-            }
-            set
-            {
-                _SECONDARY_GLOMERULAR_DISEASES = value;
-                MarkColumnModified("SECONDARY_GLOMERULAR_DISEASES");
-            }
-        }
-        string _SECONDARY_GLOMERULAR_DISEASES;
-
-        [Column]
-        [Comments("其他继发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string SECONDARY_GLOMERULAR_OTH
-        {
-            get
-            {
-                return _SECONDARY_GLOMERULAR_OTH;
-            }
-            set
-            {
-                _SECONDARY_GLOMERULAR_OTH = value;
-                MarkColumnModified("SECONDARY_GLOMERULAR_OTH");
-            }
-        }
-        string _SECONDARY_GLOMERULAR_OTH;
-
-        [Column]
-        [Comments("肾小管间质疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string TUBULOINTERSTITIAL_DISEASE
-        {
-            get
-            {
-                return _TUBULOINTERSTITIAL_DISEASE;
-            }
-            set
-            {
-                _TUBULOINTERSTITIAL_DISEASE = value;
-                MarkColumnModified("TUBULOINTERSTITIAL_DISEASE");
-            }
-        }
-        string _TUBULOINTERSTITIAL_DISEASE;
-
-        [Column]
-        [Comments("遗传性及先天性肾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string HEREDITARY_CONGENITAL_NEPH
-        {
-            get
-            {
-                return _HEREDITARY_CONGENITAL_NEPH;
-            }
-            set
-            {
-                _HEREDITARY_CONGENITAL_NEPH = value;
-                MarkColumnModified("HEREDITARY_CONGENITAL_NEPH");
-            }
-        }
-        string _HEREDITARY_CONGENITAL_NEPH;
-
-        [Column]
-        [Comments("其他遗传性及先天性肾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string HEREDITARY_CONGENITAL_OTH
-        {
-            get
-            {
-                return _HEREDITARY_CONGENITAL_OTH;
-            }
-            set
-            {
-                _HEREDITARY_CONGENITAL_OTH = value;
-                MarkColumnModified("HEREDITARY_CONGENITAL_OTH");
-            }
-        }
-        string _HEREDITARY_CONGENITAL_OTH;
-
-        [Column]
-        [Comments("其他肾小管间质疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string TUBULOINTERSTITIAL_DISEASE_OTH
-        {
-            get
-            {
-                return _TUBULOINTERSTITIAL_DISEASE_OTH;
-            }
-            set
-            {
-                _TUBULOINTERSTITIAL_DISEASE_OTH = value;
-                MarkColumnModified("TUBULOINTERSTITIAL_DISEASE_OTH");
-            }
-        }
-        string _TUBULOINTERSTITIAL_DISEASE_OTH;
-
-        [Column]
-        [Comments("病理诊断类型")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string PATHOLOGICAL_DIAGNOSIS_TYPE
-        {
-            get
-            {
-                return _PATHOLOGICAL_DIAGNOSIS_TYPE;
-            }
-            set
-            {
-                _PATHOLOGICAL_DIAGNOSIS_TYPE = value;
-                MarkColumnModified("PATHOLOGICAL_DIAGNOSIS_TYPE");
-            }
-        }
-        string _PATHOLOGICAL_DIAGNOSIS_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-    }
-
-    [TableName("DIAGNOSIS_PRIMARY_DISEASE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_PRIMARY_DISEASE : XEDB.Record<DIAGNOSIS_PRIMARY_DISEASE>
-    {
-        [Column]
-        [Comments("原发病诊断分类")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PRIMARY_DISEAE_TYPE
-        {
-            get
-            {
-                return _PRIMARY_DISEAE_TYPE;
-            }
-            set
-            {
-                _PRIMARY_DISEAE_TYPE = value;
-                MarkColumnModified("PRIMARY_DISEAE_TYPE");
-            }
-        }
-        decimal? _PRIMARY_DISEAE_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("原发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PRIMARY_GLOMERULAR_DISEASE
-        {
-            get
-            {
-                return _PRIMARY_GLOMERULAR_DISEASE;
-            }
-            set
-            {
-                _PRIMARY_GLOMERULAR_DISEASE = value;
-                MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE");
-            }
-        }
-        decimal? _PRIMARY_GLOMERULAR_DISEASE;
-
-        [Column]
-        [Comments("其他原发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string PRIMARY_GLOMERULAR_DISEASE_OTH
-        {
-            get
-            {
-                return _PRIMARY_GLOMERULAR_DISEASE_OTH;
-            }
-            set
-            {
-                _PRIMARY_GLOMERULAR_DISEASE_OTH = value;
-                MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE_OTH");
-            }
-        }
-        string _PRIMARY_GLOMERULAR_DISEASE_OTH;
-
-        [Column]
-        [Comments("继发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SECONDARY_GLOMERULAR_DISEASES
-        {
-            get
-            {
-                return _SECONDARY_GLOMERULAR_DISEASES;
-            }
-            set
-            {
-                _SECONDARY_GLOMERULAR_DISEASES = value;
-                MarkColumnModified("SECONDARY_GLOMERULAR_DISEASES");
-            }
-        }
-        decimal? _SECONDARY_GLOMERULAR_DISEASES;
-
-        [Column]
-        [Comments("其他继发性肾小球疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string SECONDARY_GLOMERULAR_OTH
-        {
-            get
-            {
-                return _SECONDARY_GLOMERULAR_OTH;
-            }
-            set
-            {
-                _SECONDARY_GLOMERULAR_OTH = value;
-                MarkColumnModified("SECONDARY_GLOMERULAR_OTH");
-            }
-        }
-        string _SECONDARY_GLOMERULAR_OTH;
-
-        [Column]
-        [Comments("遗传性及先天性肾病")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEREDITARY_CONGENITAL_NEPH
-        {
-            get
-            {
-                return _HEREDITARY_CONGENITAL_NEPH;
-            }
-            set
-            {
-                _HEREDITARY_CONGENITAL_NEPH = value;
-                MarkColumnModified("HEREDITARY_CONGENITAL_NEPH");
-            }
-        }
-        decimal? _HEREDITARY_CONGENITAL_NEPH;
-
-        [Column]
-        [Comments("其他遗传性及先天性肾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string HEREDITARY_CONGENITAL_NEPH_OTH
-        {
-            get
-            {
-                return _HEREDITARY_CONGENITAL_NEPH_OTH;
-            }
-            set
-            {
-                _HEREDITARY_CONGENITAL_NEPH_OTH = value;
-                MarkColumnModified("HEREDITARY_CONGENITAL_NEPH_OTH");
-            }
-        }
-        string _HEREDITARY_CONGENITAL_NEPH_OTH;
-
-        [Column]
-        [Comments("肾小管间质疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? TUBULOINTERSTITIAL_DISEASE
-        {
-            get
-            {
-                return _TUBULOINTERSTITIAL_DISEASE;
-            }
-            set
-            {
-                _TUBULOINTERSTITIAL_DISEASE = value;
-                MarkColumnModified("TUBULOINTERSTITIAL_DISEASE");
-            }
-        }
-        decimal? _TUBULOINTERSTITIAL_DISEASE;
-
-        [Column]
-        [Comments("其他肾小管间质疾病")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string TUBULOINTERSTITIAL_DISEASE_OTH
-        {
-            get
-            {
-                return _TUBULOINTERSTITIAL_DISEASE_OTH;
-            }
-            set
-            {
-                _TUBULOINTERSTITIAL_DISEASE_OTH = value;
-                MarkColumnModified("TUBULOINTERSTITIAL_DISEASE_OTH");
-            }
-        }
-        string _TUBULOINTERSTITIAL_DISEASE_OTH;
-
-        [Column]
-        [Comments("泌尿系感染和结石")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? URINARY_TRACT_INFECTIONS_STON
-        {
-            get
-            {
-                return _URINARY_TRACT_INFECTIONS_STON;
-            }
-            set
-            {
-                _URINARY_TRACT_INFECTIONS_STON = value;
-                MarkColumnModified("URINARY_TRACT_INFECTIONS_STON");
-            }
-        }
-        decimal? _URINARY_TRACT_INFECTIONS_STON;
-
-        [Column]
-        [Comments("其他泌尿系感染和结石")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string INFECTIONS_STON_OTH
-        {
-            get
-            {
-                return _INFECTIONS_STON_OTH;
-            }
-            set
-            {
-                _INFECTIONS_STON_OTH = value;
-                MarkColumnModified("INFECTIONS_STON_OTH");
-            }
-        }
-        string _INFECTIONS_STON_OTH;
-
-        [Column]
-        [Comments("肾脏切除原因")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? NEPHRECTOMY_REASON
-        {
-            get
-            {
-                return _NEPHRECTOMY_REASON;
-            }
-            set
-            {
-                _NEPHRECTOMY_REASON = value;
-                MarkColumnModified("NEPHRECTOMY_REASON");
-            }
-        }
-        decimal? _NEPHRECTOMY_REASON;
-
-        [Column]
-        [Comments("其他肾脏切除原因")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string NEPHRECTOMY_REASON_OTH
-        {
-            get
-            {
-                return _NEPHRECTOMY_REASON_OTH;
-            }
-            set
-            {
-                _NEPHRECTOMY_REASON_OTH = value;
-                MarkColumnModified("NEPHRECTOMY_REASON_OTH");
-            }
-        }
-        string _NEPHRECTOMY_REASON_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? IS_DEL
-        {
-            get
-            {
-                return _IS_DEL;
-            }
-            set
-            {
-                _IS_DEL = value;
-                MarkColumnModified("IS_DEL");
-            }
-        }
-        decimal? _IS_DEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DEL_TIME
-        {
-            get
-            {
-                return _DEL_TIME;
-            }
-            set
-            {
-                _DEL_TIME = value;
-                MarkColumnModified("DEL_TIME");
-            }
-        }
-        DateTime _DEL_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-    }
-
-    [TableName("DIAGNOSIS_TUMOR")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DIAGNOSIS_TUMOR : XEDB.Record<DIAGNOSIS_TUMOR>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [Comments("肿瘤位置")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string TUMOR_POS
-        {
-            get
-            {
-                return _TUMOR_POS;
-            }
-            set
-            {
-                _TUMOR_POS = value;
-                MarkColumnModified("TUMOR_POS");
-            }
-        }
-        string _TUMOR_POS;
-
-        [Column]
-        [Comments("消化系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DIGESTIVE_SYSTEM
-        {
-            get
-            {
-                return _DIGESTIVE_SYSTEM;
-            }
-            set
-            {
-                _DIGESTIVE_SYSTEM = value;
-                MarkColumnModified("DIGESTIVE_SYSTEM");
-            }
-        }
-        string _DIGESTIVE_SYSTEM;
-
-        [Column]
-        [Comments("呼吸系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string RESPIRATORY
-        {
-            get
-            {
-                return _RESPIRATORY;
-            }
-            set
-            {
-                _RESPIRATORY = value;
-                MarkColumnModified("RESPIRATORY");
-            }
-        }
-        string _RESPIRATORY;
-
-        [Column]
-        [Comments("血液系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string BLOOD_SYSTEM
-        {
-            get
-            {
-                return _BLOOD_SYSTEM;
-            }
-            set
-            {
-                _BLOOD_SYSTEM = value;
-                MarkColumnModified("BLOOD_SYSTEM");
-            }
-        }
-        string _BLOOD_SYSTEM;
-
-        [Column]
-        [Comments("泌尿生殖系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string GENITOURINARY_SYSTEM
-        {
-            get
-            {
-                return _GENITOURINARY_SYSTEM;
-            }
-            set
-            {
-                _GENITOURINARY_SYSTEM = value;
-                MarkColumnModified("GENITOURINARY_SYSTEM");
-            }
-        }
-        string _GENITOURINARY_SYSTEM;
-
-        [Column]
-        [Comments("神经系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string NERVOUS_SYSTEM
-        {
-            get
-            {
-                return _NERVOUS_SYSTEM;
-            }
-            set
-            {
-                _NERVOUS_SYSTEM = value;
-                MarkColumnModified("NERVOUS_SYSTEM");
-            }
-        }
-        string _NERVOUS_SYSTEM;
-
-        [Column]
-        [Comments("骨骼肌肉系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string MUSCULOSKELETAL_SYSTEM
-        {
-            get
-            {
-                return _MUSCULOSKELETAL_SYSTEM;
-            }
-            set
-            {
-                _MUSCULOSKELETAL_SYSTEM = value;
-                MarkColumnModified("MUSCULOSKELETAL_SYSTEM");
-            }
-        }
-        string _MUSCULOSKELETAL_SYSTEM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-    }
-
-    [TableName("DIGESTIVESYS_CODE")]
-    [PrimaryKey("DIGESTIVESYS_ID")]
-    [ExplicitColumns]
-    public partial class DIGESTIVESYS_CODE : XEDB.Record<DIGESTIVESYS_CODE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal DIGESTIVESYS_ID
-        {
-            get
-            {
-                return _DIGESTIVESYS_ID;
-            }
-            set
-            {
-                _DIGESTIVESYS_ID = value;
-                MarkColumnModified("DIGESTIVESYS_ID");
-            }
-        }
-        decimal _DIGESTIVESYS_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIGESTIVESYS_MEMO
-        {
-            get
-            {
-                return _DIGESTIVESYS_MEMO;
-            }
-            set
-            {
-                _DIGESTIVESYS_MEMO = value;
-                MarkColumnModified("DIGESTIVESYS_MEMO");
-            }
-        }
-        string _DIGESTIVESYS_MEMO;
-
-    }
-
-    [TableName("DOCTOR_HEMODIALYSIS_LOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOCTOR_HEMODIALYSIS_LOG : XEDB.Record<DOCTOR_HEMODIALYSIS_LOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string DOC_HMODSISLOG
-        {
-            get
-            {
-                return _DOC_HMODSISLOG;
-            }
-            set
-            {
-                _DOC_HMODSISLOG = value;
-                MarkColumnModified("DOC_HMODSISLOG");
-            }
-        }
-        string _DOC_HMODSISLOG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_DATE
-        {
-            get
-            {
-                return _LOG_DATE;
-            }
-            set
-            {
-                _LOG_DATE = value;
-                MarkColumnModified("LOG_DATE");
-            }
-        }
-        DateTime _LOG_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string CASE_HISTORY_ID
-        {
-            get
-            {
-                return _CASE_HISTORY_ID;
-            }
-            set
-            {
-                _CASE_HISTORY_ID = value;
-                MarkColumnModified("CASE_HISTORY_ID");
-            }
-        }
-        string _CASE_HISTORY_ID;
-
-    }
-
-    [TableName("DOCTOR_LOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOCTOR_LOG : XEDB.Record<DOCTOR_LOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal _REG_ID;
-
-        [Column("DOCTOR_LOG")]
-        [ColumnAddtionInfoAttribute(DataType = "CLOB", Length = "4000", Scale = "", Precision = "")]
-        public string _DOCTOR_LOG
-        {
-            get
-            {
-                return __DOCTOR_LOG;
-            }
-            set
-            {
-                __DOCTOR_LOG = value;
-                MarkColumnModified("DOCTOR_LOG");
-            }
-        }
-        string __DOCTOR_LOG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_DATE
-        {
-            get
-            {
-                return _LOG_DATE;
-            }
-            set
-            {
-                _LOG_DATE = value;
-                MarkColumnModified("LOG_DATE");
-            }
-        }
-        DateTime _LOG_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("保存病历号ID, 方便从历史记录中检索到医嘱默认值.")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string CASE_HISTORY_ID
-        {
-            get
-            {
-                return _CASE_HISTORY_ID;
-            }
-            set
-            {
-                _CASE_HISTORY_ID = value;
-                MarkColumnModified("CASE_HISTORY_ID");
-            }
-        }
-        string _CASE_HISTORY_ID;
-
-    }
-
-    [TableName("DOC_ADVICE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOC_ADVICE : XEDB.Record<DOC_ADVICE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? ADVICE_TYPE
-        {
-            get
-            {
-                return _ADVICE_TYPE;
-            }
-            set
-            {
-                _ADVICE_TYPE = value;
-                MarkColumnModified("ADVICE_TYPE");
-            }
-        }
-        decimal? _ADVICE_TYPE;
-
-        [Column]
-        [Comments("材料名")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? M_NAME
-        {
-            get
-            {
-                return _M_NAME;
-            }
-            set
-            {
-                _M_NAME = value;
-                MarkColumnModified("M_NAME");
-            }
-        }
-        decimal? _M_NAME;
-
-        [Column]
-        [Comments("用量")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_AMOUNT
-        {
-            get
-            {
-                return _M_AMOUNT;
-            }
-            set
-            {
-                _M_AMOUNT = value;
-                MarkColumnModified("M_AMOUNT");
-            }
-        }
-        string _M_AMOUNT;
-
-        [Column]
-        [Comments("单位")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_UNIT
-        {
-            get
-            {
-                return _M_UNIT;
-            }
-            set
-            {
-                _M_UNIT = value;
-                MarkColumnModified("M_UNIT");
-            }
-        }
-        string _M_UNIT;
-
-        [Column]
-        [Comments("动作")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_ACTION
-        {
-            get
-            {
-                return _M_ACTION;
-            }
-            set
-            {
-                _M_ACTION = value;
-                MarkColumnModified("M_ACTION");
-            }
-        }
-        string _M_ACTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? IS_DEL
-        {
-            get
-            {
-                return _IS_DEL;
-            }
-            set
-            {
-                _IS_DEL = value;
-                MarkColumnModified("IS_DEL");
-            }
-        }
-        decimal? _IS_DEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DEL_TIME
-        {
-            get
-            {
-                return _DEL_TIME;
-            }
-            set
-            {
-                _DEL_TIME = value;
-                MarkColumnModified("DEL_TIME");
-            }
-        }
-        DateTime _DEL_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DEL_OPER
-        {
-            get
-            {
-                return _DEL_OPER;
-            }
-            set
-            {
-                _DEL_OPER = value;
-                MarkColumnModified("DEL_OPER");
-            }
-        }
-        string _DEL_OPER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DEF_ADV_ID
-        {
-            get
-            {
-                return _DEF_ADV_ID;
-            }
-            set
-            {
-                _DEF_ADV_ID = value;
-                MarkColumnModified("DEF_ADV_ID");
-            }
-        }
-        decimal? _DEF_ADV_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFDAY
-        {
-            get
-            {
-                return _RATEOFDAY;
-            }
-            set
-            {
-                _RATEOFDAY = value;
-                MarkColumnModified("RATEOFDAY");
-            }
-        }
-        decimal? _RATEOFDAY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFTIME
-        {
-            get
-            {
-                return _RATEOFTIME;
-            }
-            set
-            {
-                _RATEOFTIME = value;
-                MarkColumnModified("RATEOFTIME");
-            }
-        }
-        decimal? _RATEOFTIME;
-
-    }
-
-    [TableName("DOC_ADVICE_DFT")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOC_ADVICE_DFT : XEDB.Record<DOC_ADVICE_DFT>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? ADVICE_TYPE
-        {
-            get
-            {
-                return _ADVICE_TYPE;
-            }
-            set
-            {
-                _ADVICE_TYPE = value;
-                MarkColumnModified("ADVICE_TYPE");
-            }
-        }
-        decimal? _ADVICE_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? M_NAME
-        {
-            get
-            {
-                return _M_NAME;
-            }
-            set
-            {
-                _M_NAME = value;
-                MarkColumnModified("M_NAME");
-            }
-        }
-        decimal? _M_NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_AMOUNT
-        {
-            get
-            {
-                return _M_AMOUNT;
-            }
-            set
-            {
-                _M_AMOUNT = value;
-                MarkColumnModified("M_AMOUNT");
-            }
-        }
-        string _M_AMOUNT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_UNIT
-        {
-            get
-            {
-                return _M_UNIT;
-            }
-            set
-            {
-                _M_UNIT = value;
-                MarkColumnModified("M_UNIT");
-            }
-        }
-        string _M_UNIT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_ACTION
-        {
-            get
-            {
-                return _M_ACTION;
-            }
-            set
-            {
-                _M_ACTION = value;
-                MarkColumnModified("M_ACTION");
-            }
-        }
-        string _M_ACTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? IS_DEL
-        {
-            get
-            {
-                return _IS_DEL;
-            }
-            set
-            {
-                _IS_DEL = value;
-                MarkColumnModified("IS_DEL");
-            }
-        }
-        decimal? _IS_DEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DEL_TIME
-        {
-            get
-            {
-                return _DEL_TIME;
-            }
-            set
-            {
-                _DEL_TIME = value;
-                MarkColumnModified("DEL_TIME");
-            }
-        }
-        DateTime _DEL_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DEL_OPER
-        {
-            get
-            {
-                return _DEL_OPER;
-            }
-            set
-            {
-                _DEL_OPER = value;
-                MarkColumnModified("DEL_OPER");
-            }
-        }
-        string _DEL_OPER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFDAY
-        {
-            get
-            {
-                return _RATEOFDAY;
-            }
-            set
-            {
-                _RATEOFDAY = value;
-                MarkColumnModified("RATEOFDAY");
-            }
-        }
-        decimal? _RATEOFDAY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFTIME
-        {
-            get
-            {
-                return _RATEOFTIME;
-            }
-            set
-            {
-                _RATEOFTIME = value;
-                MarkColumnModified("RATEOFTIME");
-            }
-        }
-        decimal? _RATEOFTIME;
-
-    }
-
-    [TableName("DOC_ADVICE_DRUGS")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOC_ADVICE_DRUG : XEDB.Record<DOC_ADVICE_DRUG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [Comments("记录人")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [Comments("医嘱类型")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? ADVICE_TYPE
-        {
-            get
-            {
-                return _ADVICE_TYPE;
-            }
-            set
-            {
-                _ADVICE_TYPE = value;
-                MarkColumnModified("ADVICE_TYPE");
-            }
-        }
-        decimal? _ADVICE_TYPE;
-
-        [Column]
-        [Comments("药品名称")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? M_NAME
-        {
-            get
-            {
-                return _M_NAME;
-            }
-            set
-            {
-                _M_NAME = value;
-                MarkColumnModified("M_NAME");
-            }
-        }
-        decimal? _M_NAME;
-
-        [Column]
-        [Comments("药品用量")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_AMOUNT
-        {
-            get
-            {
-                return _M_AMOUNT;
-            }
-            set
-            {
-                _M_AMOUNT = value;
-                MarkColumnModified("M_AMOUNT");
-            }
-        }
-        string _M_AMOUNT;
-
-        [Column]
-        [Comments("单位")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_UNIT
-        {
-            get
-            {
-                return _M_UNIT;
-            }
-            set
-            {
-                _M_UNIT = value;
-                MarkColumnModified("M_UNIT");
-            }
-        }
-        string _M_UNIT;
-
-        [Column]
-        [Comments("使用方式")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_ACTION
-        {
-            get
-            {
-                return _M_ACTION;
-            }
-            set
-            {
-                _M_ACTION = value;
-                MarkColumnModified("M_ACTION");
-            }
-        }
-        string _M_ACTION;
-
-        [Column]
-        [Comments("备注")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [Comments("是否禁用")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? IS_DEL
-        {
-            get
-            {
-                return _IS_DEL;
-            }
-            set
-            {
-                _IS_DEL = value;
-                MarkColumnModified("IS_DEL");
-            }
-        }
-        decimal? _IS_DEL;
-
-        [Column]
-        [Comments("禁用时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DEL_TIME
-        {
-            get
-            {
-                return _DEL_TIME;
-            }
-            set
-            {
-                _DEL_TIME = value;
-                MarkColumnModified("DEL_TIME");
-            }
-        }
-        DateTime _DEL_TIME;
-
-        [Column]
-        [Comments("禁用人")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DEL_OPER
-        {
-            get
-            {
-                return _DEL_OPER;
-            }
-            set
-            {
-                _DEL_OPER = value;
-                MarkColumnModified("DEL_OPER");
-            }
-        }
-        string _DEL_OPER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DEF_ADV_ID
-        {
-            get
-            {
-                return _DEF_ADV_ID;
-            }
-            set
-            {
-                _DEF_ADV_ID = value;
-                MarkColumnModified("DEF_ADV_ID");
-            }
-        }
-        decimal? _DEF_ADV_ID;
-
-        [Column]
-        [Comments("间隔天数")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFDAY
-        {
-            get
-            {
-                return _RATEOFDAY;
-            }
-            set
-            {
-                _RATEOFDAY = value;
-                MarkColumnModified("RATEOFDAY");
-            }
-        }
-        decimal? _RATEOFDAY;
-
-        [Column]
-        [Comments("使用次数")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RATEOFTIME
-        {
-            get
-            {
-                return _RATEOFTIME;
-            }
-            set
-            {
-                _RATEOFTIME = value;
-                MarkColumnModified("RATEOFTIME");
-            }
-        }
-        decimal? _RATEOFTIME;
-
-    }
-
-    [TableName("DOSE_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DOSE_HISTORY : XEDB.Record<DOSE_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ACEI
-        {
-            get
-            {
-                return _ACEI;
-            }
-            set
-            {
-                _ACEI = value;
-                MarkColumnModified("ACEI");
-            }
-        }
-        string _ACEI;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ARB
-        {
-            get
-            {
-                return _ARB;
-            }
-            set
-            {
-                _ARB = value;
-                MarkColumnModified("ARB");
-            }
-        }
-        string _ARB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CCB
-        {
-            get
-            {
-                return _CCB;
-            }
-            set
-            {
-                _CCB = value;
-                MarkColumnModified("CCB");
-            }
-        }
-        string _CCB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string B_BLOCK
-        {
-            get
-            {
-                return _B_BLOCK;
-            }
-            set
-            {
-                _B_BLOCK = value;
-                MarkColumnModified("B_BLOCK");
-            }
-        }
-        string _B_BLOCK;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string LOW_LIPID
-        {
-            get
-            {
-                return _LOW_LIPID;
-            }
-            set
-            {
-                _LOW_LIPID = value;
-                MarkColumnModified("LOW_LIPID");
-            }
-        }
-        string _LOW_LIPID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string P
-        {
-            get
-            {
-                return _P;
-            }
-            set
-            {
-                _P = value;
-                MarkColumnModified("P");
-            }
-        }
-        string _P;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string V
-        {
-            get
-            {
-                return _V;
-            }
-            set
-            {
-                _V = value;
-                MarkColumnModified("V");
-            }
-        }
-        string _V;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string P_NAME
-        {
-            get
-            {
-                return _P_NAME;
-            }
-            set
-            {
-                _P_NAME = value;
-                MarkColumnModified("P_NAME");
-            }
-        }
-        string _P_NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string V_NAME
-        {
-            get
-            {
-                return _V_NAME;
-            }
-            set
-            {
-                _V_NAME = value;
-                MarkColumnModified("V_NAME");
-            }
-        }
-        string _V_NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EPQ
-        {
-            get
-            {
-                return _EPQ;
-            }
-            set
-            {
-                _EPQ = value;
-                MarkColumnModified("EPQ");
-            }
-        }
-        string _EPQ;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FE
-        {
-            get
-            {
-                return _FE;
-            }
-            set
-            {
-                _FE = value;
-                MarkColumnModified("FE");
-            }
-        }
-        string _FE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OTHER_1
-        {
-            get
-            {
-                return _OTHER_1;
-            }
-            set
-            {
-                _OTHER_1 = value;
-                MarkColumnModified("OTHER_1");
-            }
-        }
-        string _OTHER_1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-    }
-
-    [TableName("DRUG_ALLERGY_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class DRUG_ALLERGY_HISTORY : XEDB.Record<DRUG_ALLERGY_HISTORY>
-    {
-        [Column]
-        [Comments("肾前性")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string PRERENAL
-        {
-            get
-            {
-                return _PRERENAL;
-            }
-            set
-            {
-                _PRERENAL = value;
-                MarkColumnModified("PRERENAL");
-            }
-        }
-        string _PRERENAL;
-
-        [Column]
-        [Comments("肾实质性")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string RENAL_PARENCHYMAL
-        {
-            get
-            {
-                return _RENAL_PARENCHYMAL;
-            }
-            set
-            {
-                _RENAL_PARENCHYMAL = value;
-                MarkColumnModified("RENAL_PARENCHYMAL");
-            }
-        }
-        string _RENAL_PARENCHYMAL;
-
-        [Column]
-        [Comments("肾后性")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string POSTRENAL
-        {
-            get
-            {
-                return _POSTRENAL;
-            }
-            set
-            {
-                _POSTRENAL = value;
-                MarkColumnModified("POSTRENAL");
-            }
-        }
-        string _POSTRENAL;
-
-        [Column]
-        [Comments("病程")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? COS
-        {
-            get
-            {
-                return _COS;
-            }
-            set
-            {
-                _COS = value;
-                MarkColumnModified("COS");
-            }
-        }
-        decimal? _COS;
-
-        [Column]
-        [Comments("尿量")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? URINE
-        {
-            get
-            {
-                return _URINE;
-            }
-            set
-            {
-                _URINE = value;
-                MarkColumnModified("URINE");
-            }
-        }
-        decimal? _URINE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SER
-        {
-            get
-            {
-                return _SER;
-            }
-            set
-            {
-                _SER = value;
-                MarkColumnModified("SER");
-            }
-        }
-        decimal? _SER;
-
-        [Column]
-        [Comments("脏器衰弱")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ORGAN_WEAKNESS
-        {
-            get
-            {
-                return _ORGAN_WEAKNESS;
-            }
-            set
-            {
-                _ORGAN_WEAKNESS = value;
-                MarkColumnModified("ORGAN_WEAKNESS");
-            }
-        }
-        string _ORGAN_WEAKNESS;
-
-        [Column]
-        [Comments("感染")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string INFECTION
-        {
-            get
-            {
-                return _INFECTION;
-            }
-            set
-            {
-                _INFECTION = value;
-                MarkColumnModified("INFECTION");
-            }
-        }
-        string _INFECTION;
-
-        [Column]
-        [Comments("部位")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string POSITION
-        {
-            get
-            {
-                return _POSITION;
-            }
-            set
-            {
-                _POSITION = value;
-                MarkColumnModified("POSITION");
-            }
-        }
-        string _POSITION;
-
-        [Column]
-        [Comments("其他病史")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string OTHER_HIS
-        {
-            get
-            {
-                return _OTHER_HIS;
-            }
-            set
-            {
-                _OTHER_HIS = value;
-                MarkColumnModified("OTHER_HIS");
-            }
-        }
-        string _OTHER_HIS;
-
-        [Column]
-        [Comments("治疗经过")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string TREATMENT
-        {
-            get
-            {
-                return _TREATMENT;
-            }
-            set
-            {
-                _TREATMENT = value;
-                MarkColumnModified("TREATMENT");
-            }
-        }
-        string _TREATMENT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string PRERENAL_OTH
-        {
-            get
-            {
-                return _PRERENAL_OTH;
-            }
-            set
-            {
-                _PRERENAL_OTH = value;
-                MarkColumnModified("PRERENAL_OTH");
-            }
-        }
-        string _PRERENAL_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string RENAL_PARENCHYMAL_OTH
-        {
-            get
-            {
-                return _RENAL_PARENCHYMAL_OTH;
-            }
-            set
-            {
-                _RENAL_PARENCHYMAL_OTH = value;
-                MarkColumnModified("RENAL_PARENCHYMAL_OTH");
-            }
-        }
-        string _RENAL_PARENCHYMAL_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string POSTRENAL_OTH
-        {
-            get
-            {
-                return _POSTRENAL_OTH;
-            }
-            set
-            {
-                _POSTRENAL_OTH = value;
-                MarkColumnModified("POSTRENAL_OTH");
-            }
-        }
-        string _POSTRENAL_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1", Scale = "", Precision = "")]
-        public string URINE_CONTINUED
-        {
-            get
-            {
-                return _URINE_CONTINUED;
-            }
-            set
-            {
-                _URINE_CONTINUED = value;
-                MarkColumnModified("URINE_CONTINUED");
-            }
-        }
-        string _URINE_CONTINUED;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SER_OR
-        {
-            get
-            {
-                return _SER_OR;
-            }
-            set
-            {
-                _SER_OR = value;
-                MarkColumnModified("SER_OR");
-            }
-        }
-        decimal? _SER_OR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ORGAN_WEAKNESS_OTHER
-        {
-            get
-            {
-                return _ORGAN_WEAKNESS_OTHER;
-            }
-            set
-            {
-                _ORGAN_WEAKNESS_OTHER = value;
-                MarkColumnModified("ORGAN_WEAKNESS_OTHER");
-            }
-        }
-        string _ORGAN_WEAKNESS_OTHER;
-
-    }
-
-    [TableName("EVALUATE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class EVALUATE : XEDB.Record<EVALUATE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string CASE_HISTROY_ID
-        {
-            get
-            {
-                return _CASE_HISTROY_ID;
-            }
-            set
-            {
-                _CASE_HISTROY_ID = value;
-                MarkColumnModified("CASE_HISTROY_ID");
-            }
-        }
-        string _CASE_HISTROY_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_DATE
-        {
-            get
-            {
-                return _LOG_DATE;
-            }
-            set
-            {
-                _LOG_DATE = value;
-                MarkColumnModified("LOG_DATE");
-            }
-        }
-        DateTime _LOG_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-    }
-
-    [TableName("INDUCEMENT_CODE")]
-    [PrimaryKey("INDUCEMENT_ID")]
-    [ExplicitColumns]
-    public partial class INDUCEMENT_CODE : XEDB.Record<INDUCEMENT_CODE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal INDUCEMENT_ID
-        {
-            get
-            {
-                return _INDUCEMENT_ID;
-            }
-            set
-            {
-                _INDUCEMENT_ID = value;
-                MarkColumnModified("INDUCEMENT_ID");
-            }
-        }
-        decimal _INDUCEMENT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string INDUCEMENT_MEMO
-        {
-            get
-            {
-                return _INDUCEMENT_MEMO;
-            }
-            set
-            {
-                _INDUCEMENT_MEMO = value;
-                MarkColumnModified("INDUCEMENT_MEMO");
-            }
-        }
-        string _INDUCEMENT_MEMO;
-
-    }
-
-    [TableName("INDUCEMENT_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class INDUCEMENT_HISTORY : XEDB.Record<INDUCEMENT_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string INDUCEMENT
-        {
-            get
-            {
-                return _INDUCEMENT;
-            }
-            set
-            {
-                _INDUCEMENT = value;
-                MarkColumnModified("INDUCEMENT");
-            }
-        }
-        string _INDUCEMENT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-    }
-
-    [TableName("MACHINE_INFO")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MACHINE_INFO : XEDB.Record<MACHINE_INFO>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("序列号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SN
-        {
-            get
-            {
-                return _SN;
-            }
-            set
-            {
-                _SN = value;
-                MarkColumnModified("SN");
-            }
-        }
-        string _SN;
-
-        [Column]
-        [Comments("型号")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MODEL
-        {
-            get
-            {
-                return _MODEL;
-            }
-            set
-            {
-                _MODEL = value;
-                MarkColumnModified("MODEL");
-            }
-        }
-        decimal? _MODEL;
-
-        [Column]
-        [Comments("图片")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PICTURE_ID
-        {
-            get
-            {
-                return _PICTURE_ID;
-            }
-            set
-            {
-                _PICTURE_ID = value;
-                MarkColumnModified("PICTURE_ID");
-            }
-        }
-        decimal? _PICTURE_ID;
-
-        [Column]
-        [Comments("安装日期")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime INSTALLATION
-        {
-            get
-            {
-                return _INSTALLATION;
-            }
-            set
-            {
-                _INSTALLATION = value;
-                MarkColumnModified("INSTALLATION");
-            }
-        }
-        DateTime _INSTALLATION;
-
-        [Column]
-        [Comments("过保日期")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime OUTDATE
-        {
-            get
-            {
-                return _OUTDATE;
-            }
-            set
-            {
-                _OUTDATE = value;
-                MarkColumnModified("OUTDATE");
-            }
-        }
-        DateTime _OUTDATE;
-
-        [Column]
-        [Comments("机器类型")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACHINETYPE
-        {
-            get
-            {
-                return _MACHINETYPE;
-            }
-            set
-            {
-                _MACHINETYPE = value;
-                MarkColumnModified("MACHINETYPE");
-            }
-        }
-        decimal? _MACHINETYPE;
-
-        [Column]
-        [Comments("楼层")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FLOOR_ID
-        {
-            get
-            {
-                return _FLOOR_ID;
-            }
-            set
-            {
-                _FLOOR_ID = value;
-                MarkColumnModified("FLOOR_ID");
-            }
-        }
-        decimal? _FLOOR_ID;
-
-        [Column]
-        [Comments("区域")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AREA_ID
-        {
-            get
-            {
-                return _AREA_ID;
-            }
-            set
-            {
-                _AREA_ID = value;
-                MarkColumnModified("AREA_ID");
-            }
-        }
-        decimal? _AREA_ID;
-
-        [Column]
-        [Comments("床位")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "30", Scale = "", Precision = "")]
-        public string BED_NO
-        {
-            get
-            {
-                return _BED_NO;
-            }
-            set
-            {
-                _BED_NO = value;
-                MarkColumnModified("BED_NO");
-            }
-        }
-        string _BED_NO;
-
-        [Column]
-        [Comments("供应商")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SUPPLIERS
-        {
-            get
-            {
-                return _SUPPLIERS;
-            }
-            set
-            {
-                _SUPPLIERS = value;
-                MarkColumnModified("SUPPLIERS");
-            }
-        }
-        decimal? _SUPPLIERS;
-
-        [Column]
-        [Comments("价格")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PRICE
-        {
-            get
-            {
-                return _PRICE;
-            }
-            set
-            {
-                _PRICE = value;
-                MarkColumnModified("PRICE");
-            }
-        }
-        decimal? _PRICE;
-
-        [Column]
-        [Comments("备注")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [Comments("IP地址")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string COMMIP
-        {
-            get
-            {
-                return _COMMIP;
-            }
-            set
-            {
-                _COMMIP = value;
-                MarkColumnModified("COMMIP");
-            }
-        }
-        string _COMMIP;
-
-        [Column]
-        [Comments("通讯端口")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? COMMPORT
-        {
-            get
-            {
-                return _COMMPORT;
-            }
-            set
-            {
-                _COMMPORT = value;
-                MarkColumnModified("COMMPORT");
-            }
-        }
-        decimal? _COMMPORT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ISDEL
-        {
-            get
-            {
-                return _ISDEL;
-            }
-            set
-            {
-                _ISDEL = value;
-                MarkColumnModified("ISDEL");
-            }
-        }
-        decimal? _ISDEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DELTIME
-        {
-            get
-            {
-                return _DELTIME;
-            }
-            set
-            {
-                _DELTIME = value;
-                MarkColumnModified("DELTIME");
-            }
-        }
-        DateTime _DELTIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DELOPERATOR
-        {
-            get
-            {
-                return _DELOPERATOR;
-            }
-            set
-            {
-                _DELOPERATOR = value;
-                MarkColumnModified("DELOPERATOR");
-            }
-        }
-        string _DELOPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LAYOUT_ID
-        {
-            get
-            {
-                return _LAYOUT_ID;
-            }
-            set
-            {
-                _LAYOUT_ID = value;
-                MarkColumnModified("LAYOUT_ID");
-            }
-        }
-        decimal? _LAYOUT_ID;
-
-    }
-
-    [TableName("MACHINE_LAYOUT")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MACHINE_LAYOUT : XEDB.Record<MACHINE_LAYOUT>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FLOORID
-        {
-            get
-            {
-                return _FLOORID;
-            }
-            set
-            {
-                _FLOORID = value;
-                MarkColumnModified("FLOORID");
-            }
-        }
-        decimal? _FLOORID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AREAID
-        {
-            get
-            {
-                return _AREAID;
-            }
-            set
-            {
-                _AREAID = value;
-                MarkColumnModified("AREAID");
-            }
-        }
-        decimal? _AREAID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ROOMROWS
-        {
-            get
-            {
-                return _ROOMROWS;
-            }
-            set
-            {
-                _ROOMROWS = value;
-                MarkColumnModified("ROOMROWS");
-            }
-        }
-        decimal? _ROOMROWS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACHINECNT
-        {
-            get
-            {
-                return _MACHINECNT;
-            }
-            set
-            {
-                _MACHINECNT = value;
-                MarkColumnModified("MACHINECNT");
-            }
-        }
-        decimal? _MACHINECNT;
-
-    }
-
-    [TableName("MACHINE_SCHEDULE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MACHINE_SCHEDULE : XEDB.Record<MACHINE_SCHEDULE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FLOOR_ID
-        {
-            get
-            {
-                return _FLOOR_ID;
-            }
-            set
-            {
-                _FLOOR_ID = value;
-                MarkColumnModified("FLOOR_ID");
-            }
-        }
-        decimal? _FLOOR_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AREA_ID
-        {
-            get
-            {
-                return _AREA_ID;
-            }
-            set
-            {
-                _AREA_ID = value;
-                MarkColumnModified("AREA_ID");
-            }
-        }
-        decimal? _AREA_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime SCHEDULE_TIME
-        {
-            get
-            {
-                return _SCHEDULE_TIME;
-            }
-            set
-            {
-                _SCHEDULE_TIME = value;
-                MarkColumnModified("SCHEDULE_TIME");
-            }
-        }
-        DateTime _SCHEDULE_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SCHEEDULE_PERIOD
-        {
-            get
-            {
-                return _SCHEEDULE_PERIOD;
-            }
-            set
-            {
-                _SCHEEDULE_PERIOD = value;
-                MarkColumnModified("SCHEEDULE_PERIOD");
-            }
-        }
-        decimal? _SCHEEDULE_PERIOD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACHINE_STATUS
-        {
-            get
-            {
-                return _MACHINE_STATUS;
-            }
-            set
-            {
-                _MACHINE_STATUS = value;
-                MarkColumnModified("MACHINE_STATUS");
-            }
-        }
-        decimal? _MACHINE_STATUS;
-
-        [Column]
-        [Comments("签到时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime CHCKINTM
-        {
-            get
-            {
-                return _CHCKINTM;
-            }
-            set
-            {
-                _CHCKINTM = value;
-                MarkColumnModified("CHCKINTM");
-            }
-        }
-        DateTime _CHCKINTM;
-
-        [Column]
-        [Comments("预约时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime RESERVATION
-        {
-            get
-            {
-                return _RESERVATION;
-            }
-            set
-            {
-                _RESERVATION = value;
-                MarkColumnModified("RESERVATION");
-            }
-        }
-        DateTime _RESERVATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "30", Scale = "", Precision = "")]
-        public string BED_NO
-        {
-            get
-            {
-                return _BED_NO;
-            }
-            set
-            {
-                _BED_NO = value;
-                MarkColumnModified("BED_NO");
-            }
-        }
-        string _BED_NO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACHINE_INFO_ID
-        {
-            get
-            {
-                return _MACHINE_INFO_ID;
-            }
-            set
-            {
-                _MACHINE_INFO_ID = value;
-                MarkColumnModified("MACHINE_INFO_ID");
-            }
-        }
-        decimal? _MACHINE_INFO_ID;
-
-    }
-
-    [TableName("MACHINE_SCHEDULE_HIS")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MACHINE_SCHEDULE_HI : XEDB.Record<MACHINE_SCHEDULE_HI>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string FLOOR_ID
-        {
-            get
-            {
-                return _FLOOR_ID;
-            }
-            set
-            {
-                _FLOOR_ID = value;
-                MarkColumnModified("FLOOR_ID");
-            }
-        }
-        string _FLOOR_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string AREA_ID
-        {
-            get
-            {
-                return _AREA_ID;
-            }
-            set
-            {
-                _AREA_ID = value;
-                MarkColumnModified("AREA_ID");
-            }
-        }
-        string _AREA_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime SCHEDULE_TIME
-        {
-            get
-            {
-                return _SCHEDULE_TIME;
-            }
-            set
-            {
-                _SCHEDULE_TIME = value;
-                MarkColumnModified("SCHEDULE_TIME");
-            }
-        }
-        DateTime _SCHEDULE_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? SCHEEDULE_PERIOD
-        {
-            get
-            {
-                return _SCHEEDULE_PERIOD;
-            }
-            set
-            {
-                _SCHEEDULE_PERIOD = value;
-                MarkColumnModified("SCHEEDULE_PERIOD");
-            }
-        }
-        decimal? _SCHEEDULE_PERIOD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MACHINE_STATUS
-        {
-            get
-            {
-                return _MACHINE_STATUS;
-            }
-            set
-            {
-                _MACHINE_STATUS = value;
-                MarkColumnModified("MACHINE_STATUS");
-            }
-        }
-        decimal? _MACHINE_STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime CHCKINTM
-        {
-            get
-            {
-                return _CHCKINTM;
-            }
-            set
-            {
-                _CHCKINTM = value;
-                MarkColumnModified("CHCKINTM");
-            }
-        }
-        DateTime _CHCKINTM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime RESERVATION
-        {
-            get
-            {
-                return _RESERVATION;
-            }
-            set
-            {
-                _RESERVATION = value;
-                MarkColumnModified("RESERVATION");
-            }
-        }
-        DateTime _RESERVATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "30", Scale = "", Precision = "")]
-        public string BED_NO
-        {
-            get
-            {
-                return _BED_NO;
-            }
-            set
-            {
-                _BED_NO = value;
-                MarkColumnModified("BED_NO");
-            }
-        }
-        string _BED_NO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MACHINE_MODEL
-        {
-            get
-            {
-                return _MACHINE_MODEL;
-            }
-            set
-            {
-                _MACHINE_MODEL = value;
-                MarkColumnModified("MACHINE_MODEL");
-            }
-        }
-        string _MACHINE_MODEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string M_TYPE
-        {
-            get
-            {
-                return _M_TYPE;
-            }
-            set
-            {
-                _M_TYPE = value;
-                MarkColumnModified("M_TYPE");
-            }
-        }
-        string _M_TYPE;
-
-    }
-
-    [TableName("MACHINE_TYPE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MACHINE_TYPE : XEDB.Record<MACHINE_TYPE>
-    {
-        [Column]
-        [Comments("ID")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("型号")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MODEL
-        {
-            get
-            {
-                return _MODEL;
-            }
-            set
-            {
-                _MODEL = value;
-                MarkColumnModified("MODEL");
-            }
-        }
-        decimal? _MODEL;
-
-        [Column]
-        [Comments("类型")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? M_TYPE
-        {
-            get
-            {
-                return _M_TYPE;
-            }
-            set
-            {
-                _M_TYPE = value;
-                MarkColumnModified("M_TYPE");
-            }
-        }
-        decimal? _M_TYPE;
-
-        [Column]
-        [Comments("图片")]
-        [ColumnAddtionInfoAttribute(DataType = "BLOB", Length = "4000", Scale = "", Precision = "")]
-        public byte[] M_PICTURE
-        {
-            get
-            {
-                return _M_PICTURE;
-            }
-            set
-            {
-                _M_PICTURE = value;
-                MarkColumnModified("M_PICTURE");
-            }
-        }
-        byte[] _M_PICTURE;
-
-        [Column]
-        [Comments("备注")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "1000", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-    }
-
-    [TableName("MANGED_ODP_TEST")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class MANGED_ODP_TEST : XEDB.Record<MANGED_ODP_TEST>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ABC
-        {
-            get
-            {
-                return _ABC;
-            }
-            set
-            {
-                _ABC = value;
-                MarkColumnModified("ABC");
-            }
-        }
-        string _ABC;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OBJ_ID
-        {
-            get
-            {
-                return _OBJ_ID;
-            }
-            set
-            {
-                _OBJ_ID = value;
-                MarkColumnModified("OBJ_ID");
-            }
-        }
-        decimal? _OBJ_ID;
-
-    }
-
-    [TableName("NURSE_LOG")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class NURSE_LOG : XEDB.Record<NURSE_LOG>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal _REG_ID;
-
-        [Column("NURSE_LOG")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string _NURSE_LOG
-        {
-            get
-            {
-                return __NURSE_LOG;
-            }
-            set
-            {
-                __NURSE_LOG = value;
-                MarkColumnModified("NURSE_LOG");
-            }
-        }
-        string __NURSE_LOG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_DATE
-        {
-            get
-            {
-                return _LOG_DATE;
-            }
-            set
-            {
-                _LOG_DATE = value;
-                MarkColumnModified("LOG_DATE");
-            }
-        }
-        DateTime _LOG_DATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "40", Scale = "", Precision = "")]
-        public string CASE_HISTORY_ID
-        {
-            get
-            {
-                return _CASE_HISTORY_ID;
-            }
-            set
-            {
-                _CASE_HISTORY_ID = value;
-                MarkColumnModified("CASE_HISTORY_ID");
-            }
-        }
-        string _CASE_HISTORY_ID;
-
-    }
-
-    [TableName("OUTPATIENT_CATEGORY")]
-    [PrimaryKey("CATEGORY_ID")]
-    [ExplicitColumns]
-    public partial class OUTPATIENT_CATEGORY : XEDB.Record<OUTPATIENT_CATEGORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal CATEGORY_ID
-        {
-            get
-            {
-                return _CATEGORY_ID;
-            }
-            set
-            {
-                _CATEGORY_ID = value;
-                MarkColumnModified("CATEGORY_ID");
-            }
-        }
-        decimal _CATEGORY_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CATEGORY_NAME
-        {
-            get
-            {
-                return _CATEGORY_NAME;
-            }
-            set
-            {
-                _CATEGORY_NAME = value;
-                MarkColumnModified("CATEGORY_NAME");
-            }
-        }
-        string _CATEGORY_NAME;
-
-    }
-
-    [TableName("PATIENT_BASEINFO")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class PATIENT_BASEINFO : XEDB.Record<PATIENT_BASEINFO>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        string _NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime DATEOFBTH
-        {
-            get
-            {
-                return _DATEOFBTH;
-            }
-            set
-            {
-                _DATEOFBTH = value;
-                MarkColumnModified("DATEOFBTH");
-            }
-        }
-        DateTime _DATEOFBTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "5", Scale = "", Precision = "")]
-        public string SEX
-        {
-            get
-            {
-                return _SEX;
-            }
-            set
-            {
-                _SEX = value;
-                MarkColumnModified("SEX");
-            }
-        }
-        string _SEX;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string TEL
-        {
-            get
-            {
-                return _TEL;
-            }
-            set
-            {
-                _TEL = value;
-                MarkColumnModified("TEL");
-            }
-        }
-        string _TEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime CREATE_TIME
-        {
-            get
-            {
-                return _CREATE_TIME;
-            }
-            set
-            {
-                _CREATE_TIME = value;
-                MarkColumnModified("CREATE_TIME");
-            }
-        }
-        DateTime _CREATE_TIME;
-
-        [Column]
-        [Comments("首次透析时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime FIRSTANA
-        {
-            get
-            {
-                return _FIRSTANA;
-            }
-            set
-            {
-                _FIRSTANA = value;
-                MarkColumnModified("FIRSTANA");
-            }
-        }
-        DateTime _FIRSTANA;
-
-        [Column]
-        [Comments("关系")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string RELATION
-        {
-            get
-            {
-                return _RELATION;
-            }
-            set
-            {
-                _RELATION = value;
-                MarkColumnModified("RELATION");
-            }
-        }
-        string _RELATION;
-
-        [Column]
-        [Comments("家庭成员")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string FAMILY_MEMBERNAME
-        {
-            get
-            {
-                return _FAMILY_MEMBERNAME;
-            }
-            set
-            {
-                _FAMILY_MEMBERNAME = value;
-                MarkColumnModified("FAMILY_MEMBERNAME");
-            }
-        }
-        string _FAMILY_MEMBERNAME;
-
-        [Column]
-        [Comments("民族")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string NATION
-        {
-            get
-            {
-                return _NATION;
-            }
-            set
-            {
-                _NATION = value;
-                MarkColumnModified("NATION");
-            }
-        }
-        string _NATION;
-
-        [Column]
-        [Comments("身份证号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ID_CODE
-        {
-            get
-            {
-                return _ID_CODE;
-            }
-            set
-            {
-                _ID_CODE = value;
-                MarkColumnModified("ID_CODE");
-            }
-        }
-        string _ID_CODE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ADDRESS
-        {
-            get
-            {
-                return _ADDRESS;
-            }
-            set
-            {
-                _ADDRESS = value;
-                MarkColumnModified("ADDRESS");
-            }
-        }
-        string _ADDRESS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PAYTYPE
-        {
-            get
-            {
-                return _PAYTYPE;
-            }
-            set
-            {
-                _PAYTYPE = value;
-                MarkColumnModified("PAYTYPE");
-            }
-        }
-        string _PAYTYPE;
-
-        [Column]
-        [Comments("住院号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string HOSPITAL_NUMBER
-        {
-            get
-            {
-                return _HOSPITAL_NUMBER;
-            }
-            set
-            {
-                _HOSPITAL_NUMBER = value;
-                MarkColumnModified("HOSPITAL_NUMBER");
-            }
-        }
-        string _HOSPITAL_NUMBER;
-
-        [Column]
-        [Comments("门诊号")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PATIENT_NUMBER
-        {
-            get
-            {
-                return _PATIENT_NUMBER;
-            }
-            set
-            {
-                _PATIENT_NUMBER = value;
-                MarkColumnModified("PATIENT_NUMBER");
-            }
-        }
-        string _PATIENT_NUMBER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string PROFESSION
-        {
-            get
-            {
-                return _PROFESSION;
-            }
-            set
-            {
-                _PROFESSION = value;
-                MarkColumnModified("PROFESSION");
-            }
-        }
-        string _PROFESSION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EMERGENCY_TEL1
-        {
-            get
-            {
-                return _EMERGENCY_TEL1;
-            }
-            set
-            {
-                _EMERGENCY_TEL1 = value;
-                MarkColumnModified("EMERGENCY_TEL1");
-            }
-        }
-        string _EMERGENCY_TEL1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MARITAL_STATUS
-        {
-            get
-            {
-                return _MARITAL_STATUS;
-            }
-            set
-            {
-                _MARITAL_STATUS = value;
-                MarkColumnModified("MARITAL_STATUS");
-            }
-        }
-        decimal? _MARITAL_STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? EDUCATIONAL_LEVEL
-        {
-            get
-            {
-                return _EDUCATIONAL_LEVEL;
-            }
-            set
-            {
-                _EDUCATIONAL_LEVEL = value;
-                MarkColumnModified("EDUCATIONAL_LEVEL");
-            }
-        }
-        decimal? _EDUCATIONAL_LEVEL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? MEDICARE_TYPE
-        {
-            get
-            {
-                return _MEDICARE_TYPE;
-            }
-            set
-            {
-                _MEDICARE_TYPE = value;
-                MarkColumnModified("MEDICARE_TYPE");
-            }
-        }
-        decimal? _MEDICARE_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEDICARE_CODE
-        {
-            get
-            {
-                return _MEDICARE_CODE;
-            }
-            set
-            {
-                _MEDICARE_CODE = value;
-                MarkColumnModified("MEDICARE_CODE");
-            }
-        }
-        string _MEDICARE_CODE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EMERGENCY_CONTACT1
-        {
-            get
-            {
-                return _EMERGENCY_CONTACT1;
-            }
-            set
-            {
-                _EMERGENCY_CONTACT1 = value;
-                MarkColumnModified("EMERGENCY_CONTACT1");
-            }
-        }
-        string _EMERGENCY_CONTACT1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EMERGENCY_CONTACT2
-        {
-            get
-            {
-                return _EMERGENCY_CONTACT2;
-            }
-            set
-            {
-                _EMERGENCY_CONTACT2 = value;
-                MarkColumnModified("EMERGENCY_CONTACT2");
-            }
-        }
-        string _EMERGENCY_CONTACT2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RELATIONSHIP1
-        {
-            get
-            {
-                return _RELATIONSHIP1;
-            }
-            set
-            {
-                _RELATIONSHIP1 = value;
-                MarkColumnModified("RELATIONSHIP1");
-            }
-        }
-        decimal? _RELATIONSHIP1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? RELATIONSHIP2
-        {
-            get
-            {
-                return _RELATIONSHIP2;
-            }
-            set
-            {
-                _RELATIONSHIP2 = value;
-                MarkColumnModified("RELATIONSHIP2");
-            }
-        }
-        decimal? _RELATIONSHIP2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string EMERGENCY_TEL2
-        {
-            get
-            {
-                return _EMERGENCY_TEL2;
-            }
-            set
-            {
-                _EMERGENCY_TEL2 = value;
-                MarkColumnModified("EMERGENCY_TEL2");
-            }
-        }
-        string _EMERGENCY_TEL2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CYCLE
-        {
-            get
-            {
-                return _CYCLE;
-            }
-            set
-            {
-                _CYCLE = value;
-                MarkColumnModified("CYCLE");
-            }
-        }
-        decimal? _CYCLE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "3")]
-        public Int16? HEIGHT
-        {
-            get
-            {
-                return _HEIGHT;
-            }
-            set
-            {
-                _HEIGHT = value;
-                MarkColumnModified("HEIGHT");
-            }
-        }
-        Int16? _HEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "2", Precision = "5")]
-        public Single? WEIGHT
-        {
-            get
-            {
-                return _WEIGHT;
-            }
-            set
-            {
-                _WEIGHT = value;
-                MarkColumnModified("WEIGHT");
-            }
-        }
-        Single? _WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "5")]
-        public Int32? BLOOD_TYPE
-        {
-            get
-            {
-                return _BLOOD_TYPE;
-            }
-            set
-            {
-                _BLOOD_TYPE = value;
-                MarkColumnModified("BLOOD_TYPE");
-            }
-        }
-        Int32? _BLOOD_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "5")]
-        public Int32? LIFE_STATUS
-        {
-            get
-            {
-                return _LIFE_STATUS;
-            }
-            set
-            {
-                _LIFE_STATUS = value;
-                MarkColumnModified("LIFE_STATUS");
-            }
-        }
-        Int32? _LIFE_STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime IN_DATE
-        {
-            get
-            {
-                return _IN_DATE;
-            }
-            set
-            {
-                _IN_DATE = value;
-                MarkColumnModified("IN_DATE");
-            }
-        }
-        DateTime _IN_DATE;
-
-    }
-
-    [TableName("PATIENT_COURSE")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class PATIENT_COURSE : XEDB.Record<PATIENT_COURSE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "20", Scale = "", Precision = "")]
-        public string ANA_TYPE
-        {
-            get
-            {
-                return _ANA_TYPE;
-            }
-            set
-            {
-                _ANA_TYPE = value;
-                MarkColumnModified("ANA_TYPE");
-            }
-        }
-        string _ANA_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HD_TIMES
-        {
-            get
-            {
-                return _HD_TIMES;
-            }
-            set
-            {
-                _HD_TIMES = value;
-                MarkColumnModified("HD_TIMES");
-            }
-        }
-        decimal? _HD_TIMES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HDF_TIMES
-        {
-            get
-            {
-                return _HDF_TIMES;
-            }
-            set
-            {
-                _HDF_TIMES = value;
-                MarkColumnModified("HDF_TIMES");
-            }
-        }
-        decimal? _HDF_TIMES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HDF_H_TIMES
-        {
-            get
-            {
-                return _HDF_H_TIMES;
-            }
-            set
-            {
-                _HDF_H_TIMES = value;
-                MarkColumnModified("HDF_H_TIMES");
-            }
-        }
-        decimal? _HDF_H_TIMES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "10", Scale = "", Precision = "")]
-        public string ARTERY_LEFT_RIGHT
-        {
-            get
-            {
-                return _ARTERY_LEFT_RIGHT;
-            }
-            set
-            {
-                _ARTERY_LEFT_RIGHT = value;
-                MarkColumnModified("ARTERY_LEFT_RIGHT");
-            }
-        }
-        string _ARTERY_LEFT_RIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PATH_TYPE
-        {
-            get
-            {
-                return _PATH_TYPE;
-            }
-            set
-            {
-                _PATH_TYPE = value;
-                MarkColumnModified("PATH_TYPE");
-            }
-        }
-        decimal? _PATH_TYPE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEPARIN_FIRST
-        {
-            get
-            {
-                return _HEPARIN_FIRST;
-            }
-            set
-            {
-                _HEPARIN_FIRST = value;
-                MarkColumnModified("HEPARIN_FIRST");
-            }
-        }
-        decimal? _HEPARIN_FIRST;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HEPARIN_FIRST_ADD
-        {
-            get
-            {
-                return _HEPARIN_FIRST_ADD;
-            }
-            set
-            {
-                _HEPARIN_FIRST_ADD = value;
-                MarkColumnModified("HEPARIN_FIRST_ADD");
-            }
-        }
-        decimal? _HEPARIN_FIRST_ADD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? LOW_MOLECULAR
-        {
-            get
-            {
-                return _LOW_MOLECULAR;
-            }
-            set
-            {
-                _LOW_MOLECULAR = value;
-                MarkColumnModified("LOW_MOLECULAR");
-            }
-        }
-        decimal? _LOW_MOLECULAR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? ANA_MACHINE
-        {
-            get
-            {
-                return _ANA_MACHINE;
-            }
-            set
-            {
-                _ANA_MACHINE = value;
-                MarkColumnModified("ANA_MACHINE");
-            }
-        }
-        decimal? _ANA_MACHINE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ANA_MACHINE_OTH
-        {
-            get
-            {
-                return _ANA_MACHINE_OTH;
-            }
-            set
-            {
-                _ANA_MACHINE_OTH = value;
-                MarkColumnModified("ANA_MACHINE_OTH");
-            }
-        }
-        string _ANA_MACHINE_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? DRY_WEIGHT
-        {
-            get
-            {
-                return _DRY_WEIGHT;
-            }
-            set
-            {
-                _DRY_WEIGHT = value;
-                MarkColumnModified("DRY_WEIGHT");
-            }
-        }
-        decimal? _DRY_WEIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DRY_WEIGHT_BEF
-        {
-            get
-            {
-                return _DRY_WEIGHT_BEF;
-            }
-            set
-            {
-                _DRY_WEIGHT_BEF = value;
-                MarkColumnModified("DRY_WEIGHT_BEF");
-            }
-        }
-        string _DRY_WEIGHT_BEF;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SYMPTOM
-        {
-            get
-            {
-                return _SYMPTOM;
-            }
-            set
-            {
-                _SYMPTOM = value;
-                MarkColumnModified("SYMPTOM");
-            }
-        }
-        string _SYMPTOM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BLOOD_PRESSURE_CONTROL
-        {
-            get
-            {
-                return _BLOOD_PRESSURE_CONTROL;
-            }
-            set
-            {
-                _BLOOD_PRESSURE_CONTROL = value;
-                MarkColumnModified("BLOOD_PRESSURE_CONTROL");
-            }
-        }
-        string _BLOOD_PRESSURE_CONTROL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_PRESSURE1
-        {
-            get
-            {
-                return _BLOOD_PRESSURE1;
-            }
-            set
-            {
-                _BLOOD_PRESSURE1 = value;
-                MarkColumnModified("BLOOD_PRESSURE1");
-            }
-        }
-        decimal? _BLOOD_PRESSURE1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_PRESSURE2
-        {
-            get
-            {
-                return _BLOOD_PRESSURE2;
-            }
-            set
-            {
-                _BLOOD_PRESSURE2 = value;
-                MarkColumnModified("BLOOD_PRESSURE2");
-            }
-        }
-        decimal? _BLOOD_PRESSURE2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_PRESSURE3
-        {
-            get
-            {
-                return _BLOOD_PRESSURE3;
-            }
-            set
-            {
-                _BLOOD_PRESSURE3 = value;
-                MarkColumnModified("BLOOD_PRESSURE3");
-            }
-        }
-        decimal? _BLOOD_PRESSURE3;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_PRESSURE4
-        {
-            get
-            {
-                return _BLOOD_PRESSURE4;
-            }
-            set
-            {
-                _BLOOD_PRESSURE4 = value;
-                MarkColumnModified("BLOOD_PRESSURE4");
-            }
-        }
-        decimal? _BLOOD_PRESSURE4;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CAPACITY_CONTROL
-        {
-            get
-            {
-                return _CAPACITY_CONTROL;
-            }
-            set
-            {
-                _CAPACITY_CONTROL = value;
-                MarkColumnModified("CAPACITY_CONTROL");
-            }
-        }
-        string _CAPACITY_CONTROL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CAPACITY
-        {
-            get
-            {
-                return _CAPACITY;
-            }
-            set
-            {
-                _CAPACITY = value;
-                MarkColumnModified("CAPACITY");
-            }
-        }
-        decimal? _CAPACITY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CAPACITY_PROPORTION
-        {
-            get
-            {
-                return _CAPACITY_PROPORTION;
-            }
-            set
-            {
-                _CAPACITY_PROPORTION = value;
-                MarkColumnModified("CAPACITY_PROPORTION");
-            }
-        }
-        decimal? _CAPACITY_PROPORTION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string VASCULAR_ACCESS_STAT
-        {
-            get
-            {
-                return _VASCULAR_ACCESS_STAT;
-            }
-            set
-            {
-                _VASCULAR_ACCESS_STAT = value;
-                MarkColumnModified("VASCULAR_ACCESS_STAT");
-            }
-        }
-        string _VASCULAR_ACCESS_STAT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BLOOD_FLOW
-        {
-            get
-            {
-                return _BLOOD_FLOW;
-            }
-            set
-            {
-                _BLOOD_FLOW = value;
-                MarkColumnModified("BLOOD_FLOW");
-            }
-        }
-        decimal? _BLOOD_FLOW;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MAJOR_DISCOMFORT_HANDLING
-        {
-            get
-            {
-                return _MAJOR_DISCOMFORT_HANDLING;
-            }
-            set
-            {
-                _MAJOR_DISCOMFORT_HANDLING = value;
-                MarkColumnModified("MAJOR_DISCOMFORT_HANDLING");
-            }
-        }
-        string _MAJOR_DISCOMFORT_HANDLING;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO1
-        {
-            get
-            {
-                return _MEMO1;
-            }
-            set
-            {
-                _MEMO1 = value;
-                MarkColumnModified("MEMO1");
-            }
-        }
-        string _MEMO1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO2
-        {
-            get
-            {
-                return _MEMO2;
-            }
-            set
-            {
-                _MEMO2 = value;
-                MarkColumnModified("MEMO2");
-            }
-        }
-        string _MEMO2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIALYSIS_GENERAL
-        {
-            get
-            {
-                return _DIALYSIS_GENERAL;
-            }
-            set
-            {
-                _DIALYSIS_GENERAL = value;
-                MarkColumnModified("DIALYSIS_GENERAL");
-            }
-        }
-        string _DIALYSIS_GENERAL;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? URR
-        {
-            get
-            {
-                return _URR;
-            }
-            set
-            {
-                _URR = value;
-                MarkColumnModified("URR");
-            }
-        }
-        decimal? _URR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? KT_V
-        {
-            get
-            {
-                return _KT_V;
-            }
-            set
-            {
-                _KT_V = value;
-                MarkColumnModified("KT_V");
-            }
-        }
-        decimal? _KT_V;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_SYSTEM
-        {
-            get
-            {
-                return _CARDIOVASCULAR_SYSTEM;
-            }
-            set
-            {
-                _CARDIOVASCULAR_SYSTEM = value;
-                MarkColumnModified("CARDIOVASCULAR_SYSTEM");
-            }
-        }
-        string _CARDIOVASCULAR_SYSTEM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_SYSTEM_OTH
-        {
-            get
-            {
-                return _CARDIOVASCULAR_SYSTEM_OTH;
-            }
-            set
-            {
-                _CARDIOVASCULAR_SYSTEM_OTH = value;
-                MarkColumnModified("CARDIOVASCULAR_SYSTEM_OTH");
-            }
-        }
-        string _CARDIOVASCULAR_SYSTEM_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string ANTIHYPERTENSIVE_DRUGS
-        {
-            get
-            {
-                return _ANTIHYPERTENSIVE_DRUGS;
-            }
-            set
-            {
-                _ANTIHYPERTENSIVE_DRUGS = value;
-                MarkColumnModified("ANTIHYPERTENSIVE_DRUGS");
-            }
-        }
-        string _ANTIHYPERTENSIVE_DRUGS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string BLOOD_SYSTEM
-        {
-            get
-            {
-                return _BLOOD_SYSTEM;
-            }
-            set
-            {
-                _BLOOD_SYSTEM = value;
-                MarkColumnModified("BLOOD_SYSTEM");
-            }
-        }
-        string _BLOOD_SYSTEM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? HB
-        {
-            get
-            {
-                return _HB;
-            }
-            set
-            {
-                _HB = value;
-                MarkColumnModified("HB");
-            }
-        }
-        decimal? _HB;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? EPO
-        {
-            get
-            {
-                return _EPO;
-            }
-            set
-            {
-                _EPO = value;
-                MarkColumnModified("EPO");
-            }
-        }
-        decimal? _EPO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? EPO_TIMES
-        {
-            get
-            {
-                return _EPO_TIMES;
-            }
-            set
-            {
-                _EPO_TIMES = value;
-                MarkColumnModified("EPO_TIMES");
-            }
-        }
-        decimal? _EPO_TIMES;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string EPO_TIMES_OTH
-        {
-            get
-            {
-                return _EPO_TIMES_OTH;
-            }
-            set
-            {
-                _EPO_TIMES_OTH = value;
-                MarkColumnModified("EPO_TIMES_OTH");
-            }
-        }
-        string _EPO_TIMES_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string IRON_DEFICIENCY
-        {
-            get
-            {
-                return _IRON_DEFICIENCY;
-            }
-            set
-            {
-                _IRON_DEFICIENCY = value;
-                MarkColumnModified("IRON_DEFICIENCY");
-            }
-        }
-        string _IRON_DEFICIENCY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FERRITIN
-        {
-            get
-            {
-                return _FERRITIN;
-            }
-            set
-            {
-                _FERRITIN = value;
-                MarkColumnModified("FERRITIN");
-            }
-        }
-        decimal? _FERRITIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? TRANSFERRIN_SATURATION
-        {
-            get
-            {
-                return _TRANSFERRIN_SATURATION;
-            }
-            set
-            {
-                _TRANSFERRIN_SATURATION = value;
-                MarkColumnModified("TRANSFERRIN_SATURATION");
-            }
-        }
-        decimal? _TRANSFERRIN_SATURATION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CALCIUM
-        {
-            get
-            {
-                return _CALCIUM;
-            }
-            set
-            {
-                _CALCIUM = value;
-                MarkColumnModified("CALCIUM");
-            }
-        }
-        decimal? _CALCIUM;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? P
-        {
-            get
-            {
-                return _P;
-            }
-            set
-            {
-                _P = value;
-                MarkColumnModified("P");
-            }
-        }
-        decimal? _P;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PTH
-        {
-            get
-            {
-                return _PTH;
-            }
-            set
-            {
-                _PTH = value;
-                MarkColumnModified("PTH");
-            }
-        }
-        decimal? _PTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string HEPATITIS_INDICATORS
-        {
-            get
-            {
-                return _HEPATITIS_INDICATORS;
-            }
-            set
-            {
-                _HEPATITIS_INDICATORS = value;
-                MarkColumnModified("HEPATITIS_INDICATORS");
-            }
-        }
-        string _HEPATITIS_INDICATORS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? GPT
-        {
-            get
-            {
-                return _GPT;
-            }
-            set
-            {
-                _GPT = value;
-                MarkColumnModified("GPT");
-            }
-        }
-        decimal? _GPT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? GOT
-        {
-            get
-            {
-                return _GOT;
-            }
-            set
-            {
-                _GOT = value;
-                MarkColumnModified("GOT");
-            }
-        }
-        decimal? _GOT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO_SPECIAL_CONDITION
-        {
-            get
-            {
-                return _MEMO_SPECIAL_CONDITION;
-            }
-            set
-            {
-                _MEMO_SPECIAL_CONDITION = value;
-                MarkColumnModified("MEMO_SPECIAL_CONDITION");
-            }
-        }
-        string _MEMO_SPECIAL_CONDITION;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO_FUTURE
-        {
-            get
-            {
-                return _MEMO_FUTURE;
-            }
-            set
-            {
-                _MEMO_FUTURE = value;
-                MarkColumnModified("MEMO_FUTURE");
-            }
-        }
-        string _MEMO_FUTURE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime BACK1
-        {
-            get
-            {
-                return _BACK1;
-            }
-            set
-            {
-                _BACK1 = value;
-                MarkColumnModified("BACK1");
-            }
-        }
-        DateTime _BACK1;
-
-    }
-
-    [TableName("PATIENT_COURSE_SPECIAL")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class PATIENT_COURSE_SPECIAL : XEDB.Record<PATIENT_COURSE_SPECIAL>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [Comments("记录时间")]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PT_ID
-        {
-            get
-            {
-                return _PT_ID;
-            }
-            set
-            {
-                _PT_ID = value;
-                MarkColumnModified("PT_ID");
-            }
-        }
-        decimal? _PT_ID;
-
-        [Column]
-        [Comments("手术操作记录")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO1
-        {
-            get
-            {
-                return _MEMO1;
-            }
-            set
-            {
-                _MEMO1 = value;
-                MarkColumnModified("MEMO1");
-            }
-        }
-        string _MEMO1;
-
-        [Column]
-        [Comments("住院病情记录")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO2
-        {
-            get
-            {
-                return _MEMO2;
-            }
-            set
-            {
-                _MEMO2 = value;
-                MarkColumnModified("MEMO2");
-            }
-        }
-        string _MEMO2;
-
-        [Column]
-        [Comments("特殊病情记录")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO3
-        {
-            get
-            {
-                return _MEMO3;
-            }
-            set
-            {
-                _MEMO3 = value;
-                MarkColumnModified("MEMO3");
-            }
-        }
-        string _MEMO3;
-
-        [Column]
-        [Comments("抢救记录")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO4
-        {
-            get
-            {
-                return _MEMO4;
-            }
-            set
-            {
-                _MEMO4 = value;
-                MarkColumnModified("MEMO4");
-            }
-        }
-        string _MEMO4;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "2000", Scale = "", Precision = "")]
-        public string MEMO5
-        {
-            get
-            {
-                return _MEMO5;
-            }
-            set
-            {
-                _MEMO5 = value;
-                MarkColumnModified("MEMO5");
-            }
-        }
-        string _MEMO5;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime BACKUP1
-        {
-            get
-            {
-                return _BACKUP1;
-            }
-            set
-            {
-                _BACKUP1 = value;
-                MarkColumnModified("BACKUP1");
-            }
-        }
-        DateTime _BACKUP1;
-
-    }
-
-    [TableName("PATIENT_REGIST")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class PATIENT_REGIST : XEDB.Record<PATIENT_REGIST>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string NAME
-        {
-            get
-            {
-                return _NAME;
-            }
-            set
-            {
-                _NAME = value;
-                MarkColumnModified("NAME");
-            }
-        }
-        string _NAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? AGE
-        {
-            get
-            {
-                return _AGE;
-            }
-            set
-            {
-                _AGE = value;
-                MarkColumnModified("AGE");
-            }
-        }
-        decimal? _AGE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "5", Scale = "", Precision = "")]
-        public string SEX
-        {
-            get
-            {
-                return _SEX;
-            }
-            set
-            {
-                _SEX = value;
-                MarkColumnModified("SEX");
-            }
-        }
-        string _SEX;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DEPT
-        {
-            get
-            {
-                return _DEPT;
-            }
-            set
-            {
-                _DEPT = value;
-                MarkColumnModified("DEPT");
-            }
-        }
-        string _DEPT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? OUTPATIENT_CATEGORY
-        {
-            get
-            {
-                return _OUTPATIENT_CATEGORY;
-            }
-            set
-            {
-                _OUTPATIENT_CATEGORY = value;
-                MarkColumnModified("OUTPATIENT_CATEGORY");
-            }
-        }
-        decimal? _OUTPATIENT_CATEGORY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? PRICE
-        {
-            get
-            {
-                return _PRICE;
-            }
-            set
-            {
-                _PRICE = value;
-                MarkColumnModified("PRICE");
-            }
-        }
-        decimal? _PRICE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime CREATEDATE
-        {
-            get
-            {
-                return _CREATEDATE;
-            }
-            set
-            {
-                _CREATEDATE = value;
-                MarkColumnModified("CREATEDATE");
-            }
-        }
-        DateTime _CREATEDATE;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string INVOICE_NUMBER
-        {
-            get
-            {
-                return _INVOICE_NUMBER;
-            }
-            set
-            {
-                _INVOICE_NUMBER = value;
-                MarkColumnModified("INVOICE_NUMBER");
-            }
-        }
-        string _INVOICE_NUMBER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIALYSIS_ID
-        {
-            get
-            {
-                return _DIALYSIS_ID;
-            }
-            set
-            {
-                _DIALYSIS_ID = value;
-                MarkColumnModified("DIALYSIS_ID");
-            }
-        }
-        string _DIALYSIS_ID;
-
-        [Column]
-        [Comments("0:病人注册 -> 完善病历-> 完善药物过敏史-> 医生医嘱1:完成医生医嘱 ->完善病历-> 完善药物过敏史-> 护士记录 -> 透析过程记录2:完成本次医院 ->完善病历-> 完善药物过敏史-> 透析评估3:完成透析评估")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? STATUS
-        {
-            get
-            {
-                return _STATUS;
-            }
-            set
-            {
-                _STATUS = value;
-                MarkColumnModified("STATUS");
-            }
-        }
-        decimal? _STATUS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? INNSER_SORT
-        {
-            get
-            {
-                return _INNSER_SORT;
-            }
-            set
-            {
-                _INNSER_SORT = value;
-                MarkColumnModified("INNSER_SORT");
-            }
-        }
-        decimal? _INNSER_SORT;
-
-    }
-
-    [TableName("REG_STATUS")]
-    [PrimaryKey("STATUS_ID")]
-    [ExplicitColumns]
-    public partial class REG_STATUS : XEDB.Record<REG_STATUS>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal STATUS_ID
-        {
-            get
-            {
-                return _STATUS_ID;
-            }
-            set
-            {
-                _STATUS_ID = value;
-                MarkColumnModified("STATUS_ID");
-            }
-        }
-        decimal _STATUS_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string STATUS_MEMO
-        {
-            get
-            {
-                return _STATUS_MEMO;
-            }
-            set
-            {
-                _STATUS_MEMO = value;
-                MarkColumnModified("STATUS_MEMO");
-            }
-        }
-        string _STATUS_MEMO;
-
-    }
-
-    [TableName("RENAL_REPLACEMENT_THERAPY_HIS")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class RENAL_REPLACEMENT_THERAPY_HI : XEDB.Record<RENAL_REPLACEMENT_THERAPY_HI>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime FRIST_ANA
-        {
-            get
-            {
-                return _FRIST_ANA;
-            }
-            set
-            {
-                _FRIST_ANA = value;
-                MarkColumnModified("FRIST_ANA");
-            }
-        }
-        DateTime _FRIST_ANA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime SCD_ANA
-        {
-            get
-            {
-                return _SCD_ANA;
-            }
-            set
-            {
-                _SCD_ANA = value;
-                MarkColumnModified("SCD_ANA");
-            }
-        }
-        DateTime _SCD_ANA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime CCRT
-        {
-            get
-            {
-                return _CCRT;
-            }
-            set
-            {
-                _CCRT = value;
-                MarkColumnModified("CCRT");
-            }
-        }
-        DateTime _CCRT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "4000", Scale = "", Precision = "")]
-        public string SLN
-        {
-            get
-            {
-                return _SLN;
-            }
-            set
-            {
-                _SLN = value;
-                MarkColumnModified("SLN");
-            }
-        }
-        string _SLN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-    }
-
-    [TableName("UREMIC_SYMPTOMS_HIS")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class UREMIC_SYMPTOMS_HI : XEDB.Record<UREMIC_SYMPTOMS_HI>
-    {
-        [Column]
-        [Comments("消化系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIGESTIVE
-        {
-            get
-            {
-                return _DIGESTIVE;
-            }
-            set
-            {
-                _DIGESTIVE = value;
-                MarkColumnModified("DIGESTIVE");
-            }
-        }
-        string _DIGESTIVE;
-
-        [Column]
-        [Comments("消化系统病程")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string DIGESTIVE_COS
-        {
-            get
-            {
-                return _DIGESTIVE_COS;
-            }
-            set
-            {
-                _DIGESTIVE_COS = value;
-                MarkColumnModified("DIGESTIVE_COS");
-            }
-        }
-        string _DIGESTIVE_COS;
-
-        [Column]
-        [Comments("血液系统:出血")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BLOOD_OUT
-        {
-            get
-            {
-                return _BLOOD_OUT;
-            }
-            set
-            {
-                _BLOOD_OUT = value;
-                MarkColumnModified("BLOOD_OUT");
-            }
-        }
-        string _BLOOD_OUT;
-
-        [Column]
-        [Comments("血液系统:贫血度")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string BLOOD_ANEMIA
-        {
-            get
-            {
-                return _BLOOD_ANEMIA;
-            }
-            set
-            {
-                _BLOOD_ANEMIA = value;
-                MarkColumnModified("BLOOD_ANEMIA");
-            }
-        }
-        string _BLOOD_ANEMIA;
-
-        [Column]
-        [Comments("神精系统")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MENTALLY
-        {
-            get
-            {
-                return _MENTALLY;
-            }
-            set
-            {
-                _MENTALLY = value;
-                MarkColumnModified("MENTALLY");
-            }
-        }
-        string _MENTALLY;
-
-        [Column]
-        [Comments("心血管:高血压")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? CARDIOVASCULAR_HEIGH
-        {
-            get
-            {
-                return _CARDIOVASCULAR_HEIGH;
-            }
-            set
-            {
-                _CARDIOVASCULAR_HEIGH = value;
-                MarkColumnModified("CARDIOVASCULAR_HEIGH");
-            }
-        }
-        Int16? _CARDIOVASCULAR_HEIGH;
-
-        [Column]
-        [Comments("药物控制效果")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_DRUGSCTROL
-        {
-            get
-            {
-                return _CARDIOVASCULAR_DRUGSCTROL;
-            }
-            set
-            {
-                _CARDIOVASCULAR_DRUGSCTROL = value;
-                MarkColumnModified("CARDIOVASCULAR_DRUGSCTROL");
-            }
-        }
-        string _CARDIOVASCULAR_DRUGSCTROL;
-
-        [Column]
-        [Comments("血压")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_PRESSURE
-        {
-            get
-            {
-                return _CARDIOVASCULAR_PRESSURE;
-            }
-            set
-            {
-                _CARDIOVASCULAR_PRESSURE = value;
-                MarkColumnModified("CARDIOVASCULAR_PRESSURE");
-            }
-        }
-        string _CARDIOVASCULAR_PRESSURE;
-
-        [Column]
-        [Comments("水平")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOVASCULAR_LEVEL
-        {
-            get
-            {
-                return _CARDIOVASCULAR_LEVEL;
-            }
-            set
-            {
-                _CARDIOVASCULAR_LEVEL = value;
-                MarkColumnModified("CARDIOVASCULAR_LEVEL");
-            }
-        }
-        decimal? _CARDIOVASCULAR_LEVEL;
-
-        [Column]
-        [Comments("最高")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOVASCULAR_HIGHEST
-        {
-            get
-            {
-                return _CARDIOVASCULAR_HIGHEST;
-            }
-            set
-            {
-                _CARDIOVASCULAR_HIGHEST = value;
-                MarkColumnModified("CARDIOVASCULAR_HIGHEST");
-            }
-        }
-        decimal? _CARDIOVASCULAR_HIGHEST;
-
-        [Column]
-        [Comments("病程")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_COS
-        {
-            get
-            {
-                return _CARDIOVASCULAR_COS;
-            }
-            set
-            {
-                _CARDIOVASCULAR_COS = value;
-                MarkColumnModified("CARDIOVASCULAR_COS");
-            }
-        }
-        string _CARDIOVASCULAR_COS;
-
-        [Column]
-        [Comments("心衰")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? CARDIOVASCULAR_HEART_FAILURE
-        {
-            get
-            {
-                return _CARDIOVASCULAR_HEART_FAILURE;
-            }
-            set
-            {
-                _CARDIOVASCULAR_HEART_FAILURE = value;
-                MarkColumnModified("CARDIOVASCULAR_HEART_FAILURE");
-            }
-        }
-        Int16? _CARDIOVASCULAR_HEART_FAILURE;
-
-        [Column]
-        [Comments("心衰次数")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOVASCULAR_HF_TIME
-        {
-            get
-            {
-                return _CARDIOVASCULAR_HF_TIME;
-            }
-            set
-            {
-                _CARDIOVASCULAR_HF_TIME = value;
-                MarkColumnModified("CARDIOVASCULAR_HF_TIME");
-            }
-        }
-        decimal? _CARDIOVASCULAR_HF_TIME;
-
-        [Column]
-        [Comments("心衰时间")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOVASCULAR_HF_COS
-        {
-            get
-            {
-                return _CARDIOVASCULAR_HF_COS;
-            }
-            set
-            {
-                _CARDIOVASCULAR_HF_COS = value;
-                MarkColumnModified("CARDIOVASCULAR_HF_COS");
-            }
-        }
-        decimal? _CARDIOVASCULAR_HF_COS;
-
-        [Column]
-        [Comments("心前区疼痛,心慌")]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? CARDIOVASCULAR_PAIN
-        {
-            get
-            {
-                return _CARDIOVASCULAR_PAIN;
-            }
-            set
-            {
-                _CARDIOVASCULAR_PAIN = value;
-                MarkColumnModified("CARDIOVASCULAR_PAIN");
-            }
-        }
-        Int16? _CARDIOVASCULAR_PAIN;
-
-        [Column]
-        [Comments("心率失常")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_ARRHYTHMIAS
-        {
-            get
-            {
-                return _CARDIOVASCULAR_ARRHYTHMIAS;
-            }
-            set
-            {
-                _CARDIOVASCULAR_ARRHYTHMIAS = value;
-                MarkColumnModified("CARDIOVASCULAR_ARRHYTHMIAS");
-            }
-        }
-        string _CARDIOVASCULAR_ARRHYTHMIAS;
-
-        [Column]
-        [Comments("失常类型")]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string CARDIOVASCULAR_ARRHYTHMIAS_TP
-        {
-            get
-            {
-                return _CARDIOVASCULAR_ARRHYTHMIAS_TP;
-            }
-            set
-            {
-                _CARDIOVASCULAR_ARRHYTHMIAS_TP = value;
-                MarkColumnModified("CARDIOVASCULAR_ARRHYTHMIAS_TP");
-            }
-        }
-        string _CARDIOVASCULAR_ARRHYTHMIAS_TP;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string SKIN
-        {
-            get
-            {
-                return _SKIN;
-            }
-            set
-            {
-                _SKIN = value;
-                MarkColumnModified("SKIN");
-            }
-        }
-        string _SKIN;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string MENTALLY_OTHER
-        {
-            get
-            {
-                return _MENTALLY_OTHER;
-            }
-            set
-            {
-                _MENTALLY_OTHER = value;
-                MarkColumnModified("MENTALLY_OTHER");
-            }
-        }
-        string _MENTALLY_OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "1")]
-        public Int16? ARTHRALGIA
-        {
-            get
-            {
-                return _ARTHRALGIA;
-            }
-            set
-            {
-                _ARTHRALGIA = value;
-                MarkColumnModified("ARTHRALGIA");
-            }
-        }
-        Int16? _ARTHRALGIA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string ARTHRALGIA_OTHER
-        {
-            get
-            {
-                return _ARTHRALGIA_OTHER;
-            }
-            set
-            {
-                _ARTHRALGIA_OTHER = value;
-                MarkColumnModified("ARTHRALGIA_OTHER");
-            }
-        }
-        string _ARTHRALGIA_OTHER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-    }
-
-    [TableName("VALUE_CODE")]
-    [PrimaryKey("VALUE_MEMBER")]
-    [ExplicitColumns]
-    public partial class VALUE_CODE : XEDB.Record<VALUE_CODE>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "500", Scale = "", Precision = "")]
-        public string DSP_MEMBER
-        {
-            get
-            {
-                return _DSP_MEMBER;
-            }
-            set
-            {
-                _DSP_MEMBER = value;
-                MarkColumnModified("DSP_MEMBER");
-            }
-        }
-        string _DSP_MEMBER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal VALUE_MEMBER
-        {
-            get
-            {
-                return _VALUE_MEMBER;
-            }
-            set
-            {
-                _VALUE_MEMBER = value;
-                MarkColumnModified("VALUE_MEMBER");
-            }
-        }
-        decimal _VALUE_MEMBER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? GROUPNAME
-        {
-            get
-            {
-                return _GROUPNAME;
-            }
-            set
-            {
-                _GROUPNAME = value;
-                MarkColumnModified("GROUPNAME");
-            }
-        }
-        decimal? _GROUPNAME;
-
-    }
-
-    [TableName("VALUE_GROUP")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class VALUE_GROUP : XEDB.Record<VALUE_GROUP>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string GROUPNAME
-        {
-            get
-            {
-                return _GROUPNAME;
-            }
-            set
-            {
-                _GROUPNAME = value;
-                MarkColumnModified("GROUPNAME");
-            }
-        }
-        string _GROUPNAME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FATHERID
-        {
-            get
-            {
-                return _FATHERID;
-            }
-            set
-            {
-                _FATHERID = value;
-                MarkColumnModified("FATHERID");
-            }
-        }
-        decimal? _FATHERID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "0", Precision = "")]
-        public decimal? ISENABLE
-        {
-            get
-            {
-                return _ISENABLE;
-            }
-            set
-            {
-                _ISENABLE = value;
-                MarkColumnModified("ISENABLE");
-            }
-        }
-        decimal? _ISENABLE;
-
-    }
-
-    [TableName("VASCULARPATH_HISTORY")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class VASCULARPATH_HISTORY : XEDB.Record<VASCULARPATH_HISTORY>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? FISTULA
-        {
-            get
-            {
-                return _FISTULA;
-            }
-            set
-            {
-                _FISTULA = value;
-                MarkColumnModified("FISTULA");
-            }
-        }
-        decimal? _FISTULA;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime OPERATION_TIME
-        {
-            get
-            {
-                return _OPERATION_TIME;
-            }
-            set
-            {
-                _OPERATION_TIME = value;
-                MarkColumnModified("OPERATION_TIME");
-            }
-        }
-        DateTime _OPERATION_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string STOP_TIME
-        {
-            get
-            {
-                return _STOP_TIME;
-            }
-            set
-            {
-                _STOP_TIME = value;
-                MarkColumnModified("STOP_TIME");
-            }
-        }
-        string _STOP_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string CENTER
-        {
-            get
-            {
-                return _CENTER;
-            }
-            set
-            {
-                _CENTER = value;
-                MarkColumnModified("CENTER");
-            }
-        }
-        string _CENTER;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string TEMPPATH
-        {
-            get
-            {
-                return _TEMPPATH;
-            }
-            set
-            {
-                _TEMPPATH = value;
-                MarkColumnModified("TEMPPATH");
-            }
-        }
-        string _TEMPPATH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string TEMPPATH_POS
-        {
-            get
-            {
-                return _TEMPPATH_POS;
-            }
-            set
-            {
-                _TEMPPATH_POS = value;
-                MarkColumnModified("TEMPPATH_POS");
-            }
-        }
-        string _TEMPPATH_POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "10", Scale = "", Precision = "")]
-        public string LEFT_OR_RIGHT
-        {
-            get
-            {
-                return _LEFT_OR_RIGHT;
-            }
-            set
-            {
-                _LEFT_OR_RIGHT = value;
-                MarkColumnModified("LEFT_OR_RIGHT");
-            }
-        }
-        string _LEFT_OR_RIGHT;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string METHOD
-        {
-            get
-            {
-                return _METHOD;
-            }
-            set
-            {
-                _METHOD = value;
-                MarkColumnModified("METHOD");
-            }
-        }
-        string _METHOD;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string POS
-        {
-            get
-            {
-                return _POS;
-            }
-            set
-            {
-                _POS = value;
-                MarkColumnModified("POS");
-            }
-        }
-        string _POS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string CHANGE_RESASON
-        {
-            get
-            {
-                return _CHANGE_RESASON;
-            }
-            set
-            {
-                _CHANGE_RESASON = value;
-                MarkColumnModified("CHANGE_RESASON");
-            }
-        }
-        string _CHANGE_RESASON;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "100", Scale = "", Precision = "")]
-        public string CHANGE_RES_OTH
-        {
-            get
-            {
-                return _CHANGE_RES_OTH;
-            }
-            set
-            {
-                _CHANGE_RES_OTH = value;
-                MarkColumnModified("CHANGE_RES_OTH");
-            }
-        }
-        string _CHANGE_RES_OTH;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string OTHER
-        {
-            get
-            {
-                return _OTHER;
-            }
-            set
-            {
-                _OTHER = value;
-                MarkColumnModified("OTHER");
-            }
-        }
-        string _OTHER;
-
-    }
-
-    [TableName("ADDTION_CHECK_HISTORY_EXT")]
-    [PrimaryKey("ID")]
-    [ExplicitColumns]
-    public partial class ADDTION_CHECK_HISTORY_EXT : XEDB.Record<ADDTION_CHECK_HISTORY_EXT>
-    {
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                _ID = value;
-                MarkColumnModified("ID");
-            }
-        }
-        decimal _ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? REG_ID
-        {
-            get
-            {
-                return _REG_ID;
-            }
-            set
-            {
-                _REG_ID = value;
-                MarkColumnModified("REG_ID");
-            }
-        }
-        decimal? _REG_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "50", Scale = "", Precision = "")]
-        public string OPERATOR
-        {
-            get
-            {
-                return _OPERATOR;
-            }
-            set
-            {
-                _OPERATOR = value;
-                MarkColumnModified("OPERATOR");
-            }
-        }
-        string _OPERATOR;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "DATE", Length = "7", Scale = "", Precision = "")]
-        public DateTime LOG_TIME
-        {
-            get
-            {
-                return _LOG_TIME;
-            }
-            set
-            {
-                _LOG_TIME = value;
-                MarkColumnModified("LOG_TIME");
-            }
-        }
-        DateTime _LOG_TIME;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string ECG
-        {
-            get
-            {
-                return _ECG;
-            }
-            set
-            {
-                _ECG = value;
-                MarkColumnModified("ECG");
-            }
-        }
-        string _ECG;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string CHEST_X_RAY
-        {
-            get
-            {
-                return _CHEST_X_RAY;
-            }
-            set
-            {
-                _CHEST_X_RAY = value;
-                MarkColumnModified("CHEST_X_RAY");
-            }
-        }
-        string _CHEST_X_RAY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? CARDIOTHORACIC_RATIO
-        {
-            get
-            {
-                return _CARDIOTHORACIC_RATIO;
-            }
-            set
-            {
-                _CARDIOTHORACIC_RATIO = value;
-                MarkColumnModified("CARDIOTHORACIC_RATIO");
-            }
-        }
-        decimal? _CARDIOTHORACIC_RATIO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string ECHOCARDIOGRAPHY
-        {
-            get
-            {
-                return _ECHOCARDIOGRAPHY;
-            }
-            set
-            {
-                _ECHOCARDIOGRAPHY = value;
-                MarkColumnModified("ECHOCARDIOGRAPHY");
-            }
-        }
-        string _ECHOCARDIOGRAPHY;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string B_KIDNEYS
-        {
-            get
-            {
-                return _B_KIDNEYS;
-            }
-            set
-            {
-                _B_KIDNEYS = value;
-                MarkColumnModified("B_KIDNEYS");
-            }
-        }
-        string _B_KIDNEYS;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string MEMO
-        {
-            get
-            {
-                return _MEMO;
-            }
-            set
-            {
-                _MEMO = value;
-                MarkColumnModified("MEMO");
-            }
-        }
-        string _MEMO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? BASE_INFO_ID
-        {
-            get
-            {
-                return _BASE_INFO_ID;
-            }
-            set
-            {
-                _BASE_INFO_ID = value;
-                MarkColumnModified("BASE_INFO_ID");
-            }
-        }
-        decimal? _BASE_INFO_ID;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "NUMBER", Length = "22", Scale = "", Precision = "")]
-        public decimal? APPLYNO
-        {
-            get
-            {
-                return _APPLYNO;
-            }
-            set
-            {
-                _APPLYNO = value;
-                MarkColumnModified("APPLYNO");
-            }
-        }
-        decimal? _APPLYNO;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string DEF1
-        {
-            get
-            {
-                return _DEF1;
-            }
-            set
-            {
-                _DEF1 = value;
-                MarkColumnModified("DEF1");
-            }
-        }
-        string _DEF1;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string DEF2
-        {
-            get
-            {
-                return _DEF2;
-            }
-            set
-            {
-                _DEF2 = value;
-                MarkColumnModified("DEF2");
-            }
-        }
-        string _DEF2;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string DEF3
-        {
-            get
-            {
-                return _DEF3;
-            }
-            set
-            {
-                _DEF3 = value;
-                MarkColumnModified("DEF3");
-            }
-        }
-        string _DEF3;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string DEF4
-        {
-            get
-            {
-                return _DEF4;
-            }
-            set
-            {
-                _DEF4 = value;
-                MarkColumnModified("DEF4");
-            }
-        }
-        string _DEF4;
-
-        [Column]
-        [ColumnAddtionInfoAttribute(DataType = "VARCHAR2", Length = "200", Scale = "", Precision = "")]
-        public string DEF5
-        {
-            get
-            {
-                return _DEF5;
-            }
-            set
-            {
-                _DEF5 = value;
-                MarkColumnModified("DEF5");
-            }
-        }
-        string _DEF5;
-
-    }
+	public partial class XEDB : Database
+	{
+		public XEDB() 
+			: base("XE")
+		{
+			CommonConstruct();
+		}
+
+		public XEDB(string connectionStringName) 
+			: base(connectionStringName)
+		{
+			CommonConstruct();
+		}
+		
+		partial void CommonConstruct();
+		
+		public interface IFactory
+		{
+			XEDB GetInstance();
+		}
+		
+		public static IFactory Factory { get; set; }
+		public static XEDB GetInstance()
+		{
+			if (_instance!=null)
+				return _instance;
+				
+			if (Factory!=null)
+				return Factory.GetInstance();
+			else
+				return new XEDB();
+		}
+
+		[ThreadStatic] static XEDB _instance;
+		
+		public override void OnBeginTransaction()
+		{
+			if (_instance==null)
+				_instance=this;
+		}
+		
+		public override void OnEndTransaction()
+		{
+			if (_instance==this)
+				_instance=null;
+		}
+		
+		public class Record<T> where T:new()
+		{
+			public static XEDB repo { get { return XEDB.GetInstance(); } }
+			public bool IsNew() { return repo.IsNew(this); }
+			public object Insert() { return repo.Insert(this); }
+			public int Update(IEnumerable<string> columns) { return repo.Update(this, columns); }
+			public static int Update(string sql, params object[] args) { return repo.Update<T>(sql, args); }
+			public static int Update(Sql sql) { return repo.Update<T>(sql); }
+			public int Delete() { return repo.Delete(this); }
+			public static int Delete(string sql, params object[] args) { return repo.Delete<T>(sql, args); }
+			public static int Delete(Sql sql) { return repo.Delete<T>(sql); }
+			public static int Delete(object primaryKey) { return repo.Delete<T>(primaryKey); }
+			public static bool Exists(object primaryKey) { return repo.Exists<T>(primaryKey); }
+			public static bool Exists(string sql, params object[] args) { return repo.Exists<T>(sql, args); }
+			public static T SingleOrDefault(object primaryKey) { return repo.SingleOrDefault<T>(primaryKey); }
+			public static T SingleOrDefault(string sql, params object[] args) { return repo.SingleOrDefault<T>(sql, args); }
+			public static T SingleOrDefault(Sql sql) { return repo.SingleOrDefault<T>(sql); }
+			public static T FirstOrDefault(string sql, params object[] args) { return repo.FirstOrDefault<T>(sql, args); }
+			public static T FirstOrDefault(Sql sql) { return repo.FirstOrDefault<T>(sql); }
+			public static T Single(object primaryKey) { return repo.Single<T>(primaryKey); }
+			public static T Single(string sql, params object[] args) { return repo.Single<T>(sql, args); }
+			public static T Single(Sql sql) { return repo.Single<T>(sql); }
+			public static T First(string sql, params object[] args) { return repo.First<T>(sql, args); }
+			public static T First(Sql sql) { return repo.First<T>(sql); }
+			public static List<T> Fetch(string sql, params object[] args) { return repo.Fetch<T>(sql, args); }
+			public static List<T> Fetch(Sql sql) { return repo.Fetch<T>(sql); }
+			public static List<T> Fetch(long page, long itemsPerPage, string sql, params object[] args) { return repo.Fetch<T>(page, itemsPerPage, sql, args); }
+			public static List<T> Fetch(long page, long itemsPerPage, Sql sql) { return repo.Fetch<T>(page, itemsPerPage, sql); }
+			public static List<T> SkipTake(long skip, long take, string sql, params object[] args) { return repo.SkipTake<T>(skip, take, sql, args); }
+			public static List<T> SkipTake(long skip, long take, Sql sql) { return repo.SkipTake<T>(skip, take, sql); }
+			public static Page<T> Page(long page, long itemsPerPage, string sql, params object[] args) { return repo.Page<T>(page, itemsPerPage, sql, args); }
+			public static Page<T> Page(long page, long itemsPerPage, Sql sql) { return repo.Page<T>(page, itemsPerPage, sql); }
+			public static IEnumerable<T> Query(string sql, params object[] args) { return repo.Query<T>(sql, args); }
+			public static IEnumerable<T> Query(Sql sql) { return repo.Query<T>(sql); }
+			
+			private Dictionary<string,bool> ModifiedColumns;
+			private void OnLoaded()
+			{
+				ModifiedColumns = new Dictionary<string,bool>();
+			}
+			protected void MarkColumnModified(string column_name)
+			{
+				if (ModifiedColumns!=null)
+					ModifiedColumns[column_name]=true;
+			}
+			public int Update() 
+			{ 
+				if (ModifiedColumns == null || ModifiedColumns.Count == 0)
+					return repo.Update(this); 
+
+				int retv = repo.Update(this, ModifiedColumns.Keys);
+				ModifiedColumns.Clear();
+				return retv;
+			}
+			public void Save() 
+			{ 
+				if (repo.IsNew(this))
+					repo.Insert(this);
+				else
+					Update();
+			}
+		}
+	}
+	
+
+	
+	[TableName("MACHINE_INFO")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MACHINE_INFO : XEDB.Record<MACHINE_INFO>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("序列号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[Comments("型号")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MODEL 
+		{ 
+			get
+			{
+				return _MODEL;
+			}
+			set
+			{
+				_MODEL = value;
+				MarkColumnModified("MODEL");
+			}
+		}
+		decimal? _MODEL;
+
+		[Column]
+		[Comments("图片")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PICTURE_ID 
+		{ 
+			get
+			{
+				return _PICTURE_ID;
+			}
+			set
+			{
+				_PICTURE_ID = value;
+				MarkColumnModified("PICTURE_ID");
+			}
+		}
+		decimal? _PICTURE_ID;
+
+		[Column]
+		[Comments("安装日期")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime INSTALLATION 
+		{ 
+			get
+			{
+				return _INSTALLATION;
+			}
+			set
+			{
+				_INSTALLATION = value;
+				MarkColumnModified("INSTALLATION");
+			}
+		}
+		DateTime _INSTALLATION;
+
+		[Column]
+		[Comments("过保日期")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime OUTDATE 
+		{ 
+			get
+			{
+				return _OUTDATE;
+			}
+			set
+			{
+				_OUTDATE = value;
+				MarkColumnModified("OUTDATE");
+			}
+		}
+		DateTime _OUTDATE;
+
+		[Column]
+		[Comments("机器类型")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACHINETYPE 
+		{ 
+			get
+			{
+				return _MACHINETYPE;
+			}
+			set
+			{
+				_MACHINETYPE = value;
+				MarkColumnModified("MACHINETYPE");
+			}
+		}
+		decimal? _MACHINETYPE;
+
+		[Column]
+		[Comments("楼层")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FLOOR_ID 
+		{ 
+			get
+			{
+				return _FLOOR_ID;
+			}
+			set
+			{
+				_FLOOR_ID = value;
+				MarkColumnModified("FLOOR_ID");
+			}
+		}
+		decimal? _FLOOR_ID;
+
+		[Column]
+		[Comments("区域")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AREA_ID 
+		{ 
+			get
+			{
+				return _AREA_ID;
+			}
+			set
+			{
+				_AREA_ID = value;
+				MarkColumnModified("AREA_ID");
+			}
+		}
+		decimal? _AREA_ID;
+
+		[Column]
+		[Comments("床位")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="30", Scale="", Precision="")]
+		public string BED_NO 
+		{ 
+			get
+			{
+				return _BED_NO;
+			}
+			set
+			{
+				_BED_NO = value;
+				MarkColumnModified("BED_NO");
+			}
+		}
+		string _BED_NO;
+
+		[Column]
+		[Comments("供应商")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SUPPLIERS 
+		{ 
+			get
+			{
+				return _SUPPLIERS;
+			}
+			set
+			{
+				_SUPPLIERS = value;
+				MarkColumnModified("SUPPLIERS");
+			}
+		}
+		decimal? _SUPPLIERS;
+
+		[Column]
+		[Comments("价格")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PRICE 
+		{ 
+			get
+			{
+				return _PRICE;
+			}
+			set
+			{
+				_PRICE = value;
+				MarkColumnModified("PRICE");
+			}
+		}
+		decimal? _PRICE;
+
+		[Column]
+		[Comments("备注")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[Comments("IP地址")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string COMMIP 
+		{ 
+			get
+			{
+				return _COMMIP;
+			}
+			set
+			{
+				_COMMIP = value;
+				MarkColumnModified("COMMIP");
+			}
+		}
+		string _COMMIP;
+
+		[Column]
+		[Comments("通讯端口")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? COMMPORT 
+		{ 
+			get
+			{
+				return _COMMPORT;
+			}
+			set
+			{
+				_COMMPORT = value;
+				MarkColumnModified("COMMPORT");
+			}
+		}
+		decimal? _COMMPORT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ISDEL 
+		{ 
+			get
+			{
+				return _ISDEL;
+			}
+			set
+			{
+				_ISDEL = value;
+				MarkColumnModified("ISDEL");
+			}
+		}
+		decimal? _ISDEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DELTIME 
+		{ 
+			get
+			{
+				return _DELTIME;
+			}
+			set
+			{
+				_DELTIME = value;
+				MarkColumnModified("DELTIME");
+			}
+		}
+		DateTime _DELTIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DELOPERATOR 
+		{ 
+			get
+			{
+				return _DELOPERATOR;
+			}
+			set
+			{
+				_DELOPERATOR = value;
+				MarkColumnModified("DELOPERATOR");
+			}
+		}
+		string _DELOPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LAYOUT_ID 
+		{ 
+			get
+			{
+				return _LAYOUT_ID;
+			}
+			set
+			{
+				_LAYOUT_ID = value;
+				MarkColumnModified("LAYOUT_ID");
+			}
+		}
+		decimal? _LAYOUT_ID;
+
+	}
+	
+	[TableName("MACHINE_LAYOUT")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MACHINE_LAYOUT : XEDB.Record<MACHINE_LAYOUT>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FLOORID 
+		{ 
+			get
+			{
+				return _FLOORID;
+			}
+			set
+			{
+				_FLOORID = value;
+				MarkColumnModified("FLOORID");
+			}
+		}
+		decimal? _FLOORID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AREAID 
+		{ 
+			get
+			{
+				return _AREAID;
+			}
+			set
+			{
+				_AREAID = value;
+				MarkColumnModified("AREAID");
+			}
+		}
+		decimal? _AREAID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ROOMROWS 
+		{ 
+			get
+			{
+				return _ROOMROWS;
+			}
+			set
+			{
+				_ROOMROWS = value;
+				MarkColumnModified("ROOMROWS");
+			}
+		}
+		decimal? _ROOMROWS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACHINECNT 
+		{ 
+			get
+			{
+				return _MACHINECNT;
+			}
+			set
+			{
+				_MACHINECNT = value;
+				MarkColumnModified("MACHINECNT");
+			}
+		}
+		decimal? _MACHINECNT;
+
+	}
+	
+	[TableName("DEVICECOMMUNICATION_LOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DEVICECOMMUNICATION_LOG : XEDB.Record<DEVICECOMMUNICATION_LOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string MSG 
+		{ 
+			get
+			{
+				return _MSG;
+			}
+			set
+			{
+				_MSG = value;
+				MarkColumnModified("MSG");
+			}
+		}
+		string _MSG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime RECEIVE_TIME 
+		{ 
+			get
+			{
+				return _RECEIVE_TIME;
+			}
+			set
+			{
+				_RECEIVE_TIME = value;
+				MarkColumnModified("RECEIVE_TIME");
+			}
+		}
+		DateTime _RECEIVE_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string REMOTE_IP 
+		{ 
+			get
+			{
+				return _REMOTE_IP;
+			}
+			set
+			{
+				_REMOTE_IP = value;
+				MarkColumnModified("REMOTE_IP");
+			}
+		}
+		string _REMOTE_IP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REMOTE_PORT 
+		{ 
+			get
+			{
+				return _REMOTE_PORT;
+			}
+			set
+			{
+				_REMOTE_PORT = value;
+				MarkColumnModified("REMOTE_PORT");
+			}
+		}
+		decimal? _REMOTE_PORT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string SERIALPORTNUM 
+		{ 
+			get
+			{
+				return _SERIALPORTNUM;
+			}
+			set
+			{
+				_SERIALPORTNUM = value;
+				MarkColumnModified("SERIALPORTNUM");
+			}
+		}
+		string _SERIALPORTNUM;
+
+	}
+	
+	[TableName("PATIENT_REGIST")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class PATIENT_REGIST : XEDB.Record<PATIENT_REGIST>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		string _NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AGE 
+		{ 
+			get
+			{
+				return _AGE;
+			}
+			set
+			{
+				_AGE = value;
+				MarkColumnModified("AGE");
+			}
+		}
+		decimal? _AGE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="5", Scale="", Precision="")]
+		public string SEX 
+		{ 
+			get
+			{
+				return _SEX;
+			}
+			set
+			{
+				_SEX = value;
+				MarkColumnModified("SEX");
+			}
+		}
+		string _SEX;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DEPT 
+		{ 
+			get
+			{
+				return _DEPT;
+			}
+			set
+			{
+				_DEPT = value;
+				MarkColumnModified("DEPT");
+			}
+		}
+		string _DEPT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OUTPATIENT_CATEGORY 
+		{ 
+			get
+			{
+				return _OUTPATIENT_CATEGORY;
+			}
+			set
+			{
+				_OUTPATIENT_CATEGORY = value;
+				MarkColumnModified("OUTPATIENT_CATEGORY");
+			}
+		}
+		decimal? _OUTPATIENT_CATEGORY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PRICE 
+		{ 
+			get
+			{
+				return _PRICE;
+			}
+			set
+			{
+				_PRICE = value;
+				MarkColumnModified("PRICE");
+			}
+		}
+		decimal? _PRICE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime CREATEDATE 
+		{ 
+			get
+			{
+				return _CREATEDATE;
+			}
+			set
+			{
+				_CREATEDATE = value;
+				MarkColumnModified("CREATEDATE");
+			}
+		}
+		DateTime _CREATEDATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string INVOICE_NUMBER 
+		{ 
+			get
+			{
+				return _INVOICE_NUMBER;
+			}
+			set
+			{
+				_INVOICE_NUMBER = value;
+				MarkColumnModified("INVOICE_NUMBER");
+			}
+		}
+		string _INVOICE_NUMBER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIALYSIS_ID 
+		{ 
+			get
+			{
+				return _DIALYSIS_ID;
+			}
+			set
+			{
+				_DIALYSIS_ID = value;
+				MarkColumnModified("DIALYSIS_ID");
+			}
+		}
+		string _DIALYSIS_ID;
+
+		[Column]
+		[Comments("0:病人注册 -> 完善病历-> 完善药物过敏史-> 医生医嘱1:完成医生医嘱 ->完善病历-> 完善药物过敏史-> 护士记录 -> 透析过程记录2:完成本次医院 ->完善病历-> 完善药物过敏史-> 透析评估3:完成透析评估")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? STATUS 
+		{ 
+			get
+			{
+				return _STATUS;
+			}
+			set
+			{
+				_STATUS = value;
+				MarkColumnModified("STATUS");
+			}
+		}
+		decimal? _STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? INNSER_SORT 
+		{ 
+			get
+			{
+				return _INNSER_SORT;
+			}
+			set
+			{
+				_INNSER_SORT = value;
+				MarkColumnModified("INNSER_SORT");
+			}
+		}
+		decimal? _INNSER_SORT;
+
+	}
+	
+	[TableName("ADDTION_CHECK_HISTORY_EXT")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class ADDTION_CHECK_HISTORY_EXT : XEDB.Record<ADDTION_CHECK_HISTORY_EXT>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string ECG 
+		{ 
+			get
+			{
+				return _ECG;
+			}
+			set
+			{
+				_ECG = value;
+				MarkColumnModified("ECG");
+			}
+		}
+		string _ECG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string CHEST_X_RAY 
+		{ 
+			get
+			{
+				return _CHEST_X_RAY;
+			}
+			set
+			{
+				_CHEST_X_RAY = value;
+				MarkColumnModified("CHEST_X_RAY");
+			}
+		}
+		string _CHEST_X_RAY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOTHORACIC_RATIO 
+		{ 
+			get
+			{
+				return _CARDIOTHORACIC_RATIO;
+			}
+			set
+			{
+				_CARDIOTHORACIC_RATIO = value;
+				MarkColumnModified("CARDIOTHORACIC_RATIO");
+			}
+		}
+		decimal? _CARDIOTHORACIC_RATIO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string ECHOCARDIOGRAPHY 
+		{ 
+			get
+			{
+				return _ECHOCARDIOGRAPHY;
+			}
+			set
+			{
+				_ECHOCARDIOGRAPHY = value;
+				MarkColumnModified("ECHOCARDIOGRAPHY");
+			}
+		}
+		string _ECHOCARDIOGRAPHY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string B_KIDNEYS 
+		{ 
+			get
+			{
+				return _B_KIDNEYS;
+			}
+			set
+			{
+				_B_KIDNEYS = value;
+				MarkColumnModified("B_KIDNEYS");
+			}
+		}
+		string _B_KIDNEYS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? APPLYNO 
+		{ 
+			get
+			{
+				return _APPLYNO;
+			}
+			set
+			{
+				_APPLYNO = value;
+				MarkColumnModified("APPLYNO");
+			}
+		}
+		decimal? _APPLYNO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string DEF1 
+		{ 
+			get
+			{
+				return _DEF1;
+			}
+			set
+			{
+				_DEF1 = value;
+				MarkColumnModified("DEF1");
+			}
+		}
+		string _DEF1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string DEF2 
+		{ 
+			get
+			{
+				return _DEF2;
+			}
+			set
+			{
+				_DEF2 = value;
+				MarkColumnModified("DEF2");
+			}
+		}
+		string _DEF2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string DEF3 
+		{ 
+			get
+			{
+				return _DEF3;
+			}
+			set
+			{
+				_DEF3 = value;
+				MarkColumnModified("DEF3");
+			}
+		}
+		string _DEF3;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string DEF4 
+		{ 
+			get
+			{
+				return _DEF4;
+			}
+			set
+			{
+				_DEF4 = value;
+				MarkColumnModified("DEF4");
+			}
+		}
+		string _DEF4;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string DEF5 
+		{ 
+			get
+			{
+				return _DEF5;
+			}
+			set
+			{
+				_DEF5 = value;
+				MarkColumnModified("DEF5");
+			}
+		}
+		string _DEF5;
+
+	}
+	
+	[TableName("SERIAPORTLDATA")]
+	[ExplicitColumns]
+	public partial class SERIAPORTLDATUM : XEDB.Record<SERIAPORTLDATUM>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal? _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string SDATA 
+		{ 
+			get
+			{
+				return _SDATA;
+			}
+			set
+			{
+				_SDATA = value;
+				MarkColumnModified("SDATA");
+			}
+		}
+		string _SDATA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime RECVDATE 
+		{ 
+			get
+			{
+				return _RECVDATE;
+			}
+			set
+			{
+				_RECVDATE = value;
+				MarkColumnModified("RECVDATE");
+			}
+		}
+		DateTime _RECVDATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SERIALPORTNO 
+		{ 
+			get
+			{
+				return _SERIALPORTNO;
+			}
+			set
+			{
+				_SERIALPORTNO = value;
+				MarkColumnModified("SERIALPORTNO");
+			}
+		}
+		string _SERIALPORTNO;
+
+	}
+	
+	[TableName("PATIENT_COURSE_SPECIAL")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class PATIENT_COURSE_SPECIAL : XEDB.Record<PATIENT_COURSE_SPECIAL>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[Comments("手术操作记录")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO1 
+		{ 
+			get
+			{
+				return _MEMO1;
+			}
+			set
+			{
+				_MEMO1 = value;
+				MarkColumnModified("MEMO1");
+			}
+		}
+		string _MEMO1;
+
+		[Column]
+		[Comments("住院病情记录")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO2 
+		{ 
+			get
+			{
+				return _MEMO2;
+			}
+			set
+			{
+				_MEMO2 = value;
+				MarkColumnModified("MEMO2");
+			}
+		}
+		string _MEMO2;
+
+		[Column]
+		[Comments("特殊病情记录")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO3 
+		{ 
+			get
+			{
+				return _MEMO3;
+			}
+			set
+			{
+				_MEMO3 = value;
+				MarkColumnModified("MEMO3");
+			}
+		}
+		string _MEMO3;
+
+		[Column]
+		[Comments("抢救记录")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO4 
+		{ 
+			get
+			{
+				return _MEMO4;
+			}
+			set
+			{
+				_MEMO4 = value;
+				MarkColumnModified("MEMO4");
+			}
+		}
+		string _MEMO4;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO5 
+		{ 
+			get
+			{
+				return _MEMO5;
+			}
+			set
+			{
+				_MEMO5 = value;
+				MarkColumnModified("MEMO5");
+			}
+		}
+		string _MEMO5;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime BACKUP1 
+		{ 
+			get
+			{
+				return _BACKUP1;
+			}
+			set
+			{
+				_BACKUP1 = value;
+				MarkColumnModified("BACKUP1");
+			}
+		}
+		DateTime _BACKUP1;
+
+	}
+	
+	[TableName("PATIENT_COURSE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class PATIENT_COURSE : XEDB.Record<PATIENT_COURSE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[Comments("透析处方")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string ANA_TYPE 
+		{ 
+			get
+			{
+				return _ANA_TYPE;
+			}
+			set
+			{
+				_ANA_TYPE = value;
+				MarkColumnModified("ANA_TYPE");
+			}
+		}
+		string _ANA_TYPE;
+
+		[Column]
+		[Comments("HD(次/W)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HD_TIMES 
+		{ 
+			get
+			{
+				return _HD_TIMES;
+			}
+			set
+			{
+				_HD_TIMES = value;
+				MarkColumnModified("HD_TIMES");
+			}
+		}
+		decimal? _HD_TIMES;
+
+		[Column]
+		[Comments("HDF(次/W)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HDF_TIMES 
+		{ 
+			get
+			{
+				return _HDF_TIMES;
+			}
+			set
+			{
+				_HDF_TIMES = value;
+				MarkColumnModified("HDF_TIMES");
+			}
+		}
+		decimal? _HDF_TIMES;
+
+		[Column]
+		[Comments("HDF(h/次)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HDF_H_TIMES 
+		{ 
+			get
+			{
+				return _HDF_H_TIMES;
+			}
+			set
+			{
+				_HDF_H_TIMES = value;
+				MarkColumnModified("HDF_H_TIMES");
+			}
+		}
+		decimal? _HDF_H_TIMES;
+
+		[Column]
+		[Comments("血管通路位置")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="10", Scale="", Precision="")]
+		public string ARTERY_LEFT_RIGHT 
+		{ 
+			get
+			{
+				return _ARTERY_LEFT_RIGHT;
+			}
+			set
+			{
+				_ARTERY_LEFT_RIGHT = value;
+				MarkColumnModified("ARTERY_LEFT_RIGHT");
+			}
+		}
+		string _ARTERY_LEFT_RIGHT;
+
+		[Column]
+		[Comments("通路类型")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PATH_TYPE 
+		{ 
+			get
+			{
+				return _PATH_TYPE;
+			}
+			set
+			{
+				_PATH_TYPE = value;
+				MarkColumnModified("PATH_TYPE");
+			}
+		}
+		decimal? _PATH_TYPE;
+
+		[Column]
+		[Comments("肝素首量(mg)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEPARIN_FIRST 
+		{ 
+			get
+			{
+				return _HEPARIN_FIRST;
+			}
+			set
+			{
+				_HEPARIN_FIRST = value;
+				MarkColumnModified("HEPARIN_FIRST");
+			}
+		}
+		decimal? _HEPARIN_FIRST;
+
+		[Column]
+		[Comments("肝素首量追加量(mg)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEPARIN_FIRST_ADD 
+		{ 
+			get
+			{
+				return _HEPARIN_FIRST_ADD;
+			}
+			set
+			{
+				_HEPARIN_FIRST_ADD = value;
+				MarkColumnModified("HEPARIN_FIRST_ADD");
+			}
+		}
+		decimal? _HEPARIN_FIRST_ADD;
+
+		[Column]
+		[Comments("低分子肝素(IU)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LOW_MOLECULAR 
+		{ 
+			get
+			{
+				return _LOW_MOLECULAR;
+			}
+			set
+			{
+				_LOW_MOLECULAR = value;
+				MarkColumnModified("LOW_MOLECULAR");
+			}
+		}
+		decimal? _LOW_MOLECULAR;
+
+		[Column]
+		[Comments("透析器型号")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ANA_MACHINE 
+		{ 
+			get
+			{
+				return _ANA_MACHINE;
+			}
+			set
+			{
+				_ANA_MACHINE = value;
+				MarkColumnModified("ANA_MACHINE");
+			}
+		}
+		decimal? _ANA_MACHINE;
+
+		[Column]
+		[Comments("其他透析器")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ANA_MACHINE_OTH 
+		{ 
+			get
+			{
+				return _ANA_MACHINE_OTH;
+			}
+			set
+			{
+				_ANA_MACHINE_OTH = value;
+				MarkColumnModified("ANA_MACHINE_OTH");
+			}
+		}
+		string _ANA_MACHINE_OTH;
+
+		[Column]
+		[Comments("干体重(kg)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DRY_WEIGHT 
+		{ 
+			get
+			{
+				return _DRY_WEIGHT;
+			}
+			set
+			{
+				_DRY_WEIGHT = value;
+				MarkColumnModified("DRY_WEIGHT");
+			}
+		}
+		decimal? _DRY_WEIGHT;
+
+		[Column]
+		[Comments("干体重较前")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DRY_WEIGHT_BEF 
+		{ 
+			get
+			{
+				return _DRY_WEIGHT_BEF;
+			}
+			set
+			{
+				_DRY_WEIGHT_BEF = value;
+				MarkColumnModified("DRY_WEIGHT_BEF");
+			}
+		}
+		string _DRY_WEIGHT_BEF;
+
+		[Column]
+		[Comments("症状")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SYMPTOM 
+		{ 
+			get
+			{
+				return _SYMPTOM;
+			}
+			set
+			{
+				_SYMPTOM = value;
+				MarkColumnModified("SYMPTOM");
+			}
+		}
+		string _SYMPTOM;
+
+		[Column]
+		[Comments("血压控制")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BLOOD_PRESSURE_CONTROL 
+		{ 
+			get
+			{
+				return _BLOOD_PRESSURE_CONTROL;
+			}
+			set
+			{
+				_BLOOD_PRESSURE_CONTROL = value;
+				MarkColumnModified("BLOOD_PRESSURE_CONTROL");
+			}
+		}
+		string _BLOOD_PRESSURE_CONTROL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_PRESSURE1 
+		{ 
+			get
+			{
+				return _BLOOD_PRESSURE1;
+			}
+			set
+			{
+				_BLOOD_PRESSURE1 = value;
+				MarkColumnModified("BLOOD_PRESSURE1");
+			}
+		}
+		decimal? _BLOOD_PRESSURE1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_PRESSURE2 
+		{ 
+			get
+			{
+				return _BLOOD_PRESSURE2;
+			}
+			set
+			{
+				_BLOOD_PRESSURE2 = value;
+				MarkColumnModified("BLOOD_PRESSURE2");
+			}
+		}
+		decimal? _BLOOD_PRESSURE2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_PRESSURE3 
+		{ 
+			get
+			{
+				return _BLOOD_PRESSURE3;
+			}
+			set
+			{
+				_BLOOD_PRESSURE3 = value;
+				MarkColumnModified("BLOOD_PRESSURE3");
+			}
+		}
+		decimal? _BLOOD_PRESSURE3;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_PRESSURE4 
+		{ 
+			get
+			{
+				return _BLOOD_PRESSURE4;
+			}
+			set
+			{
+				_BLOOD_PRESSURE4 = value;
+				MarkColumnModified("BLOOD_PRESSURE4");
+			}
+		}
+		decimal? _BLOOD_PRESSURE4;
+
+		[Column]
+		[Comments("容量控制")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CAPACITY_CONTROL 
+		{ 
+			get
+			{
+				return _CAPACITY_CONTROL;
+			}
+			set
+			{
+				_CAPACITY_CONTROL = value;
+				MarkColumnModified("CAPACITY_CONTROL");
+			}
+		}
+		string _CAPACITY_CONTROL;
+
+		[Column]
+		[Comments("容量(kg)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CAPACITY 
+		{ 
+			get
+			{
+				return _CAPACITY;
+			}
+			set
+			{
+				_CAPACITY = value;
+				MarkColumnModified("CAPACITY");
+			}
+		}
+		decimal? _CAPACITY;
+
+		[Column]
+		[Comments("约占干体重(%)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CAPACITY_PROPORTION 
+		{ 
+			get
+			{
+				return _CAPACITY_PROPORTION;
+			}
+			set
+			{
+				_CAPACITY_PROPORTION = value;
+				MarkColumnModified("CAPACITY_PROPORTION");
+			}
+		}
+		decimal? _CAPACITY_PROPORTION;
+
+		[Column]
+		[Comments("血管通路功能")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string VASCULAR_ACCESS_STAT 
+		{ 
+			get
+			{
+				return _VASCULAR_ACCESS_STAT;
+			}
+			set
+			{
+				_VASCULAR_ACCESS_STAT = value;
+				MarkColumnModified("VASCULAR_ACCESS_STAT");
+			}
+		}
+		string _VASCULAR_ACCESS_STAT;
+
+		[Column]
+		[Comments("血流量(ml/min)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_FLOW 
+		{ 
+			get
+			{
+				return _BLOOD_FLOW;
+			}
+			set
+			{
+				_BLOOD_FLOW = value;
+				MarkColumnModified("BLOOD_FLOW");
+			}
+		}
+		decimal? _BLOOD_FLOW;
+
+		[Column]
+		[Comments("主要不适、处理情况")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MAJOR_DISCOMFORT_HANDLING 
+		{ 
+			get
+			{
+				return _MAJOR_DISCOMFORT_HANDLING;
+			}
+			set
+			{
+				_MAJOR_DISCOMFORT_HANDLING = value;
+				MarkColumnModified("MAJOR_DISCOMFORT_HANDLING");
+			}
+		}
+		string _MAJOR_DISCOMFORT_HANDLING;
+
+		[Column]
+		[Comments("是否住院、住院主要诊断、治疗处理、转归等")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO1 
+		{ 
+			get
+			{
+				return _MEMO1;
+			}
+			set
+			{
+				_MEMO1 = value;
+				MarkColumnModified("MEMO1");
+			}
+		}
+		string _MEMO1;
+
+		[Column]
+		[Comments("住院主要检查、化验")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO2 
+		{ 
+			get
+			{
+				return _MEMO2;
+			}
+			set
+			{
+				_MEMO2 = value;
+				MarkColumnModified("MEMO2");
+			}
+		}
+		string _MEMO2;
+
+		[Column]
+		[Comments("透析一般情况")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIALYSIS_GENERAL 
+		{ 
+			get
+			{
+				return _DIALYSIS_GENERAL;
+			}
+			set
+			{
+				_DIALYSIS_GENERAL = value;
+				MarkColumnModified("DIALYSIS_GENERAL");
+			}
+		}
+		string _DIALYSIS_GENERAL;
+
+		[Column]
+		[Comments("URR(%)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? URR 
+		{ 
+			get
+			{
+				return _URR;
+			}
+			set
+			{
+				_URR = value;
+				MarkColumnModified("URR");
+			}
+		}
+		decimal? _URR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? KT_V 
+		{ 
+			get
+			{
+				return _KT_V;
+			}
+			set
+			{
+				_KT_V = value;
+				MarkColumnModified("KT_V");
+			}
+		}
+		decimal? _KT_V;
+
+		[Column]
+		[Comments("心脑血管系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_SYSTEM 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_SYSTEM;
+			}
+			set
+			{
+				_CARDIOVASCULAR_SYSTEM = value;
+				MarkColumnModified("CARDIOVASCULAR_SYSTEM");
+			}
+		}
+		string _CARDIOVASCULAR_SYSTEM;
+
+		[Column]
+		[Comments("心脑血管系统相关事件")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string CARDIOVASCULAR_SYSTEM_OTH 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_SYSTEM_OTH;
+			}
+			set
+			{
+				_CARDIOVASCULAR_SYSTEM_OTH = value;
+				MarkColumnModified("CARDIOVASCULAR_SYSTEM_OTH");
+			}
+		}
+		string _CARDIOVASCULAR_SYSTEM_OTH;
+
+		[Column]
+		[Comments("降压药物")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ANTIHYPERTENSIVE_DRUGS 
+		{ 
+			get
+			{
+				return _ANTIHYPERTENSIVE_DRUGS;
+			}
+			set
+			{
+				_ANTIHYPERTENSIVE_DRUGS = value;
+				MarkColumnModified("ANTIHYPERTENSIVE_DRUGS");
+			}
+		}
+		string _ANTIHYPERTENSIVE_DRUGS;
+
+		[Column]
+		[Comments("血液系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string BLOOD_SYSTEM 
+		{ 
+			get
+			{
+				return _BLOOD_SYSTEM;
+			}
+			set
+			{
+				_BLOOD_SYSTEM = value;
+				MarkColumnModified("BLOOD_SYSTEM");
+			}
+		}
+		string _BLOOD_SYSTEM;
+
+		[Column]
+		[Comments("Hb(g/L)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HB 
+		{ 
+			get
+			{
+				return _HB;
+			}
+			set
+			{
+				_HB = value;
+				MarkColumnModified("HB");
+			}
+		}
+		decimal? _HB;
+
+		[Column]
+		[Comments("EPO 剂量(u)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? EPO 
+		{ 
+			get
+			{
+				return _EPO;
+			}
+			set
+			{
+				_EPO = value;
+				MarkColumnModified("EPO");
+			}
+		}
+		decimal? _EPO;
+
+		[Column]
+		[Comments("EPO(次/周)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? EPO_TIMES 
+		{ 
+			get
+			{
+				return _EPO_TIMES;
+			}
+			set
+			{
+				_EPO_TIMES = value;
+				MarkColumnModified("EPO_TIMES");
+			}
+		}
+		decimal? _EPO_TIMES;
+
+		[Column]
+		[Comments("其他EPO")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string EPO_TIMES_OTH 
+		{ 
+			get
+			{
+				return _EPO_TIMES_OTH;
+			}
+			set
+			{
+				_EPO_TIMES_OTH = value;
+				MarkColumnModified("EPO_TIMES_OTH");
+			}
+		}
+		string _EPO_TIMES_OTH;
+
+		[Column]
+		[Comments("缺铁")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string IRON_DEFICIENCY 
+		{ 
+			get
+			{
+				return _IRON_DEFICIENCY;
+			}
+			set
+			{
+				_IRON_DEFICIENCY = value;
+				MarkColumnModified("IRON_DEFICIENCY");
+			}
+		}
+		string _IRON_DEFICIENCY;
+
+		[Column]
+		[Comments("铁蛋白")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FERRITIN 
+		{ 
+			get
+			{
+				return _FERRITIN;
+			}
+			set
+			{
+				_FERRITIN = value;
+				MarkColumnModified("FERRITIN");
+			}
+		}
+		decimal? _FERRITIN;
+
+		[Column]
+		[Comments("转铁蛋白饱和度(%)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? TRANSFERRIN_SATURATION 
+		{ 
+			get
+			{
+				return _TRANSFERRIN_SATURATION;
+			}
+			set
+			{
+				_TRANSFERRIN_SATURATION = value;
+				MarkColumnModified("TRANSFERRIN_SATURATION");
+			}
+		}
+		decimal? _TRANSFERRIN_SATURATION;
+
+		[Column]
+		[Comments("钙(mmol/L)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CALCIUM 
+		{ 
+			get
+			{
+				return _CALCIUM;
+			}
+			set
+			{
+				_CALCIUM = value;
+				MarkColumnModified("CALCIUM");
+			}
+		}
+		decimal? _CALCIUM;
+
+		[Column]
+		[Comments("磷(mmol/L)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? P 
+		{ 
+			get
+			{
+				return _P;
+			}
+			set
+			{
+				_P = value;
+				MarkColumnModified("P");
+			}
+		}
+		decimal? _P;
+
+		[Column]
+		[Comments("PTH(ng/L)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PTH 
+		{ 
+			get
+			{
+				return _PTH;
+			}
+			set
+			{
+				_PTH = value;
+				MarkColumnModified("PTH");
+			}
+		}
+		decimal? _PTH;
+
+		[Column]
+		[Comments("肝炎指标")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string HEPATITIS_INDICATORS 
+		{ 
+			get
+			{
+				return _HEPATITIS_INDICATORS;
+			}
+			set
+			{
+				_HEPATITIS_INDICATORS = value;
+				MarkColumnModified("HEPATITIS_INDICATORS");
+			}
+		}
+		string _HEPATITIS_INDICATORS;
+
+		[Column]
+		[Comments("GPT(u)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? GPT 
+		{ 
+			get
+			{
+				return _GPT;
+			}
+			set
+			{
+				_GPT = value;
+				MarkColumnModified("GPT");
+			}
+		}
+		decimal? _GPT;
+
+		[Column]
+		[Comments("GOT(u)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? GOT 
+		{ 
+			get
+			{
+				return _GOT;
+			}
+			set
+			{
+				_GOT = value;
+				MarkColumnModified("GOT");
+			}
+		}
+		decimal? _GOT;
+
+		[Column]
+		[Comments("特殊病情、检查及处理")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO_SPECIAL_CONDITION 
+		{ 
+			get
+			{
+				return _MEMO_SPECIAL_CONDITION;
+			}
+			set
+			{
+				_MEMO_SPECIAL_CONDITION = value;
+				MarkColumnModified("MEMO_SPECIAL_CONDITION");
+			}
+		}
+		string _MEMO_SPECIAL_CONDITION;
+
+		[Column]
+		[Comments("今后透析诊疗计划")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO_FUTURE 
+		{ 
+			get
+			{
+				return _MEMO_FUTURE;
+			}
+			set
+			{
+				_MEMO_FUTURE = value;
+				MarkColumnModified("MEMO_FUTURE");
+			}
+		}
+		string _MEMO_FUTURE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime BACK1 
+		{ 
+			get
+			{
+				return _BACK1;
+			}
+			set
+			{
+				_BACK1 = value;
+				MarkColumnModified("BACK1");
+			}
+		}
+		DateTime _BACK1;
+
+	}
+	
+	[TableName("DIAGNOSIS_OUTCOME")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_OUTCOME : XEDB.Record<DIAGNOSIS_OUTCOME>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[Comments("转归情况")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OUTCOM_TYPE 
+		{ 
+			get
+			{
+				return _OUTCOM_TYPE;
+			}
+			set
+			{
+				_OUTCOM_TYPE = value;
+				MarkColumnModified("OUTCOM_TYPE");
+			}
+		}
+		string _OUTCOM_TYPE;
+
+		[Column]
+		[Comments("退出情况")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string EXIT_STATUS 
+		{ 
+			get
+			{
+				return _EXIT_STATUS;
+			}
+			set
+			{
+				_EXIT_STATUS = value;
+				MarkColumnModified("EXIT_STATUS");
+			}
+		}
+		string _EXIT_STATUS;
+
+		[Column]
+		[Comments("其他退出情况说明")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string EXIT_STATUS_OTH 
+		{ 
+			get
+			{
+				return _EXIT_STATUS_OTH;
+			}
+			set
+			{
+				_EXIT_STATUS_OTH = value;
+				MarkColumnModified("EXIT_STATUS_OTH");
+			}
+		}
+		string _EXIT_STATUS_OTH;
+
+		[Column]
+		[Comments("转出地点")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ROLL_OUT_POS 
+		{ 
+			get
+			{
+				return _ROLL_OUT_POS;
+			}
+			set
+			{
+				_ROLL_OUT_POS = value;
+				MarkColumnModified("ROLL_OUT_POS");
+			}
+		}
+		string _ROLL_OUT_POS;
+
+		[Column]
+		[Comments("转出原因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ROLL_OUT_REASON 
+		{ 
+			get
+			{
+				return _ROLL_OUT_REASON;
+			}
+			set
+			{
+				_ROLL_OUT_REASON = value;
+				MarkColumnModified("ROLL_OUT_REASON");
+			}
+		}
+		string _ROLL_OUT_REASON;
+
+		[Column]
+		[Comments("其他转出原因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ROLL_OUT_REASON_OTH 
+		{ 
+			get
+			{
+				return _ROLL_OUT_REASON_OTH;
+			}
+			set
+			{
+				_ROLL_OUT_REASON_OTH = value;
+				MarkColumnModified("ROLL_OUT_REASON_OTH");
+			}
+		}
+		string _ROLL_OUT_REASON_OTH;
+
+		[Column]
+		[Comments("死亡原因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CAUSE_OF_DEATH 
+		{ 
+			get
+			{
+				return _CAUSE_OF_DEATH;
+			}
+			set
+			{
+				_CAUSE_OF_DEATH = value;
+				MarkColumnModified("CAUSE_OF_DEATH");
+			}
+		}
+		string _CAUSE_OF_DEATH;
+
+		[Column]
+		[Comments("其他死亡原因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string CAUSE_OF_DEATH_OTH 
+		{ 
+			get
+			{
+				return _CAUSE_OF_DEATH_OTH;
+			}
+			set
+			{
+				_CAUSE_OF_DEATH_OTH = value;
+				MarkColumnModified("CAUSE_OF_DEATH_OTH");
+			}
+		}
+		string _CAUSE_OF_DEATH_OTH;
+
+		[Column]
+		[Comments("心血管事件")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string CARDIOVASCULAR_EVENTS 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_EVENTS;
+			}
+			set
+			{
+				_CARDIOVASCULAR_EVENTS = value;
+				MarkColumnModified("CARDIOVASCULAR_EVENTS");
+			}
+		}
+		string _CARDIOVASCULAR_EVENTS;
+
+		[Column]
+		[Comments("其他心血管事件")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string CARDIOVASCULAR_EVENTS_OTH 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_EVENTS_OTH;
+			}
+			set
+			{
+				_CARDIOVASCULAR_EVENTS_OTH = value;
+				MarkColumnModified("CARDIOVASCULAR_EVENTS_OTH");
+			}
+		}
+		string _CARDIOVASCULAR_EVENTS_OTH;
+
+		[Column]
+		[Comments("脑血管事件")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string CEREBROVASCULAR_EVENTS 
+		{ 
+			get
+			{
+				return _CEREBROVASCULAR_EVENTS;
+			}
+			set
+			{
+				_CEREBROVASCULAR_EVENTS = value;
+				MarkColumnModified("CEREBROVASCULAR_EVENTS");
+			}
+		}
+		string _CEREBROVASCULAR_EVENTS;
+
+		[Column]
+		[Comments("其他脑血管事件")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string CEREBROVASCULAR_EVENTS_OTH 
+		{ 
+			get
+			{
+				return _CEREBROVASCULAR_EVENTS_OTH;
+			}
+			set
+			{
+				_CEREBROVASCULAR_EVENTS_OTH = value;
+				MarkColumnModified("CEREBROVASCULAR_EVENTS_OTH");
+			}
+		}
+		string _CEREBROVASCULAR_EVENTS_OTH;
+
+		[Column]
+		[Comments("感染")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string INFECTION 
+		{ 
+			get
+			{
+				return _INFECTION;
+			}
+			set
+			{
+				_INFECTION = value;
+				MarkColumnModified("INFECTION");
+			}
+		}
+		string _INFECTION;
+
+		[Column]
+		[Comments("其他感染")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string INFECTION_OTH 
+		{ 
+			get
+			{
+				return _INFECTION_OTH;
+			}
+			set
+			{
+				_INFECTION_OTH = value;
+				MarkColumnModified("INFECTION_OTH");
+			}
+		}
+		string _INFECTION_OTH;
+
+		[Column]
+		[Comments("备注")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[Comments("转归日期")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime OUTCOME_DATE 
+		{ 
+			get
+			{
+				return _OUTCOME_DATE;
+			}
+			set
+			{
+				_OUTCOME_DATE = value;
+				MarkColumnModified("OUTCOME_DATE");
+			}
+		}
+		DateTime _OUTCOME_DATE;
+
+	}
+	
+	[TableName("VASCULARPATH_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class VASCULARPATH_HISTORY : XEDB.Record<VASCULARPATH_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FISTULA 
+		{ 
+			get
+			{
+				return _FISTULA;
+			}
+			set
+			{
+				_FISTULA = value;
+				MarkColumnModified("FISTULA");
+			}
+		}
+		decimal? _FISTULA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime OPERATION_TIME 
+		{ 
+			get
+			{
+				return _OPERATION_TIME;
+			}
+			set
+			{
+				_OPERATION_TIME = value;
+				MarkColumnModified("OPERATION_TIME");
+			}
+		}
+		DateTime _OPERATION_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string STOP_TIME 
+		{ 
+			get
+			{
+				return _STOP_TIME;
+			}
+			set
+			{
+				_STOP_TIME = value;
+				MarkColumnModified("STOP_TIME");
+			}
+		}
+		string _STOP_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string CENTER 
+		{ 
+			get
+			{
+				return _CENTER;
+			}
+			set
+			{
+				_CENTER = value;
+				MarkColumnModified("CENTER");
+			}
+		}
+		string _CENTER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string TEMPPATH 
+		{ 
+			get
+			{
+				return _TEMPPATH;
+			}
+			set
+			{
+				_TEMPPATH = value;
+				MarkColumnModified("TEMPPATH");
+			}
+		}
+		string _TEMPPATH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string TEMPPATH_POS 
+		{ 
+			get
+			{
+				return _TEMPPATH_POS;
+			}
+			set
+			{
+				_TEMPPATH_POS = value;
+				MarkColumnModified("TEMPPATH_POS");
+			}
+		}
+		string _TEMPPATH_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="10", Scale="", Precision="")]
+		public string LEFT_OR_RIGHT 
+		{ 
+			get
+			{
+				return _LEFT_OR_RIGHT;
+			}
+			set
+			{
+				_LEFT_OR_RIGHT = value;
+				MarkColumnModified("LEFT_OR_RIGHT");
+			}
+		}
+		string _LEFT_OR_RIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string METHOD 
+		{ 
+			get
+			{
+				return _METHOD;
+			}
+			set
+			{
+				_METHOD = value;
+				MarkColumnModified("METHOD");
+			}
+		}
+		string _METHOD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string POS 
+		{ 
+			get
+			{
+				return _POS;
+			}
+			set
+			{
+				_POS = value;
+				MarkColumnModified("POS");
+			}
+		}
+		string _POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string CHANGE_RESASON 
+		{ 
+			get
+			{
+				return _CHANGE_RESASON;
+			}
+			set
+			{
+				_CHANGE_RESASON = value;
+				MarkColumnModified("CHANGE_RESASON");
+			}
+		}
+		string _CHANGE_RESASON;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string CHANGE_RES_OTH 
+		{ 
+			get
+			{
+				return _CHANGE_RES_OTH;
+			}
+			set
+			{
+				_CHANGE_RES_OTH = value;
+				MarkColumnModified("CHANGE_RES_OTH");
+			}
+		}
+		string _CHANGE_RES_OTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+	}
+	
+	[TableName("VALUE_GROUP")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class VALUE_GROUP : XEDB.Record<VALUE_GROUP>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string GROUPNAME 
+		{ 
+			get
+			{
+				return _GROUPNAME;
+			}
+			set
+			{
+				_GROUPNAME = value;
+				MarkColumnModified("GROUPNAME");
+			}
+		}
+		string _GROUPNAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FATHERID 
+		{ 
+			get
+			{
+				return _FATHERID;
+			}
+			set
+			{
+				_FATHERID = value;
+				MarkColumnModified("FATHERID");
+			}
+		}
+		decimal? _FATHERID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? ISENABLE 
+		{ 
+			get
+			{
+				return _ISENABLE;
+			}
+			set
+			{
+				_ISENABLE = value;
+				MarkColumnModified("ISENABLE");
+			}
+		}
+		decimal? _ISENABLE;
+
+	}
+	
+	[TableName("VALUE_CODE")]
+	[PrimaryKey("VALUE_MEMBER")]
+	[ExplicitColumns]
+	public partial class VALUE_CODE : XEDB.Record<VALUE_CODE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DSP_MEMBER 
+		{ 
+			get
+			{
+				return _DSP_MEMBER;
+			}
+			set
+			{
+				_DSP_MEMBER = value;
+				MarkColumnModified("DSP_MEMBER");
+			}
+		}
+		string _DSP_MEMBER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal VALUE_MEMBER 
+		{ 
+			get
+			{
+				return _VALUE_MEMBER;
+			}
+			set
+			{
+				_VALUE_MEMBER = value;
+				MarkColumnModified("VALUE_MEMBER");
+			}
+		}
+		decimal _VALUE_MEMBER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? GROUPNAME 
+		{ 
+			get
+			{
+				return _GROUPNAME;
+			}
+			set
+			{
+				_GROUPNAME = value;
+				MarkColumnModified("GROUPNAME");
+			}
+		}
+		decimal? _GROUPNAME;
+
+	}
+	
+	[TableName("UREMIC_SYMPTOMS_HIS")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class UREMIC_SYMPTOMS_HI : XEDB.Record<UREMIC_SYMPTOMS_HI>  
+	{
+		[Column]
+		[Comments("消化系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIGESTIVE 
+		{ 
+			get
+			{
+				return _DIGESTIVE;
+			}
+			set
+			{
+				_DIGESTIVE = value;
+				MarkColumnModified("DIGESTIVE");
+			}
+		}
+		string _DIGESTIVE;
+
+		[Column]
+		[Comments("消化系统病程")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIGESTIVE_COS 
+		{ 
+			get
+			{
+				return _DIGESTIVE_COS;
+			}
+			set
+			{
+				_DIGESTIVE_COS = value;
+				MarkColumnModified("DIGESTIVE_COS");
+			}
+		}
+		string _DIGESTIVE_COS;
+
+		[Column]
+		[Comments("血液系统:出血")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BLOOD_OUT 
+		{ 
+			get
+			{
+				return _BLOOD_OUT;
+			}
+			set
+			{
+				_BLOOD_OUT = value;
+				MarkColumnModified("BLOOD_OUT");
+			}
+		}
+		string _BLOOD_OUT;
+
+		[Column]
+		[Comments("血液系统:贫血度")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BLOOD_ANEMIA 
+		{ 
+			get
+			{
+				return _BLOOD_ANEMIA;
+			}
+			set
+			{
+				_BLOOD_ANEMIA = value;
+				MarkColumnModified("BLOOD_ANEMIA");
+			}
+		}
+		string _BLOOD_ANEMIA;
+
+		[Column]
+		[Comments("神精系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MENTALLY 
+		{ 
+			get
+			{
+				return _MENTALLY;
+			}
+			set
+			{
+				_MENTALLY = value;
+				MarkColumnModified("MENTALLY");
+			}
+		}
+		string _MENTALLY;
+
+		[Column]
+		[Comments("心血管:高血压")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? CARDIOVASCULAR_HEIGH 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_HEIGH;
+			}
+			set
+			{
+				_CARDIOVASCULAR_HEIGH = value;
+				MarkColumnModified("CARDIOVASCULAR_HEIGH");
+			}
+		}
+		Int16? _CARDIOVASCULAR_HEIGH;
+
+		[Column]
+		[Comments("药物控制效果")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_DRUGSCTROL 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_DRUGSCTROL;
+			}
+			set
+			{
+				_CARDIOVASCULAR_DRUGSCTROL = value;
+				MarkColumnModified("CARDIOVASCULAR_DRUGSCTROL");
+			}
+		}
+		string _CARDIOVASCULAR_DRUGSCTROL;
+
+		[Column]
+		[Comments("血压")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_PRESSURE 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_PRESSURE;
+			}
+			set
+			{
+				_CARDIOVASCULAR_PRESSURE = value;
+				MarkColumnModified("CARDIOVASCULAR_PRESSURE");
+			}
+		}
+		string _CARDIOVASCULAR_PRESSURE;
+
+		[Column]
+		[Comments("水平")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOVASCULAR_LEVEL 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_LEVEL;
+			}
+			set
+			{
+				_CARDIOVASCULAR_LEVEL = value;
+				MarkColumnModified("CARDIOVASCULAR_LEVEL");
+			}
+		}
+		decimal? _CARDIOVASCULAR_LEVEL;
+
+		[Column]
+		[Comments("最高")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOVASCULAR_HIGHEST 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_HIGHEST;
+			}
+			set
+			{
+				_CARDIOVASCULAR_HIGHEST = value;
+				MarkColumnModified("CARDIOVASCULAR_HIGHEST");
+			}
+		}
+		decimal? _CARDIOVASCULAR_HIGHEST;
+
+		[Column]
+		[Comments("病程")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_COS 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_COS;
+			}
+			set
+			{
+				_CARDIOVASCULAR_COS = value;
+				MarkColumnModified("CARDIOVASCULAR_COS");
+			}
+		}
+		string _CARDIOVASCULAR_COS;
+
+		[Column]
+		[Comments("心衰")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? CARDIOVASCULAR_HEART_FAILURE 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_HEART_FAILURE;
+			}
+			set
+			{
+				_CARDIOVASCULAR_HEART_FAILURE = value;
+				MarkColumnModified("CARDIOVASCULAR_HEART_FAILURE");
+			}
+		}
+		Int16? _CARDIOVASCULAR_HEART_FAILURE;
+
+		[Column]
+		[Comments("心衰次数")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOVASCULAR_HF_TIME 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_HF_TIME;
+			}
+			set
+			{
+				_CARDIOVASCULAR_HF_TIME = value;
+				MarkColumnModified("CARDIOVASCULAR_HF_TIME");
+			}
+		}
+		decimal? _CARDIOVASCULAR_HF_TIME;
+
+		[Column]
+		[Comments("心衰时间")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOVASCULAR_HF_COS 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_HF_COS;
+			}
+			set
+			{
+				_CARDIOVASCULAR_HF_COS = value;
+				MarkColumnModified("CARDIOVASCULAR_HF_COS");
+			}
+		}
+		decimal? _CARDIOVASCULAR_HF_COS;
+
+		[Column]
+		[Comments("心前区疼痛,心慌")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? CARDIOVASCULAR_PAIN 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_PAIN;
+			}
+			set
+			{
+				_CARDIOVASCULAR_PAIN = value;
+				MarkColumnModified("CARDIOVASCULAR_PAIN");
+			}
+		}
+		Int16? _CARDIOVASCULAR_PAIN;
+
+		[Column]
+		[Comments("心率失常")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_ARRHYTHMIAS 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_ARRHYTHMIAS;
+			}
+			set
+			{
+				_CARDIOVASCULAR_ARRHYTHMIAS = value;
+				MarkColumnModified("CARDIOVASCULAR_ARRHYTHMIAS");
+			}
+		}
+		string _CARDIOVASCULAR_ARRHYTHMIAS;
+
+		[Column]
+		[Comments("失常类型")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVASCULAR_ARRHYTHMIAS_TP 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_ARRHYTHMIAS_TP;
+			}
+			set
+			{
+				_CARDIOVASCULAR_ARRHYTHMIAS_TP = value;
+				MarkColumnModified("CARDIOVASCULAR_ARRHYTHMIAS_TP");
+			}
+		}
+		string _CARDIOVASCULAR_ARRHYTHMIAS_TP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SKIN 
+		{ 
+			get
+			{
+				return _SKIN;
+			}
+			set
+			{
+				_SKIN = value;
+				MarkColumnModified("SKIN");
+			}
+		}
+		string _SKIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string MENTALLY_OTHER 
+		{ 
+			get
+			{
+				return _MENTALLY_OTHER;
+			}
+			set
+			{
+				_MENTALLY_OTHER = value;
+				MarkColumnModified("MENTALLY_OTHER");
+			}
+		}
+		string _MENTALLY_OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? ARTHRALGIA 
+		{ 
+			get
+			{
+				return _ARTHRALGIA;
+			}
+			set
+			{
+				_ARTHRALGIA = value;
+				MarkColumnModified("ARTHRALGIA");
+			}
+		}
+		Int16? _ARTHRALGIA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ARTHRALGIA_OTHER 
+		{ 
+			get
+			{
+				return _ARTHRALGIA_OTHER;
+			}
+			set
+			{
+				_ARTHRALGIA_OTHER = value;
+				MarkColumnModified("ARTHRALGIA_OTHER");
+			}
+		}
+		string _ARTHRALGIA_OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+	}
+	
+	[TableName("RENAL_REPLACEMENT_THERAPY_HIS")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class RENAL_REPLACEMENT_THERAPY_HI : XEDB.Record<RENAL_REPLACEMENT_THERAPY_HI>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime FRIST_ANA 
+		{ 
+			get
+			{
+				return _FRIST_ANA;
+			}
+			set
+			{
+				_FRIST_ANA = value;
+				MarkColumnModified("FRIST_ANA");
+			}
+		}
+		DateTime _FRIST_ANA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime SCD_ANA 
+		{ 
+			get
+			{
+				return _SCD_ANA;
+			}
+			set
+			{
+				_SCD_ANA = value;
+				MarkColumnModified("SCD_ANA");
+			}
+		}
+		DateTime _SCD_ANA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime CCRT 
+		{ 
+			get
+			{
+				return _CCRT;
+			}
+			set
+			{
+				_CCRT = value;
+				MarkColumnModified("CCRT");
+			}
+		}
+		DateTime _CCRT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string SLN 
+		{ 
+			get
+			{
+				return _SLN;
+			}
+			set
+			{
+				_SLN = value;
+				MarkColumnModified("SLN");
+			}
+		}
+		string _SLN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+	}
+	
+	[TableName("REG_STATUS")]
+	[PrimaryKey("STATUS_ID")]
+	[ExplicitColumns]
+	public partial class REG_STATUS : XEDB.Record<REG_STATUS>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal STATUS_ID 
+		{ 
+			get
+			{
+				return _STATUS_ID;
+			}
+			set
+			{
+				_STATUS_ID = value;
+				MarkColumnModified("STATUS_ID");
+			}
+		}
+		decimal _STATUS_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string STATUS_MEMO 
+		{ 
+			get
+			{
+				return _STATUS_MEMO;
+			}
+			set
+			{
+				_STATUS_MEMO = value;
+				MarkColumnModified("STATUS_MEMO");
+			}
+		}
+		string _STATUS_MEMO;
+
+	}
+	
+	[TableName("PATIENT_BASEINFO")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class PATIENT_BASEINFO : XEDB.Record<PATIENT_BASEINFO>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		string _NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DATEOFBTH 
+		{ 
+			get
+			{
+				return _DATEOFBTH;
+			}
+			set
+			{
+				_DATEOFBTH = value;
+				MarkColumnModified("DATEOFBTH");
+			}
+		}
+		DateTime _DATEOFBTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="5", Scale="", Precision="")]
+		public string SEX 
+		{ 
+			get
+			{
+				return _SEX;
+			}
+			set
+			{
+				_SEX = value;
+				MarkColumnModified("SEX");
+			}
+		}
+		string _SEX;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string TEL 
+		{ 
+			get
+			{
+				return _TEL;
+			}
+			set
+			{
+				_TEL = value;
+				MarkColumnModified("TEL");
+			}
+		}
+		string _TEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime CREATE_TIME 
+		{ 
+			get
+			{
+				return _CREATE_TIME;
+			}
+			set
+			{
+				_CREATE_TIME = value;
+				MarkColumnModified("CREATE_TIME");
+			}
+		}
+		DateTime _CREATE_TIME;
+
+		[Column]
+		[Comments("首次透析时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime FIRSTANA 
+		{ 
+			get
+			{
+				return _FIRSTANA;
+			}
+			set
+			{
+				_FIRSTANA = value;
+				MarkColumnModified("FIRSTANA");
+			}
+		}
+		DateTime _FIRSTANA;
+
+		[Column]
+		[Comments("关系")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string RELATION 
+		{ 
+			get
+			{
+				return _RELATION;
+			}
+			set
+			{
+				_RELATION = value;
+				MarkColumnModified("RELATION");
+			}
+		}
+		string _RELATION;
+
+		[Column]
+		[Comments("家庭成员")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FAMILY_MEMBERNAME 
+		{ 
+			get
+			{
+				return _FAMILY_MEMBERNAME;
+			}
+			set
+			{
+				_FAMILY_MEMBERNAME = value;
+				MarkColumnModified("FAMILY_MEMBERNAME");
+			}
+		}
+		string _FAMILY_MEMBERNAME;
+
+		[Column]
+		[Comments("民族")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string NATION 
+		{ 
+			get
+			{
+				return _NATION;
+			}
+			set
+			{
+				_NATION = value;
+				MarkColumnModified("NATION");
+			}
+		}
+		string _NATION;
+
+		[Column]
+		[Comments("身份证号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ID_CODE 
+		{ 
+			get
+			{
+				return _ID_CODE;
+			}
+			set
+			{
+				_ID_CODE = value;
+				MarkColumnModified("ID_CODE");
+			}
+		}
+		string _ID_CODE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ADDRESS 
+		{ 
+			get
+			{
+				return _ADDRESS;
+			}
+			set
+			{
+				_ADDRESS = value;
+				MarkColumnModified("ADDRESS");
+			}
+		}
+		string _ADDRESS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PAYTYPE 
+		{ 
+			get
+			{
+				return _PAYTYPE;
+			}
+			set
+			{
+				_PAYTYPE = value;
+				MarkColumnModified("PAYTYPE");
+			}
+		}
+		string _PAYTYPE;
+
+		[Column]
+		[Comments("住院号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HOSPITAL_NUMBER 
+		{ 
+			get
+			{
+				return _HOSPITAL_NUMBER;
+			}
+			set
+			{
+				_HOSPITAL_NUMBER = value;
+				MarkColumnModified("HOSPITAL_NUMBER");
+			}
+		}
+		string _HOSPITAL_NUMBER;
+
+		[Column]
+		[Comments("门诊号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PATIENT_NUMBER 
+		{ 
+			get
+			{
+				return _PATIENT_NUMBER;
+			}
+			set
+			{
+				_PATIENT_NUMBER = value;
+				MarkColumnModified("PATIENT_NUMBER");
+			}
+		}
+		string _PATIENT_NUMBER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PROFESSION 
+		{ 
+			get
+			{
+				return _PROFESSION;
+			}
+			set
+			{
+				_PROFESSION = value;
+				MarkColumnModified("PROFESSION");
+			}
+		}
+		string _PROFESSION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EMERGENCY_TEL1 
+		{ 
+			get
+			{
+				return _EMERGENCY_TEL1;
+			}
+			set
+			{
+				_EMERGENCY_TEL1 = value;
+				MarkColumnModified("EMERGENCY_TEL1");
+			}
+		}
+		string _EMERGENCY_TEL1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MARITAL_STATUS 
+		{ 
+			get
+			{
+				return _MARITAL_STATUS;
+			}
+			set
+			{
+				_MARITAL_STATUS = value;
+				MarkColumnModified("MARITAL_STATUS");
+			}
+		}
+		decimal? _MARITAL_STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? EDUCATIONAL_LEVEL 
+		{ 
+			get
+			{
+				return _EDUCATIONAL_LEVEL;
+			}
+			set
+			{
+				_EDUCATIONAL_LEVEL = value;
+				MarkColumnModified("EDUCATIONAL_LEVEL");
+			}
+		}
+		decimal? _EDUCATIONAL_LEVEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MEDICARE_TYPE 
+		{ 
+			get
+			{
+				return _MEDICARE_TYPE;
+			}
+			set
+			{
+				_MEDICARE_TYPE = value;
+				MarkColumnModified("MEDICARE_TYPE");
+			}
+		}
+		decimal? _MEDICARE_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEDICARE_CODE 
+		{ 
+			get
+			{
+				return _MEDICARE_CODE;
+			}
+			set
+			{
+				_MEDICARE_CODE = value;
+				MarkColumnModified("MEDICARE_CODE");
+			}
+		}
+		string _MEDICARE_CODE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EMERGENCY_CONTACT1 
+		{ 
+			get
+			{
+				return _EMERGENCY_CONTACT1;
+			}
+			set
+			{
+				_EMERGENCY_CONTACT1 = value;
+				MarkColumnModified("EMERGENCY_CONTACT1");
+			}
+		}
+		string _EMERGENCY_CONTACT1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EMERGENCY_CONTACT2 
+		{ 
+			get
+			{
+				return _EMERGENCY_CONTACT2;
+			}
+			set
+			{
+				_EMERGENCY_CONTACT2 = value;
+				MarkColumnModified("EMERGENCY_CONTACT2");
+			}
+		}
+		string _EMERGENCY_CONTACT2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RELATIONSHIP1 
+		{ 
+			get
+			{
+				return _RELATIONSHIP1;
+			}
+			set
+			{
+				_RELATIONSHIP1 = value;
+				MarkColumnModified("RELATIONSHIP1");
+			}
+		}
+		decimal? _RELATIONSHIP1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RELATIONSHIP2 
+		{ 
+			get
+			{
+				return _RELATIONSHIP2;
+			}
+			set
+			{
+				_RELATIONSHIP2 = value;
+				MarkColumnModified("RELATIONSHIP2");
+			}
+		}
+		decimal? _RELATIONSHIP2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EMERGENCY_TEL2 
+		{ 
+			get
+			{
+				return _EMERGENCY_TEL2;
+			}
+			set
+			{
+				_EMERGENCY_TEL2 = value;
+				MarkColumnModified("EMERGENCY_TEL2");
+			}
+		}
+		string _EMERGENCY_TEL2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CYCLE 
+		{ 
+			get
+			{
+				return _CYCLE;
+			}
+			set
+			{
+				_CYCLE = value;
+				MarkColumnModified("CYCLE");
+			}
+		}
+		decimal? _CYCLE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="3")]
+		public Int16? HEIGHT 
+		{ 
+			get
+			{
+				return _HEIGHT;
+			}
+			set
+			{
+				_HEIGHT = value;
+				MarkColumnModified("HEIGHT");
+			}
+		}
+		Int16? _HEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="2", Precision="5")]
+		public Single? WEIGHT 
+		{ 
+			get
+			{
+				return _WEIGHT;
+			}
+			set
+			{
+				_WEIGHT = value;
+				MarkColumnModified("WEIGHT");
+			}
+		}
+		Single? _WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="5")]
+		public Int32? BLOOD_TYPE 
+		{ 
+			get
+			{
+				return _BLOOD_TYPE;
+			}
+			set
+			{
+				_BLOOD_TYPE = value;
+				MarkColumnModified("BLOOD_TYPE");
+			}
+		}
+		Int32? _BLOOD_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="5")]
+		public Int32? LIFE_STATUS 
+		{ 
+			get
+			{
+				return _LIFE_STATUS;
+			}
+			set
+			{
+				_LIFE_STATUS = value;
+				MarkColumnModified("LIFE_STATUS");
+			}
+		}
+		Int32? _LIFE_STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime IN_DATE 
+		{ 
+			get
+			{
+				return _IN_DATE;
+			}
+			set
+			{
+				_IN_DATE = value;
+				MarkColumnModified("IN_DATE");
+			}
+		}
+		DateTime _IN_DATE;
+
+	}
+	
+	[TableName("OUTPATIENT_CATEGORY")]
+	[PrimaryKey("CATEGORY_ID")]
+	[ExplicitColumns]
+	public partial class OUTPATIENT_CATEGORY : XEDB.Record<OUTPATIENT_CATEGORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal CATEGORY_ID 
+		{ 
+			get
+			{
+				return _CATEGORY_ID;
+			}
+			set
+			{
+				_CATEGORY_ID = value;
+				MarkColumnModified("CATEGORY_ID");
+			}
+		}
+		decimal _CATEGORY_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CATEGORY_NAME 
+		{ 
+			get
+			{
+				return _CATEGORY_NAME;
+			}
+			set
+			{
+				_CATEGORY_NAME = value;
+				MarkColumnModified("CATEGORY_NAME");
+			}
+		}
+		string _CATEGORY_NAME;
+
+	}
+	
+	[TableName("NURSE_LOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class NURSE_LOG : XEDB.Record<NURSE_LOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal _REG_ID;
+
+		[Column("NURSE_LOG")]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string _NURSE_LOG 
+		{ 
+			get
+			{
+				return __NURSE_LOG;
+			}
+			set
+			{
+				__NURSE_LOG = value;
+				MarkColumnModified("NURSE_LOG");
+			}
+		}
+		string __NURSE_LOG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_DATE 
+		{ 
+			get
+			{
+				return _LOG_DATE;
+			}
+			set
+			{
+				_LOG_DATE = value;
+				MarkColumnModified("LOG_DATE");
+			}
+		}
+		DateTime _LOG_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string CASE_HISTORY_ID 
+		{ 
+			get
+			{
+				return _CASE_HISTORY_ID;
+			}
+			set
+			{
+				_CASE_HISTORY_ID = value;
+				MarkColumnModified("CASE_HISTORY_ID");
+			}
+		}
+		string _CASE_HISTORY_ID;
+
+	}
+	
+	[TableName("MANGED_ODP_TEST")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MANGED_ODP_TEST : XEDB.Record<MANGED_ODP_TEST>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ABC 
+		{ 
+			get
+			{
+				return _ABC;
+			}
+			set
+			{
+				_ABC = value;
+				MarkColumnModified("ABC");
+			}
+		}
+		string _ABC;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OBJ_ID 
+		{ 
+			get
+			{
+				return _OBJ_ID;
+			}
+			set
+			{
+				_OBJ_ID = value;
+				MarkColumnModified("OBJ_ID");
+			}
+		}
+		decimal? _OBJ_ID;
+
+	}
+	
+	[TableName("MACHINE_TYPE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MACHINE_TYPE : XEDB.Record<MACHINE_TYPE>  
+	{
+		[Column]
+		[Comments("ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("型号")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MODEL 
+		{ 
+			get
+			{
+				return _MODEL;
+			}
+			set
+			{
+				_MODEL = value;
+				MarkColumnModified("MODEL");
+			}
+		}
+		decimal? _MODEL;
+
+		[Column]
+		[Comments("类型")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? M_TYPE 
+		{ 
+			get
+			{
+				return _M_TYPE;
+			}
+			set
+			{
+				_M_TYPE = value;
+				MarkColumnModified("M_TYPE");
+			}
+		}
+		decimal? _M_TYPE;
+
+		[Column]
+		[Comments("图片")] 
+		[ColumnAddtionInfoAttribute(DataType="BLOB", Length="4000", Scale="", Precision="")]
+		public byte[] M_PICTURE 
+		{ 
+			get
+			{
+				return _M_PICTURE;
+			}
+			set
+			{
+				_M_PICTURE = value;
+				MarkColumnModified("M_PICTURE");
+			}
+		}
+		byte[] _M_PICTURE;
+
+		[Column]
+		[Comments("备注")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+	}
+	
+	[TableName("MACHINE_SCHEDULE_HIS")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MACHINE_SCHEDULE_HI : XEDB.Record<MACHINE_SCHEDULE_HI>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string FLOOR_ID 
+		{ 
+			get
+			{
+				return _FLOOR_ID;
+			}
+			set
+			{
+				_FLOOR_ID = value;
+				MarkColumnModified("FLOOR_ID");
+			}
+		}
+		string _FLOOR_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string AREA_ID 
+		{ 
+			get
+			{
+				return _AREA_ID;
+			}
+			set
+			{
+				_AREA_ID = value;
+				MarkColumnModified("AREA_ID");
+			}
+		}
+		string _AREA_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime SCHEDULE_TIME 
+		{ 
+			get
+			{
+				return _SCHEDULE_TIME;
+			}
+			set
+			{
+				_SCHEDULE_TIME = value;
+				MarkColumnModified("SCHEDULE_TIME");
+			}
+		}
+		DateTime _SCHEDULE_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SCHEEDULE_PERIOD 
+		{ 
+			get
+			{
+				return _SCHEEDULE_PERIOD;
+			}
+			set
+			{
+				_SCHEEDULE_PERIOD = value;
+				MarkColumnModified("SCHEEDULE_PERIOD");
+			}
+		}
+		decimal? _SCHEEDULE_PERIOD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACHINE_STATUS 
+		{ 
+			get
+			{
+				return _MACHINE_STATUS;
+			}
+			set
+			{
+				_MACHINE_STATUS = value;
+				MarkColumnModified("MACHINE_STATUS");
+			}
+		}
+		decimal? _MACHINE_STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime CHCKINTM 
+		{ 
+			get
+			{
+				return _CHCKINTM;
+			}
+			set
+			{
+				_CHCKINTM = value;
+				MarkColumnModified("CHCKINTM");
+			}
+		}
+		DateTime _CHCKINTM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime RESERVATION 
+		{ 
+			get
+			{
+				return _RESERVATION;
+			}
+			set
+			{
+				_RESERVATION = value;
+				MarkColumnModified("RESERVATION");
+			}
+		}
+		DateTime _RESERVATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="30", Scale="", Precision="")]
+		public string BED_NO 
+		{ 
+			get
+			{
+				return _BED_NO;
+			}
+			set
+			{
+				_BED_NO = value;
+				MarkColumnModified("BED_NO");
+			}
+		}
+		string _BED_NO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MACHINE_MODEL 
+		{ 
+			get
+			{
+				return _MACHINE_MODEL;
+			}
+			set
+			{
+				_MACHINE_MODEL = value;
+				MarkColumnModified("MACHINE_MODEL");
+			}
+		}
+		string _MACHINE_MODEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_TYPE 
+		{ 
+			get
+			{
+				return _M_TYPE;
+			}
+			set
+			{
+				_M_TYPE = value;
+				MarkColumnModified("M_TYPE");
+			}
+		}
+		string _M_TYPE;
+
+	}
+	
+	[TableName("MACHINE_SCHEDULE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class MACHINE_SCHEDULE : XEDB.Record<MACHINE_SCHEDULE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FLOOR_ID 
+		{ 
+			get
+			{
+				return _FLOOR_ID;
+			}
+			set
+			{
+				_FLOOR_ID = value;
+				MarkColumnModified("FLOOR_ID");
+			}
+		}
+		decimal? _FLOOR_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AREA_ID 
+		{ 
+			get
+			{
+				return _AREA_ID;
+			}
+			set
+			{
+				_AREA_ID = value;
+				MarkColumnModified("AREA_ID");
+			}
+		}
+		decimal? _AREA_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime SCHEDULE_TIME 
+		{ 
+			get
+			{
+				return _SCHEDULE_TIME;
+			}
+			set
+			{
+				_SCHEDULE_TIME = value;
+				MarkColumnModified("SCHEDULE_TIME");
+			}
+		}
+		DateTime _SCHEDULE_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SCHEEDULE_PERIOD 
+		{ 
+			get
+			{
+				return _SCHEEDULE_PERIOD;
+			}
+			set
+			{
+				_SCHEEDULE_PERIOD = value;
+				MarkColumnModified("SCHEEDULE_PERIOD");
+			}
+		}
+		decimal? _SCHEEDULE_PERIOD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACHINE_STATUS 
+		{ 
+			get
+			{
+				return _MACHINE_STATUS;
+			}
+			set
+			{
+				_MACHINE_STATUS = value;
+				MarkColumnModified("MACHINE_STATUS");
+			}
+		}
+		decimal? _MACHINE_STATUS;
+
+		[Column]
+		[Comments("签到时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime CHCKINTM 
+		{ 
+			get
+			{
+				return _CHCKINTM;
+			}
+			set
+			{
+				_CHCKINTM = value;
+				MarkColumnModified("CHCKINTM");
+			}
+		}
+		DateTime _CHCKINTM;
+
+		[Column]
+		[Comments("预约时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime RESERVATION 
+		{ 
+			get
+			{
+				return _RESERVATION;
+			}
+			set
+			{
+				_RESERVATION = value;
+				MarkColumnModified("RESERVATION");
+			}
+		}
+		DateTime _RESERVATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="30", Scale="", Precision="")]
+		public string BED_NO 
+		{ 
+			get
+			{
+				return _BED_NO;
+			}
+			set
+			{
+				_BED_NO = value;
+				MarkColumnModified("BED_NO");
+			}
+		}
+		string _BED_NO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACHINE_INFO_ID 
+		{ 
+			get
+			{
+				return _MACHINE_INFO_ID;
+			}
+			set
+			{
+				_MACHINE_INFO_ID = value;
+				MarkColumnModified("MACHINE_INFO_ID");
+			}
+		}
+		decimal? _MACHINE_INFO_ID;
+
+	}
+	
+	[TableName("INDUCEMENT_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class INDUCEMENT_HISTORY : XEDB.Record<INDUCEMENT_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string INDUCEMENT 
+		{ 
+			get
+			{
+				return _INDUCEMENT;
+			}
+			set
+			{
+				_INDUCEMENT = value;
+				MarkColumnModified("INDUCEMENT");
+			}
+		}
+		string _INDUCEMENT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+	}
+	
+	[TableName("INDUCEMENT_CODE")]
+	[PrimaryKey("INDUCEMENT_ID")]
+	[ExplicitColumns]
+	public partial class INDUCEMENT_CODE : XEDB.Record<INDUCEMENT_CODE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal INDUCEMENT_ID 
+		{ 
+			get
+			{
+				return _INDUCEMENT_ID;
+			}
+			set
+			{
+				_INDUCEMENT_ID = value;
+				MarkColumnModified("INDUCEMENT_ID");
+			}
+		}
+		decimal _INDUCEMENT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string INDUCEMENT_MEMO 
+		{ 
+			get
+			{
+				return _INDUCEMENT_MEMO;
+			}
+			set
+			{
+				_INDUCEMENT_MEMO = value;
+				MarkColumnModified("INDUCEMENT_MEMO");
+			}
+		}
+		string _INDUCEMENT_MEMO;
+
+	}
+	
+	[TableName("EVALUATE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class EVALUATE : XEDB.Record<EVALUATE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string CASE_HISTROY_ID 
+		{ 
+			get
+			{
+				return _CASE_HISTROY_ID;
+			}
+			set
+			{
+				_CASE_HISTROY_ID = value;
+				MarkColumnModified("CASE_HISTROY_ID");
+			}
+		}
+		string _CASE_HISTROY_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_DATE 
+		{ 
+			get
+			{
+				return _LOG_DATE;
+			}
+			set
+			{
+				_LOG_DATE = value;
+				MarkColumnModified("LOG_DATE");
+			}
+		}
+		DateTime _LOG_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+	}
+	
+	[TableName("DRUG_ALLERGY_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DRUG_ALLERGY_HISTORY : XEDB.Record<DRUG_ALLERGY_HISTORY>  
+	{
+		[Column]
+		[Comments("肾前性")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string PRERENAL 
+		{ 
+			get
+			{
+				return _PRERENAL;
+			}
+			set
+			{
+				_PRERENAL = value;
+				MarkColumnModified("PRERENAL");
+			}
+		}
+		string _PRERENAL;
+
+		[Column]
+		[Comments("肾实质性")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string RENAL_PARENCHYMAL 
+		{ 
+			get
+			{
+				return _RENAL_PARENCHYMAL;
+			}
+			set
+			{
+				_RENAL_PARENCHYMAL = value;
+				MarkColumnModified("RENAL_PARENCHYMAL");
+			}
+		}
+		string _RENAL_PARENCHYMAL;
+
+		[Column]
+		[Comments("肾后性")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string POSTRENAL 
+		{ 
+			get
+			{
+				return _POSTRENAL;
+			}
+			set
+			{
+				_POSTRENAL = value;
+				MarkColumnModified("POSTRENAL");
+			}
+		}
+		string _POSTRENAL;
+
+		[Column]
+		[Comments("病程")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? COS 
+		{ 
+			get
+			{
+				return _COS;
+			}
+			set
+			{
+				_COS = value;
+				MarkColumnModified("COS");
+			}
+		}
+		decimal? _COS;
+
+		[Column]
+		[Comments("尿量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? URINE 
+		{ 
+			get
+			{
+				return _URINE;
+			}
+			set
+			{
+				_URINE = value;
+				MarkColumnModified("URINE");
+			}
+		}
+		decimal? _URINE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SER 
+		{ 
+			get
+			{
+				return _SER;
+			}
+			set
+			{
+				_SER = value;
+				MarkColumnModified("SER");
+			}
+		}
+		decimal? _SER;
+
+		[Column]
+		[Comments("脏器衰弱")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ORGAN_WEAKNESS 
+		{ 
+			get
+			{
+				return _ORGAN_WEAKNESS;
+			}
+			set
+			{
+				_ORGAN_WEAKNESS = value;
+				MarkColumnModified("ORGAN_WEAKNESS");
+			}
+		}
+		string _ORGAN_WEAKNESS;
+
+		[Column]
+		[Comments("感染")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string INFECTION 
+		{ 
+			get
+			{
+				return _INFECTION;
+			}
+			set
+			{
+				_INFECTION = value;
+				MarkColumnModified("INFECTION");
+			}
+		}
+		string _INFECTION;
+
+		[Column]
+		[Comments("部位")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string POSITION 
+		{ 
+			get
+			{
+				return _POSITION;
+			}
+			set
+			{
+				_POSITION = value;
+				MarkColumnModified("POSITION");
+			}
+		}
+		string _POSITION;
+
+		[Column]
+		[Comments("其他病史")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string OTHER_HIS 
+		{ 
+			get
+			{
+				return _OTHER_HIS;
+			}
+			set
+			{
+				_OTHER_HIS = value;
+				MarkColumnModified("OTHER_HIS");
+			}
+		}
+		string _OTHER_HIS;
+
+		[Column]
+		[Comments("治疗经过")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string TREATMENT 
+		{ 
+			get
+			{
+				return _TREATMENT;
+			}
+			set
+			{
+				_TREATMENT = value;
+				MarkColumnModified("TREATMENT");
+			}
+		}
+		string _TREATMENT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string PRERENAL_OTH 
+		{ 
+			get
+			{
+				return _PRERENAL_OTH;
+			}
+			set
+			{
+				_PRERENAL_OTH = value;
+				MarkColumnModified("PRERENAL_OTH");
+			}
+		}
+		string _PRERENAL_OTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string RENAL_PARENCHYMAL_OTH 
+		{ 
+			get
+			{
+				return _RENAL_PARENCHYMAL_OTH;
+			}
+			set
+			{
+				_RENAL_PARENCHYMAL_OTH = value;
+				MarkColumnModified("RENAL_PARENCHYMAL_OTH");
+			}
+		}
+		string _RENAL_PARENCHYMAL_OTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string POSTRENAL_OTH 
+		{ 
+			get
+			{
+				return _POSTRENAL_OTH;
+			}
+			set
+			{
+				_POSTRENAL_OTH = value;
+				MarkColumnModified("POSTRENAL_OTH");
+			}
+		}
+		string _POSTRENAL_OTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1", Scale="", Precision="")]
+		public string URINE_CONTINUED 
+		{ 
+			get
+			{
+				return _URINE_CONTINUED;
+			}
+			set
+			{
+				_URINE_CONTINUED = value;
+				MarkColumnModified("URINE_CONTINUED");
+			}
+		}
+		string _URINE_CONTINUED;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SER_OR 
+		{ 
+			get
+			{
+				return _SER_OR;
+			}
+			set
+			{
+				_SER_OR = value;
+				MarkColumnModified("SER_OR");
+			}
+		}
+		decimal? _SER_OR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ORGAN_WEAKNESS_OTHER 
+		{ 
+			get
+			{
+				return _ORGAN_WEAKNESS_OTHER;
+			}
+			set
+			{
+				_ORGAN_WEAKNESS_OTHER = value;
+				MarkColumnModified("ORGAN_WEAKNESS_OTHER");
+			}
+		}
+		string _ORGAN_WEAKNESS_OTHER;
+
+	}
+	
+	[TableName("DOSE_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOSE_HISTORY : XEDB.Record<DOSE_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ACEI 
+		{ 
+			get
+			{
+				return _ACEI;
+			}
+			set
+			{
+				_ACEI = value;
+				MarkColumnModified("ACEI");
+			}
+		}
+		string _ACEI;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ARB 
+		{ 
+			get
+			{
+				return _ARB;
+			}
+			set
+			{
+				_ARB = value;
+				MarkColumnModified("ARB");
+			}
+		}
+		string _ARB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CCB 
+		{ 
+			get
+			{
+				return _CCB;
+			}
+			set
+			{
+				_CCB = value;
+				MarkColumnModified("CCB");
+			}
+		}
+		string _CCB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string B_BLOCK 
+		{ 
+			get
+			{
+				return _B_BLOCK;
+			}
+			set
+			{
+				_B_BLOCK = value;
+				MarkColumnModified("B_BLOCK");
+			}
+		}
+		string _B_BLOCK;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LOW_LIPID 
+		{ 
+			get
+			{
+				return _LOW_LIPID;
+			}
+			set
+			{
+				_LOW_LIPID = value;
+				MarkColumnModified("LOW_LIPID");
+			}
+		}
+		string _LOW_LIPID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string P 
+		{ 
+			get
+			{
+				return _P;
+			}
+			set
+			{
+				_P = value;
+				MarkColumnModified("P");
+			}
+		}
+		string _P;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string V 
+		{ 
+			get
+			{
+				return _V;
+			}
+			set
+			{
+				_V = value;
+				MarkColumnModified("V");
+			}
+		}
+		string _V;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string P_NAME 
+		{ 
+			get
+			{
+				return _P_NAME;
+			}
+			set
+			{
+				_P_NAME = value;
+				MarkColumnModified("P_NAME");
+			}
+		}
+		string _P_NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string V_NAME 
+		{ 
+			get
+			{
+				return _V_NAME;
+			}
+			set
+			{
+				_V_NAME = value;
+				MarkColumnModified("V_NAME");
+			}
+		}
+		string _V_NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EPQ 
+		{ 
+			get
+			{
+				return _EPQ;
+			}
+			set
+			{
+				_EPQ = value;
+				MarkColumnModified("EPQ");
+			}
+		}
+		string _EPQ;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FE 
+		{ 
+			get
+			{
+				return _FE;
+			}
+			set
+			{
+				_FE = value;
+				MarkColumnModified("FE");
+			}
+		}
+		string _FE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OTHER_1 
+		{ 
+			get
+			{
+				return _OTHER_1;
+			}
+			set
+			{
+				_OTHER_1 = value;
+				MarkColumnModified("OTHER_1");
+			}
+		}
+		string _OTHER_1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+	}
+	
+	[TableName("DOC_ADVICE_DRUGS")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOC_ADVICE_DRUG : XEDB.Record<DOC_ADVICE_DRUG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[Comments("记录人")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[Comments("医嘱类型")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? ADVICE_TYPE 
+		{ 
+			get
+			{
+				return _ADVICE_TYPE;
+			}
+			set
+			{
+				_ADVICE_TYPE = value;
+				MarkColumnModified("ADVICE_TYPE");
+			}
+		}
+		decimal? _ADVICE_TYPE;
+
+		[Column]
+		[Comments("药品名称")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? M_NAME 
+		{ 
+			get
+			{
+				return _M_NAME;
+			}
+			set
+			{
+				_M_NAME = value;
+				MarkColumnModified("M_NAME");
+			}
+		}
+		decimal? _M_NAME;
+
+		[Column]
+		[Comments("药品用量")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_AMOUNT 
+		{ 
+			get
+			{
+				return _M_AMOUNT;
+			}
+			set
+			{
+				_M_AMOUNT = value;
+				MarkColumnModified("M_AMOUNT");
+			}
+		}
+		string _M_AMOUNT;
+
+		[Column]
+		[Comments("单位")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_UNIT 
+		{ 
+			get
+			{
+				return _M_UNIT;
+			}
+			set
+			{
+				_M_UNIT = value;
+				MarkColumnModified("M_UNIT");
+			}
+		}
+		string _M_UNIT;
+
+		[Column]
+		[Comments("使用方式")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_ACTION 
+		{ 
+			get
+			{
+				return _M_ACTION;
+			}
+			set
+			{
+				_M_ACTION = value;
+				MarkColumnModified("M_ACTION");
+			}
+		}
+		string _M_ACTION;
+
+		[Column]
+		[Comments("备注")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[Comments("是否禁用")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? IS_DEL 
+		{ 
+			get
+			{
+				return _IS_DEL;
+			}
+			set
+			{
+				_IS_DEL = value;
+				MarkColumnModified("IS_DEL");
+			}
+		}
+		decimal? _IS_DEL;
+
+		[Column]
+		[Comments("禁用时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DEL_TIME 
+		{ 
+			get
+			{
+				return _DEL_TIME;
+			}
+			set
+			{
+				_DEL_TIME = value;
+				MarkColumnModified("DEL_TIME");
+			}
+		}
+		DateTime _DEL_TIME;
+
+		[Column]
+		[Comments("禁用人")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DEL_OPER 
+		{ 
+			get
+			{
+				return _DEL_OPER;
+			}
+			set
+			{
+				_DEL_OPER = value;
+				MarkColumnModified("DEL_OPER");
+			}
+		}
+		string _DEL_OPER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DEF_ADV_ID 
+		{ 
+			get
+			{
+				return _DEF_ADV_ID;
+			}
+			set
+			{
+				_DEF_ADV_ID = value;
+				MarkColumnModified("DEF_ADV_ID");
+			}
+		}
+		decimal? _DEF_ADV_ID;
+
+		[Column]
+		[Comments("间隔天数")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFDAY 
+		{ 
+			get
+			{
+				return _RATEOFDAY;
+			}
+			set
+			{
+				_RATEOFDAY = value;
+				MarkColumnModified("RATEOFDAY");
+			}
+		}
+		decimal? _RATEOFDAY;
+
+		[Column]
+		[Comments("使用次数")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFTIME 
+		{ 
+			get
+			{
+				return _RATEOFTIME;
+			}
+			set
+			{
+				_RATEOFTIME = value;
+				MarkColumnModified("RATEOFTIME");
+			}
+		}
+		decimal? _RATEOFTIME;
+
+	}
+	
+	[TableName("DOC_ADVICE_DFT")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOC_ADVICE_DFT : XEDB.Record<DOC_ADVICE_DFT>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? ADVICE_TYPE 
+		{ 
+			get
+			{
+				return _ADVICE_TYPE;
+			}
+			set
+			{
+				_ADVICE_TYPE = value;
+				MarkColumnModified("ADVICE_TYPE");
+			}
+		}
+		decimal? _ADVICE_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? M_NAME 
+		{ 
+			get
+			{
+				return _M_NAME;
+			}
+			set
+			{
+				_M_NAME = value;
+				MarkColumnModified("M_NAME");
+			}
+		}
+		decimal? _M_NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_AMOUNT 
+		{ 
+			get
+			{
+				return _M_AMOUNT;
+			}
+			set
+			{
+				_M_AMOUNT = value;
+				MarkColumnModified("M_AMOUNT");
+			}
+		}
+		string _M_AMOUNT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_UNIT 
+		{ 
+			get
+			{
+				return _M_UNIT;
+			}
+			set
+			{
+				_M_UNIT = value;
+				MarkColumnModified("M_UNIT");
+			}
+		}
+		string _M_UNIT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_ACTION 
+		{ 
+			get
+			{
+				return _M_ACTION;
+			}
+			set
+			{
+				_M_ACTION = value;
+				MarkColumnModified("M_ACTION");
+			}
+		}
+		string _M_ACTION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? IS_DEL 
+		{ 
+			get
+			{
+				return _IS_DEL;
+			}
+			set
+			{
+				_IS_DEL = value;
+				MarkColumnModified("IS_DEL");
+			}
+		}
+		decimal? _IS_DEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DEL_TIME 
+		{ 
+			get
+			{
+				return _DEL_TIME;
+			}
+			set
+			{
+				_DEL_TIME = value;
+				MarkColumnModified("DEL_TIME");
+			}
+		}
+		DateTime _DEL_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DEL_OPER 
+		{ 
+			get
+			{
+				return _DEL_OPER;
+			}
+			set
+			{
+				_DEL_OPER = value;
+				MarkColumnModified("DEL_OPER");
+			}
+		}
+		string _DEL_OPER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFDAY 
+		{ 
+			get
+			{
+				return _RATEOFDAY;
+			}
+			set
+			{
+				_RATEOFDAY = value;
+				MarkColumnModified("RATEOFDAY");
+			}
+		}
+		decimal? _RATEOFDAY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFTIME 
+		{ 
+			get
+			{
+				return _RATEOFTIME;
+			}
+			set
+			{
+				_RATEOFTIME = value;
+				MarkColumnModified("RATEOFTIME");
+			}
+		}
+		decimal? _RATEOFTIME;
+
+	}
+	
+	[TableName("DOC_ADVICE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOC_ADVICE : XEDB.Record<DOC_ADVICE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? ADVICE_TYPE 
+		{ 
+			get
+			{
+				return _ADVICE_TYPE;
+			}
+			set
+			{
+				_ADVICE_TYPE = value;
+				MarkColumnModified("ADVICE_TYPE");
+			}
+		}
+		decimal? _ADVICE_TYPE;
+
+		[Column]
+		[Comments("材料名")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? M_NAME 
+		{ 
+			get
+			{
+				return _M_NAME;
+			}
+			set
+			{
+				_M_NAME = value;
+				MarkColumnModified("M_NAME");
+			}
+		}
+		decimal? _M_NAME;
+
+		[Column]
+		[Comments("用量")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_AMOUNT 
+		{ 
+			get
+			{
+				return _M_AMOUNT;
+			}
+			set
+			{
+				_M_AMOUNT = value;
+				MarkColumnModified("M_AMOUNT");
+			}
+		}
+		string _M_AMOUNT;
+
+		[Column]
+		[Comments("单位")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_UNIT 
+		{ 
+			get
+			{
+				return _M_UNIT;
+			}
+			set
+			{
+				_M_UNIT = value;
+				MarkColumnModified("M_UNIT");
+			}
+		}
+		string _M_UNIT;
+
+		[Column]
+		[Comments("动作")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string M_ACTION 
+		{ 
+			get
+			{
+				return _M_ACTION;
+			}
+			set
+			{
+				_M_ACTION = value;
+				MarkColumnModified("M_ACTION");
+			}
+		}
+		string _M_ACTION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? IS_DEL 
+		{ 
+			get
+			{
+				return _IS_DEL;
+			}
+			set
+			{
+				_IS_DEL = value;
+				MarkColumnModified("IS_DEL");
+			}
+		}
+		decimal? _IS_DEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DEL_TIME 
+		{ 
+			get
+			{
+				return _DEL_TIME;
+			}
+			set
+			{
+				_DEL_TIME = value;
+				MarkColumnModified("DEL_TIME");
+			}
+		}
+		DateTime _DEL_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DEL_OPER 
+		{ 
+			get
+			{
+				return _DEL_OPER;
+			}
+			set
+			{
+				_DEL_OPER = value;
+				MarkColumnModified("DEL_OPER");
+			}
+		}
+		string _DEL_OPER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DEF_ADV_ID 
+		{ 
+			get
+			{
+				return _DEF_ADV_ID;
+			}
+			set
+			{
+				_DEF_ADV_ID = value;
+				MarkColumnModified("DEF_ADV_ID");
+			}
+		}
+		decimal? _DEF_ADV_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFDAY 
+		{ 
+			get
+			{
+				return _RATEOFDAY;
+			}
+			set
+			{
+				_RATEOFDAY = value;
+				MarkColumnModified("RATEOFDAY");
+			}
+		}
+		decimal? _RATEOFDAY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? RATEOFTIME 
+		{ 
+			get
+			{
+				return _RATEOFTIME;
+			}
+			set
+			{
+				_RATEOFTIME = value;
+				MarkColumnModified("RATEOFTIME");
+			}
+		}
+		decimal? _RATEOFTIME;
+
+	}
+	
+	[TableName("DOCTOR_LOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOCTOR_LOG : XEDB.Record<DOCTOR_LOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal _REG_ID;
+
+		[Column("DOCTOR_LOG")]
+		[ColumnAddtionInfoAttribute(DataType="CLOB", Length="4000", Scale="", Precision="")]
+		public string _DOCTOR_LOG 
+		{ 
+			get
+			{
+				return __DOCTOR_LOG;
+			}
+			set
+			{
+				__DOCTOR_LOG = value;
+				MarkColumnModified("DOCTOR_LOG");
+			}
+		}
+		string __DOCTOR_LOG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_DATE 
+		{ 
+			get
+			{
+				return _LOG_DATE;
+			}
+			set
+			{
+				_LOG_DATE = value;
+				MarkColumnModified("LOG_DATE");
+			}
+		}
+		DateTime _LOG_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("保存病历号ID, 方便从历史记录中检索到医嘱默认值.")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string CASE_HISTORY_ID 
+		{ 
+			get
+			{
+				return _CASE_HISTORY_ID;
+			}
+			set
+			{
+				_CASE_HISTORY_ID = value;
+				MarkColumnModified("CASE_HISTORY_ID");
+			}
+		}
+		string _CASE_HISTORY_ID;
+
+	}
+	
+	[TableName("DOCTOR_HEMODIALYSIS_LOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DOCTOR_HEMODIALYSIS_LOG : XEDB.Record<DOCTOR_HEMODIALYSIS_LOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string DOC_HMODSISLOG 
+		{ 
+			get
+			{
+				return _DOC_HMODSISLOG;
+			}
+			set
+			{
+				_DOC_HMODSISLOG = value;
+				MarkColumnModified("DOC_HMODSISLOG");
+			}
+		}
+		string _DOC_HMODSISLOG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_DATE 
+		{ 
+			get
+			{
+				return _LOG_DATE;
+			}
+			set
+			{
+				_LOG_DATE = value;
+				MarkColumnModified("LOG_DATE");
+			}
+		}
+		DateTime _LOG_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="40", Scale="", Precision="")]
+		public string CASE_HISTORY_ID 
+		{ 
+			get
+			{
+				return _CASE_HISTORY_ID;
+			}
+			set
+			{
+				_CASE_HISTORY_ID = value;
+				MarkColumnModified("CASE_HISTORY_ID");
+			}
+		}
+		string _CASE_HISTORY_ID;
+
+	}
+	
+	[TableName("DIGESTIVESYS_CODE")]
+	[PrimaryKey("DIGESTIVESYS_ID")]
+	[ExplicitColumns]
+	public partial class DIGESTIVESYS_CODE : XEDB.Record<DIGESTIVESYS_CODE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal DIGESTIVESYS_ID 
+		{ 
+			get
+			{
+				return _DIGESTIVESYS_ID;
+			}
+			set
+			{
+				_DIGESTIVESYS_ID = value;
+				MarkColumnModified("DIGESTIVESYS_ID");
+			}
+		}
+		decimal _DIGESTIVESYS_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIGESTIVESYS_MEMO 
+		{ 
+			get
+			{
+				return _DIGESTIVESYS_MEMO;
+			}
+			set
+			{
+				_DIGESTIVESYS_MEMO = value;
+				MarkColumnModified("DIGESTIVESYS_MEMO");
+			}
+		}
+		string _DIGESTIVESYS_MEMO;
+
+	}
+	
+	[TableName("DIAGNOSIS_TUMOR")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_TUMOR : XEDB.Record<DIAGNOSIS_TUMOR>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[Comments("肿瘤位置")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string TUMOR_POS 
+		{ 
+			get
+			{
+				return _TUMOR_POS;
+			}
+			set
+			{
+				_TUMOR_POS = value;
+				MarkColumnModified("TUMOR_POS");
+			}
+		}
+		string _TUMOR_POS;
+
+		[Column]
+		[Comments("消化系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DIGESTIVE_SYSTEM 
+		{ 
+			get
+			{
+				return _DIGESTIVE_SYSTEM;
+			}
+			set
+			{
+				_DIGESTIVE_SYSTEM = value;
+				MarkColumnModified("DIGESTIVE_SYSTEM");
+			}
+		}
+		string _DIGESTIVE_SYSTEM;
+
+		[Column]
+		[Comments("呼吸系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string RESPIRATORY 
+		{ 
+			get
+			{
+				return _RESPIRATORY;
+			}
+			set
+			{
+				_RESPIRATORY = value;
+				MarkColumnModified("RESPIRATORY");
+			}
+		}
+		string _RESPIRATORY;
+
+		[Column]
+		[Comments("血液系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string BLOOD_SYSTEM 
+		{ 
+			get
+			{
+				return _BLOOD_SYSTEM;
+			}
+			set
+			{
+				_BLOOD_SYSTEM = value;
+				MarkColumnModified("BLOOD_SYSTEM");
+			}
+		}
+		string _BLOOD_SYSTEM;
+
+		[Column]
+		[Comments("泌尿生殖系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string GENITOURINARY_SYSTEM 
+		{ 
+			get
+			{
+				return _GENITOURINARY_SYSTEM;
+			}
+			set
+			{
+				_GENITOURINARY_SYSTEM = value;
+				MarkColumnModified("GENITOURINARY_SYSTEM");
+			}
+		}
+		string _GENITOURINARY_SYSTEM;
+
+		[Column]
+		[Comments("神经系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string NERVOUS_SYSTEM 
+		{ 
+			get
+			{
+				return _NERVOUS_SYSTEM;
+			}
+			set
+			{
+				_NERVOUS_SYSTEM = value;
+				MarkColumnModified("NERVOUS_SYSTEM");
+			}
+		}
+		string _NERVOUS_SYSTEM;
+
+		[Column]
+		[Comments("骨骼肌肉系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string MUSCULOSKELETAL_SYSTEM 
+		{ 
+			get
+			{
+				return _MUSCULOSKELETAL_SYSTEM;
+			}
+			set
+			{
+				_MUSCULOSKELETAL_SYSTEM = value;
+				MarkColumnModified("MUSCULOSKELETAL_SYSTEM");
+			}
+		}
+		string _MUSCULOSKELETAL_SYSTEM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+	}
+	
+	[TableName("DIAGNOSIS_PRIMARY_DISEASE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_PRIMARY_DISEASE : XEDB.Record<DIAGNOSIS_PRIMARY_DISEASE>  
+	{
+		[Column]
+		[Comments("原发病诊断分类")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PRIMARY_DISEAE_TYPE 
+		{ 
+			get
+			{
+				return _PRIMARY_DISEAE_TYPE;
+			}
+			set
+			{
+				_PRIMARY_DISEAE_TYPE = value;
+				MarkColumnModified("PRIMARY_DISEAE_TYPE");
+			}
+		}
+		decimal? _PRIMARY_DISEAE_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("原发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PRIMARY_GLOMERULAR_DISEASE 
+		{ 
+			get
+			{
+				return _PRIMARY_GLOMERULAR_DISEASE;
+			}
+			set
+			{
+				_PRIMARY_GLOMERULAR_DISEASE = value;
+				MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE");
+			}
+		}
+		decimal? _PRIMARY_GLOMERULAR_DISEASE;
+
+		[Column]
+		[Comments("其他原发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string PRIMARY_GLOMERULAR_DISEASE_OTH 
+		{ 
+			get
+			{
+				return _PRIMARY_GLOMERULAR_DISEASE_OTH;
+			}
+			set
+			{
+				_PRIMARY_GLOMERULAR_DISEASE_OTH = value;
+				MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE_OTH");
+			}
+		}
+		string _PRIMARY_GLOMERULAR_DISEASE_OTH;
+
+		[Column]
+		[Comments("继发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SECONDARY_GLOMERULAR_DISEASES 
+		{ 
+			get
+			{
+				return _SECONDARY_GLOMERULAR_DISEASES;
+			}
+			set
+			{
+				_SECONDARY_GLOMERULAR_DISEASES = value;
+				MarkColumnModified("SECONDARY_GLOMERULAR_DISEASES");
+			}
+		}
+		decimal? _SECONDARY_GLOMERULAR_DISEASES;
+
+		[Column]
+		[Comments("其他继发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string SECONDARY_GLOMERULAR_OTH 
+		{ 
+			get
+			{
+				return _SECONDARY_GLOMERULAR_OTH;
+			}
+			set
+			{
+				_SECONDARY_GLOMERULAR_OTH = value;
+				MarkColumnModified("SECONDARY_GLOMERULAR_OTH");
+			}
+		}
+		string _SECONDARY_GLOMERULAR_OTH;
+
+		[Column]
+		[Comments("遗传性及先天性肾病")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEREDITARY_CONGENITAL_NEPH 
+		{ 
+			get
+			{
+				return _HEREDITARY_CONGENITAL_NEPH;
+			}
+			set
+			{
+				_HEREDITARY_CONGENITAL_NEPH = value;
+				MarkColumnModified("HEREDITARY_CONGENITAL_NEPH");
+			}
+		}
+		decimal? _HEREDITARY_CONGENITAL_NEPH;
+
+		[Column]
+		[Comments("其他遗传性及先天性肾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string HEREDITARY_CONGENITAL_NEPH_OTH 
+		{ 
+			get
+			{
+				return _HEREDITARY_CONGENITAL_NEPH_OTH;
+			}
+			set
+			{
+				_HEREDITARY_CONGENITAL_NEPH_OTH = value;
+				MarkColumnModified("HEREDITARY_CONGENITAL_NEPH_OTH");
+			}
+		}
+		string _HEREDITARY_CONGENITAL_NEPH_OTH;
+
+		[Column]
+		[Comments("肾小管间质疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? TUBULOINTERSTITIAL_DISEASE 
+		{ 
+			get
+			{
+				return _TUBULOINTERSTITIAL_DISEASE;
+			}
+			set
+			{
+				_TUBULOINTERSTITIAL_DISEASE = value;
+				MarkColumnModified("TUBULOINTERSTITIAL_DISEASE");
+			}
+		}
+		decimal? _TUBULOINTERSTITIAL_DISEASE;
+
+		[Column]
+		[Comments("其他肾小管间质疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string TUBULOINTERSTITIAL_DISEASE_OTH 
+		{ 
+			get
+			{
+				return _TUBULOINTERSTITIAL_DISEASE_OTH;
+			}
+			set
+			{
+				_TUBULOINTERSTITIAL_DISEASE_OTH = value;
+				MarkColumnModified("TUBULOINTERSTITIAL_DISEASE_OTH");
+			}
+		}
+		string _TUBULOINTERSTITIAL_DISEASE_OTH;
+
+		[Column]
+		[Comments("泌尿系感染和结石")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? URINARY_TRACT_INFECTIONS_STON 
+		{ 
+			get
+			{
+				return _URINARY_TRACT_INFECTIONS_STON;
+			}
+			set
+			{
+				_URINARY_TRACT_INFECTIONS_STON = value;
+				MarkColumnModified("URINARY_TRACT_INFECTIONS_STON");
+			}
+		}
+		decimal? _URINARY_TRACT_INFECTIONS_STON;
+
+		[Column]
+		[Comments("其他泌尿系感染和结石")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string INFECTIONS_STON_OTH 
+		{ 
+			get
+			{
+				return _INFECTIONS_STON_OTH;
+			}
+			set
+			{
+				_INFECTIONS_STON_OTH = value;
+				MarkColumnModified("INFECTIONS_STON_OTH");
+			}
+		}
+		string _INFECTIONS_STON_OTH;
+
+		[Column]
+		[Comments("肾脏切除原因")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? NEPHRECTOMY_REASON 
+		{ 
+			get
+			{
+				return _NEPHRECTOMY_REASON;
+			}
+			set
+			{
+				_NEPHRECTOMY_REASON = value;
+				MarkColumnModified("NEPHRECTOMY_REASON");
+			}
+		}
+		decimal? _NEPHRECTOMY_REASON;
+
+		[Column]
+		[Comments("其他肾脏切除原因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string NEPHRECTOMY_REASON_OTH 
+		{ 
+			get
+			{
+				return _NEPHRECTOMY_REASON_OTH;
+			}
+			set
+			{
+				_NEPHRECTOMY_REASON_OTH = value;
+				MarkColumnModified("NEPHRECTOMY_REASON_OTH");
+			}
+		}
+		string _NEPHRECTOMY_REASON_OTH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IS_DEL 
+		{ 
+			get
+			{
+				return _IS_DEL;
+			}
+			set
+			{
+				_IS_DEL = value;
+				MarkColumnModified("IS_DEL");
+			}
+		}
+		decimal? _IS_DEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime DEL_TIME 
+		{ 
+			get
+			{
+				return _DEL_TIME;
+			}
+			set
+			{
+				_DEL_TIME = value;
+				MarkColumnModified("DEL_TIME");
+			}
+		}
+		DateTime _DEL_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+	}
+	
+	[TableName("DIAGNOSIS_PATHOLOGICAL")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_PATHOLOGICAL : XEDB.Record<DIAGNOSIS_PATHOLOGICAL>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("原发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string PRIMARY_GLOMERULAR_DISEASE 
+		{ 
+			get
+			{
+				return _PRIMARY_GLOMERULAR_DISEASE;
+			}
+			set
+			{
+				_PRIMARY_GLOMERULAR_DISEASE = value;
+				MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE");
+			}
+		}
+		string _PRIMARY_GLOMERULAR_DISEASE;
+
+		[Column]
+		[Comments("其他原发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string PRIMARY_GLOMERULAR_DISEASE_OTH 
+		{ 
+			get
+			{
+				return _PRIMARY_GLOMERULAR_DISEASE_OTH;
+			}
+			set
+			{
+				_PRIMARY_GLOMERULAR_DISEASE_OTH = value;
+				MarkColumnModified("PRIMARY_GLOMERULAR_DISEASE_OTH");
+			}
+		}
+		string _PRIMARY_GLOMERULAR_DISEASE_OTH;
+
+		[Column]
+		[Comments("继发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string SECONDARY_GLOMERULAR_DISEASES 
+		{ 
+			get
+			{
+				return _SECONDARY_GLOMERULAR_DISEASES;
+			}
+			set
+			{
+				_SECONDARY_GLOMERULAR_DISEASES = value;
+				MarkColumnModified("SECONDARY_GLOMERULAR_DISEASES");
+			}
+		}
+		string _SECONDARY_GLOMERULAR_DISEASES;
+
+		[Column]
+		[Comments("其他继发性肾小球疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string SECONDARY_GLOMERULAR_OTH 
+		{ 
+			get
+			{
+				return _SECONDARY_GLOMERULAR_OTH;
+			}
+			set
+			{
+				_SECONDARY_GLOMERULAR_OTH = value;
+				MarkColumnModified("SECONDARY_GLOMERULAR_OTH");
+			}
+		}
+		string _SECONDARY_GLOMERULAR_OTH;
+
+		[Column]
+		[Comments("肾小管间质疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string TUBULOINTERSTITIAL_DISEASE 
+		{ 
+			get
+			{
+				return _TUBULOINTERSTITIAL_DISEASE;
+			}
+			set
+			{
+				_TUBULOINTERSTITIAL_DISEASE = value;
+				MarkColumnModified("TUBULOINTERSTITIAL_DISEASE");
+			}
+		}
+		string _TUBULOINTERSTITIAL_DISEASE;
+
+		[Column]
+		[Comments("遗传性及先天性肾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string HEREDITARY_CONGENITAL_NEPH 
+		{ 
+			get
+			{
+				return _HEREDITARY_CONGENITAL_NEPH;
+			}
+			set
+			{
+				_HEREDITARY_CONGENITAL_NEPH = value;
+				MarkColumnModified("HEREDITARY_CONGENITAL_NEPH");
+			}
+		}
+		string _HEREDITARY_CONGENITAL_NEPH;
+
+		[Column]
+		[Comments("其他遗传性及先天性肾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string HEREDITARY_CONGENITAL_OTH 
+		{ 
+			get
+			{
+				return _HEREDITARY_CONGENITAL_OTH;
+			}
+			set
+			{
+				_HEREDITARY_CONGENITAL_OTH = value;
+				MarkColumnModified("HEREDITARY_CONGENITAL_OTH");
+			}
+		}
+		string _HEREDITARY_CONGENITAL_OTH;
+
+		[Column]
+		[Comments("其他肾小管间质疾病")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string TUBULOINTERSTITIAL_DISEASE_OTH 
+		{ 
+			get
+			{
+				return _TUBULOINTERSTITIAL_DISEASE_OTH;
+			}
+			set
+			{
+				_TUBULOINTERSTITIAL_DISEASE_OTH = value;
+				MarkColumnModified("TUBULOINTERSTITIAL_DISEASE_OTH");
+			}
+		}
+		string _TUBULOINTERSTITIAL_DISEASE_OTH;
+
+		[Column]
+		[Comments("病理诊断类型")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string PATHOLOGICAL_DIAGNOSIS_TYPE 
+		{ 
+			get
+			{
+				return _PATHOLOGICAL_DIAGNOSIS_TYPE;
+			}
+			set
+			{
+				_PATHOLOGICAL_DIAGNOSIS_TYPE = value;
+				MarkColumnModified("PATHOLOGICAL_DIAGNOSIS_TYPE");
+			}
+		}
+		string _PATHOLOGICAL_DIAGNOSIS_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+	}
+	
+	[TableName("DIAGNOSIS_INFECTIOUS_DISEASE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_INFECTIOUS_DISEASE : XEDB.Record<DIAGNOSIS_INFECTIOUS_DISEASE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[Comments("疾病种类")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string INFECTIOUS_DISEASE 
+		{ 
+			get
+			{
+				return _INFECTIOUS_DISEASE;
+			}
+			set
+			{
+				_INFECTIOUS_DISEASE = value;
+				MarkColumnModified("INFECTIOUS_DISEASE");
+			}
+		}
+		string _INFECTIOUS_DISEASE;
+
+		[Column]
+		[Comments("其他疾病说明")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string INFECTIOUS_DISEASE_OTH 
+		{ 
+			get
+			{
+				return _INFECTIOUS_DISEASE_OTH;
+			}
+			set
+			{
+				_INFECTIOUS_DISEASE_OTH = value;
+				MarkColumnModified("INFECTIOUS_DISEASE_OTH");
+			}
+		}
+		string _INFECTIOUS_DISEASE_OTH;
+
+	}
+	
+	[TableName("DIAGNOSIS_COMPLICATION")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_COMPLICATION : XEDB.Record<DIAGNOSIS_COMPLICATION>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[Comments("并发症类别")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string COMPLICATIONS_TYPE 
+		{ 
+			get
+			{
+				return _COMPLICATIONS_TYPE;
+			}
+			set
+			{
+				_COMPLICATIONS_TYPE = value;
+				MarkColumnModified("COMPLICATIONS_TYPE");
+			}
+		}
+		string _COMPLICATIONS_TYPE;
+
+		[Column]
+		[Comments("骨矿物质代谢紊乱")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string BONE_MINERAL_METABOLISM 
+		{ 
+			get
+			{
+				return _BONE_MINERAL_METABOLISM;
+			}
+			set
+			{
+				_BONE_MINERAL_METABOLISM = value;
+				MarkColumnModified("BONE_MINERAL_METABOLISM");
+			}
+		}
+		string _BONE_MINERAL_METABOLISM;
+
+		[Column]
+		[Comments("其他骨矿物质代谢紊乱")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string BONE_MINERAL_METABOLISM_OTH 
+		{ 
+			get
+			{
+				return _BONE_MINERAL_METABOLISM_OTH;
+			}
+			set
+			{
+				_BONE_MINERAL_METABOLISM_OTH = value;
+				MarkColumnModified("BONE_MINERAL_METABOLISM_OTH");
+			}
+		}
+		string _BONE_MINERAL_METABOLISM_OTH;
+
+		[Column]
+		[Comments("淀粉样变性")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string AMYLOIDOSIS 
+		{ 
+			get
+			{
+				return _AMYLOIDOSIS;
+			}
+			set
+			{
+				_AMYLOIDOSIS = value;
+				MarkColumnModified("AMYLOIDOSIS");
+			}
+		}
+		string _AMYLOIDOSIS;
+
+		[Column]
+		[Comments("其他淀粉样变性")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string AMYLOIDOSIS_OTH 
+		{ 
+			get
+			{
+				return _AMYLOIDOSIS_OTH;
+			}
+			set
+			{
+				_AMYLOIDOSIS_OTH = value;
+				MarkColumnModified("AMYLOIDOSIS_OTH");
+			}
+		}
+		string _AMYLOIDOSIS_OTH;
+
+		[Column]
+		[Comments("呼吸系统并发症")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string RESPIRATORY_COMPLICATIONS 
+		{ 
+			get
+			{
+				return _RESPIRATORY_COMPLICATIONS;
+			}
+			set
+			{
+				_RESPIRATORY_COMPLICATIONS = value;
+				MarkColumnModified("RESPIRATORY_COMPLICATIONS");
+			}
+		}
+		string _RESPIRATORY_COMPLICATIONS;
+
+		[Column]
+		[Comments("其他呼吸系统并发症")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string RESPIRATORY_COMPLICATIONS_OTH 
+		{ 
+			get
+			{
+				return _RESPIRATORY_COMPLICATIONS_OTH;
+			}
+			set
+			{
+				_RESPIRATORY_COMPLICATIONS_OTH = value;
+				MarkColumnModified("RESPIRATORY_COMPLICATIONS_OTH");
+			}
+		}
+		string _RESPIRATORY_COMPLICATIONS_OTH;
+
+		[Column]
+		[Comments("心血管")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string CARDIOVASCULAR 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR;
+			}
+			set
+			{
+				_CARDIOVASCULAR = value;
+				MarkColumnModified("CARDIOVASCULAR");
+			}
+		}
+		string _CARDIOVASCULAR;
+
+		[Column]
+		[Comments("其他心血管")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string CARDIOVASCULAR_OTH 
+		{ 
+			get
+			{
+				return _CARDIOVASCULAR_OTH;
+			}
+			set
+			{
+				_CARDIOVASCULAR_OTH = value;
+				MarkColumnModified("CARDIOVASCULAR_OTH");
+			}
+		}
+		string _CARDIOVASCULAR_OTH;
+
+		[Column]
+		[Comments("神经系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string NERVOUS_SYSTEM 
+		{ 
+			get
+			{
+				return _NERVOUS_SYSTEM;
+			}
+			set
+			{
+				_NERVOUS_SYSTEM = value;
+				MarkColumnModified("NERVOUS_SYSTEM");
+			}
+		}
+		string _NERVOUS_SYSTEM;
+
+		[Column]
+		[Comments("其他神经系统并发症")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string NERVOUS_SYSTEM_OTH 
+		{ 
+			get
+			{
+				return _NERVOUS_SYSTEM_OTH;
+			}
+			set
+			{
+				_NERVOUS_SYSTEM_OTH = value;
+				MarkColumnModified("NERVOUS_SYSTEM_OTH");
+			}
+		}
+		string _NERVOUS_SYSTEM_OTH;
+
+		[Column]
+		[Comments("其他并发症")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string OTH_COMPLICATIONS 
+		{ 
+			get
+			{
+				return _OTH_COMPLICATIONS;
+			}
+			set
+			{
+				_OTH_COMPLICATIONS = value;
+				MarkColumnModified("OTH_COMPLICATIONS");
+			}
+		}
+		string _OTH_COMPLICATIONS;
+
+		[Column]
+		[Comments("具体情况描述")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[Comments("消化系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string DIGESTIVE_SYSTEM 
+		{ 
+			get
+			{
+				return _DIGESTIVE_SYSTEM;
+			}
+			set
+			{
+				_DIGESTIVE_SYSTEM = value;
+				MarkColumnModified("DIGESTIVE_SYSTEM");
+			}
+		}
+		string _DIGESTIVE_SYSTEM;
+
+		[Column]
+		[Comments("其他消化系统")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string DIGESTIVE_SYSTEM_OTH 
+		{ 
+			get
+			{
+				return _DIGESTIVE_SYSTEM_OTH;
+			}
+			set
+			{
+				_DIGESTIVE_SYSTEM_OTH = value;
+				MarkColumnModified("DIGESTIVE_SYSTEM_OTH");
+			}
+		}
+		string _DIGESTIVE_SYSTEM_OTH;
+
+	}
+	
+	[TableName("DIAGNOSIS_ALLERGY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class DIAGNOSIS_ALLERGY : XEDB.Record<DIAGNOSIS_ALLERGY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[Comments("记录时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[Comments("过敏反应")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ALLERGIC_REACTIONS 
+		{ 
+			get
+			{
+				return _ALLERGIC_REACTIONS;
+			}
+			set
+			{
+				_ALLERGIC_REACTIONS = value;
+				MarkColumnModified("ALLERGIC_REACTIONS");
+			}
+		}
+		string _ALLERGIC_REACTIONS;
+
+		[Column]
+		[Comments("其他过敏反应")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string ALLERGIC_REACTIONS_OTH 
+		{ 
+			get
+			{
+				return _ALLERGIC_REACTIONS_OTH;
+			}
+			set
+			{
+				_ALLERGIC_REACTIONS_OTH = value;
+				MarkColumnModified("ALLERGIC_REACTIONS_OTH");
+			}
+		}
+		string _ALLERGIC_REACTIONS_OTH;
+
+		[Column]
+		[Comments("透析器材过敏")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DIALYSIS_EQUIPMENT_ALLERGIES 
+		{ 
+			get
+			{
+				return _DIALYSIS_EQUIPMENT_ALLERGIES;
+			}
+			set
+			{
+				_DIALYSIS_EQUIPMENT_ALLERGIES = value;
+				MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES");
+			}
+		}
+		string _DIALYSIS_EQUIPMENT_ALLERGIES;
+
+		[Column]
+		[Comments("其他透析器材过敏")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string DIALYSIS_EQUIPMENT_ALLERGIES_O 
+		{ 
+			get
+			{
+				return _DIALYSIS_EQUIPMENT_ALLERGIES_O;
+			}
+			set
+			{
+				_DIALYSIS_EQUIPMENT_ALLERGIES_O = value;
+				MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES_O");
+			}
+		}
+		string _DIALYSIS_EQUIPMENT_ALLERGIES_O;
+
+		[Column]
+		[Comments("透析膜")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DIALYSIS_MEMBRANE 
+		{ 
+			get
+			{
+				return _DIALYSIS_MEMBRANE;
+			}
+			set
+			{
+				_DIALYSIS_MEMBRANE = value;
+				MarkColumnModified("DIALYSIS_MEMBRANE");
+			}
+		}
+		string _DIALYSIS_MEMBRANE;
+
+		[Column]
+		[Comments("其他透析膜")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string DIALYSIS_MEMBRANE_OTH 
+		{ 
+			get
+			{
+				return _DIALYSIS_MEMBRANE_OTH;
+			}
+			set
+			{
+				_DIALYSIS_MEMBRANE_OTH = value;
+				MarkColumnModified("DIALYSIS_MEMBRANE_OTH");
+			}
+		}
+		string _DIALYSIS_MEMBRANE_OTH;
+
+		[Column]
+		[Comments("透析器材型号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DIALYSIS_EQUIPMENT_ALLERGIES_N 
+		{ 
+			get
+			{
+				return _DIALYSIS_EQUIPMENT_ALLERGIES_N;
+			}
+			set
+			{
+				_DIALYSIS_EQUIPMENT_ALLERGIES_N = value;
+				MarkColumnModified("DIALYSIS_EQUIPMENT_ALLERGIES_N");
+			}
+		}
+		string _DIALYSIS_EQUIPMENT_ALLERGIES_N;
+
+		[Column]
+		[Comments("消毒剂")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DISINFECTANTS 
+		{ 
+			get
+			{
+				return _DISINFECTANTS;
+			}
+			set
+			{
+				_DISINFECTANTS = value;
+				MarkColumnModified("DISINFECTANTS");
+			}
+		}
+		string _DISINFECTANTS;
+
+		[Column]
+		[Comments("其他消毒剂")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string DISINFECTANTS_OTH 
+		{ 
+			get
+			{
+				return _DISINFECTANTS_OTH;
+			}
+			set
+			{
+				_DISINFECTANTS_OTH = value;
+				MarkColumnModified("DISINFECTANTS_OTH");
+			}
+		}
+		string _DISINFECTANTS_OTH;
+
+		[Column]
+		[Comments("药物过敏")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DRUG_ALLERGY 
+		{ 
+			get
+			{
+				return _DRUG_ALLERGY;
+			}
+			set
+			{
+				_DRUG_ALLERGY = value;
+				MarkColumnModified("DRUG_ALLERGY");
+			}
+		}
+		string _DRUG_ALLERGY;
+
+		[Column]
+		[Comments("抗生素")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string ANTIBIOTIC 
+		{ 
+			get
+			{
+				return _ANTIBIOTIC;
+			}
+			set
+			{
+				_ANTIBIOTIC = value;
+				MarkColumnModified("ANTIBIOTIC");
+			}
+		}
+		string _ANTIBIOTIC;
+
+		[Column]
+		[Comments("静脉铁剂")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string INTRAVENOUS_IRON 
+		{ 
+			get
+			{
+				return _INTRAVENOUS_IRON;
+			}
+			set
+			{
+				_INTRAVENOUS_IRON = value;
+				MarkColumnModified("INTRAVENOUS_IRON");
+			}
+		}
+		string _INTRAVENOUS_IRON;
+
+		[Column]
+		[Comments("蔗糖铁")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string IRON_SUCROSE 
+		{ 
+			get
+			{
+				return _IRON_SUCROSE;
+			}
+			set
+			{
+				_IRON_SUCROSE = value;
+				MarkColumnModified("IRON_SUCROSE");
+			}
+		}
+		string _IRON_SUCROSE;
+
+		[Column]
+		[Comments("右旋糖苷铁")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string IRON_DEXTRAN 
+		{ 
+			get
+			{
+				return _IRON_DEXTRAN;
+			}
+			set
+			{
+				_IRON_DEXTRAN = value;
+				MarkColumnModified("IRON_DEXTRAN");
+			}
+		}
+		string _IRON_DEXTRAN;
+
+		[Column]
+		[Comments("肝素")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string HEPARIN 
+		{ 
+			get
+			{
+				return _HEPARIN;
+			}
+			set
+			{
+				_HEPARIN = value;
+				MarkColumnModified("HEPARIN");
+			}
+		}
+		string _HEPARIN;
+
+		[Column]
+		[Comments("其他肝素")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string HEPARIN_OTH 
+		{ 
+			get
+			{
+				return _HEPARIN_OTH;
+			}
+			set
+			{
+				_HEPARIN_OTH = value;
+				MarkColumnModified("HEPARIN_OTH");
+			}
+		}
+		string _HEPARIN_OTH;
+
+		[Column]
+		[Comments("其他药物过敏")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1000", Scale="", Precision="")]
+		public string DRUG_ALLERGY_OTH 
+		{ 
+			get
+			{
+				return _DRUG_ALLERGY_OTH;
+			}
+			set
+			{
+				_DRUG_ALLERGY_OTH = value;
+				MarkColumnModified("DRUG_ALLERGY_OTH");
+			}
+		}
+		string _DRUG_ALLERGY_OTH;
+
+	}
+	
+	[TableName("CONSUMABLES_WAREHOUSE")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_WAREHOUSE : XEDB.Record<CONSUMABLES_WAREHOUSE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_CODE 
+		{ 
+			get
+			{
+				return _CONSUMABLES_CODE;
+			}
+			set
+			{
+				_CONSUMABLES_CODE = value;
+				MarkColumnModified("CONSUMABLES_CODE");
+			}
+		}
+		decimal? _CONSUMABLES_CODE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		decimal? _NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SIZE1 
+		{ 
+			get
+			{
+				return _SIZE1;
+			}
+			set
+			{
+				_SIZE1 = value;
+				MarkColumnModified("SIZE1");
+			}
+		}
+		string _SIZE1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FIRM 
+		{ 
+			get
+			{
+				return _FIRM;
+			}
+			set
+			{
+				_FIRM = value;
+				MarkColumnModified("FIRM");
+			}
+		}
+		decimal? _FIRM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string MODEL 
+		{ 
+			get
+			{
+				return _MODEL;
+			}
+			set
+			{
+				_MODEL = value;
+				MarkColumnModified("MODEL");
+			}
+		}
+		string _MODEL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? COUNT 
+		{ 
+			get
+			{
+				return _COUNT;
+			}
+			set
+			{
+				_COUNT = value;
+				MarkColumnModified("COUNT");
+			}
+		}
+		decimal? _COUNT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+	}
+	
+	[TableName("CONSUMABLES_REQUEST_LST_USELOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_REQUEST_LST_USELOG : XEDB.Record<CONSUMABLES_REQUEST_LST_USELOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[Comments("申请单号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string REQUEST_ID 
+		{ 
+			get
+			{
+				return _REQUEST_ID;
+			}
+			set
+			{
+				_REQUEST_ID = value;
+				MarkColumnModified("REQUEST_ID");
+			}
+		}
+		string _REQUEST_ID;
+
+		[Column]
+		[Comments("申请量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? REQUEST_NUM 
+		{ 
+			get
+			{
+				return _REQUEST_NUM;
+			}
+			set
+			{
+				_REQUEST_NUM = value;
+				MarkColumnModified("REQUEST_NUM");
+			}
+		}
+		decimal? _REQUEST_NUM;
+
+		[Column]
+		[Comments("库存ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLE_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLE_ID;
+			}
+			set
+			{
+				_CONSUMABLE_ID = value;
+				MarkColumnModified("CONSUMABLE_ID");
+			}
+		}
+		decimal? _CONSUMABLE_ID;
+
+		[Column]
+		[Comments("入库ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_IN_LOG_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLES_IN_LOG_ID;
+			}
+			set
+			{
+				_CONSUMABLES_IN_LOG_ID = value;
+				MarkColumnModified("CONSUMABLES_IN_LOG_ID");
+			}
+		}
+		decimal? _CONSUMABLES_IN_LOG_ID;
+
+		[Column]
+		[Comments("有效期(月)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? VALID 
+		{ 
+			get
+			{
+				return _VALID;
+			}
+			set
+			{
+				_VALID = value;
+				MarkColumnModified("VALID");
+			}
+		}
+		decimal? _VALID;
+
+		[Column]
+		[Comments("序列号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[Comments("生产日期")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime PRODUCTION_DATE 
+		{ 
+			get
+			{
+				return _PRODUCTION_DATE;
+			}
+			set
+			{
+				_PRODUCTION_DATE = value;
+				MarkColumnModified("PRODUCTION_DATE");
+			}
+		}
+		DateTime _PRODUCTION_DATE;
+
+		[Column]
+		[Comments("型号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MODEL 
+		{ 
+			get
+			{
+				return _MODEL;
+			}
+			set
+			{
+				_MODEL = value;
+				MarkColumnModified("MODEL");
+			}
+		}
+		string _MODEL;
+
+		[Column]
+		[Comments("供货商")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FIRM 
+		{ 
+			get
+			{
+				return _FIRM;
+			}
+			set
+			{
+				_FIRM = value;
+				MarkColumnModified("FIRM");
+			}
+		}
+		decimal? _FIRM;
+
+		[Column]
+		[Comments("名称")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		decimal? _NAME;
+
+		[Column]
+		[Comments("尺寸")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SIZE1 
+		{ 
+			get
+			{
+				return _SIZE1;
+			}
+			set
+			{
+				_SIZE1 = value;
+				MarkColumnModified("SIZE1");
+			}
+		}
+		string _SIZE1;
+
+		[Column]
+		[Comments("大类ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLE_TYPE_CODE 
+		{ 
+			get
+			{
+				return _CONSUMABLE_TYPE_CODE;
+			}
+			set
+			{
+				_CONSUMABLE_TYPE_CODE = value;
+				MarkColumnModified("CONSUMABLE_TYPE_CODE");
+			}
+		}
+		decimal? _CONSUMABLE_TYPE_CODE;
+
+		[Column]
+		[Comments("使用量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? USECOUNT 
+		{ 
+			get
+			{
+				return _USECOUNT;
+			}
+			set
+			{
+				_USECOUNT = value;
+				MarkColumnModified("USECOUNT");
+			}
+		}
+		decimal? _USECOUNT;
+
+		[Column]
+		[Comments("使用时间")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime USETIME 
+		{ 
+			get
+			{
+				return _USETIME;
+			}
+			set
+			{
+				_USETIME = value;
+				MarkColumnModified("USETIME");
+			}
+		}
+		DateTime _USETIME;
+
+		[Column]
+		[Comments("挂号ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[Comments("患者ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PT_ID 
+		{ 
+			get
+			{
+				return _PT_ID;
+			}
+			set
+			{
+				_PT_ID = value;
+				MarkColumnModified("PT_ID");
+			}
+		}
+		decimal? _PT_ID;
+
+		[Column]
+		[Comments("操作人")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REQUEST_LIST_ID 
+		{ 
+			get
+			{
+				return _REQUEST_LIST_ID;
+			}
+			set
+			{
+				_REQUEST_LIST_ID = value;
+				MarkColumnModified("REQUEST_LIST_ID");
+			}
+		}
+		decimal? _REQUEST_LIST_ID;
+
+	}
+	
+	[TableName("CONSUMABLES_REQUEST_LST")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_REQUEST_LST : XEDB.Record<CONSUMABLES_REQUEST_LST>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string REQUEST_ID 
+		{ 
+			get
+			{
+				return _REQUEST_ID;
+			}
+			set
+			{
+				_REQUEST_ID = value;
+				MarkColumnModified("REQUEST_ID");
+			}
+		}
+		string _REQUEST_ID;
+
+		[Column]
+		[Comments("需求数")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? REQUEST_NUM 
+		{ 
+			get
+			{
+				return _REQUEST_NUM;
+			}
+			set
+			{
+				_REQUEST_NUM = value;
+				MarkColumnModified("REQUEST_NUM");
+			}
+		}
+		decimal? _REQUEST_NUM;
+
+		[Column]
+		[Comments("库存ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLE_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLE_ID;
+			}
+			set
+			{
+				_CONSUMABLE_ID = value;
+				MarkColumnModified("CONSUMABLE_ID");
+			}
+		}
+		decimal? _CONSUMABLE_ID;
+
+		[Column]
+		[Comments("入库ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_IN_LOG_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLES_IN_LOG_ID;
+			}
+			set
+			{
+				_CONSUMABLES_IN_LOG_ID = value;
+				MarkColumnModified("CONSUMABLES_IN_LOG_ID");
+			}
+		}
+		decimal? _CONSUMABLES_IN_LOG_ID;
+
+		[Column]
+		[Comments("有效期(月)")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? VALID 
+		{ 
+			get
+			{
+				return _VALID;
+			}
+			set
+			{
+				_VALID = value;
+				MarkColumnModified("VALID");
+			}
+		}
+		decimal? _VALID;
+
+		[Column]
+		[Comments("序列号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[Comments("生产日期")] 
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime PRODUCTION_DATE 
+		{ 
+			get
+			{
+				return _PRODUCTION_DATE;
+			}
+			set
+			{
+				_PRODUCTION_DATE = value;
+				MarkColumnModified("PRODUCTION_DATE");
+			}
+		}
+		DateTime _PRODUCTION_DATE;
+
+		[Column]
+		[Comments("型号")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MODEL 
+		{ 
+			get
+			{
+				return _MODEL;
+			}
+			set
+			{
+				_MODEL = value;
+				MarkColumnModified("MODEL");
+			}
+		}
+		string _MODEL;
+
+		[Column]
+		[Comments("供应商")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FIRM 
+		{ 
+			get
+			{
+				return _FIRM;
+			}
+			set
+			{
+				_FIRM = value;
+				MarkColumnModified("FIRM");
+			}
+		}
+		decimal? _FIRM;
+
+		[Column]
+		[Comments("耗材名称")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		decimal? _NAME;
+
+		[Column]
+		[Comments("尺寸")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SIZE1 
+		{ 
+			get
+			{
+				return _SIZE1;
+			}
+			set
+			{
+				_SIZE1 = value;
+				MarkColumnModified("SIZE1");
+			}
+		}
+		string _SIZE1;
+
+		[Column]
+		[Comments("耗材大类ID")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLE_TYPE_CODE 
+		{ 
+			get
+			{
+				return _CONSUMABLE_TYPE_CODE;
+			}
+			set
+			{
+				_CONSUMABLE_TYPE_CODE = value;
+				MarkColumnModified("CONSUMABLE_TYPE_CODE");
+			}
+		}
+		decimal? _CONSUMABLE_TYPE_CODE;
+
+		[Column]
+		[Comments("使用量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? USECOUNT 
+		{ 
+			get
+			{
+				return _USECOUNT;
+			}
+			set
+			{
+				_USECOUNT = value;
+				MarkColumnModified("USECOUNT");
+			}
+		}
+		decimal? _USECOUNT;
+
+		[Column]
+		[Comments("余量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SURPLUS 
+		{ 
+			get
+			{
+				return _SURPLUS;
+			}
+			set
+			{
+				_SURPLUS = value;
+				MarkColumnModified("SURPLUS");
+			}
+		}
+		decimal? _SURPLUS;
+
+	}
+	
+	[TableName("CONSUMABLES_REQUEST")]
+	[PrimaryKey("REQUEST_ID", autoIncrement=false)]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_REQUEST : XEDB.Record<CONSUMABLES_REQUEST>  
+	{
+		public bool isNew = false;	
+			 
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string REQUEST_ID 
+		{ 
+			get
+			{
+				return _REQUEST_ID;
+			}
+			set
+			{
+				_REQUEST_ID = value;
+				MarkColumnModified("REQUEST_ID");
+			}
+		}
+		string _REQUEST_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="")]
+		public decimal? REQUEST_NUM 
+		{ 
+			get
+			{
+				return _REQUEST_NUM;
+			}
+			set
+			{
+				_REQUEST_NUM = value;
+				MarkColumnModified("REQUEST_NUM");
+			}
+		}
+		decimal? _REQUEST_NUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string STATUS 
+		{ 
+			get
+			{
+				return _STATUS;
+			}
+			set
+			{
+				_STATUS = value;
+				MarkColumnModified("STATUS");
+			}
+		}
+		string _STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+	}
+	
+	[TableName("CONSUMABLES_LOG1")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_LOG1 : XEDB.Record<CONSUMABLES_LOG1>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLES_ID;
+			}
+			set
+			{
+				_CONSUMABLES_ID = value;
+				MarkColumnModified("CONSUMABLES_ID");
+			}
+		}
+		decimal? _CONSUMABLES_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OPERATOR_TYPE 
+		{ 
+			get
+			{
+				return _OPERATOR_TYPE;
+			}
+			set
+			{
+				_OPERATOR_TYPE = value;
+				MarkColumnModified("OPERATOR_TYPE");
+			}
+		}
+		decimal? _OPERATOR_TYPE;
+
+		[Column]
+		[Comments("入库量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OPERATOR_NUM 
+		{ 
+			get
+			{
+				return _OPERATOR_NUM;
+			}
+			set
+			{
+				_OPERATOR_NUM = value;
+				MarkColumnModified("OPERATOR_NUM");
+			}
+		}
+		decimal? _OPERATOR_NUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CONFIRMOR 
+		{ 
+			get
+			{
+				return _CONFIRMOR;
+			}
+			set
+			{
+				_CONFIRMOR = value;
+				MarkColumnModified("CONFIRMOR");
+			}
+		}
+		string _CONFIRMOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime PRODUCTION_DATE 
+		{ 
+			get
+			{
+				return _PRODUCTION_DATE;
+			}
+			set
+			{
+				_PRODUCTION_DATE = value;
+				MarkColumnModified("PRODUCTION_DATE");
+			}
+		}
+		DateTime _PRODUCTION_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? VALID 
+		{ 
+			get
+			{
+				return _VALID;
+			}
+			set
+			{
+				_VALID = value;
+				MarkColumnModified("VALID");
+			}
+		}
+		decimal? _VALID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[Comments("剩余量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SURPLUS 
+		{ 
+			get
+			{
+				return _SURPLUS;
+			}
+			set
+			{
+				_SURPLUS = value;
+				MarkColumnModified("SURPLUS");
+			}
+		}
+		decimal? _SURPLUS;
+
+		[Column]
+		[Comments("出库量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OUT_NUM 
+		{ 
+			get
+			{
+				return _OUT_NUM;
+			}
+			set
+			{
+				_OUT_NUM = value;
+				MarkColumnModified("OUT_NUM");
+			}
+		}
+		decimal? _OUT_NUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_IN_LOG_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLES_IN_LOG_ID;
+			}
+			set
+			{
+				_CONSUMABLES_IN_LOG_ID = value;
+				MarkColumnModified("CONSUMABLES_IN_LOG_ID");
+			}
+		}
+		decimal? _CONSUMABLES_IN_LOG_ID;
+
+	}
+	
+	[TableName("CONSUMABLES_LOG")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_LOG : XEDB.Record<CONSUMABLES_LOG>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONSUMABLES_ID 
+		{ 
+			get
+			{
+				return _CONSUMABLES_ID;
+			}
+			set
+			{
+				_CONSUMABLES_ID = value;
+				MarkColumnModified("CONSUMABLES_ID");
+			}
+		}
+		decimal? _CONSUMABLES_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OPERATOR_TYPE 
+		{ 
+			get
+			{
+				return _OPERATOR_TYPE;
+			}
+			set
+			{
+				_OPERATOR_TYPE = value;
+				MarkColumnModified("OPERATOR_TYPE");
+			}
+		}
+		decimal? _OPERATOR_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? OPERATOR_NUM 
+		{ 
+			get
+			{
+				return _OPERATOR_NUM;
+			}
+			set
+			{
+				_OPERATOR_NUM = value;
+				MarkColumnModified("OPERATOR_NUM");
+			}
+		}
+		decimal? _OPERATOR_NUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CONFIRMOR 
+		{ 
+			get
+			{
+				return _CONFIRMOR;
+			}
+			set
+			{
+				_CONFIRMOR = value;
+				MarkColumnModified("CONFIRMOR");
+			}
+		}
+		string _CONFIRMOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime PRODUCTION_DATE 
+		{ 
+			get
+			{
+				return _PRODUCTION_DATE;
+			}
+			set
+			{
+				_PRODUCTION_DATE = value;
+				MarkColumnModified("PRODUCTION_DATE");
+			}
+		}
+		DateTime _PRODUCTION_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? VALID 
+		{ 
+			get
+			{
+				return _VALID;
+			}
+			set
+			{
+				_VALID = value;
+				MarkColumnModified("VALID");
+			}
+		}
+		decimal? _VALID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SN 
+		{ 
+			get
+			{
+				return _SN;
+			}
+			set
+			{
+				_SN = value;
+				MarkColumnModified("SN");
+			}
+		}
+		string _SN;
+
+		[Column]
+		[Comments("剩余量")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SURPLUS 
+		{ 
+			get
+			{
+				return _SURPLUS;
+			}
+			set
+			{
+				_SURPLUS = value;
+				MarkColumnModified("SURPLUS");
+			}
+		}
+		decimal? _SURPLUS;
+
+	}
+	
+	[TableName("CONSUMABLES_LIST")]
+	[ExplicitColumns]
+	public partial class CONSUMABLES_LIST : XEDB.Record<CONSUMABLES_LIST>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal? _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string NAME 
+		{ 
+			get
+			{
+				return _NAME;
+			}
+			set
+			{
+				_NAME = value;
+				MarkColumnModified("NAME");
+			}
+		}
+		string _NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string TYPE_CODE 
+		{ 
+			get
+			{
+				return _TYPE_CODE;
+			}
+			set
+			{
+				_TYPE_CODE = value;
+				MarkColumnModified("TYPE_CODE");
+			}
+		}
+		string _TYPE_CODE;
+
+	}
+	
+	[TableName("CASE_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class CASE_HISTORY : XEDB.Record<CASE_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_DATE 
+		{ 
+			get
+			{
+				return _LOG_DATE;
+			}
+			set
+			{
+				_LOG_DATE = value;
+				MarkColumnModified("LOG_DATE");
+			}
+		}
+		DateTime _LOG_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="4000", Scale="", Precision="")]
+		public string DOSE_MEMO 
+		{ 
+			get
+			{
+				return _DOSE_MEMO;
+			}
+			set
+			{
+				_DOSE_MEMO = value;
+				MarkColumnModified("DOSE_MEMO");
+			}
+		}
+		string _DOSE_MEMO;
+
+		[Column]
+		[Comments("慢性肾小球肾炎")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? CHRONIC_GLOMERULONEPHRITIS 
+		{ 
+			get
+			{
+				return _CHRONIC_GLOMERULONEPHRITIS;
+			}
+			set
+			{
+				_CHRONIC_GLOMERULONEPHRITIS = value;
+				MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS");
+			}
+		}
+		Int16? _CHRONIC_GLOMERULONEPHRITIS;
+
+		[Column]
+		[Comments("慢性肾小球肾炎_病理")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CHRONIC_GLOMERULONEPHRITIS_PTH 
+		{ 
+			get
+			{
+				return _CHRONIC_GLOMERULONEPHRITIS_PTH;
+			}
+			set
+			{
+				_CHRONIC_GLOMERULONEPHRITIS_PTH = value;
+				MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS_PTH");
+			}
+		}
+		string _CHRONIC_GLOMERULONEPHRITIS_PTH;
+
+		[Column]
+		[Comments("慢性肾小球肾炎_病程")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string CHRONIC_GLOMERULONEPHRITIS_COS 
+		{ 
+			get
+			{
+				return _CHRONIC_GLOMERULONEPHRITIS_COS;
+			}
+			set
+			{
+				_CHRONIC_GLOMERULONEPHRITIS_COS = value;
+				MarkColumnModified("CHRONIC_GLOMERULONEPHRITIS_COS");
+			}
+		}
+		string _CHRONIC_GLOMERULONEPHRITIS_COS;
+
+		[Column]
+		[Comments("间质性肾炎")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? INTERSTITIAL_NEPHRITIS 
+		{ 
+			get
+			{
+				return _INTERSTITIAL_NEPHRITIS;
+			}
+			set
+			{
+				_INTERSTITIAL_NEPHRITIS = value;
+				MarkColumnModified("INTERSTITIAL_NEPHRITIS");
+			}
+		}
+		Int16? _INTERSTITIAL_NEPHRITIS;
+
+		[Column]
+		[Comments("间质性肾炎_病因")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string INTERSTITIAL_NEPHRITIS_RSN 
+		{ 
+			get
+			{
+				return _INTERSTITIAL_NEPHRITIS_RSN;
+			}
+			set
+			{
+				_INTERSTITIAL_NEPHRITIS_RSN = value;
+				MarkColumnModified("INTERSTITIAL_NEPHRITIS_RSN");
+			}
+		}
+		string _INTERSTITIAL_NEPHRITIS_RSN;
+
+		[Column]
+		[Comments("血管炎")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? VASCULITIS 
+		{ 
+			get
+			{
+				return _VASCULITIS;
+			}
+			set
+			{
+				_VASCULITIS = value;
+				MarkColumnModified("VASCULITIS");
+			}
+		}
+		Int16? _VASCULITIS;
+
+		[Column]
+		[Comments("高血压N期")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string HYPERTENSION_COS 
+		{ 
+			get
+			{
+				return _HYPERTENSION_COS;
+			}
+			set
+			{
+				_HYPERTENSION_COS = value;
+				MarkColumnModified("HYPERTENSION_COS");
+			}
+		}
+		string _HYPERTENSION_COS;
+
+		[Column]
+		[Comments("高血压合并症")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HYPERTENSION_OTHER 
+		{ 
+			get
+			{
+				return _HYPERTENSION_OTHER;
+			}
+			set
+			{
+				_HYPERTENSION_OTHER = value;
+				MarkColumnModified("HYPERTENSION_OTHER");
+			}
+		}
+		string _HYPERTENSION_OTHER;
+
+		[Column]
+		[Comments("糖尿病类型")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DIABETES_TYPE 
+		{ 
+			get
+			{
+				return _DIABETES_TYPE;
+			}
+			set
+			{
+				_DIABETES_TYPE = value;
+				MarkColumnModified("DIABETES_TYPE");
+			}
+		}
+		decimal? _DIABETES_TYPE;
+
+		[Column]
+		[Comments("糖尿病N年")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="20", Scale="", Precision="")]
+		public string DIABETES_COS 
+		{ 
+			get
+			{
+				return _DIABETES_COS;
+			}
+			set
+			{
+				_DIABETES_COS = value;
+				MarkColumnModified("DIABETES_COS");
+			}
+		}
+		string _DIABETES_COS;
+
+		[Column]
+		[Comments("血糖控制")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string DIABETES_CTL 
+		{ 
+			get
+			{
+				return _DIABETES_CTL;
+			}
+			set
+			{
+				_DIABETES_CTL = value;
+				MarkColumnModified("DIABETES_CTL");
+			}
+		}
+		string _DIABETES_CTL;
+
+		[Column]
+		[Comments("多襄炎")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? MULTI_HSIANG 
+		{ 
+			get
+			{
+				return _MULTI_HSIANG;
+			}
+			set
+			{
+				_MULTI_HSIANG = value;
+				MarkColumnModified("MULTI_HSIANG");
+			}
+		}
+		Int16? _MULTI_HSIANG;
+
+		[Column]
+		[Comments("痛风")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string GOUT 
+		{ 
+			get
+			{
+				return _GOUT;
+			}
+			set
+			{
+				_GOUT = value;
+				MarkColumnModified("GOUT");
+			}
+		}
+		string _GOUT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? SEL 
+		{ 
+			get
+			{
+				return _SEL;
+			}
+			set
+			{
+				_SEL = value;
+				MarkColumnModified("SEL");
+			}
+		}
+		Int16? _SEL;
+
+		[Column]
+		[Comments("梗阻性肾炎")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? OBSTRUCTIVE_NEPHRITIS 
+		{ 
+			get
+			{
+				return _OBSTRUCTIVE_NEPHRITIS;
+			}
+			set
+			{
+				_OBSTRUCTIVE_NEPHRITIS = value;
+				MarkColumnModified("OBSTRUCTIVE_NEPHRITIS");
+			}
+		}
+		Int16? _OBSTRUCTIVE_NEPHRITIS;
+
+		[Column]
+		[Comments("既往史")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string PSTHIS 
+		{ 
+			get
+			{
+				return _PSTHIS;
+			}
+			set
+			{
+				_PSTHIS = value;
+				MarkColumnModified("PSTHIS");
+			}
+		}
+		string _PSTHIS;
+
+		[Column]
+		[Comments("家族史")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string FAMILYHIS 
+		{ 
+			get
+			{
+				return _FAMILYHIS;
+			}
+			set
+			{
+				_FAMILYHIS = value;
+				MarkColumnModified("FAMILYHIS");
+			}
+		}
+		string _FAMILYHIS;
+
+		[Column]
+		[Comments("其他重要病史")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string OTHERHIS 
+		{ 
+			get
+			{
+				return _OTHERHIS;
+			}
+			set
+			{
+				_OTHERHIS = value;
+				MarkColumnModified("OTHERHIS");
+			}
+		}
+		string _OTHERHIS;
+
+		[Column]
+		[Comments("既往诊治经过")] 
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string HIS_DOS 
+		{ 
+			get
+			{
+				return _HIS_DOS;
+			}
+			set
+			{
+				_HIS_DOS = value;
+				MarkColumnModified("HIS_DOS");
+			}
+		}
+		string _HIS_DOS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string MAINTALK 
+		{ 
+			get
+			{
+				return _MAINTALK;
+			}
+			set
+			{
+				_MAINTALK = value;
+				MarkColumnModified("MAINTALK");
+			}
+		}
+		string _MAINTALK;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? DRUGALLERGY_IS 
+		{ 
+			get
+			{
+				return _DRUGALLERGY_IS;
+			}
+			set
+			{
+				_DRUGALLERGY_IS = value;
+				MarkColumnModified("DRUGALLERGY_IS");
+			}
+		}
+		Int16? _DRUGALLERGY_IS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DRUGALLERGY 
+		{ 
+			get
+			{
+				return _DRUGALLERGY;
+			}
+			set
+			{
+				_DRUGALLERGY = value;
+				MarkColumnModified("DRUGALLERGY");
+			}
+		}
+		string _DRUGALLERGY;
+
+	}
+	
+	[TableName("BODY_CHECK_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class BODY_CHECK_HISTORY : XEDB.Record<BODY_CHECK_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? T 
+		{ 
+			get
+			{
+				return _T;
+			}
+			set
+			{
+				_T = value;
+				MarkColumnModified("T");
+			}
+		}
+		decimal? _T;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? P 
+		{ 
+			get
+			{
+				return _P;
+			}
+			set
+			{
+				_P = value;
+				MarkColumnModified("P");
+			}
+		}
+		decimal? _P;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BP 
+		{ 
+			get
+			{
+				return _BP;
+			}
+			set
+			{
+				_BP = value;
+				MarkColumnModified("BP");
+			}
+		}
+		decimal? _BP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BP_POSITION 
+		{ 
+			get
+			{
+				return _BP_POSITION;
+			}
+			set
+			{
+				_BP_POSITION = value;
+				MarkColumnModified("BP_POSITION");
+			}
+		}
+		string _BP_POSITION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? WEIGHT 
+		{ 
+			get
+			{
+				return _WEIGHT;
+			}
+			set
+			{
+				_WEIGHT = value;
+				MarkColumnModified("WEIGHT");
+			}
+		}
+		decimal? _WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEIGHT 
+		{ 
+			get
+			{
+				return _HEIGHT;
+			}
+			set
+			{
+				_HEIGHT = value;
+				MarkColumnModified("HEIGHT");
+			}
+		}
+		decimal? _HEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? URINE 
+		{ 
+			get
+			{
+				return _URINE;
+			}
+			set
+			{
+				_URINE = value;
+				MarkColumnModified("URINE");
+			}
+		}
+		decimal? _URINE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string NUTRITION 
+		{ 
+			get
+			{
+				return _NUTRITION;
+			}
+			set
+			{
+				_NUTRITION = value;
+				MarkColumnModified("NUTRITION");
+			}
+		}
+		string _NUTRITION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FACE 
+		{ 
+			get
+			{
+				return _FACE;
+			}
+			set
+			{
+				_FACE = value;
+				MarkColumnModified("FACE");
+			}
+		}
+		string _FACE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MIND 
+		{ 
+			get
+			{
+				return _MIND;
+			}
+			set
+			{
+				_MIND = value;
+				MarkColumnModified("MIND");
+			}
+		}
+		string _MIND;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string POSTURAL 
+		{ 
+			get
+			{
+				return _POSTURAL;
+			}
+			set
+			{
+				_POSTURAL = value;
+				MarkColumnModified("POSTURAL");
+			}
+		}
+		string _POSTURAL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ANEMIA 
+		{ 
+			get
+			{
+				return _ANEMIA;
+			}
+			set
+			{
+				_ANEMIA = value;
+				MarkColumnModified("ANEMIA");
+			}
+		}
+		string _ANEMIA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SKIN 
+		{ 
+			get
+			{
+				return _SKIN;
+			}
+			set
+			{
+				_SKIN = value;
+				MarkColumnModified("SKIN");
+			}
+		}
+		string _SKIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string JAUNDICE 
+		{ 
+			get
+			{
+				return _JAUNDICE;
+			}
+			set
+			{
+				_JAUNDICE = value;
+				MarkColumnModified("JAUNDICE");
+			}
+		}
+		string _JAUNDICE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EDEMA 
+		{ 
+			get
+			{
+				return _EDEMA;
+			}
+			set
+			{
+				_EDEMA = value;
+				MarkColumnModified("EDEMA");
+			}
+		}
+		string _EDEMA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EDEMA_POS 
+		{ 
+			get
+			{
+				return _EDEMA_POS;
+			}
+			set
+			{
+				_EDEMA_POS = value;
+				MarkColumnModified("EDEMA_POS");
+			}
+		}
+		string _EDEMA_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string EYE 
+		{ 
+			get
+			{
+				return _EYE;
+			}
+			set
+			{
+				_EYE = value;
+				MarkColumnModified("EYE");
+			}
+		}
+		string _EYE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FIVE 
+		{ 
+			get
+			{
+				return _FIVE;
+			}
+			set
+			{
+				_FIVE = value;
+				MarkColumnModified("FIVE");
+			}
+		}
+		string _FIVE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string JUGULAR_VEIN 
+		{ 
+			get
+			{
+				return _JUGULAR_VEIN;
+			}
+			set
+			{
+				_JUGULAR_VEIN = value;
+				MarkColumnModified("JUGULAR_VEIN");
+			}
+		}
+		string _JUGULAR_VEIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string THYROID 
+		{ 
+			get
+			{
+				return _THYROID;
+			}
+			set
+			{
+				_THYROID = value;
+				MarkColumnModified("THYROID");
+			}
+		}
+		string _THYROID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LUNG 
+		{ 
+			get
+			{
+				return _LUNG;
+			}
+			set
+			{
+				_LUNG = value;
+				MarkColumnModified("LUNG");
+			}
+		}
+		string _LUNG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string RALES 
+		{ 
+			get
+			{
+				return _RALES;
+			}
+			set
+			{
+				_RALES = value;
+				MarkColumnModified("RALES");
+			}
+		}
+		string _RALES;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="1", Scale="", Precision="")]
+		public string HEART 
+		{ 
+			get
+			{
+				return _HEART;
+			}
+			set
+			{
+				_HEART = value;
+				MarkColumnModified("HEART");
+			}
+		}
+		string _HEART;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEART_CENTER_LINE 
+		{ 
+			get
+			{
+				return _HEART_CENTER_LINE;
+			}
+			set
+			{
+				_HEART_CENTER_LINE = value;
+				MarkColumnModified("HEART_CENTER_LINE");
+			}
+		}
+		decimal? _HEART_CENTER_LINE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEART_RATE 
+		{ 
+			get
+			{
+				return _HEART_RATE;
+			}
+			set
+			{
+				_HEART_RATE = value;
+				MarkColumnModified("HEART_RATE");
+			}
+		}
+		decimal? _HEART_RATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEART_POS 
+		{ 
+			get
+			{
+				return _HEART_POS;
+			}
+			set
+			{
+				_HEART_POS = value;
+				MarkColumnModified("HEART_POS");
+			}
+		}
+		string _HEART_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEART_NOISE 
+		{ 
+			get
+			{
+				return _HEART_NOISE;
+			}
+			set
+			{
+				_HEART_NOISE = value;
+				MarkColumnModified("HEART_NOISE");
+			}
+		}
+		string _HEART_NOISE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? HEART_FRICTION 
+		{ 
+			get
+			{
+				return _HEART_FRICTION;
+			}
+			set
+			{
+				_HEART_FRICTION = value;
+				MarkColumnModified("HEART_FRICTION");
+			}
+		}
+		Int16? _HEART_FRICTION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ABDOMEN 
+		{ 
+			get
+			{
+				return _ABDOMEN;
+			}
+			set
+			{
+				_ABDOMEN = value;
+				MarkColumnModified("ABDOMEN");
+			}
+		}
+		string _ABDOMEN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? PRESS_PAIN 
+		{ 
+			get
+			{
+				return _PRESS_PAIN;
+			}
+			set
+			{
+				_PRESS_PAIN = value;
+				MarkColumnModified("PRESS_PAIN");
+			}
+		}
+		Int16? _PRESS_PAIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PRESS_PAIN_POS 
+		{ 
+			get
+			{
+				return _PRESS_PAIN_POS;
+			}
+			set
+			{
+				_PRESS_PAIN_POS = value;
+				MarkColumnModified("PRESS_PAIN_POS");
+			}
+		}
+		string _PRESS_PAIN_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_RIB_UNDERPOS 
+		{ 
+			get
+			{
+				return _LIVER_RIB_UNDERPOS;
+			}
+			set
+			{
+				_LIVER_RIB_UNDERPOS = value;
+				MarkColumnModified("LIVER_RIB_UNDERPOS");
+			}
+		}
+		decimal? _LIVER_RIB_UNDERPOS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_SWORD_UNDERPOS 
+		{ 
+			get
+			{
+				return _LIVER_SWORD_UNDERPOS;
+			}
+			set
+			{
+				_LIVER_SWORD_UNDERPOS = value;
+				MarkColumnModified("LIVER_SWORD_UNDERPOS");
+			}
+		}
+		decimal? _LIVER_SWORD_UNDERPOS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LIVER_TEXTURE 
+		{ 
+			get
+			{
+				return _LIVER_TEXTURE;
+			}
+			set
+			{
+				_LIVER_TEXTURE = value;
+				MarkColumnModified("LIVER_TEXTURE");
+			}
+		}
+		string _LIVER_TEXTURE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SPLEEN_RIB_UNDERPOS 
+		{ 
+			get
+			{
+				return _SPLEEN_RIB_UNDERPOS;
+			}
+			set
+			{
+				_SPLEEN_RIB_UNDERPOS = value;
+				MarkColumnModified("SPLEEN_RIB_UNDERPOS");
+			}
+		}
+		decimal? _SPLEEN_RIB_UNDERPOS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LEG 
+		{ 
+			get
+			{
+				return _LEG;
+			}
+			set
+			{
+				_LEG = value;
+				MarkColumnModified("LEG");
+			}
+		}
+		string _LEG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? JOINT 
+		{ 
+			get
+			{
+				return _JOINT;
+			}
+			set
+			{
+				_JOINT = value;
+				MarkColumnModified("JOINT");
+			}
+		}
+		Int16? _JOINT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? JOINT_PAIN 
+		{ 
+			get
+			{
+				return _JOINT_PAIN;
+			}
+			set
+			{
+				_JOINT_PAIN = value;
+				MarkColumnModified("JOINT_PAIN");
+			}
+		}
+		Int16? _JOINT_PAIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? JOINT_SWELLING 
+		{ 
+			get
+			{
+				return _JOINT_SWELLING;
+			}
+			set
+			{
+				_JOINT_SWELLING = value;
+				MarkColumnModified("JOINT_SWELLING");
+			}
+		}
+		Int16? _JOINT_SWELLING;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="1")]
+		public Int16? JOINT_ACTIVE 
+		{ 
+			get
+			{
+				return _JOINT_ACTIVE;
+			}
+			set
+			{
+				_JOINT_ACTIVE = value;
+				MarkColumnModified("JOINT_ACTIVE");
+			}
+		}
+		Int16? _JOINT_ACTIVE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ARM_LEG 
+		{ 
+			get
+			{
+				return _ARM_LEG;
+			}
+			set
+			{
+				_ARM_LEG = value;
+				MarkColumnModified("ARM_LEG");
+			}
+		}
+		string _ARM_LEG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MENTALLY 
+		{ 
+			get
+			{
+				return _MENTALLY;
+			}
+			set
+			{
+				_MENTALLY = value;
+				MarkColumnModified("MENTALLY");
+			}
+		}
+		string _MENTALLY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string TENSION 
+		{ 
+			get
+			{
+				return _TENSION;
+			}
+			set
+			{
+				_TENSION = value;
+				MarkColumnModified("TENSION");
+			}
+		}
+		string _TENSION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK1 
+		{ 
+			get
+			{
+				return _BACK1;
+			}
+			set
+			{
+				_BACK1 = value;
+				MarkColumnModified("BACK1");
+			}
+		}
+		string _BACK1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK2 
+		{ 
+			get
+			{
+				return _BACK2;
+			}
+			set
+			{
+				_BACK2 = value;
+				MarkColumnModified("BACK2");
+			}
+		}
+		string _BACK2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK3 
+		{ 
+			get
+			{
+				return _BACK3;
+			}
+			set
+			{
+				_BACK3 = value;
+				MarkColumnModified("BACK3");
+			}
+		}
+		string _BACK3;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK4 
+		{ 
+			get
+			{
+				return _BACK4;
+			}
+			set
+			{
+				_BACK4 = value;
+				MarkColumnModified("BACK4");
+			}
+		}
+		string _BACK4;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK5 
+		{ 
+			get
+			{
+				return _BACK5;
+			}
+			set
+			{
+				_BACK5 = value;
+				MarkColumnModified("BACK5");
+			}
+		}
+		string _BACK5;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? R 
+		{ 
+			get
+			{
+				return _R;
+			}
+			set
+			{
+				_R = value;
+				MarkColumnModified("R");
+			}
+		}
+		decimal? _R;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CARDIOVERTER 
+		{ 
+			get
+			{
+				return _CARDIOVERTER;
+			}
+			set
+			{
+				_CARDIOVERTER = value;
+				MarkColumnModified("CARDIOVERTER");
+			}
+		}
+		string _CARDIOVERTER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SCRATCHES 
+		{ 
+			get
+			{
+				return _SCRATCHES;
+			}
+			set
+			{
+				_SCRATCHES = value;
+				MarkColumnModified("SCRATCHES");
+			}
+		}
+		string _SCRATCHES;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string RALES_POS 
+		{ 
+			get
+			{
+				return _RALES_POS;
+			}
+			set
+			{
+				_RALES_POS = value;
+				MarkColumnModified("RALES_POS");
+			}
+		}
+		string _RALES_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string JOINT_POS 
+		{ 
+			get
+			{
+				return _JOINT_POS;
+			}
+			set
+			{
+				_JOINT_POS = value;
+				MarkColumnModified("JOINT_POS");
+			}
+		}
+		string _JOINT_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="100", Scale="", Precision="")]
+		public string ARM_LEG_POS 
+		{ 
+			get
+			{
+				return _ARM_LEG_POS;
+			}
+			set
+			{
+				_ARM_LEG_POS = value;
+				MarkColumnModified("ARM_LEG_POS");
+			}
+		}
+		string _ARM_LEG_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEART_DIVIDE 
+		{ 
+			get
+			{
+				return _HEART_DIVIDE;
+			}
+			set
+			{
+				_HEART_DIVIDE = value;
+				MarkColumnModified("HEART_DIVIDE");
+			}
+		}
+		string _HEART_DIVIDE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK6 
+		{ 
+			get
+			{
+				return _BACK6;
+			}
+			set
+			{
+				_BACK6 = value;
+				MarkColumnModified("BACK6");
+			}
+		}
+		string _BACK6;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BACK7 
+		{ 
+			get
+			{
+				return _BACK7;
+			}
+			set
+			{
+				_BACK7 = value;
+				MarkColumnModified("BACK7");
+			}
+		}
+		string _BACK7;
+
+	}
+	
+	[TableName("BLOODCLEANUP_PROCESS")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class BLOODCLEANUP_PROCESS : XEDB.Record<BLOODCLEANUP_PROCESS>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOODCLEANUP_ID 
+		{ 
+			get
+			{
+				return _BLOODCLEANUP_ID;
+			}
+			set
+			{
+				_BLOODCLEANUP_ID = value;
+				MarkColumnModified("BLOODCLEANUP_ID");
+			}
+		}
+		decimal? _BLOODCLEANUP_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime ANA_TIME 
+		{ 
+			get
+			{
+				return _ANA_TIME;
+			}
+			set
+			{
+				_ANA_TIME = value;
+				MarkColumnModified("ANA_TIME");
+			}
+		}
+		DateTime _ANA_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CONDUCTIVITY 
+		{ 
+			get
+			{
+				return _CONDUCTIVITY;
+			}
+			set
+			{
+				_CONDUCTIVITY = value;
+				MarkColumnModified("CONDUCTIVITY");
+			}
+		}
+		string _CONDUCTIVITY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? TEMP 
+		{ 
+			get
+			{
+				return _TEMP;
+			}
+			set
+			{
+				_TEMP = value;
+				MarkColumnModified("TEMP");
+			}
+		}
+		decimal? _TEMP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ULTRAFILTRATION 
+		{ 
+			get
+			{
+				return _ULTRAFILTRATION;
+			}
+			set
+			{
+				_ULTRAFILTRATION = value;
+				MarkColumnModified("ULTRAFILTRATION");
+			}
+		}
+		decimal? _ULTRAFILTRATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ARTERIAL_PRESSURE 
+		{ 
+			get
+			{
+				return _ARTERIAL_PRESSURE;
+			}
+			set
+			{
+				_ARTERIAL_PRESSURE = value;
+				MarkColumnModified("ARTERIAL_PRESSURE");
+			}
+		}
+		decimal? _ARTERIAL_PRESSURE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? VENOUS_PRESSURE 
+		{ 
+			get
+			{
+				return _VENOUS_PRESSURE;
+			}
+			set
+			{
+				_VENOUS_PRESSURE = value;
+				MarkColumnModified("VENOUS_PRESSURE");
+			}
+		}
+		decimal? _VENOUS_PRESSURE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_FLOW 
+		{ 
+			get
+			{
+				return _BLOOD_FLOW;
+			}
+			set
+			{
+				_BLOOD_FLOW = value;
+				MarkColumnModified("BLOOD_FLOW");
+			}
+		}
+		decimal? _BLOOD_FLOW;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? T 
+		{ 
+			get
+			{
+				return _T;
+			}
+			set
+			{
+				_T = value;
+				MarkColumnModified("T");
+			}
+		}
+		decimal? _T;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? P 
+		{ 
+			get
+			{
+				return _P;
+			}
+			set
+			{
+				_P = value;
+				MarkColumnModified("P");
+			}
+		}
+		decimal? _P;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? R 
+		{ 
+			get
+			{
+				return _R;
+			}
+			set
+			{
+				_R = value;
+				MarkColumnModified("R");
+			}
+		}
+		decimal? _R;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BP 
+		{ 
+			get
+			{
+				return _BP;
+			}
+			set
+			{
+				_BP = value;
+				MarkColumnModified("BP");
+			}
+		}
+		string _BP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="500", Scale="", Precision="")]
+		public string DISEASE 
+		{ 
+			get
+			{
+				return _DISEASE;
+			}
+			set
+			{
+				_DISEASE = value;
+				MarkColumnModified("DISEASE");
+			}
+		}
+		string _DISEASE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+	}
+	
+	[TableName("BLOODCLEANUP")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class BLOODCLEANUP : XEDB.Record<BLOODCLEANUP>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DIAG 
+		{ 
+			get
+			{
+				return _DIAG;
+			}
+			set
+			{
+				_DIAG = value;
+				MarkColumnModified("DIAG");
+			}
+		}
+		decimal? _DIAG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? WEIGHT 
+		{ 
+			get
+			{
+				return _WEIGHT;
+			}
+			set
+			{
+				_WEIGHT = value;
+				MarkColumnModified("WEIGHT");
+			}
+		}
+		decimal? _WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MACH_TYP 
+		{ 
+			get
+			{
+				return _MACH_TYP;
+			}
+			set
+			{
+				_MACH_TYP = value;
+				MarkColumnModified("MACH_TYP");
+			}
+		}
+		string _MACH_TYP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MACH_POS 
+		{ 
+			get
+			{
+				return _MACH_POS;
+			}
+			set
+			{
+				_MACH_POS = value;
+				MarkColumnModified("MACH_POS");
+			}
+		}
+		string _MACH_POS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? MACH 
+		{ 
+			get
+			{
+				return _MACH;
+			}
+			set
+			{
+				_MACH = value;
+				MarkColumnModified("MACH");
+			}
+		}
+		decimal? _MACH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LIQUID_CALCIUM 
+		{ 
+			get
+			{
+				return _LIQUID_CALCIUM;
+			}
+			set
+			{
+				_LIQUID_CALCIUM = value;
+				MarkColumnModified("LIQUID_CALCIUM");
+			}
+		}
+		string _LIQUID_CALCIUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FIX_CAPACITY 
+		{ 
+			get
+			{
+				return _FIX_CAPACITY;
+			}
+			set
+			{
+				_FIX_CAPACITY = value;
+				MarkColumnModified("FIX_CAPACITY");
+			}
+		}
+		decimal? _FIX_CAPACITY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime ANA_STAR_TIME 
+		{ 
+			get
+			{
+				return _ANA_STAR_TIME;
+			}
+			set
+			{
+				_ANA_STAR_TIME = value;
+				MarkColumnModified("ANA_STAR_TIME");
+			}
+		}
+		DateTime _ANA_STAR_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ANA_TIME 
+		{ 
+			get
+			{
+				return _ANA_TIME;
+			}
+			set
+			{
+				_ANA_TIME = value;
+				MarkColumnModified("ANA_TIME");
+			}
+		}
+		decimal? _ANA_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_FRIST 
+		{ 
+			get
+			{
+				return _LIVER_FRIST;
+			}
+			set
+			{
+				_LIVER_FRIST = value;
+				MarkColumnModified("LIVER_FRIST");
+			}
+		}
+		decimal? _LIVER_FRIST;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ADD_WEIGHT 
+		{ 
+			get
+			{
+				return _ADD_WEIGHT;
+			}
+			set
+			{
+				_ADD_WEIGHT = value;
+				MarkColumnModified("ADD_WEIGHT");
+			}
+		}
+		decimal? _ADD_WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LOW_LIVER 
+		{ 
+			get
+			{
+				return _LOW_LIVER;
+			}
+			set
+			{
+				_LOW_LIVER = value;
+				MarkColumnModified("LOW_LIVER");
+			}
+		}
+		decimal? _LOW_LIVER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string IMPALER 
+		{ 
+			get
+			{
+				return _IMPALER;
+			}
+			set
+			{
+				_IMPALER = value;
+				MarkColumnModified("IMPALER");
+			}
+		}
+		string _IMPALER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BYPASS_METHOD 
+		{ 
+			get
+			{
+				return _BYPASS_METHOD;
+			}
+			set
+			{
+				_BYPASS_METHOD = value;
+				MarkColumnModified("BYPASS_METHOD");
+			}
+		}
+		string _BYPASS_METHOD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CHECKED 
+		{ 
+			get
+			{
+				return _CHECKED;
+			}
+			set
+			{
+				_CHECKED = value;
+				MarkColumnModified("CHECKED");
+			}
+		}
+		string _CHECKED;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ANA_WEIGHT 
+		{ 
+			get
+			{
+				return _ANA_WEIGHT;
+			}
+			set
+			{
+				_ANA_WEIGHT = value;
+				MarkColumnModified("ANA_WEIGHT");
+			}
+		}
+		decimal? _ANA_WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SWITCH_TYPE 
+		{ 
+			get
+			{
+				return _SWITCH_TYPE;
+			}
+			set
+			{
+				_SWITCH_TYPE = value;
+				MarkColumnModified("SWITCH_TYPE");
+			}
+		}
+		string _SWITCH_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SWITCH_WEIGHT 
+		{ 
+			get
+			{
+				return _SWITCH_WEIGHT;
+			}
+			set
+			{
+				_SWITCH_WEIGHT = value;
+				MarkColumnModified("SWITCH_WEIGHT");
+			}
+		}
+		decimal? _SWITCH_WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CLEANUP_TYPE 
+		{ 
+			get
+			{
+				return _CLEANUP_TYPE;
+			}
+			set
+			{
+				_CLEANUP_TYPE = value;
+				MarkColumnModified("CLEANUP_TYPE");
+			}
+		}
+		string _CLEANUP_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PERIOD_TIME 
+		{ 
+			get
+			{
+				return _PERIOD_TIME;
+			}
+			set
+			{
+				_PERIOD_TIME = value;
+				MarkColumnModified("PERIOD_TIME");
+			}
+		}
+		decimal? _PERIOD_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BLOOD_PASS 
+		{ 
+			get
+			{
+				return _BLOOD_PASS;
+			}
+			set
+			{
+				_BLOOD_PASS = value;
+				MarkColumnModified("BLOOD_PASS");
+			}
+		}
+		string _BLOOD_PASS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FLUCTUATION 
+		{ 
+			get
+			{
+				return _FLUCTUATION;
+			}
+			set
+			{
+				_FLUCTUATION = value;
+				MarkColumnModified("FLUCTUATION");
+			}
+		}
+		decimal? _FLUCTUATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DEHYDRATION 
+		{ 
+			get
+			{
+				return _DEHYDRATION;
+			}
+			set
+			{
+				_DEHYDRATION = value;
+				MarkColumnModified("DEHYDRATION");
+			}
+		}
+		decimal? _DEHYDRATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string SYMPTOM 
+		{ 
+			get
+			{
+				return _SYMPTOM;
+			}
+			set
+			{
+				_SYMPTOM = value;
+				MarkColumnModified("SYMPTOM");
+			}
+		}
+		string _SYMPTOM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string BEFORE_ANA_MEMO 
+		{ 
+			get
+			{
+				return _BEFORE_ANA_MEMO;
+			}
+			set
+			{
+				_BEFORE_ANA_MEMO = value;
+				MarkColumnModified("BEFORE_ANA_MEMO");
+			}
+		}
+		string _BEFORE_ANA_MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="2000", Scale="", Precision="")]
+		public string EPO 
+		{ 
+			get
+			{
+				return _EPO;
+			}
+			set
+			{
+				_EPO = value;
+				MarkColumnModified("EPO");
+			}
+		}
+		string _EPO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string LEFT_CARD 
+		{ 
+			get
+			{
+				return _LEFT_CARD;
+			}
+			set
+			{
+				_LEFT_CARD = value;
+				MarkColumnModified("LEFT_CARD");
+			}
+		}
+		string _LEFT_CARD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string IRON 
+		{ 
+			get
+			{
+				return _IRON;
+			}
+			set
+			{
+				_IRON = value;
+				MarkColumnModified("IRON");
+			}
+		}
+		string _IRON;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OTHER 
+		{ 
+			get
+			{
+				return _OTHER;
+			}
+			set
+			{
+				_OTHER = value;
+				MarkColumnModified("OTHER");
+			}
+		}
+		string _OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime ANA_DATE 
+		{ 
+			get
+			{
+				return _ANA_DATE;
+			}
+			set
+			{
+				_ANA_DATE = value;
+				MarkColumnModified("ANA_DATE");
+			}
+		}
+		DateTime _ANA_DATE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FLUCTUATION_HI 
+		{ 
+			get
+			{
+				return _FLUCTUATION_HI;
+			}
+			set
+			{
+				_FLUCTUATION_HI = value;
+				MarkColumnModified("FLUCTUATION_HI");
+			}
+		}
+		decimal? _FLUCTUATION_HI;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME2 
+		{ 
+			get
+			{
+				return _LOG_TIME2;
+			}
+			set
+			{
+				_LOG_TIME2 = value;
+				MarkColumnModified("LOG_TIME2");
+			}
+		}
+		DateTime _LOG_TIME2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR2 
+		{ 
+			get
+			{
+				return _OPERATOR2;
+			}
+			set
+			{
+				_OPERATOR2 = value;
+				MarkColumnModified("OPERATOR2");
+			}
+		}
+		string _OPERATOR2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DEHYDRATION_2 
+		{ 
+			get
+			{
+				return _DEHYDRATION_2;
+			}
+			set
+			{
+				_DEHYDRATION_2 = value;
+				MarkColumnModified("DEHYDRATION_2");
+			}
+		}
+		decimal? _DEHYDRATION_2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? DEHYDRATION_HI_2 
+		{ 
+			get
+			{
+				return _DEHYDRATION_HI_2;
+			}
+			set
+			{
+				_DEHYDRATION_HI_2 = value;
+				MarkColumnModified("DEHYDRATION_HI_2");
+			}
+		}
+		decimal? _DEHYDRATION_HI_2;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime ANA_END_TIME 
+		{ 
+			get
+			{
+				return _ANA_END_TIME;
+			}
+			set
+			{
+				_ANA_END_TIME = value;
+				MarkColumnModified("ANA_END_TIME");
+			}
+		}
+		DateTime _ANA_END_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ANA_END_WEIGHT 
+		{ 
+			get
+			{
+				return _ANA_END_WEIGHT;
+			}
+			set
+			{
+				_ANA_END_WEIGHT = value;
+				MarkColumnModified("ANA_END_WEIGHT");
+			}
+		}
+		decimal? _ANA_END_WEIGHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ONMACH 
+		{ 
+			get
+			{
+				return _ONMACH;
+			}
+			set
+			{
+				_ONMACH = value;
+				MarkColumnModified("ONMACH");
+			}
+		}
+		string _ONMACH;
+
+		[Column]
+		[Comments("内瘘穿刺针")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FISTULA_NEEDLE 
+		{ 
+			get
+			{
+				return _FISTULA_NEEDLE;
+			}
+			set
+			{
+				_FISTULA_NEEDLE = value;
+				MarkColumnModified("FISTULA_NEEDLE");
+			}
+		}
+		decimal? _FISTULA_NEEDLE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="2")]
+		public Int16? FISTULA_NEEDLE_NUM 
+		{ 
+			get
+			{
+				return _FISTULA_NEEDLE_NUM;
+			}
+			set
+			{
+				_FISTULA_NEEDLE_NUM = value;
+				MarkColumnModified("FISTULA_NEEDLE_NUM");
+			}
+		}
+		Int16? _FISTULA_NEEDLE_NUM;
+
+		[Column]
+		[Comments("内瘘护理包")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FISTULA_CARE_PACKAGES 
+		{ 
+			get
+			{
+				return _FISTULA_CARE_PACKAGES;
+			}
+			set
+			{
+				_FISTULA_CARE_PACKAGES = value;
+				MarkColumnModified("FISTULA_CARE_PACKAGES");
+			}
+		}
+		decimal? _FISTULA_CARE_PACKAGES;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="2")]
+		public Int16? FISTULA_CARE_PACKAGES_NUM 
+		{ 
+			get
+			{
+				return _FISTULA_CARE_PACKAGES_NUM;
+			}
+			set
+			{
+				_FISTULA_CARE_PACKAGES_NUM = value;
+				MarkColumnModified("FISTULA_CARE_PACKAGES_NUM");
+			}
+		}
+		Int16? _FISTULA_CARE_PACKAGES_NUM;
+
+		[Column]
+		[Comments("敷贴")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? APPLICATOR 
+		{ 
+			get
+			{
+				return _APPLICATOR;
+			}
+			set
+			{
+				_APPLICATOR = value;
+				MarkColumnModified("APPLICATOR");
+			}
+		}
+		decimal? _APPLICATOR;
+
+		[Column]
+		[Comments("敷贴数")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="2")]
+		public Int16? APPLICATOR_NUM 
+		{ 
+			get
+			{
+				return _APPLICATOR_NUM;
+			}
+			set
+			{
+				_APPLICATOR_NUM = value;
+				MarkColumnModified("APPLICATOR_NUM");
+			}
+		}
+		Int16? _APPLICATOR_NUM;
+
+		[Column]
+		[Comments("肝素帽")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HEPARIN_CAP 
+		{ 
+			get
+			{
+				return _HEPARIN_CAP;
+			}
+			set
+			{
+				_HEPARIN_CAP = value;
+				MarkColumnModified("HEPARIN_CAP");
+			}
+		}
+		decimal? _HEPARIN_CAP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="0", Precision="2")]
+		public Int16? HEPARIN_CAP_NUM 
+		{ 
+			get
+			{
+				return _HEPARIN_CAP_NUM;
+			}
+			set
+			{
+				_HEPARIN_CAP_NUM = value;
+				MarkColumnModified("HEPARIN_CAP_NUM");
+			}
+		}
+		Int16? _HEPARIN_CAP_NUM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? FISTULA_TYPE 
+		{ 
+			get
+			{
+				return _FISTULA_TYPE;
+			}
+			set
+			{
+				_FISTULA_TYPE = value;
+				MarkColumnModified("FISTULA_TYPE");
+			}
+		}
+		decimal? _FISTULA_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PIPELINE 
+		{ 
+			get
+			{
+				return _PIPELINE;
+			}
+			set
+			{
+				_PIPELINE = value;
+				MarkColumnModified("PIPELINE");
+			}
+		}
+		decimal? _PIPELINE;
+
+	}
+	
+	[TableName("ATH_ROLE")]
+	[PrimaryKey("GROUP_ID")]
+	[ExplicitColumns]
+	public partial class ATH_ROLE : XEDB.Record<ATH_ROLE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal GROUP_ID 
+		{ 
+			get
+			{
+				return _GROUP_ID;
+			}
+			set
+			{
+				_GROUP_ID = value;
+				MarkColumnModified("GROUP_ID");
+			}
+		}
+		decimal _GROUP_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+	}
+	
+	[TableName("ATH_NAVGATIONITEM")]
+	[ExplicitColumns]
+	public partial class ATH_NAVGATIONITEM : XEDB.Record<ATH_NAVGATIONITEM>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMNAME 
+		{ 
+			get
+			{
+				return _ITEMNAME;
+			}
+			set
+			{
+				_ITEMNAME = value;
+				MarkColumnModified("ITEMNAME");
+			}
+		}
+		string _ITEMNAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMCAPTION 
+		{ 
+			get
+			{
+				return _ITEMCAPTION;
+			}
+			set
+			{
+				_ITEMCAPTION = value;
+				MarkColumnModified("ITEMCAPTION");
+			}
+		}
+		string _ITEMCAPTION;
+
+	}
+	
+	[TableName("ATH_MAINMENU")]
+	[ExplicitColumns]
+	public partial class ATH_MAINMENU : XEDB.Record<ATH_MAINMENU>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMNAME 
+		{ 
+			get
+			{
+				return _ITEMNAME;
+			}
+			set
+			{
+				_ITEMNAME = value;
+				MarkColumnModified("ITEMNAME");
+			}
+		}
+		string _ITEMNAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMCAPTION 
+		{ 
+			get
+			{
+				return _ITEMCAPTION;
+			}
+			set
+			{
+				_ITEMCAPTION = value;
+				MarkColumnModified("ITEMCAPTION");
+			}
+		}
+		string _ITEMCAPTION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FATHERITEM 
+		{ 
+			get
+			{
+				return _FATHERITEM;
+			}
+			set
+			{
+				_FATHERITEM = value;
+				MarkColumnModified("FATHERITEM");
+			}
+		}
+		string _FATHERITEM;
+
+	}
+	
+	[TableName("ATH_FORMBUTTON")]
+	[ExplicitColumns]
+	public partial class ATH_FORMBUTTON : XEDB.Record<ATH_FORMBUTTON>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMNAME 
+		{ 
+			get
+			{
+				return _ITEMNAME;
+			}
+			set
+			{
+				_ITEMNAME = value;
+				MarkColumnModified("ITEMNAME");
+			}
+		}
+		string _ITEMNAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string ITEMCAPTION 
+		{ 
+			get
+			{
+				return _ITEMCAPTION;
+			}
+			set
+			{
+				_ITEMCAPTION = value;
+				MarkColumnModified("ITEMCAPTION");
+			}
+		}
+		string _ITEMCAPTION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FATHERITEM 
+		{ 
+			get
+			{
+				return _FATHERITEM;
+			}
+			set
+			{
+				_FATHERITEM = value;
+				MarkColumnModified("FATHERITEM");
+			}
+		}
+		string _FATHERITEM;
+
+	}
+	
+	[TableName("ATH_CONTROL_ENABLE")]
+	[PrimaryKey("OBJ_ID")]
+	[ExplicitColumns]
+	public partial class ATH_CONTROL_ENABLE : XEDB.Record<ATH_CONTROL_ENABLE>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? GROUP_ID 
+		{ 
+			get
+			{
+				return _GROUP_ID;
+			}
+			set
+			{
+				_GROUP_ID = value;
+				MarkColumnModified("GROUP_ID");
+			}
+		}
+		decimal? _GROUP_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CONTROL_NAME 
+		{ 
+			get
+			{
+				return _CONTROL_NAME;
+			}
+			set
+			{
+				_CONTROL_NAME = value;
+				MarkColumnModified("CONTROL_NAME");
+			}
+		}
+		string _CONTROL_NAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CONTROL_CAPTION 
+		{ 
+			get
+			{
+				return _CONTROL_CAPTION;
+			}
+			set
+			{
+				_CONTROL_CAPTION = value;
+				MarkColumnModified("CONTROL_CAPTION");
+			}
+		}
+		string _CONTROL_CAPTION;
+
+		[Column]
+		[Comments("0: XtraButtonControl1: XtraMenuControl")] 
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CONTROL_TYPE 
+		{ 
+			get
+			{
+				return _CONTROL_TYPE;
+			}
+			set
+			{
+				_CONTROL_TYPE = value;
+				MarkColumnModified("CONTROL_TYPE");
+			}
+		}
+		decimal? _CONTROL_TYPE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ENABLE 
+		{ 
+			get
+			{
+				return _ENABLE;
+			}
+			set
+			{
+				_ENABLE = value;
+				MarkColumnModified("ENABLE");
+			}
+		}
+		decimal? _ENABLE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string FATHERITEM 
+		{ 
+			get
+			{
+				return _FATHERITEM;
+			}
+			set
+			{
+				_FATHERITEM = value;
+				MarkColumnModified("FATHERITEM");
+			}
+		}
+		string _FATHERITEM;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal OBJ_ID 
+		{ 
+			get
+			{
+				return _OBJ_ID;
+			}
+			set
+			{
+				_OBJ_ID = value;
+				MarkColumnModified("OBJ_ID");
+			}
+		}
+		decimal _OBJ_ID;
+
+	}
+	
+	[TableName("ADDTION_CHECK_HISTORY")]
+	[PrimaryKey("ID")]
+	[ExplicitColumns]
+	public partial class ADDTION_CHECK_HISTORY : XEDB.Record<ADDTION_CHECK_HISTORY>  
+	{
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal ID 
+		{ 
+			get
+			{
+				return _ID;
+			}
+			set
+			{
+				_ID = value;
+				MarkColumnModified("ID");
+			}
+		}
+		decimal _ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? REG_ID 
+		{ 
+			get
+			{
+				return _REG_ID;
+			}
+			set
+			{
+				_REG_ID = value;
+				MarkColumnModified("REG_ID");
+			}
+		}
+		decimal? _REG_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string OPERATOR 
+		{ 
+			get
+			{
+				return _OPERATOR;
+			}
+			set
+			{
+				_OPERATOR = value;
+				MarkColumnModified("OPERATOR");
+			}
+		}
+		string _OPERATOR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime LOG_TIME 
+		{ 
+			get
+			{
+				return _LOG_TIME;
+			}
+			set
+			{
+				_LOG_TIME = value;
+				MarkColumnModified("LOG_TIME");
+			}
+		}
+		DateTime _LOG_TIME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HB 
+		{ 
+			get
+			{
+				return _HB;
+			}
+			set
+			{
+				_HB = value;
+				MarkColumnModified("HB");
+			}
+		}
+		decimal? _HB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? HCT 
+		{ 
+			get
+			{
+				return _HCT;
+			}
+			set
+			{
+				_HCT = value;
+				MarkColumnModified("HCT");
+			}
+		}
+		decimal? _HCT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? WBC 
+		{ 
+			get
+			{
+				return _WBC;
+			}
+			set
+			{
+				_WBC = value;
+				MarkColumnModified("WBC");
+			}
+		}
+		decimal? _WBC;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? PLT 
+		{ 
+			get
+			{
+				return _PLT;
+			}
+			set
+			{
+				_PLT = value;
+				MarkColumnModified("PLT");
+			}
+		}
+		decimal? _PLT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string URINE_COMMON 
+		{ 
+			get
+			{
+				return _URINE_COMMON;
+			}
+			set
+			{
+				_URINE_COMMON = value;
+				MarkColumnModified("URINE_COMMON");
+			}
+		}
+		string _URINE_COMMON;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string URINARY_SEDIMENT 
+		{ 
+			get
+			{
+				return _URINARY_SEDIMENT;
+			}
+			set
+			{
+				_URINARY_SEDIMENT = value;
+				MarkColumnModified("URINARY_SEDIMENT");
+			}
+		}
+		string _URINARY_SEDIMENT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string URINE_OTHER 
+		{ 
+			get
+			{
+				return _URINE_OTHER;
+			}
+			set
+			{
+				_URINE_OTHER = value;
+				MarkColumnModified("URINE_OTHER");
+			}
+		}
+		string _URINE_OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string URINE_NA 
+		{ 
+			get
+			{
+				return _URINE_NA;
+			}
+			set
+			{
+				_URINE_NA = value;
+				MarkColumnModified("URINE_NA");
+			}
+		}
+		string _URINE_NA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string URINE_PASS 
+		{ 
+			get
+			{
+				return _URINE_PASS;
+			}
+			set
+			{
+				_URINE_PASS = value;
+				MarkColumnModified("URINE_PASS");
+			}
+		}
+		string _URINE_PASS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string MANURE 
+		{ 
+			get
+			{
+				return _MANURE;
+			}
+			set
+			{
+				_MANURE = value;
+				MarkColumnModified("MANURE");
+			}
+		}
+		string _MANURE;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="DATE", Length="7", Scale="", Precision="")]
+		public DateTime BLOOD 
+		{ 
+			get
+			{
+				return _BLOOD;
+			}
+			set
+			{
+				_BLOOD = value;
+				MarkColumnModified("BLOOD");
+			}
+		}
+		DateTime _BLOOD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string CCR 
+		{ 
+			get
+			{
+				return _CCR;
+			}
+			set
+			{
+				_CCR = value;
+				MarkColumnModified("CCR");
+			}
+		}
+		string _CCR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string BUN 
+		{ 
+			get
+			{
+				return _BUN;
+			}
+			set
+			{
+				_BUN = value;
+				MarkColumnModified("BUN");
+			}
+		}
+		string _BUN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? SCR 
+		{ 
+			get
+			{
+				return _SCR;
+			}
+			set
+			{
+				_SCR = value;
+				MarkColumnModified("SCR");
+			}
+		}
+		decimal? _SCR;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? UA 
+		{ 
+			get
+			{
+				return _UA;
+			}
+			set
+			{
+				_UA = value;
+				MarkColumnModified("UA");
+			}
+		}
+		decimal? _UA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? K 
+		{ 
+			get
+			{
+				return _K;
+			}
+			set
+			{
+				_K = value;
+				MarkColumnModified("K");
+			}
+		}
+		decimal? _K;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? NA 
+		{ 
+			get
+			{
+				return _NA;
+			}
+			set
+			{
+				_NA = value;
+				MarkColumnModified("NA");
+			}
+		}
+		decimal? _NA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CL 
+		{ 
+			get
+			{
+				return _CL;
+			}
+			set
+			{
+				_CL = value;
+				MarkColumnModified("CL");
+			}
+		}
+		decimal? _CL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CA 
+		{ 
+			get
+			{
+				return _CA;
+			}
+			set
+			{
+				_CA = value;
+				MarkColumnModified("CA");
+			}
+		}
+		decimal? _CA;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? P 
+		{ 
+			get
+			{
+				return _P;
+			}
+			set
+			{
+				_P = value;
+				MarkColumnModified("P");
+			}
+		}
+		decimal? _P;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AKP 
+		{ 
+			get
+			{
+				return _AKP;
+			}
+			set
+			{
+				_AKP = value;
+				MarkColumnModified("AKP");
+			}
+		}
+		decimal? _AKP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? T_CO 
+		{ 
+			get
+			{
+				return _T_CO;
+			}
+			set
+			{
+				_T_CO = value;
+				MarkColumnModified("T_CO");
+			}
+		}
+		decimal? _T_CO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_SUGAR_PBG 
+		{ 
+			get
+			{
+				return _BLOOD_SUGAR_PBG;
+			}
+			set
+			{
+				_BLOOD_SUGAR_PBG = value;
+				MarkColumnModified("BLOOD_SUGAR_PBG");
+			}
+		}
+		decimal? _BLOOD_SUGAR_PBG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_SUGAR_2HPG 
+		{ 
+			get
+			{
+				return _BLOOD_SUGAR_2HPG;
+			}
+			set
+			{
+				_BLOOD_SUGAR_2HPG = value;
+				MarkColumnModified("BLOOD_SUGAR_2HPG");
+			}
+		}
+		decimal? _BLOOD_SUGAR_2HPG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BLOOD_SUGAR_HBA1 
+		{ 
+			get
+			{
+				return _BLOOD_SUGAR_HBA1;
+			}
+			set
+			{
+				_BLOOD_SUGAR_HBA1 = value;
+				MarkColumnModified("BLOOD_SUGAR_HBA1");
+			}
+		}
+		decimal? _BLOOD_SUGAR_HBA1;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_BILIRUBIN 
+		{ 
+			get
+			{
+				return _LIVER_BILIRUBIN;
+			}
+			set
+			{
+				_LIVER_BILIRUBIN = value;
+				MarkColumnModified("LIVER_BILIRUBIN");
+			}
+		}
+		decimal? _LIVER_BILIRUBIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_DIRECT 
+		{ 
+			get
+			{
+				return _LIVER_DIRECT;
+			}
+			set
+			{
+				_LIVER_DIRECT = value;
+				MarkColumnModified("LIVER_DIRECT");
+			}
+		}
+		decimal? _LIVER_DIRECT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_ALT 
+		{ 
+			get
+			{
+				return _LIVER_ALT;
+			}
+			set
+			{
+				_LIVER_ALT = value;
+				MarkColumnModified("LIVER_ALT");
+			}
+		}
+		decimal? _LIVER_ALT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_ALB 
+		{ 
+			get
+			{
+				return _LIVER_ALB;
+			}
+			set
+			{
+				_LIVER_ALB = value;
+				MarkColumnModified("LIVER_ALB");
+			}
+		}
+		decimal? _LIVER_ALB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_Y_GT 
+		{ 
+			get
+			{
+				return _LIVER_Y_GT;
+			}
+			set
+			{
+				_LIVER_Y_GT = value;
+				MarkColumnModified("LIVER_Y_GT");
+			}
+		}
+		decimal? _LIVER_Y_GT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIVER_A_G 
+		{ 
+			get
+			{
+				return _LIVER_A_G;
+			}
+			set
+			{
+				_LIVER_A_G = value;
+				MarkColumnModified("LIVER_A_G");
+			}
+		}
+		decimal? _LIVER_A_G;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_CHOL 
+		{ 
+			get
+			{
+				return _LIPIDS_CHOL;
+			}
+			set
+			{
+				_LIPIDS_CHOL = value;
+				MarkColumnModified("LIPIDS_CHOL");
+			}
+		}
+		decimal? _LIPIDS_CHOL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_GT 
+		{ 
+			get
+			{
+				return _LIPIDS_GT;
+			}
+			set
+			{
+				_LIPIDS_GT = value;
+				MarkColumnModified("LIPIDS_GT");
+			}
+		}
+		decimal? _LIPIDS_GT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_HDL_CH 
+		{ 
+			get
+			{
+				return _LIPIDS_HDL_CH;
+			}
+			set
+			{
+				_LIPIDS_HDL_CH = value;
+				MarkColumnModified("LIPIDS_HDL_CH");
+			}
+		}
+		decimal? _LIPIDS_HDL_CH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_LDL_CH 
+		{ 
+			get
+			{
+				return _LIPIDS_LDL_CH;
+			}
+			set
+			{
+				_LIPIDS_LDL_CH = value;
+				MarkColumnModified("LIPIDS_LDL_CH");
+			}
+		}
+		decimal? _LIPIDS_LDL_CH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_1PHT 
+		{ 
+			get
+			{
+				return _LIPIDS_1PHT;
+			}
+			set
+			{
+				_LIPIDS_1PHT = value;
+				MarkColumnModified("LIPIDS_1PHT");
+			}
+		}
+		decimal? _LIPIDS_1PHT;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_CRP 
+		{ 
+			get
+			{
+				return _LIPIDS_CRP;
+			}
+			set
+			{
+				_LIPIDS_CRP = value;
+				MarkColumnModified("LIPIDS_CRP");
+			}
+		}
+		decimal? _LIPIDS_CRP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? LIPIDS_PROTEIN 
+		{ 
+			get
+			{
+				return _LIPIDS_PROTEIN;
+			}
+			set
+			{
+				_LIPIDS_PROTEIN = value;
+				MarkColumnModified("LIPIDS_PROTEIN");
+			}
+		}
+		decimal? _LIPIDS_PROTEIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_PROTEIN 
+		{ 
+			get
+			{
+				return _IRON_PROTEIN;
+			}
+			set
+			{
+				_IRON_PROTEIN = value;
+				MarkColumnModified("IRON_PROTEIN");
+			}
+		}
+		decimal? _IRON_PROTEIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_SATURATION 
+		{ 
+			get
+			{
+				return _IRON_SATURATION;
+			}
+			set
+			{
+				_IRON_SATURATION = value;
+				MarkColumnModified("IRON_SATURATION");
+			}
+		}
+		decimal? _IRON_SATURATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_IRONPROTEIN 
+		{ 
+			get
+			{
+				return _IRON_IRONPROTEIN;
+			}
+			set
+			{
+				_IRON_IRONPROTEIN = value;
+				MarkColumnModified("IRON_IRONPROTEIN");
+			}
+		}
+		decimal? _IRON_IRONPROTEIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_SI 
+		{ 
+			get
+			{
+				return _IRON_SI;
+			}
+			set
+			{
+				_IRON_SI = value;
+				MarkColumnModified("IRON_SI");
+			}
+		}
+		decimal? _IRON_SI;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_COMBIN 
+		{ 
+			get
+			{
+				return _IRON_COMBIN;
+			}
+			set
+			{
+				_IRON_COMBIN = value;
+				MarkColumnModified("IRON_COMBIN");
+			}
+		}
+		decimal? _IRON_COMBIN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_B 
+		{ 
+			get
+			{
+				return _HEPATITIS_B;
+			}
+			set
+			{
+				_HEPATITIS_B = value;
+				MarkColumnModified("HEPATITIS_B");
+			}
+		}
+		string _HEPATITIS_B;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_C 
+		{ 
+			get
+			{
+				return _HEPATITIS_C;
+			}
+			set
+			{
+				_HEPATITIS_C = value;
+				MarkColumnModified("HEPATITIS_C");
+			}
+		}
+		string _HEPATITIS_C;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_OTHER 
+		{ 
+			get
+			{
+				return _HEPATITIS_OTHER;
+			}
+			set
+			{
+				_HEPATITIS_OTHER = value;
+				MarkColumnModified("HEPATITIS_OTHER");
+			}
+		}
+		string _HEPATITIS_OTHER;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_HBSAG 
+		{ 
+			get
+			{
+				return _HEPATITIS_HBSAG;
+			}
+			set
+			{
+				_HEPATITIS_HBSAG = value;
+				MarkColumnModified("HEPATITIS_HBSAG");
+			}
+		}
+		string _HEPATITIS_HBSAG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_HBSAB 
+		{ 
+			get
+			{
+				return _HEPATITIS_HBSAB;
+			}
+			set
+			{
+				_HEPATITIS_HBSAB = value;
+				MarkColumnModified("HEPATITIS_HBSAB");
+			}
+		}
+		string _HEPATITIS_HBSAB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_HBCAG 
+		{ 
+			get
+			{
+				return _HEPATITIS_HBCAG;
+			}
+			set
+			{
+				_HEPATITIS_HBCAG = value;
+				MarkColumnModified("HEPATITIS_HBCAG");
+			}
+		}
+		string _HEPATITIS_HBCAG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_BGCAB 
+		{ 
+			get
+			{
+				return _HEPATITIS_BGCAB;
+			}
+			set
+			{
+				_HEPATITIS_BGCAB = value;
+				MarkColumnModified("HEPATITIS_BGCAB");
+			}
+		}
+		string _HEPATITIS_BGCAB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string HEPATITIS_HBEAB 
+		{ 
+			get
+			{
+				return _HEPATITIS_HBEAB;
+			}
+			set
+			{
+				_HEPATITIS_HBEAB = value;
+				MarkColumnModified("HEPATITIS_HBEAB");
+			}
+		}
+		string _HEPATITIS_HBEAB;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string AKI_PH 
+		{ 
+			get
+			{
+				return _AKI_PH;
+			}
+			set
+			{
+				_AKI_PH = value;
+				MarkColumnModified("AKI_PH");
+			}
+		}
+		string _AKI_PH;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string AKI_HCO 
+		{ 
+			get
+			{
+				return _AKI_HCO;
+			}
+			set
+			{
+				_AKI_HCO = value;
+				MarkColumnModified("AKI_HCO");
+			}
+		}
+		string _AKI_HCO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AKI_PO 
+		{ 
+			get
+			{
+				return _AKI_PO;
+			}
+			set
+			{
+				_AKI_PO = value;
+				MarkColumnModified("AKI_PO");
+			}
+		}
+		decimal? _AKI_PO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? AKI_PCO 
+		{ 
+			get
+			{
+				return _AKI_PCO;
+			}
+			set
+			{
+				_AKI_PCO = value;
+				MarkColumnModified("AKI_PCO");
+			}
+		}
+		decimal? _AKI_PCO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string ECG 
+		{ 
+			get
+			{
+				return _ECG;
+			}
+			set
+			{
+				_ECG = value;
+				MarkColumnModified("ECG");
+			}
+		}
+		string _ECG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string CHEST_X_RAY 
+		{ 
+			get
+			{
+				return _CHEST_X_RAY;
+			}
+			set
+			{
+				_CHEST_X_RAY = value;
+				MarkColumnModified("CHEST_X_RAY");
+			}
+		}
+		string _CHEST_X_RAY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? CARDIOTHORACIC_RATIO 
+		{ 
+			get
+			{
+				return _CARDIOTHORACIC_RATIO;
+			}
+			set
+			{
+				_CARDIOTHORACIC_RATIO = value;
+				MarkColumnModified("CARDIOTHORACIC_RATIO");
+			}
+		}
+		decimal? _CARDIOTHORACIC_RATIO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string ECHOCARDIOGRAPHY 
+		{ 
+			get
+			{
+				return _ECHOCARDIOGRAPHY;
+			}
+			set
+			{
+				_ECHOCARDIOGRAPHY = value;
+				MarkColumnModified("ECHOCARDIOGRAPHY");
+			}
+		}
+		string _ECHOCARDIOGRAPHY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string B_KIDNEYS 
+		{ 
+			get
+			{
+				return _B_KIDNEYS;
+			}
+			set
+			{
+				_B_KIDNEYS = value;
+				MarkColumnModified("B_KIDNEYS");
+			}
+		}
+		string _B_KIDNEYS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string AKI_APACHEII 
+		{ 
+			get
+			{
+				return _AKI_APACHEII;
+			}
+			set
+			{
+				_AKI_APACHEII = value;
+				MarkColumnModified("AKI_APACHEII");
+			}
+		}
+		string _AKI_APACHEII;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string AKI_ATN_ISN 
+		{ 
+			get
+			{
+				return _AKI_ATN_ISN;
+			}
+			set
+			{
+				_AKI_ATN_ISN = value;
+				MarkColumnModified("AKI_ATN_ISN");
+			}
+		}
+		string _AKI_ATN_ISN;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string MEMO 
+		{ 
+			get
+			{
+				return _MEMO;
+			}
+			set
+			{
+				_MEMO = value;
+				MarkColumnModified("MEMO");
+			}
+		}
+		string _MEMO;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string MODIFY_DIAGNOSIS 
+		{ 
+			get
+			{
+				return _MODIFY_DIAGNOSIS;
+			}
+			set
+			{
+				_MODIFY_DIAGNOSIS = value;
+				MarkColumnModified("MODIFY_DIAGNOSIS");
+			}
+		}
+		string _MODIFY_DIAGNOSIS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string HOSPITALIZED_DIAG 
+		{ 
+			get
+			{
+				return _HOSPITALIZED_DIAG;
+			}
+			set
+			{
+				_HOSPITALIZED_DIAG = value;
+				MarkColumnModified("HOSPITALIZED_DIAG");
+			}
+		}
+		string _HOSPITALIZED_DIAG;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string PATHOLOGY 
+		{ 
+			get
+			{
+				return _PATHOLOGY;
+			}
+			set
+			{
+				_PATHOLOGY = value;
+				MarkColumnModified("PATHOLOGY");
+			}
+		}
+		string _PATHOLOGY;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string FUNCATION 
+		{ 
+			get
+			{
+				return _FUNCATION;
+			}
+			set
+			{
+				_FUNCATION = value;
+				MarkColumnModified("FUNCATION");
+			}
+		}
+		string _FUNCATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string COMPLICATION 
+		{ 
+			get
+			{
+				return _COMPLICATION;
+			}
+			set
+			{
+				_COMPLICATION = value;
+				MarkColumnModified("COMPLICATION");
+			}
+		}
+		string _COMPLICATION;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="200", Scale="", Precision="")]
+		public string WITH_COMPLICATIONS 
+		{ 
+			get
+			{
+				return _WITH_COMPLICATIONS;
+			}
+			set
+			{
+				_WITH_COMPLICATIONS = value;
+				MarkColumnModified("WITH_COMPLICATIONS");
+			}
+		}
+		string _WITH_COMPLICATIONS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? IRON_TOTAL 
+		{ 
+			get
+			{
+				return _IRON_TOTAL;
+			}
+			set
+			{
+				_IRON_TOTAL = value;
+				MarkColumnModified("IRON_TOTAL");
+			}
+		}
+		decimal? _IRON_TOTAL;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? BASE_INFO_ID 
+		{ 
+			get
+			{
+				return _BASE_INFO_ID;
+			}
+			set
+			{
+				_BASE_INFO_ID = value;
+				MarkColumnModified("BASE_INFO_ID");
+			}
+		}
+		decimal? _BASE_INFO_ID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? APPLYNO 
+		{ 
+			get
+			{
+				return _APPLYNO;
+			}
+			set
+			{
+				_APPLYNO = value;
+				MarkColumnModified("APPLYNO");
+			}
+		}
+		decimal? _APPLYNO;
+
+	}
+	
+	[TableName("ACCOUNT")]
+	[PrimaryKey("WORKID", autoIncrement=false)]
+	[ExplicitColumns]
+	public partial class ACCOUNT : XEDB.Record<ACCOUNT>  
+	{
+		public bool isNew = false;	
+			 
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string WORKID 
+		{ 
+			get
+			{
+				return _WORKID;
+			}
+			set
+			{
+				_WORKID = value;
+				MarkColumnModified("WORKID");
+			}
+		}
+		string _WORKID;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string USERNAME 
+		{ 
+			get
+			{
+				return _USERNAME;
+			}
+			set
+			{
+				_USERNAME = value;
+				MarkColumnModified("USERNAME");
+			}
+		}
+		string _USERNAME;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PWD 
+		{ 
+			get
+			{
+				return _PWD;
+			}
+			set
+			{
+				_PWD = value;
+				MarkColumnModified("PWD");
+			}
+		}
+		string _PWD;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? ROLE_GROUP 
+		{ 
+			get
+			{
+				return _ROLE_GROUP;
+			}
+			set
+			{
+				_ROLE_GROUP = value;
+				MarkColumnModified("ROLE_GROUP");
+			}
+		}
+		decimal? _ROLE_GROUP;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="NUMBER", Length="22", Scale="", Precision="")]
+		public decimal? STATUS 
+		{ 
+			get
+			{
+				return _STATUS;
+			}
+			set
+			{
+				_STATUS = value;
+				MarkColumnModified("STATUS");
+			}
+		}
+		decimal? _STATUS;
+
+		[Column]
+		[ColumnAddtionInfoAttribute(DataType="VARCHAR2", Length="50", Scale="", Precision="")]
+		public string PHONENUM 
+		{ 
+			get
+			{
+				return _PHONENUM;
+			}
+			set
+			{
+				_PHONENUM = value;
+				MarkColumnModified("PHONENUM");
+			}
+		}
+		string _PHONENUM;
+
+	}
 }
 
 

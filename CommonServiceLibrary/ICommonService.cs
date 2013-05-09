@@ -12,6 +12,9 @@ namespace CommonServiceLibrary
     public interface ICommonService
     {
         [OperationContract]
+        List<T> GetDataForSQLServer<T>(string dbName, string sql, params object[] args);
+        
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]

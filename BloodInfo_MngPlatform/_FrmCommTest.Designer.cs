@@ -29,24 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label baudRateLabel;
-            System.Windows.Forms.Label stopBitsLabel;
-            System.Windows.Forms.Label dataBitsLabel;
-            System.Windows.Forms.Label portNameLabel;
-            System.Windows.Forms.Label parityLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(_FrmCommTest));
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.Table1 = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tbData = new System.Windows.Forms.TextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.stopBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.parityComboBox = new System.Windows.Forms.ComboBox();
-            this.dataBitsComboBox = new System.Windows.Forms.ComboBox();
-            this.baudRateComboBox = new System.Windows.Forms.ComboBox();
-            this.portNameComboBox = new System.Windows.Forms.ComboBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -76,16 +71,16 @@
             this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            baudRateLabel = new System.Windows.Forms.Label();
-            stopBitsLabel = new System.Windows.Forms.Label();
-            dataBitsLabel = new System.Windows.Forms.Label();
-            portNameLabel = new System.Windows.Forms.Label();
-            parityLabel = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.Table1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
@@ -98,51 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // baudRateLabel
-            // 
-            baudRateLabel.AutoSize = true;
-            baudRateLabel.Location = new System.Drawing.Point(207, 40);
-            baudRateLabel.Name = "baudRateLabel";
-            baudRateLabel.Size = new System.Drawing.Size(47, 14);
-            baudRateLabel.TabIndex = 10;
-            baudRateLabel.Text = "波特率:";
-            // 
-            // stopBitsLabel
-            // 
-            stopBitsLabel.AutoSize = true;
-            stopBitsLabel.Location = new System.Drawing.Point(806, 40);
-            stopBitsLabel.Name = "stopBitsLabel";
-            stopBitsLabel.Size = new System.Drawing.Size(47, 14);
-            stopBitsLabel.TabIndex = 14;
-            stopBitsLabel.Text = "停止位:";
-            // 
-            // dataBitsLabel
-            // 
-            dataBitsLabel.AutoSize = true;
-            dataBitsLabel.Location = new System.Drawing.Point(406, 40);
-            dataBitsLabel.Name = "dataBitsLabel";
-            dataBitsLabel.Size = new System.Drawing.Size(47, 14);
-            dataBitsLabel.TabIndex = 11;
-            dataBitsLabel.Text = "数据位:";
-            // 
-            // portNameLabel
-            // 
-            portNameLabel.AutoSize = true;
-            portNameLabel.Location = new System.Drawing.Point(23, 40);
-            portNameLabel.Name = "portNameLabel";
-            portNameLabel.Size = new System.Drawing.Size(35, 14);
-            portNameLabel.TabIndex = 13;
-            portNameLabel.Text = "串口:";
-            // 
-            // parityLabel
-            // 
-            parityLabel.AutoSize = true;
-            parityLabel.Location = new System.Drawing.Point(607, 40);
-            parityLabel.Name = "parityLabel";
-            parityLabel.Size = new System.Drawing.Size(47, 14);
-            parityLabel.TabIndex = 12;
-            parityLabel.Text = "校验位:";
             // 
             // xtraTabControl1
             // 
@@ -159,54 +109,91 @@
             // 
             // Table1
             // 
-            this.Table1.Controls.Add(this.groupControl2);
+            this.Table1.Controls.Add(this.splitContainer1);
+            this.Table1.Controls.Add(this.toolStrip1);
             this.Table1.Controls.Add(this.groupControl1);
             this.Table1.Image = global::BloodInfo_MngPlatform.Properties.Resources._20130307020756735_easyicon_cn_16;
             this.Table1.Name = "Table1";
             this.Table1.Size = new System.Drawing.Size(1022, 460);
             this.Table1.Text = "串口调试器";
+            this.Table1.Paint += new System.Windows.Forms.PaintEventHandler(this.Table1_Paint);
             // 
-            // groupControl2
+            // splitContainer1
             // 
-            this.groupControl2.Controls.Add(this.tbData);
-            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl2.Location = new System.Drawing.Point(0, 113);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1022, 347);
-            this.groupControl2.TabIndex = 3;
-            this.groupControl2.Text = "设备数据";
+            this.splitContainer1.Location = new System.Drawing.Point(147, 52);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tbData);
+            this.splitContainer1.Size = new System.Drawing.Size(274, 185);
+            this.splitContainer1.SplitterDistance = 145;
+            this.splitContainer1.TabIndex = 16;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.Size = new System.Drawing.Size(145, 185);
+            this.treeView1.TabIndex = 0;
             // 
             // tbData
             // 
             this.tbData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbData.Location = new System.Drawing.Point(2, 22);
+            this.tbData.Location = new System.Drawing.Point(0, 0);
             this.tbData.Multiline = true;
             this.tbData.Name = "tbData";
             this.tbData.ReadOnly = true;
             this.tbData.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbData.Size = new System.Drawing.Size(1018, 323);
+            this.tbData.Size = new System.Drawing.Size(125, 185);
             this.tbData.TabIndex = 14;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1022, 25);
+            this.toolStrip1.TabIndex = 15;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = global::BloodInfo_MngPlatform.Properties.Resources.arrow;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(49, 22);
+            this.toolStripButton1.Text = "开始";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(33, 22);
+            this.toolStripButton2.Text = "停止";
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.simpleButton4);
             this.groupControl1.Controls.Add(this.simpleButton2);
             this.groupControl1.Controls.Add(this.simpleButton1);
-            this.groupControl1.Controls.Add(this.stopBitsComboBox);
-            this.groupControl1.Controls.Add(this.parityComboBox);
-            this.groupControl1.Controls.Add(this.dataBitsComboBox);
-            this.groupControl1.Controls.Add(this.baudRateComboBox);
-            this.groupControl1.Controls.Add(this.portNameComboBox);
-            this.groupControl1.Controls.Add(baudRateLabel);
-            this.groupControl1.Controls.Add(stopBitsLabel);
-            this.groupControl1.Controls.Add(dataBitsLabel);
-            this.groupControl1.Controls.Add(portNameLabel);
-            this.groupControl1.Controls.Add(parityLabel);
             this.groupControl1.Controls.Add(this.shapeContainer1);
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Location = new System.Drawing.Point(47, 256);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1022, 113);
+            this.groupControl1.Size = new System.Drawing.Size(776, 113);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "串口设置";
             // 
@@ -237,51 +224,6 @@
             this.simpleButton1.Text = "打开/开始";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // stopBitsComboBox
-            // 
-            this.stopBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.stopBitsComboBox.FormattingEnabled = true;
-            this.stopBitsComboBox.Location = new System.Drawing.Point(859, 32);
-            this.stopBitsComboBox.Name = "stopBitsComboBox";
-            this.stopBitsComboBox.Size = new System.Drawing.Size(121, 22);
-            this.stopBitsComboBox.TabIndex = 19;
-            // 
-            // parityComboBox
-            // 
-            this.parityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.parityComboBox.FormattingEnabled = true;
-            this.parityComboBox.Location = new System.Drawing.Point(660, 32);
-            this.parityComboBox.Name = "parityComboBox";
-            this.parityComboBox.Size = new System.Drawing.Size(121, 22);
-            this.parityComboBox.TabIndex = 18;
-            // 
-            // dataBitsComboBox
-            // 
-            this.dataBitsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dataBitsComboBox.FormattingEnabled = true;
-            this.dataBitsComboBox.Location = new System.Drawing.Point(459, 32);
-            this.dataBitsComboBox.Name = "dataBitsComboBox";
-            this.dataBitsComboBox.Size = new System.Drawing.Size(121, 22);
-            this.dataBitsComboBox.TabIndex = 17;
-            // 
-            // baudRateComboBox
-            // 
-            this.baudRateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.baudRateComboBox.FormattingEnabled = true;
-            this.baudRateComboBox.Location = new System.Drawing.Point(260, 32);
-            this.baudRateComboBox.Name = "baudRateComboBox";
-            this.baudRateComboBox.Size = new System.Drawing.Size(121, 22);
-            this.baudRateComboBox.TabIndex = 16;
-            // 
-            // portNameComboBox
-            // 
-            this.portNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.portNameComboBox.FormattingEnabled = true;
-            this.portNameComboBox.Location = new System.Drawing.Point(64, 32);
-            this.portNameComboBox.Name = "portNameComboBox";
-            this.portNameComboBox.Size = new System.Drawing.Size(121, 22);
-            this.portNameComboBox.TabIndex = 15;
-            // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(2, 22);
@@ -289,7 +231,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1018, 89);
+            this.shapeContainer1.Size = new System.Drawing.Size(772, 89);
             this.shapeContainer1.TabIndex = 22;
             this.shapeContainer1.TabStop = false;
             // 
@@ -300,7 +242,7 @@
             this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 12;
-            this.lineShape1.X2 = 1011;
+            this.lineShape1.X2 = 765;
             this.lineShape1.Y1 = 45;
             this.lineShape1.Y2 = 45;
             // 
@@ -557,6 +499,16 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "20130307020633664_easyicon_cn_32.png");
+            // 
             // _FrmCommTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -566,15 +518,20 @@
             this.DoubleBuffered = true;
             this.Name = "_FrmCommTest";
             this.Text = "通讯调试工具";
+            this.Load += new System.EventHandler(this._FrmCommTest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.Table1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
-            this.groupControl2.PerformLayout();
+            this.Table1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.group2)).EndInit();
             this.group2.ResumeLayout(false);
@@ -601,14 +558,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private System.Windows.Forms.ComboBox stopBitsComboBox;
-        private System.Windows.Forms.ComboBox parityComboBox;
-        private System.Windows.Forms.ComboBox dataBitsComboBox;
-        private System.Windows.Forms.ComboBox baudRateComboBox;
-        private System.Windows.Forms.ComboBox portNameComboBox;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
-        private DevExpress.XtraEditors.GroupControl groupControl2;
         private System.Windows.Forms.TextBox tbData;
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
@@ -635,5 +586,12 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

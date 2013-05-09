@@ -50,7 +50,11 @@ namespace BloodInfo_MngPlatform
             ClsFrmMng.lstDocDavType = new List<DocAdvType>();
             ClsFrmMng.lstDocDavType.Add(new DocAdvType(0, "长期医嘱")); 
             ClsFrmMng.lstDocDavType.Add(new DocAdvType(1, "临时医嘱")); 
-            ClsFrmMng.lstDocDavType.Add(new DocAdvType(9, "默认医嘱")); 
+            ClsFrmMng.lstDocDavType.Add(new DocAdvType(9, "默认医嘱"));
+
+            ClsFrmMng.lstSexType = new List<SexType>();
+            ClsFrmMng.lstSexType.Add(new SexType("1", "男"));
+            ClsFrmMng.lstSexType.Add(new SexType("2", "女"));
 
             if (iGroupID != 1)
             {
@@ -617,6 +621,11 @@ namespace BloodInfo_MngPlatform
             }
             else
                 ClsFrmMng.frmCourse.Activate();
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
         }
 
 

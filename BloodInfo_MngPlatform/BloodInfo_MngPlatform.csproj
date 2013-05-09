@@ -34,7 +34,7 @@
     <WebPage>index.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>87</ApplicationRevision>
+    <ApplicationRevision>91</ApplicationRevision>
     <ApplicationVersion>0.0.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -198,6 +198,11 @@
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Oracle.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data">
@@ -297,6 +302,12 @@
     </Compile>
     <Compile Include="FrmEdtAdd.Designer.cs">
       <DependentUpon>FrmEdtAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEdtAddExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEdtAddExt.designer.cs">
+      <DependentUpon>FrmEdtAddExt.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEdtBloodCeanupBase.cs">
       <SubType>Form</SubType>
@@ -436,6 +447,12 @@
     <Compile Include="FrmNewAdd.Designer.cs">
       <DependentUpon>FrmNewAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNewAddExt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNewAddExt.Designer.cs">
+      <DependentUpon>FrmNewAddExt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmNewBloodCleanBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -549,6 +566,18 @@
     </Compile>
     <Compile Include="FrmPatientRigist.Designer.cs">
       <DependentUpon>FrmPatientRigist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQueryCheckExtInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQueryCheckExtInfo.designer.cs">
+      <DependentUpon>FrmQueryCheckExtInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmQueryCheckInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQueryCheckInfo.designer.cs">
+      <DependentUpon>FrmQueryCheckInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRptPatientInfo.cs">
       <SubType>Form</SubType>
@@ -822,6 +851,9 @@
     <EmbeddedResource Include="FrmEdtAdd.resx">
       <DependentUpon>FrmEdtAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEdtAddExt.resx">
+      <DependentUpon>FrmEdtAddExt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEdtBloodCeanupBase.resx">
       <DependentUpon>FrmEdtBloodCeanupBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -891,6 +923,9 @@
     <EmbeddedResource Include="FrmNewAdd.resx">
       <DependentUpon>FrmNewAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmNewAddExt.resx">
+      <DependentUpon>FrmNewAddExt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmNewBloodCleanBase.resx">
       <DependentUpon>FrmNewBloodCleanBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -947,6 +982,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPatientRigist.resx">
       <DependentUpon>FrmPatientRigist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQueryCheckExtInfo.resx">
+      <DependentUpon>FrmQueryCheckExtInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQueryCheckInfo.resx">
+      <DependentUpon>FrmQueryCheckInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRptPatientInfo.resx">
       <DependentUpon>FrmRptPatientInfo.cs</DependentUpon>
@@ -1528,9 +1569,6 @@
     <Content Include="ociw32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Oracle.DataAccess.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="orannzsbb11.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1572,6 +1610,10 @@
     <ProjectReference Include="..\AuthrzForDevDx\AuthrzForDevDX.csproj">
       <Project>{4b85c325-c729-4361-ba4d-c8942c154c5d}</Project>
       <Name>AuthrzForDevDX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonServiceLibrary\CommonServiceLibrary.csproj">
+      <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
+      <Name>CommonServiceLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\PetaPoco\PetaPoco.csproj">
       <Project>{33699753-151d-4100-8f12-9ae1aeb5c5bd}</Project>

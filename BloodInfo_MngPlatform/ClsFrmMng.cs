@@ -28,6 +28,7 @@ namespace BloodInfo_MngPlatform
         public static List<DIGESTIVESYS_CODE> lstDigesCode;
         public static List<HaveOrNull> lstHaveOrNull;
         public static List<DocAdvType> lstDocDavType;
+        public static List<SexType> lstSexType;
 
         // 全局窗体
         public static FrmPatientRigist frmPatientReg;
@@ -74,6 +75,18 @@ namespace BloodInfo_MngPlatform
         {
             TypeID = id;
             TypeMEMO = memo;
+        }
+    }
+
+    public class SexType
+    {
+        public string SexCode { get; set; }
+        public string SexName { get; set; }
+
+        public SexType(string sexcode,string sexname)
+        {
+            SexCode = sexcode;
+            SexName = sexname;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace BloodInfo_MngPlatform
         List<VASCULARPATH_HISTORY> lstPath = new List<VASCULARPATH_HISTORY>();
         List<BODY_CHECK_HISTORY> lstBody = new List<BODY_CHECK_HISTORY>();
         List<ADDTION_CHECK_HISTORY> lstAdd = new List<ADDTION_CHECK_HISTORY>();
+        List<ADDTION_CHECK_HISTORY_EXT> lstAddExt = new List<ADDTION_CHECK_HISTORY_EXT>();
 
         string sName = string.Empty;
 
@@ -104,6 +105,7 @@ namespace BloodInfo_MngPlatform
                 lblName7.Caption = sPatientName;
                 lblName8.Caption = sPatientName;
                 lblName9.Caption = sPatientName;
+                lblName10.Caption = sPatientName;
 
                 // 病历记录
                 caseHis = db.Fetch<CASE_HISTORY>(string.Format("where BASE_INFO_ID ={0} order by log_date desc", p.ID));
@@ -137,9 +139,13 @@ namespace BloodInfo_MngPlatform
                 lstBody = db.Fetch<BODY_CHECK_HISTORY>("where BASE_INFO_ID = @0 order by log_time desc", new object[] { p.ID });
                 bODYCHECKHISTORYBindingSource.DataSource = lstBody;
 
-                // 辅助检查
+                // 辅助检验
                 lstAdd = db.Fetch<ADDTION_CHECK_HISTORY>("where BASE_INFO_ID = @0 order by log_time desc", new object[] { p.ID });
                 aDDTIONCHECKHISTORYBindingSource.DataSource = lstAdd;
+
+                //辅助检查
+                lstAddExt = db.Fetch<ADDTION_CHECK_HISTORY_EXT>("where BASE_INFO_ID = @0 order by log_time desc", new object[] { p.ID });
+                aDDTIONCHECKHISTORYEXTBindingSource.DataSource = lstAddExt;
 
             }
         }
@@ -467,5 +473,50 @@ namespace BloodInfo_MngPlatform
         {
 
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PATIENT_BASEINFO p = ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current);
+            FrmQueryCheckInfo frmQueryCheckInfo = new FrmQueryCheckInfo(lblName9.Caption.ToString(), p.ID);
+            frmQueryCheckInfo.ShowDialog(); 
+            // 刷新
+            List<ADDTION_CHECK_HISTORY> lstAdd = db.Fetch<ADDTION_CHECK_HISTORY>("where BASE_INFO_ID = @0 ", p.ID );
+            aDDTIONCHECKHISTORYBindingSource.DataSource = lstAdd;
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PATIENT_BASEINFO p = ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current);
+            FrmQueryCheckExtInfo frmQueryCheckExtInfo = new FrmQueryCheckExtInfo(lblName9.Caption.ToString(), p.ID);
+            frmQueryCheckExtInfo.ShowDialog();
+            // 刷新
+            List<ADDTION_CHECK_HISTORY_EXT> lstAdd = db.Fetch<ADDTION_CHECK_HISTORY_EXT>("where BASE_INFO_ID = @0 ", p.ID);
+            aDDTIONCHECKHISTORYEXTBindingSource.DataSource = lstAdd;
+        }
+
+        private void btnNewCheckInfoExt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (pATIENTBASEINFOBindingSource.Current == null)
+                return;
+
+            FrmNewAddExt frmNewAdd = new FrmNewAddExt((Int64)((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current).ID, 0);
+            frmNewAdd.NewRegistEvt += frmNewAdd_NewRegistEvt;
+            frmNewAdd.ShowDialog();
+        }
+
+        private void btnEdtCheckInfoExt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (aDDTIONCHECKHISTORYEXTBindingSource.Current == null)
+            {
+                XtraMessageBox.Show("请选择需要编辑的行。", "错误提示", MessageBoxButtons.OK);
+                return;
+            }
+            Int64 id = (Int64)((ADDTION_CHECK_HISTORY_EXT)aDDTIONCHECKHISTORYEXTBindingSource.Current).ID;
+            FrmEdtAddExt frmEdtAdd = new FrmEdtAddExt(id);
+            frmEdtAdd.NewRegistEvt += frmEdtAdd_NewRegistEvt;
+            frmEdtAdd.ShowDialog(); 
+        }
+
+        
     }
 }

@@ -97,6 +97,7 @@
             this.tmSysTime = new System.Windows.Forms.Timer(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::BloodInfo_MngPlatform.WaitForm1), true, true);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -171,9 +172,10 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem12,
-            this.barButtonItem11});
+            this.barButtonItem11,
+            this.barButtonItem13});
             this.barManager1.MainMenu = this.mainMenu;
-            this.barManager1.MaxItemId = 88;
+            this.barManager1.MaxItemId = 89;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2});
@@ -490,7 +492,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.mbtnScanMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.mbtnScanWindows),
             new DevExpress.XtraBars.LinkPersistInfo(this.mbtnAuthMng),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)});
             this.mitAuthrz.Name = "mitAuthrz";
@@ -587,22 +589,22 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 452);
-            this.barDockControlBottom.Size = new System.Drawing.Size(986, 27);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
+            this.barDockControlBottom.Size = new System.Drawing.Size(986, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 428);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 432);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(986, 24);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 432);
             // 
             // dockManager1
             // 
@@ -629,7 +631,7 @@
             this.dockPanel1.Location = new System.Drawing.Point(0, 24);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(146, 200);
-            this.dockPanel1.Size = new System.Drawing.Size(146, 428);
+            this.dockPanel1.Size = new System.Drawing.Size(146, 432);
             this.dockPanel1.Text = "快速导航";
             // 
             // dockPanel1_Container
@@ -637,7 +639,7 @@
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(138, 401);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(138, 405);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // navBarControl1
@@ -655,7 +657,7 @@
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 138;
-            this.navBarControl1.Size = new System.Drawing.Size(138, 401);
+            this.navBarControl1.Size = new System.Drawing.Size(138, 405);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             // 
@@ -855,6 +857,14 @@
             this.xtraTabbedMdiManager1.Images = this.imageCollection_small;
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "串口通讯";
+            this.barButtonItem13.Id = 88;
+            this.barButtonItem13.ImageIndex = 5;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
             // FrmMain
             // 
             this.AllowMdiBar = true;
@@ -958,6 +968,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
 
 
