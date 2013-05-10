@@ -95,12 +95,14 @@ namespace SerialPortComm
 
         public void SendMsg(byte[] byMsg)
         {
-            _serialPort.Write(byMsg, 0, byMsg.Length);
+            if( _serialPort.IsOpen)
+                _serialPort.Write(byMsg, 0, byMsg.Length);
         }
 
         public void SendDataRequest()
         {
-            _serialPort.WriteLine("K" + "\r\n");
+            if (_serialPort.IsOpen)
+                _serialPort.WriteLine("K" + "\r\n");
         }
 
         public void SendDataRequest2()

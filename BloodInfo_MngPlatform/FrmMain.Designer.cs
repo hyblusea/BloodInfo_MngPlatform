@@ -92,12 +92,12 @@
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.imageCollection_small = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.tmSysTime = new System.Windows.Forms.Timer(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::BloodInfo_MngPlatform.WaitForm1), true, true);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -528,7 +528,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "通讯测试工具";
+            this.barButtonItem1.Caption = "通讯工具";
             this.barButtonItem1.Id = 78;
             this.barButtonItem1.ImageIndex = 41;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -829,6 +829,14 @@
             this.imageCollection_small.Images.SetKeyName(112, "20130321093941144_easyicon_net_16.png");
             this.imageCollection_small.Images.SetKeyName(113, "20130321094128188_easyicon_net_16.png");
             // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "串口通讯";
+            this.barButtonItem13.Id = 88;
+            this.barButtonItem13.ImageIndex = 5;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
             // repositoryItemComboBox1
             // 
             this.repositoryItemComboBox1.AutoHeight = false;
@@ -856,14 +864,6 @@
             this.xtraTabbedMdiManager1.FloatOnDrag = DevExpress.Utils.DefaultBoolean.True;
             this.xtraTabbedMdiManager1.Images = this.imageCollection_small;
             this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // barButtonItem13
-            // 
-            this.barButtonItem13.Caption = "串口通讯";
-            this.barButtonItem13.Id = 88;
-            this.barButtonItem13.ImageIndex = 5;
-            this.barButtonItem13.Name = "barButtonItem13";
-            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
             // FrmMain
             // 
