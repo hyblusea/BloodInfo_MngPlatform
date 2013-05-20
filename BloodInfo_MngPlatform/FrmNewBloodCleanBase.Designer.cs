@@ -286,14 +286,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1052, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1028, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 459);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1052, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 0);
             // 
             // barDockControlLeft
             // 
@@ -306,7 +306,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1052, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1028, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 428);
             // 
             // sharedImageCollection1
@@ -545,7 +545,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(1052, 428);
+            this.shapeContainer1.Size = new System.Drawing.Size(1028, 428);
             this.shapeContainer1.TabIndex = 10;
             this.shapeContainer1.TabStop = false;
             // 
@@ -1796,7 +1796,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 459);
+            this.ClientSize = new System.Drawing.Size(1028, 459);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.shapeContainer1);

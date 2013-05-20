@@ -2702,7 +2702,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "获取";
+            this.barButtonItem1.Caption = "刷新";
             this.barButtonItem1.Id = 4;
             this.barButtonItem1.ImageIndex = 9;
             this.barButtonItem1.Name = "barButtonItem1";

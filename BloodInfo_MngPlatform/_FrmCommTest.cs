@@ -194,6 +194,7 @@ namespace BloodInfo_MngPlatform
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            Int64 iTicks = 1;
             byte[] by = new byte[] { 0x4b, 0x0d, 0x0a };
 
             // 打开所有串口
@@ -213,7 +214,7 @@ namespace BloodInfo_MngPlatform
             }
 
             while (isRun)
-            {
+            {                 
                 foreach (KeyValuePair<string, SerialPortManager> item in dicSerialPort)
                 {
                     try
@@ -239,29 +240,68 @@ namespace BloodInfo_MngPlatform
                     try
                     {
                         string sData = item.Value.ReadData();
+
                         tbData.SafeCall(delegate()
                         {
-                            tbData.AppendText( DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + item.Key + ": "  + sData + Environment.NewLine);
+                            tbData.AppendText(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss ") + item.Key + ": " + sData + Environment.NewLine);
                         });
 
                         if (sData.Length > 20)
                         {
                             try
                             {
+                                string sDataTmp = sData.Substring(0, sData.Length - 4);
+
                                 // 写入数据库
                                 PetaPoco.Database db = new Database("XE");
 
                                 DEVICECOMMUNICATION_LOG log = new DEVICECOMMUNICATION_LOG();
                                 log.MSG = sData.Length > 3999 ? sData.Substring(0, 3999) : sData;
-                                log.REMOTE_IP = "com3";
+                                log.REMOTE_IP = toolStripTextBox1.Text + item.Key;
                                 //log.REMOTE_PORT = remotePort;
                                 log.RECEIVE_TIME = DateTime.Now;
 
                                 db.Insert(log);
 
                                 // 写入到台湾人要的表
-                                var log1 = GetLog1Entity(sData, item.Key);
+                                var log1 = GetLog1Entity(sDataTmp, item.Key);
                                 db.Insert(log1);
+
+                                if (iTicks % 60 == 0)
+                                {
+                                    BLOODCLEANUP_TEMP bt = new BLOODCLEANUP_TEMP();
+                                    bt = db.SingleOrDefault<BLOODCLEANUP_TEMP>("where to_char( ANA_DATE, 'yyyy-mm-dd') = @0  and SERIAL_PORT_NUM = @1",
+                                        new object[] { DateTime.Now.ToString("yyyy-MM-dd"), toolStripTextBox1.Text + item.Key });
+
+                                    if (bt != null)
+                                    {
+                                        string sTmp = sDataTmp.Substring(log.MSG.LastIndexOf('F') + 1, 5);
+                                        string sVp = sDataTmp.Substring(log.MSG.LastIndexOf('H') + 1, 5);
+                                        string sBf = sDataTmp.Substring(log.MSG.LastIndexOf('D') + 1, 5);
+                                        string sMaxBp = sDataTmp.Substring(log.MSG.LastIndexOf('N') + 1, 5);
+                                        string sMinBp = sDataTmp.Substring(log.MSG.LastIndexOf('O') + 1, 5);
+                                        string sPulse = sDataTmp.Substring(log.MSG.LastIndexOf('P') + 1, 5);
+                                        string sTotalUFAmount = sDataTmp.Substring(log.MSG.LastIndexOf('B') + 1, 5);
+                                        string sDC = sDataTmp.Substring(log.MSG.LastIndexOf('G') + 1, 5);
+                                        string sTMP = sDataTmp.Substring(log.MSG.LastIndexOf('J') + 1, 5);
+
+                                        BLOODCLEANUP_PROCESS proc = new BLOODCLEANUP_PROCESS();
+                                        proc.ANA_TIME = log.RECEIVE_TIME;
+                                        proc.TEMP = decimal.Parse(sTmp);
+                                        proc.VENOUS_PRESSURE = decimal.Parse(sVp);
+                                        proc.BLOOD_FLOW = decimal.Parse(sBf);
+                                        proc.BP = decimal.Parse(sMaxBp).ToString() + "~" + decimal.Parse(sMinBp);
+                                        proc.P = decimal.Parse(sPulse);
+                                        proc.ULTRAFILTRATION = decimal.Parse(sTotalUFAmount);
+                                        proc.CONDUCTIVITY = sDC;
+                                        proc.ARTERIAL_PRESSURE = decimal.Parse(sTMP);
+
+                                        proc.LOG_TIME = DateTime.Now;
+                                        proc.BLOODCLEANUP_ID = bt.BLOOD_CLEANUP_ID;
+                                        db.Insert(proc);
+                                        //proc.OPERATOR = ClsFrmMng.WorkerID;
+                                    }
+                                }
                             }
                             catch (Exception err)
                             {
@@ -270,7 +310,7 @@ namespace BloodInfo_MngPlatform
                                     tbData.AppendText("写数据失败: " + err.Message + Environment.NewLine);
                                 });
                             }
-                            
+
                         }
                     }
                     catch (Exception err)
@@ -280,9 +320,10 @@ namespace BloodInfo_MngPlatform
                             tbData.AppendText("读取串口" + item.Key + "数据失败: " + err.Message + Environment.NewLine);
                         });
                     }
-                }
-                Thread.Sleep(5000);                
                 
+                }
+                Thread.Sleep(3000);
+                iTicks++;
             }
 
         }
@@ -290,7 +331,7 @@ namespace BloodInfo_MngPlatform
         private DEVICECOMMUNICATION_LOG1 GetLog1Entity(string sData, string sSerialPortNum)
         {
             DEVICECOMMUNICATION_LOG1 log1 = new DEVICECOMMUNICATION_LOG1();
-            log1.REMOTE_IP = sSerialPortNum;
+            log1.REMOTE_IP =  toolStripTextBox1.Text + sSerialPortNum;
             log1.RECEIVE_TIME = DateTime.Now;
             log1.MSG = sData;
 

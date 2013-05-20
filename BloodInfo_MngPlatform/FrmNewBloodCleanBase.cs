@@ -17,6 +17,7 @@ namespace BloodInfo_MngPlatform
     {
         public delegate void NewRegistEventHandler();
         public event NewRegistEventHandler NewRegistEvt;
+        MACHINE_SCHEDULE ms;
 
         Database db;
         Int64 _baseID;
@@ -39,7 +40,7 @@ namespace BloodInfo_MngPlatform
             blookCaeanup.ANA_DATE = DateTime.Now;
 
             // 查询该患者所签到的透析机机位, 透析机型号
-            MACHINE_SCHEDULE ms = db.SingleOrDefault<MACHINE_SCHEDULE>(machineCheckID);
+            ms = db.SingleOrDefault<MACHINE_SCHEDULE>(machineCheckID);
             string sFloor = db.ExecuteScalar<string>("select DSP_MEMBER from VALUE_CODE where VALUE_MEMBER = @0", ms.FLOOR_ID);
             string sArea = db.ExecuteScalar<string>("select DSP_MEMBER from VALUE_CODE where VALUE_MEMBER = @0", ms.AREA_ID);
             blookCaeanup.MACH_POS = sFloor + " " +  sArea + " " + ms.BED_NO + "#";
@@ -144,7 +145,7 @@ namespace BloodInfo_MngPlatform
                 try
                 {
                     blookCaeanup.LOG_TIME = DateTime.Now;
-                    db.Insert(blookCaeanup);
+                    object oID = db.Insert(blookCaeanup);
 
                     blookCaeanup = new  BLOODCLEANUP();
                     blookCaeanup.REG_ID = _regID;
@@ -154,6 +155,20 @@ namespace BloodInfo_MngPlatform
 
                     if (NewRegistEvt != null)
                         NewRegistEvt();
+
+                    MACHINE_INFO mi = db.SingleOrDefault<MACHINE_INFO>("where FLOOR_ID = @0 and AREA_ID = @1 and  BED_NO= @2",
+                        new object[]{ms.FLOOR_ID, ms.AREA_ID, ms.BED_NO});
+                    if (mi == null || string.IsNullOrWhiteSpace(mi.COMMIP))
+                        throw new Exception("该床位可能没有配置透析机信息, 或该床位所用透析机串口号未配置, 请确认.");
+                    else
+                    {
+                        BLOODCLEANUP_TEMP bt = new BLOODCLEANUP_TEMP();
+                        bt.BLOOD_CLEANUP_ID = Convert.ToDecimal(oID);
+                        bt.ANA_DATE = DateTime.Now;
+                        bt.SERIAL_PORT_NUM = mi.COMMIP;
+                        db.Insert(bt);
+                    }
+
                 }
                 catch (Exception err)
                 {

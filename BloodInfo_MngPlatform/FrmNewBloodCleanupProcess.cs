@@ -34,6 +34,33 @@ namespace BloodInfo_MngPlatform
             process.BLOODCLEANUP_ID = _cleanupID;
             process.OPERATOR = ClsFrmMng.WorkerID;
             bLOODCLEANUPPROCESSBindingSource.DataSource = process;
+
+            BLOODCLEANUP_TEMP bt = db.SingleOrDefault<BLOODCLEANUP_TEMP>("where BLOOD_CLEANUP_ID = @0", _cleanupID);
+            DEVICECOMMUNICATION_LOG log = db.SingleOrDefault<DEVICECOMMUNICATION_LOG>("where REMOTE_IP=@0 and rownum = 1 order by ID DESC", bt.SERIAL_PORT_NUM);
+
+            if (log != null)
+            {
+                string sDataTmp = log.MSG.Substring(0, log.MSG.Length - 4);
+                string sTmp = sDataTmp.Substring(log.MSG.LastIndexOf('F') + 1, 5);
+                string sVp = sDataTmp.Substring(log.MSG.LastIndexOf('H') + 1, 5);
+                string sBf = sDataTmp.Substring(log.MSG.LastIndexOf('D') + 1, 5);
+                string sMaxBp = sDataTmp.Substring(log.MSG.LastIndexOf('N') + 1, 5);
+                string sMinBp = sDataTmp.Substring(log.MSG.LastIndexOf('O') + 1, 5);
+                string sPulse = sDataTmp.Substring(log.MSG.LastIndexOf('P') + 1, 5);
+                string sTotalUFAmount = sDataTmp.Substring(log.MSG.LastIndexOf('B') + 1, 5);
+                string sDC = sDataTmp.Substring(log.MSG.LastIndexOf('G') + 1, 5);
+                string sTMP = sDataTmp.Substring(log.MSG.LastIndexOf('J') + 1, 5);
+
+                process.ANA_TIME = log.RECEIVE_TIME;
+                process.TEMP = decimal.Parse(sTmp);
+                process.VENOUS_PRESSURE = decimal.Parse(sVp);
+                process.BLOOD_FLOW = decimal.Parse(sBf);
+                process.BP = decimal.Parse(sMaxBp).ToString() + "~" + decimal.Parse(sMinBp);
+                process.P = decimal.Parse(sPulse);
+                process.ULTRAFILTRATION = decimal.Parse(sTotalUFAmount);
+                process.CONDUCTIVITY = sDC;
+                process.ARTERIAL_PRESSURE = decimal.Parse(sTMP);
+            }
         }
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

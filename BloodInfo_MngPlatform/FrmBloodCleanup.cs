@@ -142,6 +142,7 @@ namespace BloodInfo_MngPlatform
                 else
                 {
                     bLOODCLEANUPBindingSource.DataSource = null;
+                    lstBloodCleanup.Clear();
                 }
             }
             else
@@ -221,6 +222,11 @@ namespace BloodInfo_MngPlatform
                 XtraMessageBox.Show("请选择需要结束治疗的患者记住.");
                 return;
             }
+            if (bLOODCLEANUPBindingSource.Current == null)
+            {
+                XtraMessageBox.Show("该患者还没有创建血液净化记录.");
+                return;
+            }
 
             if (XtraMessageBox.Show("确定结束该患者的本次医疗？", "操作确认", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -254,6 +260,8 @@ namespace BloodInfo_MngPlatform
 
                         // 清空机器预约信息
                         db.Delete(v);
+
+                        db.Execute("delete BLOODCLEANUP_TEMP where BLOOD_CLEANUP_ID = @0", ((BLOODCLEANUP)bLOODCLEANUPBindingSource.Current).ID);
 
                         scop.Complete();
                     }
@@ -364,35 +372,7 @@ namespace BloodInfo_MngPlatform
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (bLOODCLEANUPBindingSource.Current != null)
-            {
-                BLOODCLEANUP bc = (BLOODCLEANUP)bLOODCLEANUPBindingSource.Current;
-
-                DEVICECOMMUNICATION_LOG log = db.Single<DEVICECOMMUNICATION_LOG>("where remote_ip=@0 and rownum=1 order by id desc ", "com3");
-                if (log != null)
-                {
-                    string sTmp = log.MSG.Substring(log.MSG.LastIndexOf('F') + 1, 5);
-                    string sVp = log.MSG.Substring(log.MSG.LastIndexOf('H') + 1, 5);
-                    string sBf = log.MSG.Substring(log.MSG.LastIndexOf('D') + 1, 5);
-                    string sMaxBp = log.MSG.Substring(log.MSG.LastIndexOf('N') + 1, 5);
-                    string sMinBp = log.MSG.Substring(log.MSG.LastIndexOf('O') + 1, 5);
-                    string sPulse = log.MSG.Substring(log.MSG.LastIndexOf('P') + 1, 5);
-
-                    BLOODCLEANUP_PROCESS proc = new BLOODCLEANUP_PROCESS();
-                    proc.ANA_TIME = log.RECEIVE_TIME;
-                    proc.TEMP = decimal.Parse(sTmp);
-                    proc.VENOUS_PRESSURE = decimal.Parse(sVp);
-                    proc.BLOOD_FLOW = decimal.Parse(sBf);
-                    proc.BP = decimal.Parse(sMaxBp).ToString() + "~" + decimal.Parse(sMinBp);
-                    proc.P = decimal.Parse(sPulse);
-
-                    proc.LOG_TIME = DateTime.Now;
-                    proc.BLOODCLEANUP_ID = bc.ID;
-                    proc.OPERATOR = ClsFrmMng.WorkerID;
-                    db.Insert(proc);
-                    frmNewprocess_NewRegistEvt();
-                }
-            }
+            frmNewprocess_NewRegistEvt();
         }
 
 
