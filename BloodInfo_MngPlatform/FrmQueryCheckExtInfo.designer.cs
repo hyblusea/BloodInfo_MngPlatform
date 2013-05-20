@@ -45,6 +45,8 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colApplyNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHospNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemResult = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTechNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLabelID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTechPatID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,6 +64,7 @@
             this.colCareer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBedNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colZip = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNation = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIDNum = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,7 +74,6 @@
             this.colApplyDeptName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWard = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWardName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colBedNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWardOrReg = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colApplyTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBriefCase = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -121,8 +123,6 @@
             this.colSurveySign = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSurveySuggest = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colJCBZ = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colITEM_RESULT = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colITEMCODE = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).BeginInit();
@@ -443,6 +443,8 @@
             this.colIsChecked,
             this.colApplyNo,
             this.colHospNo,
+            this.colItemName,
+            this.colItemResult,
             this.colTechNo,
             this.colLabelID,
             this.colTechPatID,
@@ -459,6 +461,7 @@
             this.colCareer,
             this.colPhone,
             this.colAddress,
+            this.colBedNo,
             this.colZip,
             this.colNation,
             this.colIDNum,
@@ -468,7 +471,6 @@
             this.colApplyDeptName,
             this.colWard,
             this.colWardName,
-            this.colBedNo,
             this.colWardOrReg,
             this.colApplyTime,
             this.colBriefCase,
@@ -507,9 +509,7 @@
             this.colChargeFlag,
             this.colHavingImages,
             this.colEngName,
-            this.colITEMCODE,
             this.colEquipmentID,
-            this.colITEM_RESULT,
             this.colInvoice,
             this.colImageTime,
             this.colDpSign,
@@ -554,7 +554,23 @@
             this.colHospNo.FieldName = "HospNo";
             this.colHospNo.Name = "colHospNo";
             this.colHospNo.Visible = true;
-            this.colHospNo.VisibleIndex = 4;
+            this.colHospNo.VisibleIndex = 6;
+            // 
+            // colItemName
+            // 
+            this.colItemName.Caption = "检查项目";
+            this.colItemName.FieldName = "ItemName";
+            this.colItemName.Name = "colItemName";
+            this.colItemName.Visible = true;
+            this.colItemName.VisibleIndex = 4;
+            // 
+            // colItemResult
+            // 
+            this.colItemResult.Caption = "检查结果";
+            this.colItemResult.FieldName = "ItemResult";
+            this.colItemResult.Name = "colItemResult";
+            this.colItemResult.Visible = true;
+            this.colItemResult.VisibleIndex = 5;
             // 
             // colTechNo
             // 
@@ -606,7 +622,7 @@
             this.colSex.FieldName = "Sex";
             this.colSex.Name = "colSex";
             this.colSex.Visible = true;
-            this.colSex.VisibleIndex = 5;
+            this.colSex.VisibleIndex = 7;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -621,7 +637,7 @@
             this.colAge.FieldName = "Age";
             this.colAge.Name = "colAge";
             this.colAge.Visible = true;
-            this.colAge.VisibleIndex = 6;
+            this.colAge.VisibleIndex = 8;
             // 
             // colAgeUnit
             // 
@@ -629,7 +645,7 @@
             this.colAgeUnit.FieldName = "AgeUnit";
             this.colAgeUnit.Name = "colAgeUnit";
             this.colAgeUnit.Visible = true;
-            this.colAgeUnit.VisibleIndex = 7;
+            this.colAgeUnit.VisibleIndex = 9;
             // 
             // colBirthday
             // 
@@ -637,7 +653,7 @@
             this.colBirthday.FieldName = "Birthday";
             this.colBirthday.Name = "colBirthday";
             this.colBirthday.Visible = true;
-            this.colBirthday.VisibleIndex = 8;
+            this.colBirthday.VisibleIndex = 10;
             // 
             // colExecTime
             // 
@@ -653,7 +669,7 @@
             this.colCareer.FieldName = "Career";
             this.colCareer.Name = "colCareer";
             this.colCareer.Visible = true;
-            this.colCareer.VisibleIndex = 9;
+            this.colCareer.VisibleIndex = 11;
             this.colCareer.Width = 86;
             // 
             // colPhone
@@ -662,7 +678,7 @@
             this.colPhone.FieldName = "Phone";
             this.colPhone.Name = "colPhone";
             this.colPhone.Visible = true;
-            this.colPhone.VisibleIndex = 10;
+            this.colPhone.VisibleIndex = 12;
             this.colPhone.Width = 74;
             // 
             // colAddress
@@ -671,7 +687,15 @@
             this.colAddress.FieldName = "Address";
             this.colAddress.Name = "colAddress";
             this.colAddress.Visible = true;
-            this.colAddress.VisibleIndex = 11;
+            this.colAddress.VisibleIndex = 13;
+            // 
+            // colBedNo
+            // 
+            this.colBedNo.Caption = "床号";
+            this.colBedNo.FieldName = "BedNo";
+            this.colBedNo.Name = "colBedNo";
+            this.colBedNo.Visible = true;
+            this.colBedNo.VisibleIndex = 14;
             // 
             // colZip
             // 
@@ -717,14 +741,6 @@
             // 
             this.colWardName.FieldName = "WardName";
             this.colWardName.Name = "colWardName";
-            // 
-            // colBedNo
-            // 
-            this.colBedNo.Caption = "床号";
-            this.colBedNo.FieldName = "BedNo";
-            this.colBedNo.Name = "colBedNo";
-            this.colBedNo.Visible = true;
-            this.colBedNo.VisibleIndex = 12;
             // 
             // colWardOrReg
             // 
@@ -971,22 +987,6 @@
             this.colJCBZ.FieldName = "JCBZ";
             this.colJCBZ.Name = "colJCBZ";
             // 
-            // colITEM_RESULT
-            // 
-            this.colITEM_RESULT.Caption = "检查结果";
-            this.colITEM_RESULT.FieldName = "ITEM_RESULT";
-            this.colITEM_RESULT.Name = "colITEM_RESULT";
-            this.colITEM_RESULT.Visible = true;
-            this.colITEM_RESULT.VisibleIndex = 13;
-            // 
-            // colITEMCODE
-            // 
-            this.colITEMCODE.Caption = "检查项目";
-            this.colITEMCODE.FieldName = "ITEMCODE";
-            this.colITEMCODE.Name = "colITEMCODE";
-            this.colITEMCODE.Visible = true;
-            this.colITEMCODE.VisibleIndex = 14;
-            // 
             // FrmQueryCheckExtInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -999,7 +999,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FrmQueryCheckExtInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmQueryCheckExtInfo";
+            this.Text = "患者检查历史信息";
             this.Load += new System.EventHandler(this.FrmQueryCheckExtInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sharedImageCollection1.ImageSource)).EndInit();
@@ -1106,7 +1106,7 @@
         private System.Windows.Forms.BindingSource rISLISTBindingSource1;
         private DevExpress.XtraGrid.Columns.GridColumn colIsChecked;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn colITEMCODE;
-        private DevExpress.XtraGrid.Columns.GridColumn colITEM_RESULT;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemName;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemResult;
     }
 }

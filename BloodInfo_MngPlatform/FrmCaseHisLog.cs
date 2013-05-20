@@ -478,9 +478,9 @@ namespace BloodInfo_MngPlatform
         {
             PATIENT_BASEINFO p = ((PATIENT_BASEINFO)pATIENTBASEINFOBindingSource.Current);
             FrmQueryCheckInfo frmQueryCheckInfo = new FrmQueryCheckInfo(lblName9.Caption.ToString(), p.ID);
-            frmQueryCheckInfo.ShowDialog(); 
+            frmQueryCheckInfo.ShowDialog();
             // 刷新
-            List<ADDTION_CHECK_HISTORY> lstAdd = db.Fetch<ADDTION_CHECK_HISTORY>("where BASE_INFO_ID = @0 ", p.ID );
+            List<ADDTION_CHECK_HISTORY> lstAdd = db.Fetch<ADDTION_CHECK_HISTORY>("where BASE_INFO_ID = @0 ", p.ID);
             aDDTIONCHECKHISTORYBindingSource.DataSource = lstAdd;
         }
 
@@ -514,7 +514,7 @@ namespace BloodInfo_MngPlatform
             Int64 id = (Int64)((ADDTION_CHECK_HISTORY_EXT)aDDTIONCHECKHISTORYEXTBindingSource.Current).ID;
             FrmEdtAddExt frmEdtAdd = new FrmEdtAddExt(id);
             frmEdtAdd.NewRegistEvt += frmEdtAdd_NewRegistEvt;
-            frmEdtAdd.ShowDialog(); 
+            frmEdtAdd.ShowDialog();
         }
 
         

@@ -957,14 +957,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1028, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1155, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 543);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1028, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1155, 0);
             // 
             // barDockControlLeft
             // 
@@ -977,7 +977,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1028, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1155, 31);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // sharedImageCollection1
@@ -1219,7 +1219,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1028, 512);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1155, 512);
             this.splitContainerControl1.SplitterPosition = 314;
             this.splitContainerControl1.TabIndex = 0;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -1231,7 +1231,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1028, 314);
+            this.groupControl1.Size = new System.Drawing.Size(1155, 314);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "患者基本信息";
             // 
@@ -1255,7 +1255,7 @@
             this.repositoryItemLookUpEdit4,
             this.repositoryItemLookUpEdit5,
             this.repositoryItemLookUpEdit6});
-            this.dgvPatientBaseInfo.Size = new System.Drawing.Size(1024, 267);
+            this.dgvPatientBaseInfo.Size = new System.Drawing.Size(1151, 267);
             this.dgvPatientBaseInfo.TabIndex = 45;
             this.dgvPatientBaseInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1434,7 +1434,7 @@
             this.ucPaing1.Location = new System.Drawing.Point(2, 289);
             this.ucPaing1.Name = "ucPaing1";
             this.ucPaing1.recordCnt = ((long)(0));
-            this.ucPaing1.Size = new System.Drawing.Size(1024, 23);
+            this.ucPaing1.Size = new System.Drawing.Size(1151, 23);
             this.ucPaing1.TabIndex = 44;
             this.ucPaing1.totalPage = ((long)(0));
             // 
@@ -1444,7 +1444,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1028, 193);
+            this.groupControl2.Size = new System.Drawing.Size(1155, 193);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "病历信息";
             // 
@@ -1454,7 +1454,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(2, 22);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1024, 169);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1151, 169);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -1476,7 +1476,7 @@
             this.xtraTabPage1.Controls.Add(this.barDockControl2);
             this.xtraTabPage1.Controls.Add(this.barDockControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1018, 140);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1145, 140);
             this.xtraTabPage1.Text = "基本病史";
             // 
             // gdvCaseHis
@@ -1491,7 +1491,7 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckedComboBoxEdit1});
-            this.gdvCaseHis.Size = new System.Drawing.Size(1018, 109);
+            this.gdvCaseHis.Size = new System.Drawing.Size(1145, 109);
             this.gdvCaseHis.TabIndex = 13;
             this.gdvCaseHis.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView4});
@@ -2008,7 +2008,7 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1018, 31);
+            this.barDockControl4.Location = new System.Drawing.Point(1145, 31);
             this.barDockControl4.Size = new System.Drawing.Size(0, 109);
             // 
             // barDockControl2
@@ -2016,14 +2016,14 @@
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl2.Location = new System.Drawing.Point(0, 140);
-            this.barDockControl2.Size = new System.Drawing.Size(1018, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1145, 0);
             // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl1.Size = new System.Drawing.Size(1018, 31);
+            this.barDockControl1.Size = new System.Drawing.Size(1145, 31);
             // 
             // xtraTabPage2
             // 
@@ -6555,7 +6555,7 @@
             this.xtraTabPage10.Controls.Add(this.barDockControl38);
             this.xtraTabPage10.Controls.Add(this.barDockControl37);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1018, 140);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1145, 140);
             this.xtraTabPage10.Text = "辅助检查";
             // 
             // gridControl9
@@ -6566,7 +6566,7 @@
             this.gridControl9.MainView = this.gridView5;
             this.gridControl9.MenuManager = this.barManager1;
             this.gridControl9.Name = "gridControl9";
-            this.gridControl9.Size = new System.Drawing.Size(1018, 109);
+            this.gridControl9.Size = new System.Drawing.Size(1145, 109);
             this.gridControl9.TabIndex = 9;
             this.gridControl9.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -6607,7 +6607,7 @@
             this.colECG1.Name = "colECG1";
             this.colECG1.Visible = true;
             this.colECG1.VisibleIndex = 0;
-            this.colECG1.Width = 93;
+            this.colECG1.Width = 244;
             // 
             // colCHEST_X_RAY1
             // 
@@ -6616,7 +6616,7 @@
             this.colCHEST_X_RAY1.Name = "colCHEST_X_RAY1";
             this.colCHEST_X_RAY1.Visible = true;
             this.colCHEST_X_RAY1.VisibleIndex = 1;
-            this.colCHEST_X_RAY1.Width = 95;
+            this.colCHEST_X_RAY1.Width = 185;
             // 
             // colCARDIOTHORACIC_RATIO1
             // 
@@ -6625,7 +6625,7 @@
             this.colCARDIOTHORACIC_RATIO1.Name = "colCARDIOTHORACIC_RATIO1";
             this.colCARDIOTHORACIC_RATIO1.Visible = true;
             this.colCARDIOTHORACIC_RATIO1.VisibleIndex = 2;
-            this.colCARDIOTHORACIC_RATIO1.Width = 101;
+            this.colCARDIOTHORACIC_RATIO1.Width = 95;
             // 
             // colECHOCARDIOGRAPHY1
             // 
@@ -6634,7 +6634,7 @@
             this.colECHOCARDIOGRAPHY1.Name = "colECHOCARDIOGRAPHY1";
             this.colECHOCARDIOGRAPHY1.Visible = true;
             this.colECHOCARDIOGRAPHY1.VisibleIndex = 3;
-            this.colECHOCARDIOGRAPHY1.Width = 106;
+            this.colECHOCARDIOGRAPHY1.Width = 141;
             // 
             // colB_KIDNEYS1
             // 
@@ -6643,7 +6643,7 @@
             this.colB_KIDNEYS1.Name = "colB_KIDNEYS1";
             this.colB_KIDNEYS1.Visible = true;
             this.colB_KIDNEYS1.VisibleIndex = 4;
-            this.colB_KIDNEYS1.Width = 108;
+            this.colB_KIDNEYS1.Width = 136;
             // 
             // colOPERATOR9
             // 
@@ -6724,7 +6724,7 @@
             // 
             this.barDockControl40.CausesValidation = false;
             this.barDockControl40.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl40.Location = new System.Drawing.Point(1018, 31);
+            this.barDockControl40.Location = new System.Drawing.Point(1145, 31);
             this.barDockControl40.Size = new System.Drawing.Size(0, 109);
             // 
             // barDockControl38
@@ -6732,14 +6732,14 @@
             this.barDockControl38.CausesValidation = false;
             this.barDockControl38.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControl38.Location = new System.Drawing.Point(0, 140);
-            this.barDockControl38.Size = new System.Drawing.Size(1018, 0);
+            this.barDockControl38.Size = new System.Drawing.Size(1145, 0);
             // 
             // barDockControl37
             // 
             this.barDockControl37.CausesValidation = false;
             this.barDockControl37.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl37.Location = new System.Drawing.Point(0, 0);
-            this.barDockControl37.Size = new System.Drawing.Size(1018, 31);
+            this.barDockControl37.Size = new System.Drawing.Size(1145, 31);
             // 
             // gridBand1
             // 
@@ -7344,7 +7344,7 @@
             // 
             // btnNewAdd
             // 
-            this.btnNewAdd.Caption = "新建辅助检查信息";
+            this.btnNewAdd.Caption = "新建辅助检验信息";
             this.btnNewAdd.Id = 7;
             this.btnNewAdd.ImageIndex = 92;
             this.btnNewAdd.Name = "btnNewAdd";
@@ -7352,7 +7352,7 @@
             // 
             // btnEdtAdd
             // 
-            this.btnEdtAdd.Caption = "编辑辅助检查信息";
+            this.btnEdtAdd.Caption = "编辑辅助检验信息";
             this.btnEdtAdd.Id = 8;
             this.btnEdtAdd.ImageIndex = 91;
             this.btnEdtAdd.Name = "btnEdtAdd";
@@ -7360,7 +7360,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "获取患者检查信息";
+            this.barButtonItem1.Caption = "获取患者检验信息";
             this.barButtonItem1.Id = 9;
             this.barButtonItem1.ImageIndex = 72;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -7490,7 +7490,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 543);
+            this.ClientSize = new System.Drawing.Size(1155, 543);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

@@ -212,6 +212,8 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -626,6 +628,11 @@
     </Compile>
     <Compile Include="Rpt_bloodCleanup.Designer.cs">
       <DependentUpon>Rpt_bloodCleanup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CommServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="UcDialysis.cs">
       <SubType>UserControl</SubType>
@@ -1176,6 +1183,7 @@
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VALUE_CODE.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VALUE_GROUP.datasource" />
     <None Include="Properties\DataSources\BloodInfo_MngPlatform.Models.VASCULARPATH_HISTORY.datasource" />
+    <None Include="Properties\DataSources\CommonServiceLibrary.Lis_List.datasource" />
     <None Include="Properties\DataSources\DocAdvType.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1186,6 +1194,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\CommServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommServiceReference\CommonServiceLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommServiceReference\service.wsdl" />
+    <None Include="Service References\CommServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -1581,6 +1602,12 @@
     <Content Include="OraOps11w.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\CommServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CommServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CommServiceReference\configuration91.svcinfo" />
     <None Include="Resources\20130319022303686_easyicon_net_256.png" />
     <None Include="Resources\20130307021059678_easyicon_cn_16.png" />
     <None Include="Resources\20130307021031884_easyicon_cn_16.png" />
@@ -1631,6 +1658,12 @@
       <Project>{16C99B1A-2081-4914-BE37-24AB48E6279C}</Project>
       <Name>UcPaging</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CommServiceReference\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

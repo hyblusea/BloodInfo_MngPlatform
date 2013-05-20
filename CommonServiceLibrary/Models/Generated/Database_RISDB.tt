@@ -1,7 +1,7 @@
 <#@ include file="PetaPoco.Core.ttinclude" #>
 <#
 	// Settings
-	ConnectionStringName = "RIS";			// Uses last connection string in config if not specified
+	ConnectionStringName = "RISDB";			// Uses last connection string in config if not specified
 	Namespace = "CommonServiceLibrary.RISDBModels";
 	RepoName = "RISDB";
 	GenerateOperations = true;
@@ -11,13 +11,13 @@
 	ClassSuffix = "";
 	ColNameConvertToPascal = false;
 	ColNameFirstLetterLower = false;
-	TrackModifiedColumns = true; 
+	TrackModifiedColumns = true;
 				   
 	// Read schema 
-	var tables = LoadTables(); 
+	var tables = LoadTables();
 			  
 /*    
-	// Tweak Schema
+	// Tweak Schema 
 	tables["tablename"].Ignore = true;							// To ignore a table
 	tables["tablename"].ClassName = "newname";					// To change the class name of a table
 	tables["tablename"]["columnname"].Ignore = true;			// To ignore a column

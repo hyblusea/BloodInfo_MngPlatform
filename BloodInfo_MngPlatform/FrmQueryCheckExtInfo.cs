@@ -13,6 +13,7 @@ using CommonServiceLibrary.RISDBModels;
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Reflection;
+using CommonServiceLibrary;
 
 namespace BloodInfo_MngPlatform
 {
@@ -21,10 +22,10 @@ namespace BloodInfo_MngPlatform
         string _strPatName;
         decimal _id;
         Database db;
-        List<RIS_LIST> lstRisList = new List<RIS_LIST>();
+        List<Ris_List> lstRisList = new List<Ris_List>();
         List<ADDTION_CHECK_HISTORY_EXT> lstAddCheckHisExt = new List<ADDTION_CHECK_HISTORY_EXT>();
-        CommonServiceLibrary.ICommonService cs = new CommonServiceLibrary.CommonService();
-
+        CommServiceReference.CommonServiceClient cs = new CommServiceReference.CommonServiceClient();
+ 
         public FrmQueryCheckExtInfo(string strPatName, decimal id)
         {
             InitializeComponent();
@@ -37,8 +38,15 @@ namespace BloodInfo_MngPlatform
         {
             //获取已存在的数据
             lstAddCheckHisExt = db.Fetch<ADDTION_CHECK_HISTORY_EXT>("where base_info_id = @0", _id);
+            string sql = "select a.applyno,a.hospno,b.itemname,c.itemresult,a.exectime,a.patname,a.sex,a.birthday,a.age,"+
+                "a.ageunit,a.bedno,a.career,a.phone,a.address from ris_list a ,ris_acceptitems b, " +
+                "(select applyno,'检查所见：'+ max(case  when itemcode='jcsj' then itemresult else null end)+  "+
+                "'检查结论:' + max(case  when itemcode='jcjl' then itemresult else null end) itemresult from ris_result group by applyno) c "+
+                "where a.applyno=b.applyno and b.applyno=c.applyno  and b.itemname in ('常规心电图检查（十二通道)','心脏彩超声检查(东院)','双肾血管彩超检查','胸片','心胸比') " +
+                "and a.exectime=(select max(exectime) from ris_list where patname=a.patname group by patname ) "+
+                "and a.patname=@0";
             //绑定数据源
-            lstRisList = cs.GetDataForSQLServer<RIS_LIST>("RIS", "where patName = @0", _strPatName);
+            lstRisList = cs.GetDataRisList(sql, new object[] { _strPatName }).ToList();
             rISLISTBindingSource1.DataSource = lstRisList;
 
             //绑定性别的数据源
@@ -52,58 +60,38 @@ namespace BloodInfo_MngPlatform
             if (XtraMessageBox.Show("确定保存该患者基本信息？", "操作确认", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 gridView1.CloseEditor();
-                List<RIS_LIST> dsRisList = (List<RIS_LIST>)rISLISTBindingSource1.DataSource;
-                List<int> lstApplyNo = new List<int>();
+                List<Ris_List> dsRisList = (List<Ris_List>)rISLISTBindingSource1.DataSource;
+                ADDTION_CHECK_HISTORY_EXT checkEntity = new ADDTION_CHECK_HISTORY_EXT();
+
+                bool flag = true;
                 for (int i = 0; i < dsRisList.Count; i++)
                 {
-                    if (dsRisList[i].IsChecked != null && (bool)dsRisList[i].IsChecked)
+                    if ((bool)dsRisList[i].IsChecked)
                     {
-                        lstApplyNo.Add(dsRisList[i].ApplyNo);
+                        string itemName = ConfigurationManager.AppSettings[dsRisList[i].ItemName];
+                        Type entityType = checkEntity.GetType();
+                        PropertyInfo propertyInfo = entityType.GetProperty(NullConvertString(itemName).ToUpper());
+                        if (propertyInfo == null) continue;
+                        propertyInfo.SetValue(checkEntity, dsRisList[i].ItemResult, null);
+                        checkEntity.BASE_INFO_ID = _id;
+                        checkEntity.LOG_TIME = DateTime.Now;
+                        checkEntity.OPERATOR = ClsFrmMng.WorkerID;
+                        checkEntity.APPLYNO = dsRisList[i].ApplyNo;
+                        db.Insert(checkEntity);
+                        //checkEntity.Insert(); 
+                        flag = false;
                     }
                 }
-                if (lstApplyNo == null || lstApplyNo.Count == 0)
+                if (flag)
                 {
                     XtraMessageBox.Show("请至少选择一条信息", "提示", MessageBoxButtons.OK);
                     return;
                 }
-                addCheckHistory(lstApplyNo);
+                
                 this.Close();
             }
         }
 
-        private void addCheckHistory(List<int> lstApplyNo)
-        {
-            List<RIS_RESULT> lstresult = new List<RIS_RESULT>();
-            ADDTION_CHECK_HISTORY_EXT checkEntity = new ADDTION_CHECK_HISTORY_EXT();
-
-            try
-            {
-                for (int i = 0; i < lstApplyNo.Count; i++)
-                {
-                    lstresult = cs.GetDataForSQLServer<RIS_RESULT>("RIS", "where applyno=@0", lstApplyNo[i]);
-                    if (lstresult.Count <= 0) continue;
-                    for (int j = 0; j < lstresult.Count; j++)
-                    {
-                        string itemCode = ConfigurationManager.AppSettings[lstresult[j].ItemCode.ToLower().Trim()];
-                        Type entityType = checkEntity.GetType();
-                        PropertyInfo propertyInfo = entityType.GetProperty(NullConvertString(itemCode).ToUpper());
-                        if (propertyInfo == null) continue;
-                        propertyInfo.SetValue(checkEntity, lstresult[j].ItemName, null);
-                    }
-                    checkEntity.BASE_INFO_ID = _id;
-                    checkEntity.LOG_TIME = DateTime.Now;
-                    checkEntity.OPERATOR = ClsFrmMng.WorkerID;
-                    checkEntity.APPLYNO = lstApplyNo[i];
-                    checkEntity.Insert();
-                }
-            }
-            catch (Exception err)
-            {
-                XtraMessageBox.Show(err.Message, "错误提示", MessageBoxButtons.OK);
-            }
-
-
-        }
         private string NullConvertString(object obj)
         {
             return (obj == null ? "" : obj.ToString());

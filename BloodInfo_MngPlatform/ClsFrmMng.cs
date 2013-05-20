@@ -83,7 +83,7 @@ namespace BloodInfo_MngPlatform
         public string SexCode { get; set; }
         public string SexName { get; set; }
 
-        public SexType(string sexcode,string sexname)
+        public SexType(string sexcode, string sexname)
         {
             SexCode = sexcode;
             SexName = sexname;

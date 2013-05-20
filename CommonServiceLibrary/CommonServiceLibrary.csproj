@@ -69,31 +69,31 @@
     <Compile Include="ICommonService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\Generated\Database_LISDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database_LISDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Generated\Database_RISDB.cs">
+      <DependentUpon>Database_RISDB.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Database_RISDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Generated\DBEntity_Lis.cs" />
-    <Compile Include="Models\Generated\DBEntity_Ris.cs" />
+    <Compile Include="Models\Generated\Database_LISDB.cs">
+      <DependentUpon>Database_LISDB.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\Generated\DBEntity_LISDB.cs" />
+    <Compile Include="Models\Generated\DBEntity_RISDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Models\Generated\Database_LISDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Database_LISDB.cs</LastGenOutput>
-    </None>
     <None Include="Models\Generated\Database_RISDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database_RISDB.cs</LastGenOutput>
+    </None>
+    <None Include="Models\Generated\Database_LISDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Database_LISDB.cs</LastGenOutput>
     </None>
     <None Include="Models\Generated\PetaPoco.Core.ttinclude" />
     <None Include="Models\Generated\PetaPoco.Generator.ttinclude" />

@@ -13,6 +13,7 @@ using CommonServiceLibrary.LISDBModels;
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Reflection;
+using CommonServiceLibrary;
 
 namespace BloodInfo_MngPlatform
 {
@@ -21,10 +22,10 @@ namespace BloodInfo_MngPlatform
         string _strPatName;
         decimal _id;
         Database exdb;
-        List<LIS_LIST> lstLisList = new List<LIS_LIST>();
+        List<Lis_List> lstLisList = new List<Lis_List>();
         List<ADDTION_CHECK_HISTORY> lstAddCheckHis = new List<ADDTION_CHECK_HISTORY>();
-        CommonServiceLibrary.ICommonService cs = new CommonServiceLibrary.CommonService();
-
+        CommServiceReference.CommonServiceClient cs = new CommServiceReference.CommonServiceClient();
+  
         public FrmQueryCheckInfo(string strPatName, decimal id)
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace BloodInfo_MngPlatform
             //获取已存在的数据
             lstAddCheckHis = exdb.Fetch<ADDTION_CHECK_HISTORY>("where base_info_id = @0", _id);
             //绑定数据源
-            lstLisList = cs.GetDataForSQLServer<LIS_LIST>("LIS", "where patName = @0", _strPatName);
+            lstLisList = cs.GetDataLisList("select applyno,exectime,patname,sex,birthday,age,ageunit,bedno from lis_list where patName = @0", new object[] { _strPatName }).ToList();
             lISLISTBindingSource.DataSource = lstLisList;
           
             //绑定性别的数据源
@@ -52,11 +53,11 @@ namespace BloodInfo_MngPlatform
             if (XtraMessageBox.Show("确定保存该患者基本信息？", "操作确认", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 gridView1.CloseEditor();
-                List<LIS_LIST> dsLisList = (List<LIS_LIST>)lISLISTBindingSource.DataSource;              
+                List<Lis_List> dsLisList = (List<Lis_List>)lISLISTBindingSource.DataSource;              
                 List<int> lstApplyNo = new List<int>();
                 for (int i = 0; i < dsLisList.Count;i++ )
                 {
-                    if (dsLisList[i].IsChecked !=null &&(bool)dsLisList[i].IsChecked)
+                    if ((bool)dsLisList[i].IsChecked)
                     {
                         lstApplyNo.Add(dsLisList[i].ApplyNo);
                     }
@@ -73,14 +74,13 @@ namespace BloodInfo_MngPlatform
 
         private void addCheckHistory(List<int> lstApplyNo)
         {
-            List<LIS_RESULT> lstresult = new List<LIS_RESULT>();
+            List<CommonServiceLibrary.Lis_Result> lstresult = new List<CommonServiceLibrary.Lis_Result>();
             ADDTION_CHECK_HISTORY checkEntity = new ADDTION_CHECK_HISTORY();
-            
              try
                 {
                     for(int i=0;i<lstApplyNo.Count;i++)
                     {
-                        lstresult = cs.GetDataForSQLServer<LIS_RESULT>("LIS", "where applyno=@0", lstApplyNo[i]);
+                        lstresult = cs.GetDataLisResult("where applyno=@0", new object[] { lstApplyNo[i] }).ToList();
                         if (lstresult.Count <= 0) continue;
                         for(int j=0;j<lstresult.Count;j++)
                         {
@@ -95,8 +95,10 @@ namespace BloodInfo_MngPlatform
                         checkEntity.OPERATOR = ClsFrmMng.WorkerID;
                         checkEntity.BLOOD = lstresult[0].ResultTime;
                         checkEntity.APPLYNO = lstApplyNo[i];
-                        checkEntity.Insert();
+                        exdb.Insert(checkEntity);
+                        //checkEntity.Insert();
                     }
+                    
                 }
              catch (Exception err)
              {

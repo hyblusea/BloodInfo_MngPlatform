@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bd546bd9-75f6-4405-a507-95628c260dcd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="CommonServiceLibrary" />
+    </ReferencedAssemblies>
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9ba1a49b-c691-475a-b5f3-6373e886582b" SourceId="1" SourceUrl="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d1745b59-8be5-48c4-b091-da2bc2e73276" SourceId="1" SourceUrl="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1e17dc11-2a0c-45e0-b053-d93f0b6a588a" SourceId="1" SourceUrl="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="6e3b5e8a-c779-4f25-8c9e-14fa890f18b2" SourceId="1" SourceUrl="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" />
+    <MetadataFile FileName="CommonServiceLibrary.xsd" MetadataType="Schema" ID="f8115d04-51e3-4ca4-9ff5-a5b13a4c2b8e" SourceId="1" SourceUrl="net.tcp://localhost:8733/CommonServiceLibrary/CommonService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

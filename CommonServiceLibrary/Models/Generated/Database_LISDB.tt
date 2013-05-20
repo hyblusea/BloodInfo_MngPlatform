@@ -1,23 +1,23 @@
 <#@ include file="PetaPoco.Core.ttinclude" #>
 <#
 	// Settings
-	ConnectionStringName = "LIS";			// Uses last connection string in config if not specified
+	ConnectionStringName = "LISDB";			// Uses last connection string in config if not specified
 	Namespace = "CommonServiceLibrary.LISDBModels";
 	RepoName = "LISDB";
 	GenerateOperations = true;
 	GeneratePocos = true;
 	GenerateCommon = true;
 	ClassPrefix = "";
-	ClassSuffix = ""; 
-	ColNameConvertToPascal = false; 
-	ColNameFirstLetterLower = false; 
-	TrackModifiedColumns = true;
+	ClassSuffix = "";
+	ColNameConvertToPascal = false;
+	ColNameFirstLetterLower = false;
+	TrackModifiedColumns = true; 
 
-	// Read schema
+	// Read schema 
 	var tables = LoadTables();
 			  
 /*
-	// Tweak Schema
+	// Tweak Schema 
 	tables["tablename"].Ignore = true;							// To ignore a table
 	tables["tablename"].ClassName = "newname";					// To change the class name of a table
 	tables["tablename"]["columnname"].Ignore = true;			// To ignore a column
