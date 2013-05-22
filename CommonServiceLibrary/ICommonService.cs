@@ -9,6 +9,9 @@ namespace CommonServiceLibrary
 {
     // 注意: 使用“重构”菜单上的“重命名”命令，可以同时更改代码和配置文件中的接口名“IService1”。
     [ServiceContract]
+    [ServiceKnownType(typeof(Lis_List))]
+    [ServiceKnownType(typeof(Ris_List))]
+    [ServiceKnownType(typeof(Lis_Result))]
     public interface ICommonService
     {
         [OperationContract]
@@ -52,6 +55,7 @@ namespace CommonServiceLibrary
     }
 
     [DataContract]
+    [KnownType(typeof(Lis_List))]
     public class Lis_List
     {
         [DataMember]
@@ -883,6 +887,7 @@ namespace CommonServiceLibrary
     }
 
     [DataContract]
+    [KnownType(typeof(Ris_List))]
     public class Ris_List
     {
         [DataMember]
@@ -2006,6 +2011,7 @@ namespace CommonServiceLibrary
     }
 
     [DataContract]
+    [KnownType(typeof(Lis_Result))]
     public class Lis_Result
     {
         [DataMember]

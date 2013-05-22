@@ -21,7 +21,6 @@ Thumbs.db
 [Dd]ebug*/
 *.lib
 *.sbr
-app.config
 *.licx
 obj/
 [Rr]elease*/
